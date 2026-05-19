@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 120" role="img" aria-label="Pactly">
+  <defs>
+    <linearGradient id="pactlyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5B3FE8"/>
+      <stop offset="100%" stop-color="#E8357A"/>
+    </linearGradient>
+  </defs>
+  <text x="50%" y="50%"
+        text-anchor="middle"
+        dominant-baseline="central"
+        fill="url(#pactlyGrad)"
+        font-family="'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, Segoe UI, sans-serif"
+        font-weight="800"
+        font-size="84"
+        letter-spacing="-2">Pactly</text>
+</svg>

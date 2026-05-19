@@ -1,0 +1,286 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Self-hosted fonts (eliminates Google Fonts render-blocking + CLS) ─── */
+@font-face {
+  font-family: 'Bebas Neue';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/bebas-neue-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/space-grotesk-var.woff2') format('woff2-variations'),
+       url('/fonts/space-grotesk-var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/inconsolata-var.woff2') format('woff2-variations'),
+       url('/fonts/inconsolata-var.woff2') format('woff2');
+}
+
+@layer base {
+  :root {
+    /* ─── Brand colors ─── */
+    --ink: 60 8% 5%;
+    --volt: 73 100% 47%;
+    --volt-soft: 78 89% 66%;
+    --orange: 17 100% 50%;
+    --paper: 43 33% 93%;
+    --paper2: 43 18% 88%;
+    --papier-deep: 43 20% 87%;
+    --wit-warm: 45 33% 98%;
+    --wit-puur: 0 0% 100%;
+    --steen: 49 11% 72%;
+    --muted-text: 43 4% 40%;
+    --hero-bg: 82 33% 9%;
+
+    /* ─── Venture brand colors (brandbook v3.0) ─── */
+    --postpilot-accent: #00DC93;
+    --postpilot-dark: #0A1820;
+    --pactly-accent: #CC007E;
+    --pactly-dark: #1A0010;
+    --oak-accent: #1B3A8A;
+    --oak-dark: #0A1228;
+    --plugpower-accent: #FFAA00;
+    --plugpower-dark: #1A1408;
+
+    /* ─── Semantic color aliases ─── */
+    --background: var(--paper);
+    --foreground: var(--ink);
+    --card: var(--ink);
+    --card-foreground: var(--paper);
+    --popover: var(--ink);
+    --popover-foreground: var(--paper);
+    --primary: var(--volt);
+    --primary-foreground: var(--ink);
+    --secondary: var(--paper2);
+    --secondary-foreground: var(--ink);
+    --muted: var(--steen);
+    --muted-foreground: var(--muted-text);
+    --accent: var(--orange);
+    --accent-foreground: 0 0% 100%;
+    --destructive: var(--orange);
+    --destructive-foreground: 0 0% 100%;
+    --border: var(--steen);
+    --input: var(--steen);
+    --ring: var(--volt);
+    --radius: 0px;
+
+    /* ─── Typography: Font sizes ─── */
+    --text-label: 0.625rem;     /* 10px — labels, meta, tags */
+    --text-xs: 0.6875rem;       /* 11px — ticker, copyright */
+    --text-sm: 0.75rem;         /* 12px — links, captions, CTA labels */
+    --text-base: 0.875rem;      /* 14px — ui elements */
+    --text-body: 1rem;          /* 16px — body text (brandbook v3.0) */
+    --text-lead: 1.375rem;      /* 22px — lead / hero sub */
+    --text-md: 0.9375rem;       /* 15px — featured body, quotes */
+    --text-lg: 1rem;            /* 16px — section intros, lead text */
+    --text-btn: 0.8125rem;      /* 13px — buttons, CTAs */
+
+    /* ─── Typography: Line heights ─── */
+    --leading-tight: 0.9;       /* display headings */
+    --leading-snug: 1.1;        /* sub-headings, card titles */
+    --leading-normal: 1.6;      /* body text, short descriptions */
+    --leading-relaxed: 1.7;     /* long-form paragraphs */
+    --leading-loose: 1.8;       /* section intros, featured text */
+
+    /* ─── Typography: Letter spacing ─── */
+    --tracking-label: 0.15em;   /* labels, meta */
+    --tracking-tight: 0.02em;   /* display headings */
+    --tracking-mono: 0.1em;     /* mono labels, categories */
+
+    /* ─── Typography: Colors — Light backgrounds ─── */
+    --color-heading: hsl(var(--ink));
+    --color-body: #5A5850;
+    --color-caption: #5A5850;
+    --color-success: #2E7D32;
+
+    /* ─── Typography: Colors — Dark backgrounds ─── */
+    --color-heading-dark: #FFFFFF;
+    --color-body-dark: rgba(255,255,255,0.65);
+    --color-muted-dark: rgba(255,255,255,0.5);
+    --color-caption-dark: rgba(255,255,255,0.6);
+
+    /* ─── Typography: Colors — Volt bg ─── */
+    --color-heading-volt: hsl(var(--ink));
+    --color-body-volt: rgba(0,0,0,0.7);
+    --color-caption-volt: rgba(0,0,0,0.65);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 52px;
+  }
+
+  section[id] {
+    scroll-margin-top: 52px;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: var(--text-body);
+    line-height: var(--leading-normal);
+    border-radius: 0 !important;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    letter-spacing: var(--tracking-tight);
+    line-height: var(--leading-tight);
+  }
+
+  .font-mono {
+    font-family: 'Inconsolata', monospace;
+  }
+
+  /* Kill all border-radius globally */
+  *, *::before, *::after {
+    border-radius: 0 !important;
+  }
+}
+
+@layer utilities {
+  /* ─── Brand color utilities ─── */
+  .bg-ink { background-color: hsl(var(--ink)); }
+  .bg-paper { background-color: hsl(var(--paper)); }
+  .bg-paper2 { background-color: hsl(var(--paper2)); }
+  .bg-volt { background-color: hsl(var(--volt)); }
+  .bg-orange { background-color: hsl(var(--orange)); }
+  .bg-hero { background-color: hsl(var(--hero-bg)); }
+  .text-ink { color: hsl(var(--ink)); }
+  .text-paper { color: hsl(var(--paper)); }
+  .text-volt { color: hsl(var(--volt)); }
+  .text-orange { color: hsl(var(--orange)); }
+  .text-muted-brand { color: hsl(var(--muted-text)); }
+  .border-ink { border-color: hsl(var(--ink)); }
+  .border-volt { border-color: hsl(var(--volt)); }
+
+  /* ─── Typography token utilities ─── */
+
+  /* Font sizes */
+  .typo-label   { font-size: var(--text-label); letter-spacing: var(--tracking-label); }
+  .typo-xs      { font-size: var(--text-xs); }
+  .typo-sm      { font-size: var(--text-sm); letter-spacing: var(--tracking-mono); }
+  .typo-base    { font-size: var(--text-base); line-height: var(--leading-normal); }
+  .typo-md      { font-size: var(--text-md); line-height: var(--leading-relaxed); }
+  .typo-lg      { font-size: var(--text-lg); line-height: var(--leading-relaxed); }
+  .typo-btn     { font-size: var(--text-btn); }
+
+  /* Semantic text colors — light bg */
+  .typo-heading    { color: var(--color-heading); }
+  .typo-body       { color: var(--color-body); }
+  .typo-caption    { color: var(--color-caption); }
+
+  /* Semantic text colors — dark bg */
+  .typo-heading-dark  { color: var(--color-heading-dark); }
+  .typo-body-dark     { color: var(--color-body-dark); }
+  .typo-muted-dark    { color: var(--color-muted-dark); }
+  .typo-caption-dark  { color: var(--color-caption-dark); }
+
+  /* Semantic text colors — volt bg */
+  .typo-heading-volt  { color: var(--color-heading-volt); }
+  .typo-body-volt     { color: var(--color-body-volt); }
+  .typo-caption-volt  { color: var(--color-caption-volt); }
+
+  /* Common combos */
+  .typo-section-heading {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: var(--tracking-tight);
+    line-height: var(--leading-tight);
+  }
+  .typo-page-heading {
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 0.88;
+  }
+  .typo-card-title {
+    font-size: 1.8rem;
+    letter-spacing: 0.03em;
+    line-height: var(--leading-tight);
+  }
+  .typo-card-title-sm {
+    font-size: 1.3rem;
+    letter-spacing: 0.03em;
+    line-height: var(--leading-snug);
+  }
+  .typo-intro {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+  }
+
+  /* ─── Animations ─── */
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .animate-ticker { animation: ticker 35s linear infinite; }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+  .animate-pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+  @keyframes pulse-live {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+  }
+  .animate-pulse-live { animation: pulse-live 2s ease-in-out infinite; }
+
+  /* Hero entrance — CSS-only so LCP text paints immediately (no JS hydration wait) */
+  @keyframes hero-word-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-word { animation: hero-word-in 0.5s ease both; }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-word { animation: none; }
+  }
+
+  /* Subtle highlight on volt word in Manifesto */
+  @keyframes volt-underline-in {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+  @keyframes volt-breath {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.78; }
+  }
+  .manifesto-volt {
+    position: relative;
+    display: inline-block;
+    color: #C8F000;
+    animation: volt-breath 4.5s ease-in-out infinite;
+  }
+  .manifesto-volt::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0.06em;
+    height: 0.08em;
+    background: #C8F000;
+    transform-origin: left center;
+    transform: scaleX(0);
+    animation: volt-underline-in 0.5s ease both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .manifesto-volt { animation: none; }
+    .manifesto-volt::after { animation: none; transform: scaleX(1); }
+  }
+}

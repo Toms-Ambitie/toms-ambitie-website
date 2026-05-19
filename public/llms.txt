@@ -1,0 +1,26 @@
+# Toms Ambitie
+
+> Venture club uit Zwolle die eigen bedrijven bouwt. Vaste kern met top specialisten eromheen. We bedenken, bouwen, valideren en — als het werkt — verkopen.
+
+Toms Ambitie is geen bureau, geen consultancy en geen fonds. Onder de holding zitten meerdere ventures (live én in opbouw): Pactly, Plug and Power, Post Pilot en OAK Marketing. Elke venture lost een probleem op dat we zelf hebben ervaren.
+
+## Pages
+
+- [Home](/): Wat Toms Ambitie is, hoe we werken en welke ventures live staan.
+- [Ventures](/ventures): Overzicht van alle actieve ventures.
+- [Hoe we bouwen](/hoe-we-bouwen): Onze methode — van idee naar venture in maximaal 6 weken.
+- [Over Tom Mulder](/over-ons): Achtergrond van de founder en het pad sinds 2008.
+- [Meebouwen](/meebouwen): Voor mensen die kennis, kunde, netwerk of kapitaal willen inzetten.
+- [Nieuws](/nieuws): Korte updates over lopende ventures en projecten.
+
+## Ventures
+
+- [Pactly](/ventures/pactly): Slim huishoudplatform voor contracten, abonnementen en vaste lasten.
+- [Post Pilot](/ventures/post-pilot): SaaS voor klantcommunicatie-automatisering.
+- [Plug and Power](/ventures/plug-and-power): Energie-oplossingen voor de moderne ondernemer.
+- [OAK Marketing](/ventures/oak-marketing): Marketingstrategie en uitvoering voor groei.
+
+## Optional
+
+- [Privacy](/privacy): Privacyverklaring.
+- [Algemene voorwaarden](/voorwaarden): Algemene voorwaarden.

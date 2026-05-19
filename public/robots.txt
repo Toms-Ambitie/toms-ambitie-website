@@ -1,0 +1,18 @@
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.toms-ambitie.nl/sitemap.xml
+Sitemap: https://www.toms-ambitie.nl/sitemap-pages.xml
+Sitemap: https://www.toms-ambitie.nl/sitemap-news.xml

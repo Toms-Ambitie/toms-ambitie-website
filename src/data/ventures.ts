@@ -2,7 +2,7 @@ import postPilotLogo from "@/assets/venture-logo-post-pilot.webp";
 import oakMarketingLogo from "@/assets/venture-logo-oak-marketing.webp";
 import pactlyLogo from "@/assets/pactly-beeldmerk.svg";
 import plugAndPowerLogo from "@/assets/venture-logo-plug-and-power.webp";
-import emmaBoektLogo from "@/assets/emma-boekt-logo.svg";
+import emmaBoektLogo from "@/assets/emma-boekt-logo.webp";
 
 export interface VentureIdentity {
   /** Accent hex used on hero border, bullets, vision section, etc. */

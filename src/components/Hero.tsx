@@ -226,8 +226,8 @@ export const Hero = () => {
               marginBottom: 32,
             }}
           >
-            WE BOUWEN<br />
-            WAT WE<br />
+            WE BOUWEN{" "}<br />
+            WAT WE{" "}<br />
             <span style={{ color: "#C8F000" }}>ZELF MISSEN.</span>
           </h1>
 
@@ -288,7 +288,7 @@ export const Hero = () => {
             }}
           >
             {[
-              ["4", "Ventures live"],
+              ["5", "Ventures live"],
               ["6 wk", "Idee → launch"],
               ["2018", "Gestart in"],
             ].map(([val, label]) => (
@@ -303,7 +303,7 @@ export const Hero = () => {
                   className="font-mono uppercase"
                   style={{
                     fontSize: 10,
-                    color: "rgba(14,14,12,0.4)",
+                    color: "rgba(14,14,12,0.55)",
                     letterSpacing: "0.14em",
                     marginTop: 6,
                   }}

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { VenturesGrid } from "@/components/VenturesGrid";
+import { OriginStories } from "@/components/OriginStories";
 import { VsTraditional } from "@/components/VsTraditional";
 import { WerkwijzeTeaser } from "@/components/WerkwijzeTeaser";
 import { Manifesto } from "@/components/Manifesto";
@@ -27,6 +28,8 @@ const Index = () => {
       {/* wit warm → papier */}
       <VenturesGrid />
       {/* papier → inkt */}
+      <OriginStories />
+      {/* inkt → inkt */}
       <VsTraditional />
       {/* inkt → papier */}
       <WerkwijzeTeaser />

@@ -310,6 +310,7 @@ const MeebouwenPage = () => {
                 type="text"
                 name="name"
                 placeholder="Je naam"
+                aria-label="Je naam"
                 required
                 maxLength={100}
                 style={inputStyle}
@@ -318,12 +319,14 @@ const MeebouwenPage = () => {
                 type="email"
                 name="email"
                 placeholder="je@emailadres.nl"
+                aria-label="E-mailadres"
                 required
                 maxLength={255}
                 style={inputStyle}
               />
               <select
                 name="interest"
+                aria-label="Waar wil je bij aansluiten?"
                 required
                 value={presetInterest}
                 onChange={(e) => setPresetInterest(e.target.value)}
@@ -343,6 +346,7 @@ const MeebouwenPage = () => {
               <textarea
                 name="message"
                 placeholder="Waar zie jij kansen, energie of momentum?"
+                aria-label="Jouw bericht — waar zie jij kansen, energie of momentum?"
                 required
                 maxLength={2000}
                 style={{ ...inputStyle, minHeight: 160, resize: "vertical" }}
@@ -351,6 +355,7 @@ const MeebouwenPage = () => {
                 type="url"
                 name="linkedin"
                 placeholder="linkedin.com/in/jouw-naam"
+                aria-label="LinkedIn-profiel URL (optioneel)"
                 maxLength={300}
                 style={inputStyle}
               />

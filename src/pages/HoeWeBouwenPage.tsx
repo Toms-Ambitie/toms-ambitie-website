@@ -822,7 +822,7 @@ const HoeWeBouwenPage = () => {
             >
               Actieve ventures
             </p>
-            {["Post Pilot", "Oak Marketing", "Pactly", "Plug & Power"].map((v) => (
+            {["Post Pilot", "EmmaBoekt", "Oak Marketing", "Pactly", "Plug & Power"].map((v) => (
               <div
                 key={v}
                 style={{

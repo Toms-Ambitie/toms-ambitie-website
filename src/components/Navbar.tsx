@@ -58,6 +58,19 @@ export const Navbar = () => {
   const isActive = (to: string) => location.pathname === to || location.pathname.startsWith(to + "/");
 
   return (
+    <>
+    <a
+      href="#main-content"
+      onClick={(e) => {
+        e.preventDefault();
+        const h1 = document.querySelector<HTMLElement>('h1');
+        if (h1) { h1.setAttribute('tabindex', '-1'); h1.focus(); }
+      }}
+      className="fixed top-0 left-0 font-mono font-bold uppercase z-[200] -translate-y-full focus:translate-y-0 transition-transform duration-150"
+      style={{ background: "#C8F000", color: "#0E0E0C", fontSize: 11, letterSpacing: "0.12em", padding: "14px 24px" }}
+    >
+      Ga naar inhoud
+    </a>
     <nav
       className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-8"
       style={{
@@ -174,5 +187,6 @@ export const Navbar = () => {
         </div>
       )}
     </nav>
+    </>
   );
 };

@@ -22,6 +22,20 @@ const ventures = [
     status: "IN ONTWIKKELING",
   },
   {
+    slug: "emma-boekt",
+    category: "AI · Administratie · Automatisering",
+    problemLabel: "DE AANPAK",
+    problem: "EmmaBoekt maakt administratie menselijker.",
+    description:
+      "Geen ingewikkelde boekhoudomgeving, maar een slimme assistent bovenop software die ondernemers vaak al gebruiken. Je hoeft niet opnieuw te leren hoe administratie werkt. Je hoeft alleen nog te vertellen wat je geregeld wilt hebben.",
+    whyNow:
+      "Vrijwel iedere ondernemer gebruikt administratiesoftware. Maar bijna niemand wordt enthousiast van de ervaring. EmmaBoekt draait dat om: minder mentale weerstand, meer rust.",
+    url: "",
+    accent: "#1BBFA0",
+    dark: "#1B2D5E",
+    status: "IN ONTWIKKELING",
+  },
+  {
     slug: "post-pilot",
     category: "SaaS · AI · Contentautomatisering",
     problemLabel: "HET PROBLEEM",

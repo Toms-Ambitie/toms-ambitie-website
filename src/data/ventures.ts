@@ -2,6 +2,7 @@ import postPilotLogo from "@/assets/venture-logo-post-pilot.webp";
 import oakMarketingLogo from "@/assets/venture-logo-oak-marketing.webp";
 import pactlyLogo from "@/assets/pactly-beeldmerk.svg";
 import plugAndPowerLogo from "@/assets/venture-logo-plug-and-power.webp";
+import emmaBoektLogo from "@/assets/emma-boekt-logo.svg";
 
 export interface VentureIdentity {
   /** Accent hex used on hero border, bullets, vision section, etc. */
@@ -80,6 +81,69 @@ export type VentureStatusMeta = {
 };
 
 export const ventureDetails: VentureDetail[] = [
+  {
+    slug: "emma-boekt",
+    name: "EMMABOEKT",
+    tagline: "ADMINISTRATIE ZOU GEEN ENERGIE MOETEN KOSTEN.",
+    intro:
+      "De meeste boekhoudsoftware werkt technisch prima.\n\nMaar veel ondernemers voelen weerstand zodra ze hun administratie moeten openen. Niet omdat ze administratie haten. Maar omdat de ervaring vaak ingewikkelder voelt dan nodig.\n\nEmmaBoekt legt een slimme assistent bovenop bestaande boekhoudsoftware zodat administratie eindelijk voelt zoals moderne software hoort te voelen.",
+    logo: emmaBoektLogo,
+    category: "AI · Administratie · Automatisering",
+    tags: ["SLIMME ASSISTENT", "AUTOMATISERING", "IN ONTWIKKELING"],
+    status: "IN ONTWIKKELING",
+    statusColor: "hsl(var(--orange))",
+    identity: {
+      accent: "#1BBFA0",
+      accentInk: "#FFFFFF",
+      vibe: "AI ASSISTENT · MINDER WEERSTAND · MEER RUST",
+      proof: ["Concept & merkstrategie afgerond", "MVP in voorbereiding", "Eerste testen gestart"],
+      proofTagline: "In ontwikkeling · concept staat, MVP in voorbereiding",
+    },
+    cta: { label: "Bouw mee", href: "/meebouwen" },
+    secondaryCta: { label: "Bekijk andere ventures", href: "/ventures" },
+    origin: {
+      title: "DE SOFTWARE WAS NIET HET PROBLEEM. DE ERVARING WEL.",
+      story:
+        "De meeste ondernemers zijn geen boekhouder.\n\nToch voelt veel boekhoudsoftware nog steeds alsof je eerst een cursus moet volgen voordat je iets kunt regelen.\n\nFacturen boeken.\nOffertes maken.\nBTW aangifte controleren.\n\nTechnisch werkt het vaak prima.\n\nMaar de ervaring voelt onnodig zwaar.\n\nEn precies daardoor stellen veel ondernemers administratie uit. Niet omdat ze lui zijn, maar omdat de software vaak meer energie vraagt dan nodig.\n\nEmmaBoekt ontstond vanuit die frustratie.\n\n\"Administratie moet rust geven. Geen weerstand.\"",
+    },
+    businessModel: {
+      title: "MINDER SOFTWARE. MEER GEWOON REGELEN.",
+      description:
+        "EmmaBoekt vervangt boekhoudsoftware niet.\n\nHet maakt het grotendeels onzichtbaar.\n\nIn plaats van menu's, schermen en instellingen praat je gewoon met Emma alsof je een collega een opdracht geeft.\n\n\"Boek deze factuur.\"\n\"Maak een offerte voor klant X.\"\n\"Hoeveel BTW moet ik reserveren?\"\n\nEmma regelt de rest.\n\nDaardoor voelt EmmaBoekt minder als software en meer als een slimme assistent die administratie uit handen neemt.",
+      points: [
+        "Natuurlijk werken",
+        "Minder frictie",
+        "Geen leercurve",
+        "Slimmere workflows",
+      ],
+    },
+    currentStatus: {
+      title: "DE MARKT IS GROOT. DE FRUSTRATIE OOK.",
+      description:
+        "Vrijwel iedere ondernemer gebruikt administratiesoftware.\n\nMaar bijna niemand wordt enthousiast van de ervaring.\n\nDe markt focust al jaren op functionaliteit, regelgeving en koppelingen. Terwijl gebruiksgemak vaak bijzaak blijft.\n\nEmmaBoekt draait dat om.\n\nNiet nog meer functies.\nMaar minder mentale weerstand.\n\nWant zodra administratie makkelijker voelt, gaan ondernemers het ook beter bijhouden.",
+      milestones: [
+        "Concept en positionering uitgewerkt",
+        "Merkidentiteit vastgesteld",
+        "Productrichting bepaald",
+        "MVP in voorbereiding",
+        "Eerste gebruikerstests op de roadmap",
+      ],
+      extra:
+        "EmmaBoekt begon niet met een businessplan. Het begon met een simpele observatie: waarom voelt moderne AI vaak slimmer en prettiger dan moderne boekhoudsoftware?\n\nDat is precies hoe veel ventures binnen Toms Ambitie ontstaan. Eerst voelen we het probleem zelf. Daarna bouwen we een interne oplossing. En pas als het werkt, ontstaat er een venture.",
+    },
+    vision: {
+      title: "MEER DAN ALLEEN BOEKHOUDEN.",
+      description:
+        "De ambitie achter EmmaBoekt gaat verder dan administratie alleen.\n\nOndernemers verdrinken dagelijks in systemen, schermen en losse tools.\n\nEmmaBoekt moet uiteindelijk de slimme laag worden tussen ondernemer en al die complexiteit.\n\nDenk aan offertes, contracten, salarissen, automatisering, AI assistentie en slimme workflows.\n\nNiet gebouwd als losse tools.\nMaar als één natuurlijke ervaring voor ondernemers.",
+    },
+    ctaBlock: {
+      title: "ONDERNEMERS WILLEN ONDERNEMEN.",
+      description:
+        "Niet verdwalen in software.\n\nEmmaBoekt maakt administratie niet alleen slimmer, maar vooral rustiger, eenvoudiger en menselijker.",
+      primary: { label: "Bouw mee aan EmmaBoekt", href: "/meebouwen" },
+      secondary: { label: "Bekijk andere ventures", href: "/ventures" },
+    },
+  },
   {
     slug: "post-pilot",
     name: "POST PILOT",

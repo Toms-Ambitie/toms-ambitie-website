@@ -1,41 +1,132 @@
+import { Link } from "react-router-dom";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 const cards = [
-  { venture: "PACTLY", quote: "IK WILDE WETEN WAAR MIJN GELD STILLETJES WEGLEKTE.", desc: "Een bankapp laat zien wat er is afgeschreven. Een spreadsheet moet je zelf bijhouden. Een vergelijker helpt pas als je zelf gaat zoeken. Pactly brengt contracten, abonnementen en vaste lasten samen en laat op tijd zien waar je kunt besparen.", link: { label: "Bekijk Pactly →", href: "/ventures/pactly" } },
-  { venture: "POST PILOT", quote: "IK WIL ACTIEF ZIJN OP LINKEDIN. MAAR DE DISCIPLINE ONTBREEKT ME.", desc: "Ik weet dat zichtbaarheid belangrijk is. Maar meerdere keren per week iets posten lukt gewoon niet consequent. Tussen werk, meetings en dagelijkse drukte verdwijnt LinkedIn telkens naar de achtergrond. Ideeën zijn er genoeg. Tijd, ritme en discipline niet. Post Pilot helpt om zichtbaar te blijven zonder dat content een dagtaak wordt. Jij bepaalt de richting. AI helpt met de uitvoering.", link: { label: "Bekijk Post Pilot →", href: "/ventures/post-pilot" } },
-  { venture: "OAK MARKETING", quote: "ONZE MARKETING VOELT ALS LOSSE ACTIES ZONDER RICHTING.", desc: "De website is verouderd. Campagnes draaien wel, maar zonder duidelijke strategie. Marketing voelt meer als losse acties dan als een groeimachine. Het team werkt hard, maar mist structuur, richting en data om betere keuzes te maken. OAK Marketing helpt bedrijven om marketing weer logisch, schaalbaar en meetbaar te maken, van strategie tot uitvoering.", link: { label: "Bekijk OAK Marketing →", href: "/ventures/oak-marketing" } },
-  { venture: "PLUG AND POWER", quote: "IK WIL GEWOON EEN SLIMME THUISBATTERIJ. ZONDER GEDOE.", desc: "Iedereen heeft het over thuisbatterijen. Maar zodra je je erin verdiept, zie je door de merken, installateurs en technische verhalen het overzicht niet meer. De ene partij verkoopt installatiewerk. De andere alleen zijn eigen merk. Plug and Power helpt consumenten bij het kiezen van slimme plug-and-play energieoplossingen, zonder ingewikkeld installatieproces of verkooppraatjes.", link: { label: "Bekijk Plug and Power →", href: "/ventures/plug-and-power" } },
+  {
+    venture: "PACTLY",
+    quote: "IK WILDE WETEN WAAR MIJN GELD STILLETJES WEGLEKTE.",
+    desc: "Een bankapp laat zien wat er is afgeschreven. Een spreadsheet moet je zelf bijhouden. Een vergelijker helpt pas als je zelf gaat zoeken. Pactly brengt contracten, abonnementen en vaste lasten samen en laat op tijd zien waar je kunt besparen.",
+    accent: "#CC007E",
+    link: { label: "Bekijk Pactly →", href: "/ventures/pactly" },
+  },
+  {
+    venture: "EMMABOEKT",
+    quote: "IK STEL MIJN ADMINISTRATIE NIET UIT OMDAT IK LUI BEN.",
+    desc: "Veel ondernemers gebruiken prima boekhoudsoftware. Maar de ervaring voelt vaak zwaarder dan nodig. Menu's. Schermen. Jargon. Workflow na workflow. Daardoor kost administratie niet alleen tijd, maar vooral mentale energie. EmmaBoekt legt een slimme assistent bovenop bestaande boekhoudsoftware. Geen nieuwe systemen om te leren, maar gewoon vertellen wat je wilt regelen. Minder weerstand. Meer rust.",
+    accent: "#1BBFA0",
+    link: { label: "Bekijk EmmaBoekt →", href: "/ventures/emma-boekt" },
+  },
+  {
+    venture: "POST PILOT",
+    quote: "IK WIL ACTIEF ZIJN OP LINKEDIN. MAAR DE DISCIPLINE ONTBREEKT ME.",
+    desc: "Ik weet dat zichtbaarheid belangrijk is. Maar meerdere keren per week iets posten lukt gewoon niet consequent. Tussen werk, meetings en dagelijkse drukte verdwijnt LinkedIn telkens naar de achtergrond. Ideeën zijn er genoeg. Tijd, ritme en discipline niet. Post Pilot helpt om zichtbaar te blijven zonder dat content een dagtaak wordt. Jij bepaalt de richting. AI helpt met de uitvoering.",
+    accent: "#00DC93",
+    link: { label: "Bekijk Post Pilot →", href: "/ventures/post-pilot" },
+  },
+  {
+    venture: "OAK MARKETING",
+    quote: "ONZE MARKETING VOELT ALS LOSSE ACTIES ZONDER RICHTING.",
+    desc: "De website is verouderd. Campagnes draaien wel, maar zonder duidelijke strategie. Marketing voelt meer als losse acties dan als een groeimachine. Het team werkt hard, maar mist structuur, richting en data om betere keuzes te maken. OAK Marketing helpt bedrijven om marketing weer logisch, schaalbaar en meetbaar te maken, van strategie tot uitvoering.",
+    accent: "#1B3A8A",
+    link: { label: "Bekijk OAK Marketing →", href: "/ventures/oak-marketing" },
+  },
+  {
+    venture: "PLUG AND POWER",
+    quote: "IK WIL GEWOON EEN SLIMME THUISBATTERIJ. ZONDER GEDOE.",
+    desc: "Iedereen heeft het over thuisbatterijen. Maar zodra je je erin verdiept, zie je door de merken, installateurs en technische verhalen het overzicht niet meer. De ene partij verkoopt installatiewerk. De andere alleen zijn eigen merk. Plug and Power helpt consumenten bij het kiezen van slimme plug-and-play energieoplossingen, zonder ingewikkeld installatieproces of verkooppraatjes.",
+    accent: "#FFAA00",
+    link: { label: "Bekijk Plug and Power →", href: "/ventures/plug-and-power" },
+  },
 ];
 
 export const OriginStories = () => {
   return (
-    <section>
-      <div style={{ height: 5, background: "#C8F000" }} />
-      <div className="py-16 sm:py-24" style={{ background: "#0E0E0C" }}>
-        <div className="max-w-[1200px] mx-auto px-5 sm:px-10">
-          <ScrollReveal>
-            <h2 className="font-display typo-section-heading typo-heading-dark">
-              ALLES BEGINT MET EEN PROBLEEM, BEHOEFTE OF GEWOON EEN "GOUDEN" IDEE.
-            </h2>
-            <p className="font-sans typo-lg typo-caption-dark mt-4 mb-8 sm:mb-12" style={{ maxWidth: 540 }}>
-              Geen idee uit het niets. Geen boardroom-sessie. Gewoon: iets wat ons irriteerde, ontbrak of beter kon. En toen hebben we het gebouwd.
-            </p>
-          </ScrollReveal>
+    <section style={{ background: "#0E0E0C", padding: "120px 0" }}>
+      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}>
+        <ScrollReveal>
+          <p
+            className="font-mono uppercase"
+            style={{ fontSize: 11, letterSpacing: "0.18em", color: "rgba(255,255,255,0.3)", marginBottom: 24 }}
+          >
+            — Alles begint met een probleem
+          </p>
+          <h2
+            className="font-display"
+            style={{
+              fontSize: "clamp(40px, 5vw, 72px)",
+              lineHeight: 0.92,
+              letterSpacing: "-0.01em",
+              color: "#F4F1E8",
+              marginBottom: 16,
+              maxWidth: 860,
+            }}
+          >
+            ALLES BEGINT MET EEN PROBLEEM, BEHOEFTE OF GEWOON EEN GOED IDEE.
+          </h2>
+          <p
+            className="font-sans"
+            style={{ fontSize: 17, color: "rgba(244,241,232,0.5)", maxWidth: 520, lineHeight: 1.6, marginBottom: 64 }}
+          >
+            Geen idee uit het niets. Geen boardroom-sessie. Gewoon: iets wat ons irriteerde, ontbrak of beter kon. En toen hebben we het gebouwd.
+          </p>
+        </ScrollReveal>
 
-          <ScrollReveal delay={0.1}>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4" style={{ gap: 2, background: "rgba(255,255,255,0.1)" }}>
-              {cards.map((c, i) => (
-                <div key={i} className="p-6 sm:p-10" style={{ background: "#111110" }}>
-                  <div className="font-display" style={{ fontSize: "1.4rem", color: "#C8F000", letterSpacing: "0.03em", lineHeight: "var(--leading-snug)" }}>{c.quote}</div>
-                  <p className="font-sans typo-base typo-body-dark mt-4">{c.desc}</p>
-                  {c.link ? (
-                    <a href={c.link.href} className="font-mono block typo-sm min-h-[44px] flex items-center" style={{ color: "#C8F000", marginTop: "1.25rem", textDecoration: "none" }}>{c.link.label}</a>
-                  ) : null}
-                </div>
-              ))}
-            </div>
-          </ScrollReveal>
-        </div>
+        <ScrollReveal delay={0.1}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+              gap: 2,
+              background: "rgba(255,255,255,0.06)",
+            }}
+          >
+            {cards.map((c) => (
+              <div
+                key={c.venture}
+                style={{
+                  background: "#111110",
+                  padding: "40px 32px",
+                  borderTop: `3px solid ${c.accent}`,
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <p
+                  className="font-mono uppercase"
+                  style={{ fontSize: 10, letterSpacing: "0.18em", color: c.accent, marginBottom: 20 }}
+                >
+                  {c.venture}
+                </p>
+                <p
+                  className="font-display"
+                  style={{ fontSize: "clamp(1.1rem, 2vw, 1.35rem)", color: "#F4F1E8", lineHeight: 1.15, marginBottom: 20 }}
+                >
+                  {c.quote}
+                </p>
+                <p
+                  className="font-sans flex-1"
+                  style={{ fontSize: 14, color: "rgba(244,241,232,0.5)", lineHeight: 1.7, marginBottom: 24 }}
+                >
+                  {c.desc}
+                </p>
+                <Link
+                  to={c.link.href}
+                  className="font-mono uppercase inline-flex items-center"
+                  style={{
+                    fontSize: 11,
+                    letterSpacing: "0.12em",
+                    color: c.accent,
+                    textDecoration: "none",
+                    marginTop: "auto",
+                    minHeight: 44,
+                  }}
+                >
+                  {c.link.label}
+                </Link>
+              </div>
+            ))}
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

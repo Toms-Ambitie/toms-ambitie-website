@@ -5,8 +5,17 @@ import postPilotLogo from "@/assets/venture-logo-post-pilot.webp";
 import oakMarketingLogo from "@/assets/venture-logo-oak-marketing.webp";
 import pactlyLogo from "@/assets/pactly-beeldmerk.svg";
 import plugAndPowerLogo from "@/assets/venture-logo-plug-and-power.webp";
+import emmaBoektLogo from "@/assets/emma-boekt-logo.svg";
 
 const ventures = [
+  {
+    name: "EMMABOEKT",
+    slug: "emma-boekt",
+    category: "AI · Administratie · Automatisering",
+    desc: "Veel ondernemers gebruiken prima boekhoudsoftware. Maar de ervaring kost meer mentale energie dan nodig. EmmaBoekt legt een slimme assistent bovenop bestaande software. Gewoon vertellen wat je wilt regelen.",
+    url: "",
+    logo: emmaBoektLogo,
+  },
   {
     name: "POST PILOT",
     slug: "post-pilot",
@@ -85,7 +94,7 @@ export const VenturesGrid = () => {
             className="font-sans"
             style={{ fontSize: 18, color: "rgba(14,14,12,0.6)", marginTop: 20, marginBottom: 56, maxWidth: 560, lineHeight: 1.6 }}
           >
-            Vier ventures die nu draaien. Gebouwd vanuit echte problemen, duidelijke markten en schaalbare modellen.
+            Vijf ventures die nu draaien. Gebouwd vanuit echte problemen, duidelijke markten en schaalbare modellen.
           </p>
         </ScrollReveal>
 

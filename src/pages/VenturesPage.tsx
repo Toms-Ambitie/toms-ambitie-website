@@ -18,7 +18,7 @@ const VENTURES = [
     externalUrl: 'postpilotapp.nl',
     accent: '#00DC93',
     dark: '#0A1820',
-    metrics: [['1 min', 'per post'], ['LinkedIn', 'eerste kanaal'], ['AI', 'content assistent']],
+    metrics: [['AI content engine', 'automatiseert teksten'], ['LinkedIn', 'eerste kanaal'], ['Consistent', 'zichtbaar']],
     images: ['/photos/postpilot-new.png', '/photos/postpilot-historie.png', '/photos/postpilot-analytics.png'],
   },
   {
@@ -81,6 +81,8 @@ const VENTURES = [
   },
 ];
 
+type Venture = typeof VENTURES[number];
+
 const LiveDot = ({ children = 'Actief', isLive = true }: { children?: string; isLive?: boolean }) => (
   <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(244,241,232,0.5)' }}>
     <span style={{
@@ -92,136 +94,492 @@ const LiveDot = ({ children = 'Actief', isLive = true }: { children?: string; is
   </span>
 );
 
-const VentureSection = ({ v, index }: { v: typeof VENTURES[0]; index: number }) => {
-  const flip = index % 2 === 1;
-  return (
-    <section
-      id={v.slug}
-      style={{
-        background: v.dark,
-        color: 'var(--wit-warm)',
-        padding: '120px 0',
-        borderTop: '1px solid rgba(244,241,232,0.06)',
-        scrollMarginTop: 64,
-        position: 'relative',
-      }}
-    >
-      {/* Top accent bar */}
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: v.accent }} />
+/* ═══════════════════════════════════════════════════════════════
+   LAYOUT 01 — POST PILOT
+   SaaS maker feel: text left, raw screenshot right, strip below
+═══════════════════════════════════════════════════════════════ */
+const PostPilotSection = ({ v }: { v: Venture }) => (
+  <section
+    id={v.slug}
+    style={{
+      background: v.dark,
+      color: 'var(--wit-warm)',
+      padding: '100px 0 0',
+      borderTop: '1px solid rgba(244,241,232,0.06)',
+      scrollMarginTop: 64,
+      position: 'relative',
+      overflow: 'hidden',
+    }}
+  >
+    <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: v.accent }} />
 
-      <div className="container-wide">
-        {/* Header row */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 64, flexWrap: 'wrap', gap: 24 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-            <span style={{ width: 8, height: 8, background: v.accent }} />
-            <span className="meta" style={{ color: 'rgba(244,241,232,0.5)' }}>VENTURE 0{index + 1} / 05 · {v.tag}</span>
-          </div>
-          <LiveDot isLive={v.status === 'Live'}>{v.status} · {v.year}</LiveDot>
+    <div className="container-wide">
+      {/* Eyebrow */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 56 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+          <span style={{ width: 8, height: 8, background: v.accent }} />
+          <span className="meta" style={{ color: 'rgba(244,241,232,0.5)' }}>VENTURE 01 / 05 · {v.tag}</span>
         </div>
+        <LiveDot isLive>{v.status} · {v.year}</LiveDot>
+      </div>
 
-        {/* Main grid */}
-        <div
-          className="ventures-featured-inner"
-          style={{ display: 'grid', gridTemplateColumns: flip ? '1.1fr 1.4fr' : '1.4fr 1.1fr', gap: 64, alignItems: 'center', marginBottom: 64 }}
-        >
-          {/* Text */}
-          <div style={{ order: flip ? 2 : 1 }}>
-            <div className="display" style={{ fontSize: 'clamp(64px, 9vw, 152px)', lineHeight: 1.0, marginBottom: 48, letterSpacing: '-0.02em' }}>
-              {v.name}
-            </div>
-            <div className="display" style={{ fontSize: 'clamp(28px, 2.8vw, 40px)', lineHeight: 1.1, color: v.accent, marginBottom: 32 }}>
-              {v.tagline}
-            </div>
-            <p className="lead" style={{ fontSize: 22, maxWidth: 560, color: 'rgba(244,241,232,0.75)', marginBottom: 40 }}>
-              {v.long}
-            </p>
-            <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
-              <Link
-                to={`/ventures/${v.slug}`}
-                className="btn"
-                style={{ background: v.accent, color: v.accent === '#FFAA00' ? 'var(--inkt)' : 'var(--wit-warm)', textDecoration: 'none' }}
+      {/* Main: text left | screenshot right */}
+      <div className="ventures-featured-inner" style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: 56, alignItems: 'flex-start' }}>
+        {/* Text */}
+        <div>
+          <div className="display" style={{ fontSize: 'clamp(64px, 9vw, 136px)', lineHeight: 0.92, letterSpacing: '-0.02em', marginBottom: 32 }}>
+            {v.name}
+          </div>
+          <div className="display" style={{ fontSize: 'clamp(22px, 2.2vw, 34px)', lineHeight: 1.1, color: v.accent, marginBottom: 28 }}>
+            {v.tagline}
+          </div>
+          <p style={{ fontSize: 18, lineHeight: 1.7, color: 'rgba(244,241,232,0.7)', marginBottom: 36, fontFamily: 'var(--body)', maxWidth: 420 }}>
+            {v.long}
+          </p>
+          <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
+            <Link
+              to={`/ventures/${v.slug}`}
+              className="btn"
+              style={{ background: v.accent, color: 'var(--inkt)', textDecoration: 'none' }}
+            >
+              Bekijk venture →
+            </Link>
+            {v.externalUrl && (
+              <a
+                href={`https://${v.externalUrl}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(244,241,232,0.4)', textDecoration: 'none', transition: 'color .2s' }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(244,241,232,0.85)'; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(244,241,232,0.4)'; }}
               >
-                Bekijk venture →
-              </Link>
-              {v.externalUrl && (
-                <a
-                  href={`https://${v.externalUrl}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(244,241,232,0.5)', textDecoration: 'none', transition: 'color .2s' }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(244,241,232,0.9)'; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(244,241,232,0.5)'; }}
-                >
-                  {v.externalUrl} ↗
-                </a>
-              )}
-            </div>
-          </div>
-
-          {/* Product frame */}
-          <div style={{
-            order: flip ? 1 : 2,
-            position: 'relative',
-            background: 'rgba(255,255,255,0.04)',
-            padding: 20,
-            border: '1px solid rgba(244,241,232,0.08)',
-          }}>
-            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: v.accent }} />
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 4px 16px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <span style={{ width: 5, height: 5, background: v.accent }} />
-                <span className="meta" style={{ color: 'rgba(244,241,232,0.6)' }}>{v.url} · {v.status === 'Live' ? 'LIVE' : 'IN ONTWIKKELING'}</span>
-              </div>
-              <span className="meta" style={{ color: 'rgba(244,241,232,0.4)' }}>FIG.{index + 1}</span>
-            </div>
-            <div style={{ aspectRatio: '4/3', background: 'var(--wit-warm)', overflow: 'hidden' }}>
-              {v.images[0] ? (
-                <img
-                  src={v.images[0]}
-                  alt={v.name}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', display: 'block' }}
-                />
-              ) : (
-                <div style={{
-                  width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  background: 'repeating-linear-gradient(135deg, var(--papier) 0 14px, rgba(14,14,12,0.04) 14px 28px)',
-                }}>
-                  <span style={{ padding: '6px 12px', background: 'var(--wit-warm)', color: 'var(--inkt-60)', fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase' }}>
-                    {v.name} platform shot
-                  </span>
-                </div>
-              )}
-            </div>
+                {v.externalUrl} ↗
+              </a>
+            )}
           </div>
         </div>
 
-        {/* Metrics */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0, paddingTop: 48, borderTop: '1px solid rgba(244,241,232,0.15)' }}>
-          {v.metrics.map(([n, l], mi) => (
-            <div key={l} style={{ padding: `0 ${mi > 0 ? 24 : 0}px`, borderLeft: mi > 0 ? '1px solid rgba(244,241,232,0.1)' : 'none' }}>
-              <div className="display" style={{ fontSize: 64, lineHeight: 0.95, color: v.accent }}>{n}</div>
-              <div className="meta" style={{ marginTop: 12, color: 'rgba(244,241,232,0.6)' }}>{l}</div>
+        {/* Raw screenshot — no browser chrome, accent border top */}
+        <div style={{ position: 'relative' }}>
+          <div style={{
+            border: '1px solid rgba(0,220,147,0.15)',
+            borderTop: `3px solid ${v.accent}`,
+            overflow: 'hidden',
+            background: 'rgba(0,220,147,0.03)',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderBottom: '1px solid rgba(0,220,147,0.1)' }}>
+              <span style={{ width: 5, height: 5, background: v.accent, opacity: 0.8 }} />
+              <span className="meta" style={{ color: 'rgba(244,241,232,0.35)', fontSize: 9 }}>{v.url} · LIVE</span>
+            </div>
+            <img
+              src={v.images[0]}
+              alt={v.name}
+              style={{ width: '100%', display: 'block', objectFit: 'cover', objectPosition: 'top' }}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Metrics */}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 1fr)',
+        gap: 0,
+        marginTop: 64,
+        paddingTop: 40,
+        paddingBottom: 40,
+        borderTop: '1px solid rgba(244,241,232,0.12)',
+      }}>
+        {v.metrics.map(([n, l], mi) => (
+          <div key={l} style={{ paddingLeft: mi > 0 ? 32 : 0, borderLeft: mi > 0 ? '1px solid rgba(244,241,232,0.1)' : 'none' }}>
+            <div className="display" style={{ fontSize: 'clamp(24px, 3vw, 44px)', lineHeight: 0.95, color: v.accent }}>{n}</div>
+            <div className="meta" style={{ marginTop: 10, color: 'rgba(244,241,232,0.5)' }}>{l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Secondary screenshots — flush to bottom */}
+    {v.images.length > 1 && (
+      <div className="container-wide" style={{ paddingBottom: 0 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 8 }}>
+          {v.images.slice(1, 3).map((src, si) => (
+            <div key={si} style={{ border: '1px solid rgba(0,220,147,0.08)', overflow: 'hidden' }}>
+              <img
+                src={src}
+                alt={`${v.name} screen ${si + 2}`}
+                style={{ width: '100%', display: 'block', objectFit: 'cover', objectPosition: 'top', aspectRatio: '16/9' }}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+  </section>
+);
+
+/* ═══════════════════════════════════════════════════════════════
+   LAYOUT 02 — PACTLY
+   Consumer fintech: tall portrait image left, text stack right
+═══════════════════════════════════════════════════════════════ */
+const PactlySection = ({ v }: { v: Venture }) => (
+  <section
+    id={v.slug}
+    style={{
+      background: v.dark,
+      color: 'var(--wit-warm)',
+      borderTop: '1px solid rgba(244,241,232,0.06)',
+      scrollMarginTop: 64,
+      position: 'relative',
+      overflow: 'hidden',
+    }}
+  >
+    <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: v.accent }} />
+
+    <div className="ventures-featured-inner" style={{ display: 'grid', gridTemplateColumns: '0.75fr 1.25fr' }}>
+      {/* Left: portrait image full-height column */}
+      <div style={{ position: 'relative', overflow: 'hidden', minHeight: 560 }}>
+        <img
+          src={v.images[0]}
+          alt={v.name}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', display: 'block', position: 'absolute', inset: 0 }}
+        />
+        {/* Fade right into dark */}
+        <div style={{
+          position: 'absolute', top: 0, right: 0, width: '40%', height: '100%',
+          background: `linear-gradient(to right, transparent, ${v.dark})`,
+        }} />
+        {/* Accent bar right edge */}
+        <div style={{ position: 'absolute', top: 0, right: 0, width: 3, height: '100%', background: v.accent, opacity: 0.6 }} />
+      </div>
+
+      {/* Right: text content */}
+      <div style={{ padding: 'clamp(48px, 7vw, 100px) clamp(32px, 5vw, 72px)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+        {/* Eyebrow */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 52, flexWrap: 'wrap', gap: 16 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+            <span style={{ width: 8, height: 8, background: v.accent }} />
+            <span className="meta" style={{ color: 'rgba(244,241,232,0.5)' }}>VENTURE 02 / 05 · {v.tag}</span>
+          </div>
+          <LiveDot isLive={false}>{v.status} · {v.year}</LiveDot>
+        </div>
+
+        <div className="display" style={{ fontSize: 'clamp(56px, 8vw, 120px)', lineHeight: 0.92, letterSpacing: '-0.02em', marginBottom: 20 }}>
+          {v.name}
+        </div>
+        <div className="display" style={{ fontSize: 'clamp(20px, 2vw, 32px)', lineHeight: 1.1, color: v.accent, marginBottom: 24 }}>
+          {v.tagline}
+        </div>
+        <p style={{ fontSize: 18, lineHeight: 1.7, color: 'rgba(244,241,232,0.7)', marginBottom: 36, fontFamily: 'var(--body)', maxWidth: 500 }}>
+          {v.long}
+        </p>
+
+        {/* Metric pills */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10, marginBottom: 36 }}>
+          {v.metrics.map(([n, l]) => (
+            <div key={l} style={{
+              padding: '14px 16px',
+              border: `1px solid rgba(204,0,126,0.22)`,
+              background: 'rgba(204,0,126,0.07)',
+            }}>
+              <div className="display" style={{ fontSize: 20, color: v.accent, lineHeight: 1 }}>{n}</div>
+              <div className="meta" style={{ marginTop: 6, color: 'rgba(244,241,232,0.45)', fontSize: 9 }}>{l}</div>
             </div>
           ))}
         </div>
 
-        {/* Secondary screenshot row (PostPilot only) */}
-        {v.images.length > 1 && (
-          <div style={{ marginTop: 64, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
-            {v.images.slice(1, 3).map((src, si) => (
-              <div key={si} style={{ background: 'rgba(255,255,255,0.04)', padding: 16, border: '1px solid rgba(244,241,232,0.08)' }}>
-                <div style={{ aspectRatio: '16/10', background: 'var(--wit-warm)', overflow: 'hidden' }}>
-                  <img src={src} alt={`${v.name} screen ${si + 2}`} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', display: 'block' }} />
-                </div>
+        <div>
+          <Link
+            to={`/ventures/${v.slug}`}
+            className="btn"
+            style={{ background: v.accent, color: 'var(--wit-warm)', textDecoration: 'none' }}
+          >
+            Bekijk venture →
+          </Link>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+/* ═══════════════════════════════════════════════════════════════
+   LAYOUT 03 — OAK MARKETING
+   Editorial agency: full-width image banner top, 2-col text below
+═══════════════════════════════════════════════════════════════ */
+const OAKSection = ({ v }: { v: Venture }) => (
+  <section
+    id={v.slug}
+    style={{
+      background: v.dark,
+      color: 'var(--wit-warm)',
+      borderTop: '1px solid rgba(244,241,232,0.06)',
+      scrollMarginTop: 64,
+      position: 'relative',
+      overflow: 'hidden',
+    }}
+  >
+    <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: v.accent }} />
+
+    {/* Top: editorial image banner full width */}
+    <div style={{ position: 'relative', height: 'clamp(280px, 38vw, 500px)', overflow: 'hidden' }}>
+      <img
+        src={v.images[0]}
+        alt={v.name}
+        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%', display: 'block' }}
+      />
+      {/* Bottom gradient fade into section bg */}
+      <div style={{
+        position: 'absolute', bottom: 0, left: 0, right: 0, height: '60%',
+        background: `linear-gradient(to top, ${v.dark} 0%, transparent 100%)`,
+      }} />
+      {/* Eyebrow overlay */}
+      <div className="container-wide" style={{ position: 'absolute', top: 32, left: 0, right: 0, margin: '0 auto' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+            <span style={{ width: 8, height: 8, background: v.accent }} />
+            <span className="meta" style={{ color: 'rgba(244,241,232,0.7)' }}>VENTURE 03 / 05 · {v.tag}</span>
+          </div>
+          <LiveDot isLive>{v.status} · {v.year}</LiveDot>
+        </div>
+      </div>
+    </div>
+
+    {/* Bottom: editorial 2-col */}
+    <div className="container-wide" style={{ paddingTop: 40, paddingBottom: 100 }}>
+      <div className="ventures-featured-inner" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'flex-start' }}>
+        {/* Left: big display title */}
+        <div>
+          <div className="display" style={{ fontSize: 'clamp(60px, 8vw, 128px)', lineHeight: 0.92, letterSpacing: '-0.02em' }}>
+            {v.name}
+          </div>
+          <div className="display" style={{ fontSize: 'clamp(20px, 2vw, 30px)', lineHeight: 1.1, color: v.accent, marginTop: 20 }}>
+            {v.tagline}
+          </div>
+        </div>
+
+        {/* Right: copy + metrics + CTA */}
+        <div style={{ paddingTop: 8 }}>
+          <p style={{ fontSize: 19, lineHeight: 1.7, color: 'rgba(244,241,232,0.72)', marginBottom: 40, fontFamily: 'var(--body)' }}>
+            {v.long}
+          </p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0, paddingTop: 28, borderTop: '1px solid rgba(244,241,232,0.12)', marginBottom: 36 }}>
+            {v.metrics.map(([n, l], mi) => (
+              <div key={l} style={{ paddingLeft: mi > 0 ? 20 : 0, borderLeft: mi > 0 ? '1px solid rgba(244,241,232,0.1)' : 'none' }}>
+                <div className="display" style={{ fontSize: 26, color: v.accent, lineHeight: 1 }}>{n}</div>
+                <div className="meta" style={{ marginTop: 6, color: 'rgba(244,241,232,0.5)', fontSize: 9 }}>{l}</div>
               </div>
             ))}
           </div>
-        )}
+          <Link
+            to={`/ventures/${v.slug}`}
+            className="btn"
+            style={{ background: v.accent, color: 'var(--wit-warm)', textDecoration: 'none' }}
+          >
+            Bekijk venture →
+          </Link>
+        </div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
+/* ═══════════════════════════════════════════════════════════════
+   LAYOUT 04 — PLUG AND POWER
+   Lifestyle energy: image fills left half edge-to-edge, text right
+═══════════════════════════════════════════════════════════════ */
+const PlugPowerSection = ({ v }: { v: Venture }) => (
+  <section
+    id={v.slug}
+    style={{
+      background: v.dark,
+      color: 'var(--wit-warm)',
+      borderTop: '1px solid rgba(244,241,232,0.06)',
+      scrollMarginTop: 64,
+      position: 'relative',
+      overflow: 'hidden',
+    }}
+  >
+    <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: v.accent }} />
+
+    {/* Split: no container wrapper — full-bleed grid */}
+    <div className="ventures-featured-inner" style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', minHeight: 640 }}>
+      {/* Left: full-bleed image column */}
+      <div style={{ position: 'relative', overflow: 'hidden', minHeight: 480 }}>
+        <img
+          src={v.images[0]}
+          alt={v.name}
+          style={{
+            width: '100%', height: '100%',
+            objectFit: 'cover', objectPosition: 'center',
+            display: 'block', position: 'absolute', inset: 0,
+          }}
+        />
+        {/* Fade right edge into section dark */}
+        <div style={{
+          position: 'absolute', top: 0, right: 0, width: '35%', height: '100%',
+          background: `linear-gradient(to right, transparent, ${v.dark})`,
+        }} />
+      </div>
+
+      {/* Right: text content, padded */}
+      <div style={{ padding: 'clamp(60px, 7vw, 100px) clamp(32px, 5vw, 72px) clamp(60px, 7vw, 100px) clamp(16px, 2vw, 32px)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+        {/* Eyebrow */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 48, flexWrap: 'wrap', gap: 16 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+            <span style={{ width: 8, height: 8, background: v.accent }} />
+            <span className="meta" style={{ color: 'rgba(244,241,232,0.5)' }}>VENTURE 04 / 05 · {v.tag}</span>
+          </div>
+          <LiveDot isLive={false}>{v.status} · {v.year}</LiveDot>
+        </div>
+
+        <div className="display" style={{ fontSize: 'clamp(52px, 6.5vw, 96px)', lineHeight: 0.92, letterSpacing: '-0.02em', marginBottom: 20 }}>
+          {v.name}
+        </div>
+        <div className="display" style={{ fontSize: 'clamp(20px, 2vw, 30px)', lineHeight: 1.1, color: v.accent, marginBottom: 24 }}>
+          {v.tagline}
+        </div>
+        <p style={{ fontSize: 18, lineHeight: 1.7, color: 'rgba(244,241,232,0.7)', marginBottom: 32, fontFamily: 'var(--body)' }}>
+          {v.long}
+        </p>
+
+        {/* Metrics */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0, paddingTop: 24, borderTop: '1px solid rgba(244,241,232,0.12)', marginBottom: 32 }}>
+          {v.metrics.map(([n, l], mi) => (
+            <div key={l} style={{ paddingLeft: mi > 0 ? 16 : 0, borderLeft: mi > 0 ? '1px solid rgba(244,241,232,0.1)' : 'none' }}>
+              <div className="display" style={{ fontSize: 22, color: v.accent, lineHeight: 1 }}>{n}</div>
+              <div className="meta" style={{ marginTop: 6, color: 'rgba(244,241,232,0.5)', fontSize: 9 }}>{l}</div>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
+          <Link
+            to={`/ventures/${v.slug}`}
+            className="btn"
+            style={{ background: v.accent, color: 'var(--inkt)', textDecoration: 'none' }}
+          >
+            Bekijk venture →
+          </Link>
+          {v.externalUrl && (
+            <a
+              href={`https://${v.externalUrl}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(244,241,232,0.4)', textDecoration: 'none', transition: 'color .2s' }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(244,241,232,0.85)'; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(244,241,232,0.4)'; }}
+            >
+              {v.externalUrl} ↗
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+/* ═══════════════════════════════════════════════════════════════
+   LAYOUT 05 — EMMABOEKT
+   Clean AI: centered text, image below with purple glow
+═══════════════════════════════════════════════════════════════ */
+const EmmaBoektSection = ({ v }: { v: Venture }) => (
+  <section
+    id={v.slug}
+    style={{
+      background: v.dark,
+      color: 'var(--wit-warm)',
+      padding: '100px 0 120px',
+      borderTop: '1px solid rgba(244,241,232,0.06)',
+      scrollMarginTop: 64,
+      position: 'relative',
+      overflow: 'hidden',
+    }}
+  >
+    <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: v.accent }} />
+    {/* Ambient glow */}
+    <div style={{
+      position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)',
+      width: '80vw', height: '60vh',
+      background: 'radial-gradient(ellipse at center, rgba(147,51,234,0.14) 0%, transparent 65%)',
+      pointerEvents: 'none',
+    }} />
+
+    <div className="container-wide" style={{ position: 'relative' }}>
+      {/* Eyebrow */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 72 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+          <span style={{ width: 8, height: 8, background: v.accent }} />
+          <span className="meta" style={{ color: 'rgba(244,241,232,0.5)' }}>VENTURE 05 / 05 · {v.tag}</span>
+        </div>
+        <LiveDot isLive={false}>{v.status} · {v.year}</LiveDot>
+      </div>
+
+      {/* Centered content block */}
+      <div style={{ maxWidth: 680, margin: '0 auto', textAlign: 'center' }}>
+        <div className="display" style={{ fontSize: 'clamp(72px, 10vw, 152px)', lineHeight: 0.92, letterSpacing: '-0.02em', marginBottom: 24 }}>
+          {v.name}
+        </div>
+        <div className="display" style={{ fontSize: 'clamp(22px, 2.2vw, 34px)', lineHeight: 1.1, color: v.accent, marginBottom: 24 }}>
+          {v.tagline}
+        </div>
+        <p style={{ fontSize: 18, lineHeight: 1.7, color: 'rgba(244,241,232,0.7)', marginBottom: 36, fontFamily: 'var(--body)' }}>
+          {v.long}
+        </p>
+        <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center' }}>
+          <Link
+            to={`/ventures/${v.slug}`}
+            className="btn"
+            style={{ background: v.accent, color: 'var(--wit-warm)', textDecoration: 'none' }}
+          >
+            Bekijk venture →
+          </Link>
+          {v.externalUrl && (
+            <a
+              href={`https://${v.externalUrl}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(244,241,232,0.4)', textDecoration: 'none', transition: 'color .2s' }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(244,241,232,0.85)'; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(244,241,232,0.4)'; }}
+            >
+              {v.externalUrl} ↗
+            </a>
+          )}
+        </div>
+      </div>
+
+      {/* Image — centered with purple border glow */}
+      <div style={{ maxWidth: 860, margin: '64px auto 0', position: 'relative' }}>
+        <div style={{ border: '1px solid rgba(147,51,234,0.25)', overflow: 'hidden', position: 'relative' }}>
+          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: v.accent }} />
+          <img
+            src={v.images[0]}
+            alt={v.name}
+            style={{ width: '100%', display: 'block', objectFit: 'cover', objectPosition: 'top', aspectRatio: '16/9' }}
+          />
+        </div>
+      </div>
+
+      {/* Metrics centered */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0, paddingTop: 48, borderTop: '1px solid rgba(244,241,232,0.12)', marginTop: 64 }}>
+        {v.metrics.map(([n, l], mi) => (
+          <div key={l} style={{
+            textAlign: 'center',
+            paddingLeft: mi > 0 ? 24 : 0,
+            borderLeft: mi > 0 ? '1px solid rgba(244,241,232,0.1)' : 'none',
+          }}>
+            <div className="display" style={{ fontSize: 'clamp(28px, 3.5vw, 52px)', lineHeight: 0.95, color: v.accent }}>{n}</div>
+            <div className="meta" style={{ marginTop: 12, color: 'rgba(244,241,232,0.55)' }}>{l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+/* ═══════════════════════════════════════════════════════════════
+   PAGE
+═══════════════════════════════════════════════════════════════ */
 const VenturesPage = () => {
   const rootRef = useRef<HTMLDivElement>(null);
   useReveal(rootRef);
@@ -254,43 +612,42 @@ const VenturesPage = () => {
             </p>
 
             {/* Quick-jump grid */}
-            <div className="reveal responsive-4-to-2" style={{ marginTop: 80, display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
+            <div className="reveal responsive-4-to-2" style={{ marginTop: 80, display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 16 }}>
               {VENTURES.map((v, i) => (
-                <Link
+                <a
                   key={v.slug}
-                  to={`/ventures/${v.slug}`}
+                  href={`#${v.slug}`}
                   style={{
                     display: 'block', padding: 24, border: '1px solid var(--inkt-10)',
                     background: 'var(--wit-warm)',
-                    transition: 'border-color .25s, background .25s',
+                    transition: 'border-color .25s',
                     textDecoration: 'none', color: 'var(--inkt)',
                   }}
                   onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'var(--inkt)'; }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'var(--inkt-10)'; }}
                 >
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 24 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 20 }}>
                     <span style={{ width: 8, height: 8, background: v.accent }} />
                     <span className="meta">0{i + 1} / 05</span>
                   </div>
-                  <div className="display" style={{ fontSize: 28, lineHeight: 0.95 }}>{v.name}</div>
-                  <div className="meta" style={{ marginTop: 8 }}>{v.tag}</div>
-                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, marginTop: 12, fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--inkt-40)' }}>
+                  <div className="display" style={{ fontSize: 24, lineHeight: 0.95 }}>{v.name}</div>
+                  <div className="meta" style={{ marginTop: 6 }}>{v.tag}</div>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, marginTop: 10, fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--inkt-40)' }}>
                     <span style={{ width: 5, height: 5, background: v.status === 'Live' ? 'var(--volt)' : 'var(--oranje)' }} />
                     {v.status}
                   </div>
-                  <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid var(--inkt-10)', fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--inkt-40)' }}>
-                    Bekijk venture →
-                  </div>
-                </Link>
+                </a>
               ))}
             </div>
           </div>
         </section>
 
         {/* ═══ VENTURE SECTIONS ════════════════════════════════════ */}
-        {VENTURES.map((v, i) => (
-          <VentureSection key={v.slug} v={v} index={i} />
-        ))}
+        <PostPilotSection v={VENTURES[0]} />
+        <PactlySection v={VENTURES[1]} />
+        <OAKSection v={VENTURES[2]} />
+        <PlugPowerSection v={VENTURES[3]} />
+        <EmmaBoektSection v={VENTURES[4]} />
 
         {/* ═══ SUB-BRANDING ════════════════════════════════════════ */}
         <section className="surface-wit" style={{ padding: '160px 0' }}>
@@ -311,9 +668,9 @@ const VenturesPage = () => {
                 ['Eigen identiteit', 'Logo, kleuren, fonts. Eigen visuele taal. Eigen verhaal.'],
                 ['Eigen website', 'Eigen domein. Eigen platform. Eigen go-to-market.'],
                 ['TA als fundament', 'Dezelfde werkwijze en principes. Gebouwd om te groeien.'],
-              ].map(([t, d], i) => (
+              ].map(([t, d], idx) => (
                 <div key={t} className="reveal" style={{ background: 'var(--papier)', padding: 28, textAlign: 'left' }}>
-                  <div className="num" style={{ fontSize: 11, letterSpacing: '0.18em', color: 'var(--inkt-40)', marginBottom: 16 }}>0{i + 1}</div>
+                  <div className="num" style={{ fontSize: 11, letterSpacing: '0.18em', color: 'var(--inkt-40)', marginBottom: 16 }}>0{idx + 1}</div>
                   <h4 className="display" style={{ fontSize: 28, lineHeight: 0.95, marginBottom: 12 }}>{t}</h4>
                   <p className="body-sm">{d}</p>
                 </div>

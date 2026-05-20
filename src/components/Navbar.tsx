@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { X, Menu } from "lucide-react";
+import { ScrollProgress } from "./ScrollProgress";
 
 const LogoDark = () => (
   <svg width="36" height="26" viewBox="0 0 126 92" aria-hidden="true" fill="none">
@@ -16,7 +17,7 @@ const links = [
   { to: "/werkwijze", label: "Werkwijze" },
   { to: "/ventures", label: "Ventures" },
   { to: "/over-ons", label: "Over ons" },
-  { to: "/nieuws", label: "Nieuws" },
+  { to: "/nieuws", label: "Blog" },
 ];
 
 export const Navbar = () => {
@@ -59,6 +60,7 @@ export const Navbar = () => {
 
   return (
     <>
+    <ScrollProgress />
     <a
       href="#main-content"
       onClick={(e) => {

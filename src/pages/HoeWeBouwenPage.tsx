@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
-import { FixedTicker } from "@/components/FixedTicker";
+import { Ticker } from "@/components/Ticker";
 import { Footer } from "@/components/Footer";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { applySEO } from "@/lib/seo";
@@ -86,8 +86,7 @@ const HoeWeBouwenPage = () => {
 
   return (
     <>
-      <FixedTicker />
-      <main className="pb-9" style={{ minHeight: "100vh", background: "#0E0E0C" }}>
+      <main style={{ minHeight: "100vh", background: "#0E0E0C" }}>
         <Navbar />
 
         {/* ── HERO — dark bg, two-column ─────────────────────── */}

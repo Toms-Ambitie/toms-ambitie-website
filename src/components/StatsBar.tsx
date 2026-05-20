@@ -1,67 +1,36 @@
-export const StatsBar = () => {
-  // 4 active ventures shown on homepage (Post Pilot, Pactly, OAK Marketing, Plug and Power)
-  const ventureCount = 4;
-  const yearsActive = new Date().getFullYear() - 2008;
+import { Counter } from './Counter';
 
-  const stats = [
-    { value: String(ventureCount), label: "Eigen ventures" },
-    { value: `${yearsActive}J`, label: "Ondernemingservaring" },
-    { value: "6WK", label: "Van idee naar launch" },
-    { value: "0", label: "Externe investeerders" },
-  ];
+const STATS = [
+  { n: 4, suf: '', l: 'Actieve ventures', m: 'Eigen platformen' },
+  { n: 17, suf: 'j', l: 'Bouwervaring', m: 'Sinds 2008' },
+  { n: 6, suf: 'wk', l: 'Idee naar venture', m: 'Maximale tijd' },
+  { n: 0, suf: '', l: 'Klantopdrachten', m: 'Alleen eigen ventures' },
+];
 
-  return (
-    <div
-      style={{
-        background: "#F4F1E8",
-        borderTop: "1px solid rgba(14,14,12,0.1)",
-        borderBottom: "1px solid rgba(14,14,12,0.08)",
-      }}
-    >
+export const StatsBar = () => (
+  <section className="surface-wit" style={{ padding: '100px 0' }}>
+    <div className="container-wide">
       <div
-        style={{
-          maxWidth: 1440,
-          margin: "0 auto",
-          padding: "0 32px",
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
-        }}
+        className="metrics-row"
+        style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 48 }}
       >
-        {stats.map((stat, i) => (
+        {STATS.map((s, i) => (
           <div
-            key={stat.label}
+            key={i}
+            className="reveal"
             style={{
-              padding: "32px 24px",
-              borderRight: i < stats.length - 1 ? "1px solid rgba(14,14,12,0.08)" : "none",
-              display: "flex",
-              flexDirection: "column",
-              gap: 6,
+              borderLeft: i === 0 ? 'none' : '1px solid var(--inkt-10)',
+              paddingLeft: i === 0 ? 0 : 24,
             }}
           >
-            <div
-              className="font-display"
-              style={{
-                fontSize: "clamp(40px, 5vw, 72px)",
-                lineHeight: 1,
-                color: "#0E0E0C",
-                letterSpacing: "-0.01em",
-              }}
-            >
-              {stat.value}
+            <div className="display" style={{ fontSize: 88, lineHeight: 0.9, letterSpacing: '-0.02em' }}>
+              <Counter to={s.n} suffix={s.suf} />
             </div>
-            <div
-              className="font-mono uppercase"
-              style={{
-                fontSize: 10,
-                letterSpacing: "0.14em",
-                color: "rgba(14,14,12,0.45)",
-              }}
-            >
-              {stat.label}
-            </div>
+            <div className="label" style={{ marginTop: 12, color: 'var(--inkt)' }}>{s.l}</div>
+            <div className="body-sm" style={{ marginTop: 6 }}>{s.m}</div>
           </div>
         ))}
       </div>
     </div>
-  );
-};
+  </section>
+);

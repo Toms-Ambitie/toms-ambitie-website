@@ -1,129 +1,178 @@
-import { Link } from "react-router-dom";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const LogoLight = () => (
-  <svg width="36" height="26" viewBox="0 0 126 92" aria-hidden="true" fill="none">
-    <rect x="2" y="10" width="54" height="10" fill="#F4F1E8" />
-    <rect x="23" y="10" width="12" height="54" fill="#F4F1E8" />
-    <path d="M72 65 L96 10 L120 65" fill="none" stroke="#F4F1E8" strokeWidth="10" strokeLinejoin="round" />
-    <line x1="79" y1="46" x2="113" y2="46" stroke="#F4F1E8" strokeWidth="8" />
-    <rect x="2" y="78" width="120" height="6" fill="#C8F000" />
+const VENTURES = [
+  { name: 'Post Pilot', slug: 'post-pilot', tag: 'Marketing AI', url: 'postpilotapp.nl', accent: '#00DC93' },
+  { name: 'Pactly', slug: 'pactly', tag: 'Legal SaaS', url: 'pactly.nl', accent: '#CC007E' },
+  { name: 'OAK Marketing', slug: 'oak-marketing', tag: 'Marketing bureau', url: 'oakmarketing.nl', accent: '#1B3A8A' },
+  { name: 'Plug and Power', slug: 'plug-and-power', tag: 'Energy Tech', url: 'plugandpower.nl', accent: '#FFAA00' },
+];
+
+const NAV_LINKS = [
+  { to: '/', label: 'Home' },
+  { to: '/werkwijze', label: 'Werkwijze' },
+  { to: '/ventures', label: 'Ventures' },
+  { to: '/over-ons', label: 'Over ons' },
+  { to: '/nieuws', label: 'Blog' },
+  { to: '/meebouwen', label: 'Contact' },
+];
+
+const Monogram = () => (
+  <svg viewBox="0 0 260 200" width="48" style={{ display: 'block' }}>
+    <rect x="20" y="24" width="108" height="18" fill="var(--wit-warm)" />
+    <rect x="64" y="24" width="20" height="108" fill="var(--wit-warm)" />
+    <path d="M152 132 L196 24 L240 132" fill="none" stroke="var(--wit-warm)" strokeWidth="18" strokeLinejoin="round" strokeLinecap="round" />
+    <line x1="164" y1="94" x2="228" y2="94" stroke="var(--wit-warm)" strokeWidth="14" strokeLinecap="round" />
+    <rect x="20" y="156" width="220" height="8" fill="var(--volt)" />
   </svg>
 );
 
-const ventures = [
-  { name: "EmmaBoekt", url: "emmaboekt.nl", accent: "#1BBFA0", href: "/ventures/emma-boekt" },
-  { name: "Post Pilot", url: "postpilotapp.nl", accent: "#00DC93", href: "/ventures/post-pilot" },
-  { name: "Pactly", url: "pactly.nl", accent: "#CC007E", href: "/ventures/pactly" },
-  { name: "OAK Marketing", url: "oakmarketing.nl", accent: "#1B3A8A", href: "/ventures/oak-marketing" },
-  { name: "Plug and Power", url: "plugandpower.nl", accent: "#FFAA00", href: "/ventures/plug-and-power" },
-];
-
-const navLinks = [
-  { to: "/werkwijze", label: "Werkwijze" },
-  { to: "/ventures", label: "Ventures" },
-  { to: "/over-ons", label: "Over ons" },
-  { to: "/nieuws", label: "Nieuws" },
-  { to: "/meebouwen", label: "Meebouwen" },
-];
-
-const legalLinks = [
-  { to: "/privacy", label: "Privacy" },
-  { to: "/voorwaarden", label: "Algemene voorwaarden" },
-];
-
 export const Footer = () => {
-  return (
-    <>
-      {/* Volt bar */}
-      <div style={{ height: 4, background: "#C8F000" }} />
+  const [subscribed, setSubscribed] = useState(false);
 
-      <footer style={{ background: "#0E0E0C" }}>
-        {/* Venture row */}
-        <div style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+  return (
+    <footer className="footer">
+      <div className="container-wide">
+
+        {/* Newsletter signup */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: 64,
+          paddingBottom: 64,
+          alignItems: 'center',
+        }} className="footer-newsletter-grid">
+          <div>
+            <div className="meta" style={{ color: 'var(--volt)', marginBottom: 16 }}>WERKNOTITIES</div>
+            <h3 className="display" style={{ fontSize: 'clamp(36px, 4vw, 56px)', lineHeight: 0.95, color: 'var(--wit-warm)' }}>
+              Lees mee terwijl<br />we bouwen.
+            </h3>
+            <p className="body" style={{ marginTop: 16, color: 'rgba(244,241,232,0.6)', maxWidth: 440 }}>
+              Maandelijkse notities over werkwijze, ventures en wat we leren tijdens het bouwen. Geen spam. Eerlijk.
+            </p>
+          </div>
+          <div>
+            {subscribed ? (
+              <div style={{ padding: 24, background: 'rgba(200,240,0,0.06)', borderLeft: '3px solid var(--volt)' }}>
+                <span className="meta" style={{ color: 'var(--volt)' }}>INGESCHREVEN</span>
+                <p className="body" style={{ color: 'var(--wit-warm)', marginTop: 16 }}>
+                  Dank. Eerste werknotitie ontvang je binnen een paar weken.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={(e) => { e.preventDefault(); setSubscribed(true); }}>
+                <div style={{ display: 'flex', gap: 0 }}>
+                  <input
+                    type="email"
+                    required
+                    placeholder="naam@bedrijf.nl"
+                    className="newsletter-input"
+                  />
+                  <button
+                    type="submit"
+                    style={{
+                      padding: '14px 24px',
+                      background: 'var(--volt)',
+                      color: 'var(--inkt)',
+                      fontFamily: 'var(--mono)',
+                      fontSize: 11,
+                      fontWeight: 700,
+                      letterSpacing: '0.16em',
+                      textTransform: 'uppercase',
+                      whiteSpace: 'nowrap',
+                      cursor: 'pointer',
+                      border: 0,
+                      flexShrink: 0,
+                    }}
+                  >
+                    Aanmelden →
+                  </button>
+                </div>
+                <div className="meta" style={{ marginTop: 12, color: 'rgba(244,241,232,0.4)' }}>
+                  ✓ GRATIS · ✓ STOPPEN WANNEER JE WIL · ✓ NL · EN
+                </div>
+              </form>
+            )}
+          </div>
+        </div>
+
+        {/* Sub-brand row */}
+        <div style={{ paddingBottom: 64, borderTop: '1px solid rgba(244,241,232,0.08)', borderBottom: '1px solid rgba(244,241,232,0.08)' }}>
+          <div className="meta" style={{ paddingTop: 32, marginBottom: 32, color: 'rgba(244,241,232,0.5)' }}>
+            OUR VENTURES
+          </div>
           <div
+            className="footer-ventures"
             style={{
-              maxWidth: 1280,
-              margin: "0 auto",
-              padding: "0 32px",
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
-              gap: 2,
-              background: "rgba(255,255,255,0.03)",
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: 0,
+              borderTop: '1px solid rgba(244,241,232,0.08)',
             }}
           >
-            {ventures.map((v) => (
+            {VENTURES.map((v) => (
               <Link
                 key={v.name}
-                to={v.href}
+                to={`/ventures#${v.slug}`}
                 style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 10,
-                  padding: "20px 0",
-                  textDecoration: "none",
-                  transition: "opacity 0.15s ease",
-                  opacity: 0.7,
+                  padding: '28px 24px',
+                  borderRight: '1px solid rgba(244,241,232,0.08)',
+                  borderBottom: '1px solid rgba(244,241,232,0.08)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  gap: 24,
+                  minHeight: 160,
+                  position: 'relative',
+                  transition: 'background .25s',
+                  textDecoration: 'none',
                 }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.opacity = "1"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.opacity = "0.7"; }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.03)'; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = 'transparent'; }}
               >
-                <div style={{ width: 6, height: 6, background: v.accent, flexShrink: 0 }} />
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+                  <span style={{ width: 8, height: 8, background: v.accent }} />
+                  <span className="meta" style={{ color: 'rgba(244,241,232,0.5)' }}>{v.tag}</span>
+                </span>
                 <div>
-                  <div className="font-mono uppercase" style={{ fontSize: 11, color: "#F4F1E8", letterSpacing: "0.1em" }}>
-                    {v.name}
-                  </div>
-                  <div className="font-mono" style={{ fontSize: 9, color: "rgba(255,255,255,0.3)", letterSpacing: "0.06em", marginTop: 2 }}>
-                    {v.url}
-                  </div>
+                  <div className="display" style={{ fontSize: 32, lineHeight: 0.95, color: 'var(--wit-warm)' }}>{v.name}</div>
+                  <div className="meta" style={{ marginTop: 8, color: 'rgba(244,241,232,0.4)' }}>{v.url} →</div>
                 </div>
               </Link>
             ))}
           </div>
         </div>
 
-        {/* Main footer grid */}
+        {/* Footer nav grid */}
         <div
           style={{
-            maxWidth: 1280,
-            margin: "0 auto",
-            padding: "56px 32px 48px",
-            display: "grid",
-            gridTemplateColumns: "2fr 1fr 1fr 1fr",
-            gap: 40,
+            display: 'grid',
+            gridTemplateColumns: '1.4fr 1fr 1fr 1fr',
+            gap: 64,
+            paddingTop: 80,
+            paddingBottom: 80,
+            borderBottom: '1px solid rgba(244,241,232,0.08)',
           }}
-          className="grid-cols-1 md:!grid"
+          className="footer-nav-grid"
         >
-          {/* Logo + motto */}
+          {/* Brand */}
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-              <LogoLight />
-              <span className="font-display" style={{ fontSize: 18, color: "#F4F1E8", letterSpacing: "0.04em" }}>
-                TOMS AMBITIE
-              </span>
+            <Monogram />
+            <div className="display" style={{ fontSize: 40, marginTop: 28, color: 'var(--wit-warm)', lineHeight: 0.9 }}>
+              WE BOUWEN<br />WAT WE ZELF<br />MISSEN.
             </div>
-            <p className="font-sans" style={{ fontSize: 14, color: "rgba(255,255,255,0.45)", lineHeight: 1.6, maxWidth: 260 }}>
-              Venture Club — Zwolle, Nederland
-            </p>
-            <p className="font-mono" style={{ fontSize: 11, color: "rgba(255,255,255,0.18)", marginTop: 20, fontStyle: "italic" }}>
-              Als je het kunt bedenken,<br />kun je het ook doen.
-            </p>
+            <div style={{ width: 96, height: 4, marginTop: 24, background: 'var(--volt)' }} />
           </div>
 
-          {/* Sitemap */}
+          {/* Navigatie */}
           <div>
-            <div className="font-mono uppercase" style={{ fontSize: 10, letterSpacing: "0.18em", color: "rgba(255,255,255,0.3)", marginBottom: 20 }}>
-              Navigatie
-            </div>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 4 }}>
-              {navLinks.map((l) => (
+            <div className="eyebrow" style={{ marginBottom: 20 }}>Navigatie</div>
+            <ul style={{ display: 'grid', gap: 12, fontSize: 15 }}>
+              {NAV_LINKS.map((l) => (
                 <li key={l.to}>
-                  <Link
-                    to={l.to}
-                    className="font-mono uppercase transition-colors"
-                    style={{ fontSize: 11, color: "rgba(255,255,255,0.5)", letterSpacing: "0.08em", textDecoration: "none", display: "block", padding: "5px 0" }}
-                    onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#C8F000"; }}
-                    onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.5)"; }}
-                  >
+                  <Link to={l.to} style={{ color: 'rgba(244,241,232,0.6)', textDecoration: 'none', transition: 'color .2s' }}
+                    onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'var(--volt)'; }}
+                    onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(244,241,232,0.6)'; }}>
                     {l.label}
                   </Link>
                 </li>
@@ -133,19 +182,14 @@ export const Footer = () => {
 
           {/* Ventures */}
           <div>
-            <div className="font-mono uppercase" style={{ fontSize: 10, letterSpacing: "0.18em", color: "rgba(255,255,255,0.3)", marginBottom: 20 }}>
-              Ventures
-            </div>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 4 }}>
-              {ventures.map((v) => (
-                <li key={v.name}>
-                  <Link
-                    to={v.href}
-                    className="font-mono uppercase transition-colors"
-                    style={{ fontSize: 11, color: "rgba(255,255,255,0.5)", letterSpacing: "0.08em", textDecoration: "none", display: "block", padding: "5px 0" }}
+            <div className="eyebrow" style={{ marginBottom: 20 }}>Ventures</div>
+            <ul style={{ display: 'grid', gap: 12, fontSize: 15 }}>
+              {VENTURES.map((v) => (
+                <li key={v.slug}>
+                  <Link to={`/ventures#${v.slug}`}
+                    style={{ color: 'rgba(244,241,232,0.6)', textDecoration: 'none', transition: 'color .2s' }}
                     onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = v.accent; }}
-                    onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.5)"; }}
-                  >
+                    onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(244,241,232,0.6)'; }}>
                     {v.name}
                   </Link>
                 </li>
@@ -155,70 +199,44 @@ export const Footer = () => {
 
           {/* Contact */}
           <div>
-            <div className="font-mono uppercase" style={{ fontSize: 10, letterSpacing: "0.18em", color: "rgba(255,255,255,0.3)", marginBottom: 20 }}>
-              Contact
-            </div>
-            <a
-              href="mailto:tom@tomsambitie.nl"
-              className="font-sans"
-              style={{ fontSize: 14, color: "#F4F1E8", textDecoration: "none", display: "block", marginBottom: 8 }}
-            >
-              tom@tomsambitie.nl
-            </a>
-            <span className="font-mono" style={{ fontSize: 11, color: "rgba(255,255,255,0.3)" }}>
-              toms-ambitie.nl
-            </span>
-            <div style={{ marginTop: 24 }}>
-              <Link
-                to="/meebouwen"
-                className="font-mono font-bold uppercase inline-flex items-center hover:bg-[#DCF55E] transition-colors"
-                style={{
-                  background: "#C8F000",
-                  color: "#0E0E0C",
-                  fontSize: 11,
-                  letterSpacing: "0.1em",
-                  padding: "10px 18px",
-                  textDecoration: "none",
-                }}
-              >
-                Start gesprek →
-              </Link>
-            </div>
+            <div className="eyebrow" style={{ marginBottom: 20 }}>Contact</div>
+            <ul style={{ display: 'grid', gap: 12, fontSize: 15 }}>
+              <li>
+                <a href="mailto:tom@tomsambitie.nl"
+                  style={{ color: 'rgba(244,241,232,0.6)', textDecoration: 'none', transition: 'color .2s' }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'var(--volt)'; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(244,241,232,0.6)'; }}>
+                  tom@tomsambitie.nl
+                </a>
+              </li>
+              <li style={{ color: 'rgba(244,241,232,0.4)' }}>Zwolle, Nederland</li>
+            </ul>
           </div>
         </div>
 
-        {/* Legal bar */}
-        <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-          <div
-            style={{
-              maxWidth: 1280,
-              margin: "0 auto",
-              padding: "16px 32px",
-              display: "flex",
-              flexWrap: "wrap",
-              alignItems: "center",
-              gap: 24,
-            }}
-          >
-            {legalLinks.map((l) => (
-              <Link
-                key={l.to}
-                to={l.to}
-                className="font-mono uppercase"
-                style={{ fontSize: 10, color: "rgba(255,255,255,0.25)", letterSpacing: "0.12em", textDecoration: "none" }}
-              >
-                {l.label}
-              </Link>
-            ))}
-            <span
-              className="font-mono"
-              style={{ fontSize: 10, color: "rgba(255,255,255,0.2)", letterSpacing: "0.08em", marginLeft: "auto" }}
-            >
-              © {new Date().getFullYear()} Toms Ambitie
-            </span>
+        {/* Copyright bar */}
+        <div style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          paddingTop: 28,
+          fontFamily: 'var(--mono)',
+          fontSize: 11,
+          letterSpacing: '0.14em',
+          textTransform: 'uppercase',
+          color: 'rgba(244,241,232,0.4)',
+          flexWrap: 'wrap',
+          gap: 16,
+        }}>
+          <div>© 2025 Toms Ambitie · Een venture club uit Zwolle</div>
+          <div style={{ display: 'flex', gap: 24 }}>
+            <Link to="/privacy" style={{ color: 'rgba(244,241,232,0.4)', textDecoration: 'none' }}>Privacy</Link>
+            <Link to="/voorwaarden" style={{ color: 'rgba(244,241,232,0.4)', textDecoration: 'none' }}>Voorwaarden</Link>
+            <span>v3.0 · Definitief</span>
           </div>
         </div>
-      </footer>
-    </>
+
+      </div>
+    </footer>
   );
 };

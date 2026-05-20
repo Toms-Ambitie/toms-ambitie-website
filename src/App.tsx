@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import ScrollToTop from "./components/ScrollToTop";
 import { useGtmPageView } from "./hooks/useGtmPageView";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 
 // Critical route — eagerly loaded for fastest FCP
 import Index from "./pages/Index.tsx";
@@ -33,25 +34,35 @@ const AppRoutes = () => {
   return (
     <>
       <ScrollToTop />
-      <Suspense fallback={<div className="min-h-screen bg-ink" />}>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/ventures" element={<VenturesPage />} />
-          <Route path="/ventures/:slug" element={<VentureDetailPage />} />
-          <Route path="/werkwijze" element={<HoeWeBouwenPage />} />
-          <Route path="/hoe-we-bouwen" element={<HoeWeBouwenPage />} />
-          <Route path="/over-ons" element={<OverOnsPage />} />
-          <Route path="/meebouwen" element={<MeebouwenPage />} />
-          <Route path="/privacy" element={<PrivacyPage />} />
-          <Route path="/voorwaarden" element={<AlgemeneVoorwaardenPage />} />
-          <Route path="/nieuws" element={<News />} />
-          <Route path="/nieuws/:slug" element={<NewsArticle />} />
-          <Route path="/bedankt" element={<BedanktPage />} />
-          <Route path="/persmap" element={<PersMapPage />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Suspense>
+      {/*
+        ErrorBoundary catches any render error from lazy-loaded pages.
+        Without it, a component error causes React to unmount the whole tree → blank page.
+        The boundary shows a recovery UI so users don't need to hard-refresh.
+
+        Fallback uses inline styles — no Tailwind/CSS dependency during the transition
+        so the loading state renders correctly even before the stylesheet is applied.
+      */}
+      <ErrorBoundary>
+        <Suspense fallback={<div style={{ minHeight: '100vh', background: '#0E0E0C' }} />}>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/ventures" element={<VenturesPage />} />
+            <Route path="/ventures/:slug" element={<VentureDetailPage />} />
+            <Route path="/werkwijze" element={<HoeWeBouwenPage />} />
+            <Route path="/hoe-we-bouwen" element={<HoeWeBouwenPage />} />
+            <Route path="/over-ons" element={<OverOnsPage />} />
+            <Route path="/meebouwen" element={<MeebouwenPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/voorwaarden" element={<AlgemeneVoorwaardenPage />} />
+            <Route path="/nieuws" element={<News />} />
+            <Route path="/nieuws/:slug" element={<NewsArticle />} />
+            <Route path="/bedankt" element={<BedanktPage />} />
+            <Route path="/persmap" element={<PersMapPage />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
+      </ErrorBoundary>
     </>
   );
 };

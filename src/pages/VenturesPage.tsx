@@ -128,15 +128,23 @@ const VentureSection = ({ v, index }: { v: typeof VENTURES[0]; index: number }) 
             <p className="lead" style={{ fontSize: 22, maxWidth: 560, color: 'rgba(244,241,232,0.75)', marginBottom: 40 }}>
               {v.long}
             </p>
-            <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
+              <Link
+                to={`/ventures/${v.slug}`}
+                className="btn"
+                style={{ background: v.accent, color: v.accent === '#FFAA00' ? 'var(--inkt)' : 'var(--wit-warm)', textDecoration: 'none' }}
+              >
+                Bekijk venture →
+              </Link>
               <a
                 href={`https://${v.url}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn"
-                style={{ background: v.accent, color: v.accent === '#FFAA00' ? 'var(--inkt)' : 'var(--wit-warm)' }}
+                style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(244,241,232,0.5)', textDecoration: 'none', transition: 'color .2s' }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(244,241,232,0.9)'; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(244,241,232,0.5)'; }}
               >
-                Bezoek {v.url} →
+                {v.url} ↗
               </a>
             </div>
           </div>
@@ -239,14 +247,14 @@ const VenturesPage = () => {
             {/* Quick-jump grid */}
             <div className="reveal responsive-4-to-2" style={{ marginTop: 80, display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
               {VENTURES.map((v, i) => (
-                <a
+                <Link
                   key={v.slug}
-                  href={`#${v.slug}`}
+                  to={`/ventures/${v.slug}`}
                   style={{
                     display: 'block', padding: 24, border: '1px solid var(--inkt-10)',
                     background: 'var(--wit-warm)',
                     transition: 'border-color .25s, background .25s',
-                    textDecoration: 'none',
+                    textDecoration: 'none', color: 'var(--inkt)',
                   }}
                   onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'var(--inkt)'; }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'var(--inkt-10)'; }}
@@ -258,9 +266,9 @@ const VenturesPage = () => {
                   <div className="display" style={{ fontSize: 28, lineHeight: 0.95 }}>{v.name}</div>
                   <div className="meta" style={{ marginTop: 8 }}>{v.tag}</div>
                   <div style={{ marginTop: 16, paddingTop: 12, borderTop: '1px solid var(--inkt-10)', fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--inkt-40)' }}>
-                    Spring naar ↓
+                    Bekijk venture →
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           </div>

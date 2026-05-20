@@ -82,7 +82,7 @@ export type VentureStatusMeta = {
 
 export const ventureDetails: VentureDetail[] = [
   {
-    slug: "emma-boekt",
+    slug: "emmaboekt",
     name: "EMMABOEKT",
     tagline: "ADMINISTRATIE ZOU GEEN ENERGIE MOETEN KOSTEN.",
     intro:
@@ -93,9 +93,9 @@ export const ventureDetails: VentureDetail[] = [
     status: "IN ONTWIKKELING",
     statusColor: "hsl(var(--orange))",
     identity: {
-      accent: "#1BBFA0",
+      accent: "#9333EA",
       accentInk: "#FFFFFF",
-      vibe: "AI ASSISTENT · MINDER WEERSTAND · MEER RUST",
+      vibe: "AI ASSISTENT · MINDER GEDOE · MEER RUST",
       proof: ["Concept & merkstrategie afgerond", "MVP in voorbereiding", "Eerste testen gestart"],
       proofTagline: "In ontwikkeling · concept staat, MVP in voorbereiding",
     },
@@ -268,7 +268,7 @@ export const ventureDetails: VentureDetail[] = [
     vision: {
       title: "De toekomst",
       description:
-        "Marketing verandert sneller dan ooit. AI, automatisering en data veranderen niet alleen hoe bedrijven zichtbaar worden. maar ook hoe teams werken, beslissingen nemen en groeien.\n\nOAK Marketing wil vooroplopen in die beweging. Niet als traditioneel bureau, maar als een flexibele groeipartner die bedrijven helpt sneller, slimmer en scherper te opereren.\n\nDe ambitie is niet om zo groot mogelijk te worden. De ambitie is om betrokken te zijn bij bedrijven waar echt beweging ontstaat.",
+        "Marketing verandert sneller dan ooit. AI, automatisering en data veranderen niet alleen hoe bedrijven zichtbaar worden, maar ook hoe teams werken, beslissingen nemen en groeien.\n\nOAK Marketing wil vooroplopen in die beweging. Niet als traditioneel bureau, maar als een flexibele groeipartner die bedrijven helpt sneller, slimmer en scherper te opereren.\n\nDe ambitie is niet om zo groot mogelijk te worden. De ambitie is om betrokken te zijn bij bedrijven waar echt beweging ontstaat.",
     },
     ctaBlock: {
       title: "WERKEN MET OAK MARKETING",

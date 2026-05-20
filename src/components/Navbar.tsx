@@ -41,6 +41,16 @@ export const Navbar = () => {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  // Body scroll-lock while mobile menu is open
+  useEffect(() => {
+    if (open) {
+      document.body.classList.add("menu-open");
+    } else {
+      document.body.classList.remove("menu-open");
+    }
+    return () => document.body.classList.remove("menu-open");
+  }, [open]);
+
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -132,57 +142,91 @@ export const Navbar = () => {
         </li>
       </ul>
 
-      {/* Mobile toggle */}
+      {/* Mobile toggle — min 44×44 tap target */}
       <button
         ref={toggleRef}
         onClick={() => setOpen((v) => !v)}
-        className="md:hidden p-2 -mr-2"
+        className="md:hidden"
         aria-label={open ? "Menu sluiten" : "Menu openen"}
         aria-expanded={open}
         aria-controls="mobile-menu"
-        style={{ color: "#0E0E0C" }}
+        style={{
+          color: "#0E0E0C",
+          minWidth: 44,
+          minHeight: 44,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginRight: -10,
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+        }}
       >
-        {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        {open ? <X size={22} /> : <Menu size={22} />}
       </button>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — full-height overlay */}
       {open && (
         <div
           ref={menuRef}
           id="mobile-menu"
           role="menu"
-          className="absolute inset-x-0 md:hidden"
+          className="fixed inset-x-0 md:hidden"
           style={{
-            top: 64,
-            background: "rgba(251, 250, 246, 0.97)",
-            backdropFilter: "blur(20px)",
-            borderBottom: "1px solid rgba(14,14,12,0.08)",
+            top: 56,  /* matches mobile nav height */
+            bottom: 0,
+            background: "rgba(251, 250, 246, 0.98)",
+            backdropFilter: "blur(24px)",
+            borderTop: "1px solid rgba(14,14,12,0.08)",
+            display: "flex",
+            flexDirection: "column",
+            overflowY: "auto",
+            zIndex: 49,
           }}
         >
-          <ul className="flex flex-col px-8 py-4 gap-0">
+          <ul className="flex flex-col px-6" style={{ paddingTop: 8 }}>
             {links.map((l) => (
               <li key={l.to}>
                 <Link
                   to={l.to}
-                  className="block font-mono text-[12px] uppercase py-4 transition-colors"
+                  role="menuitem"
+                  className="flex items-center font-mono uppercase transition-colors"
                   style={{
                     letterSpacing: "0.12em",
-                    color: isActive(l.to) ? "#0E0E0C" : "rgba(14,14,12,0.5)",
+                    fontSize: 13,
+                    color: isActive(l.to) ? "#0E0E0C" : "rgba(14,14,12,0.55)",
                     fontWeight: isActive(l.to) ? 700 : 400,
                     textDecoration: "none",
                     borderBottom: "1px solid rgba(14,14,12,0.06)",
+                    minHeight: 56,
                   }}
                 >
                   {l.label}
+                  {isActive(l.to) && (
+                    <span style={{ marginLeft: "auto", width: 6, height: 6, background: "#C8F000" }} />
+                  )}
                 </Link>
               </li>
             ))}
           </ul>
-          <div className="px-8 pb-6 pt-2">
+
+          <div style={{ padding: "20px 24px 32px", marginTop: "auto" }}>
             <Link
               to="/meebouwen"
-              className="block text-center font-mono text-[11px] font-bold uppercase min-h-[48px] flex items-center justify-center hover:bg-[#DCF55E] transition-colors"
-              style={{ background: "#C8F000", color: "#0E0E0C", letterSpacing: "0.1em" }}
+              role="menuitem"
+              className="font-mono uppercase font-bold hover:bg-[#DCF55E] transition-colors"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background: "#C8F000",
+                color: "#0E0E0C",
+                letterSpacing: "0.1em",
+                fontSize: 12,
+                minHeight: 52,
+                textDecoration: "none",
+              }}
             >
               Start gesprek →
             </Link>

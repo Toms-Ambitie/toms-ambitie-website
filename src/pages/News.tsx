@@ -40,7 +40,7 @@ const FeaturedCard = ({ post }: { post: Post }) => {
     return (
       <Link
         to={`/nieuws/${post.slug}`}
-        className="reveal"
+        className="reveal featured-news-card"
         style={{
           display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0,
           background: 'var(--inkt)', color: 'var(--wit-warm)',
@@ -55,10 +55,12 @@ const FeaturedCard = ({ post }: { post: Post }) => {
           <img
             src={post.cover}
             alt={post.title}
+            loading="lazy"
+            decoding="async"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', display: 'block' }}
           />
         </div>
-        <div style={{ padding: 56, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+        <div style={{ padding: 'clamp(28px, 4vw, 56px)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24, flexWrap: 'wrap' }}>
               <span style={{ padding: '6px 12px', background: 'var(--volt)', color: 'var(--inkt)', fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase' }}>
@@ -254,7 +256,7 @@ const News = () => {
       <main id="main-content">
 
         {/* ═══ HERO ════════════════════════════════════════════════ */}
-        <section className="surface-wit" style={{ padding: '140px 0 80px' }}>
+        <section className="surface-wit page-hero" style={{ padding: '140px 0 80px' }}>
           <div className="container-wide">
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
               <span className="volt-dot" />
@@ -298,7 +300,7 @@ const News = () => {
           borderBottom: '1px solid var(--inkt-10)',
           padding: '16px 0',
         }}>
-          <div className="container-wide" style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
+          <div className="container-wide news-filter-inner" style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
             <span className="meta" style={{ color: 'var(--inkt-40)', marginRight: 8 }}>Filter:</span>
             {FILTER_LABELS.map((c) => (
               <button
@@ -334,8 +336,8 @@ const News = () => {
           <section className="surface-wit" style={{ padding: '32px 0 160px' }}>
             <div className="container-wide">
               <div
-                style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}
-                className="werkwijze-phases"
+                className="news-article-grid"
+              style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}
               >
                 {rest.map((p) => (
                   <ArticleCard key={p.slug} post={p} />

@@ -426,72 +426,222 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   RESPONSIVE
+   RESPONSIVE — MOBILE FIRST
    ═══════════════════════════════════════════════════════════════ */
 
-/* Tablet ≤1024px */
+/* Body scroll-lock — activated by Navbar when mobile menu is open */
+body.menu-open { overflow: hidden; }
+
+/* Newsletter input — 16px required on iOS to prevent auto-zoom */
+.newsletter-input { font-size: 16px; }
+
+/* Page hero sections — extra top padding so content clears sticky nav */
+/* Overridden per breakpoint below */
+
+/* ── Tablet ≤1024px ─────────────────────────────────────────── */
 @media (max-width: 1024px) {
+  :root { --gutter: 24px; }
   .container, .container-wide, .container-narrow { padding: 0 24px; }
   .nav-inner { padding: 0 24px; gap: 24px; }
   .nav-links { gap: 20px; }
+
+  /* Reduce heavy desktop section padding */
+  section { padding-top: 96px !important; padding-bottom: 96px !important; }
+  .page-hero { padding-top: 120px !important; padding-bottom: 72px !important; }
+
+  /* 4-col → 2-col grids */
   .responsive-4-to-2 { grid-template-columns: 1fr 1fr !important; }
+
+  /* Werkwijze steps */
+  .werkwijze-step-grid { gap: 48px !important; }
+
+  /* Ventures quick-jump: 5 → 3 cols */
+  .ventures-jump-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 10px !important; }
+
+  /* Over Ons values: 5 → 3 cols */
+  .values-grid-5 { grid-template-columns: repeat(3, 1fr) !important; }
+
+  /* News article grid: 3 → 2 cols */
+  .news-article-grid { grid-template-columns: repeat(2, 1fr) !important; }
 }
 
-/* Mobile ≤768px */
+/* ── Mobile ≤768px ──────────────────────────────────────────── */
 @media (max-width: 768px) {
+  :root { --gutter: 20px; }
   .container, .container-wide, .container-narrow { padding: 0 20px; }
 
+  /* Nav */
   .nav-inner { height: 56px; padding: 0 20px; gap: 12px; }
   .nav-links { display: none; }
   .nav-logo span { font-size: 16px; }
   .nav-cta { padding: 8px 12px; font-size: 10px; letter-spacing: 0.12em; }
 
+  /* Section padding reset */
   section { padding-top: 64px !important; padding-bottom: 64px !important; }
+  .page-hero { padding-top: 104px !important; padding-bottom: 52px !important; }
 
-  /* Stack all inline grids by default */
+  /* Type scale — prevent oversized display fonts on small screens */
+  .h1 { font-size: clamp(48px, 11vw, 72px); }
+  .h2 { font-size: clamp(36px, 9vw, 56px); }
+
+  /* Parallax: disable on touch */
+  .parallax-frame { transform: none !important; }
+
+  /* ── Layout stacking ── */
+
+  /* Two-column hero/content grids → 1 col */
   .hero-two-col,
-  .ventures-featured-inner,
-  .ventures-grid-3,
   .werkwijze-two-col,
-  .werkwijze-phases,
   .manifesto-pillars,
   .team-two-col,
-  .comparison-two-col,
-  .footer-nav-grid {
+  .comparison-two-col {
     grid-template-columns: 1fr !important;
     gap: 32px !important;
   }
 
-  /* Legal pages: stack section number/title above content */
-  .legal-section {
+  /* Ventures overview: image on top, text below */
+  .ventures-featured-inner {
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+    margin-top: 20px !important;
+  }
+  .venture-image-col {
+    order: -1;           /* image always renders first visually */
+    min-height: 260px !important;
+  }
+  .venture-text-col {
+    padding-left: var(--gutter) !important;
+    padding-right: var(--gutter) !important;
+    padding-bottom: 48px !important;
+  }
+  .venture-header-row { flex-wrap: wrap !important; gap: 8px !important; }
+  .venture-metrics-grid { margin-top: 24px !important; }
+
+  /* Home page ventures secondary grid: 4 → 2 cols */
+  .ventures-grid-3 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+  .ventures-grid-3 > a { min-height: auto !important; }
+
+  /* Home page ventures featured card inner padding */
+  .ventures-featured-text { padding: 32px 24px !important; }
+
+  /* Ventures quick-jump: 5 → 2 cols */
+  .ventures-jump-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+    margin-top: 40px !important;
+  }
+
+  /* Sub-branding 3-col → 1-col */
+  .subbranding-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
+
+  /* Werkwijze steps: stack, remove sticky */
+  .werkwijze-step-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  .werkwijze-step-grid > *:first-child { position: static !important; }
+  .werkwijze-step-num { font-size: clamp(72px, 20vw, 120px) !important; }
+
+  /* News: featured card image+text → stack */
+  .featured-news-card {
+    grid-template-columns: 1fr !important;
+  }
+  /* News: 3-col article grid → 1-col */
+  .news-article-grid,
+  .werkwijze-phases {
     grid-template-columns: 1fr !important;
     gap: 16px !important;
   }
+  /* News filter: horizontal scroll instead of wrap */
+  .news-filter-inner {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .news-filter-inner::-webkit-scrollbar { display: none; }
 
-  /* Metrics row — 2×2 on mobile */
-  .metrics-row { grid-template-columns: 1fr 1fr !important; gap: 24px !important; }
-  .metrics-row > * { border-left: none !important; padding-left: 0 !important; }
+  /* Legal pages: stack section number above content */
+  .legal-section { grid-template-columns: 1fr !important; gap: 16px !important; }
 
-  /* Footer ventures — 2 col on mobile */
+  /* Over Ons: values 5-col → 2-col */
+  .values-grid-5 { grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
+
+  /* Over Ons: timeline year column narrower */
+  .timeline-item { grid-template-columns: 80px 1fr !important; gap: 12px !important; }
+  .timeline-year { font-size: clamp(24px, 6vw, 36px) !important; line-height: 1 !important; }
+
+  /* Contact form: stack */
+  .meebouwen-form-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+  .form-name-email-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+
+  /* Footer newsletter: 2-col → 1-col */
+  .footer-newsletter-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+    padding-bottom: 48px !important;
+  }
+
+  /* Footer ventures: 5-col → 2-col */
   .footer-ventures { grid-template-columns: 1fr 1fr !important; }
 
-  /* Type compress */
-  .h1 { font-size: clamp(56px, 12vw, 80px); }
-  .h2 { font-size: clamp(44px, 9vw, 64px); }
+  /* Footer nav: 4-col → 2-col */
+  .footer-nav-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 40px 24px !important;
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
 
-  /* Buttons full-width on mobile */
+  /* VsTraditional: reduce inner column padding */
+  .comparison-two-col > * { padding: 32px 24px !important; }
+
+  /* StatsBar: smaller display numbers in 2-col layout */
+  .metrics-row .display { font-size: clamp(52px, 13vw, 80px) !important; }
+
+  /* Stats bar / metrics row — 2×2 on mobile */
+  .metrics-row {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0 !important;
+  }
+  .metrics-row > * {
+    border-left: none !important;
+    padding-left: 0 !important;
+    border-top: 1px solid var(--inkt-10);
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .metrics-row > *:nth-child(odd) { padding-right: 16px; }
+  .metrics-row > *:nth-child(even) { padding-left: 16px !important; border-left: 1px solid var(--inkt-10) !important; }
+
+  /* Buttons: full-width on mobile */
   .btn-row { flex-direction: column; align-items: flex-start !important; }
   .btn, .btn-ghost { width: 100%; justify-content: center; }
-
-  /* No parallax on touch */
-  .parallax-frame { transform: none !important; }
 }
 
-/* Small mobile ≤480px */
+/* ── Small mobile ≤480px ────────────────────────────────────── */
 @media (max-width: 480px) {
-  .footer-ventures { grid-template-columns: 1fr !important; }
+  .h1 { font-size: clamp(44px, 13vw, 60px); }
+  .h2 { font-size: clamp(32px, 10vw, 48px); }
+
+  /* Footer ventures: 2-col → 1-col on very small screens */
+  .footer-ventures { grid-template-columns: 1fr 1fr !important; } /* keep 2-col */
+
+  /* Footer nav: 2-col → 1-col */
+  .footer-nav-grid { grid-template-columns: 1fr !important; }
+
+  /* Metrics row — 1-col on very small */
   .metrics-row { grid-template-columns: 1fr !important; }
-  .h1 { font-size: clamp(48px, 13vw, 64px); }
+
+  /* Ventures jump grid: 2-col maintained */
+  .ventures-jump-grid { grid-template-columns: 1fr 1fr !important; gap: 6px !important; }
+
+  /* Values: 2 → 1 col on 360px */
+  .values-grid-5 { grid-template-columns: 1fr 1fr !important; }
 }
 
 /* ═══════════════════════════════════════════════════════════════

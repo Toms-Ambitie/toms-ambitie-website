@@ -44,7 +44,7 @@ const MeebouwenPage = () => {
       <main id="main-content">
 
         {/* ═══ HERO ════════════════════════════════════════════════ */}
-        <section className="surface-wit" style={{ padding: '140px 0 80px' }}>
+        <section className="surface-wit page-hero" style={{ padding: '140px 0 80px' }}>
           <div className="container-wide">
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
               <span className="volt-dot" />
@@ -79,7 +79,7 @@ const MeebouwenPage = () => {
                 <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}>
                   <div className="meta" style={{ marginBottom: 32 }}>FORMULIER · ALLE VELDEN VERPLICHT</div>
 
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 32 }}>
+                  <div className="form-name-email-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 32 }}>
                     <Field label="Naam" placeholder="Voor- en achternaam" />
                     <Field label="E-mail" placeholder="naam@bedrijf.nl" type="email" />
                   </div>
@@ -126,7 +126,7 @@ const MeebouwenPage = () => {
                     />
                   </div>
 
-                  <button type="submit" className="btn btn-volt">Verstuur bericht →</button>
+                  <button type="submit" className="btn btn-volt" style={{ minHeight: 48 }}>Verstuur bericht →</button>
                 </form>
               )}
             </div>

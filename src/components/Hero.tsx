@@ -76,7 +76,7 @@ const HeroProductFrame = () => {
 
 export const Hero = () => {
   return (
-    <section className="surface-wit" style={{ padding: '140px 0 120px', position: 'relative' }}>
+    <section className="surface-wit page-hero" style={{ padding: '140px 0 120px', position: 'relative' }}>
       <div className="container-wide">
         <div
           className="hero-two-col"

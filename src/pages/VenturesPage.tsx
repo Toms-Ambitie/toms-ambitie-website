@@ -163,7 +163,7 @@ const VentureSection = ({ v, index }: { v: Venture; index: number }) => {
 
       {/* Header row — stays within container-wide bounds */}
       <div className="container-wide" style={{ paddingTop: 52, paddingBottom: 0 }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="venture-header-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <span style={{ width: 8, height: 8, background: v.accent, flexShrink: 0 }} />
             <span className="meta" style={{ color: faint }}>VENTURE 0{index + 1} / 05 · {v.tag}</span>
@@ -198,6 +198,7 @@ const VentureSection = ({ v, index }: { v: Venture; index: number }) => {
       >
         {/* ── Left: text content ── */}
         <div
+          className="venture-text-col"
           style={{
             paddingLeft: 32,
             paddingRight: 48,
@@ -281,6 +282,7 @@ const VentureSection = ({ v, index }: { v: Venture; index: number }) => {
 
           {/* Metrics — icon + value + label, 3 columns */}
           <div
+            className="venture-metrics-grid"
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(3, 1fr)',
@@ -353,10 +355,12 @@ const VentureSection = ({ v, index }: { v: Venture; index: number }) => {
         </div>
 
         {/* ── Right: image fills full column height ── */}
-        <div style={{ position: 'relative', overflow: 'hidden', minHeight: 420 }}>
+        <div className="venture-image-col" style={{ position: 'relative', overflow: 'hidden', minHeight: 420 }}>
           <img
             src={v.image}
             alt={v.name}
+            loading="lazy"
+            decoding="async"
             style={{
               position: 'absolute',
               inset: 0,
@@ -395,7 +399,7 @@ const VenturesPage = () => {
       <main id="main-content">
 
         {/* ═══ HERO ════════════════════════════════════════════════ */}
-        <section className="surface-wit" style={{ padding: '140px 0 100px' }}>
+        <section className="surface-wit page-hero" style={{ padding: '140px 0 100px' }}>
           <div className="container-wide">
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
               <span className="volt-dot" />
@@ -413,7 +417,7 @@ const VenturesPage = () => {
 
             {/* Quick-jump — anchors to section IDs */}
             <div
-              className="reveal"
+              className="reveal ventures-jump-grid"
               style={{
                 marginTop: 80,
                 display: 'grid',
@@ -490,7 +494,7 @@ const VenturesPage = () => {
             <p className="lead" style={{ marginTop: 32, fontSize: 20 }}>
               Eigen naam, eigen logo, eigen website. De link met Toms Ambitie is subtiel maar altijd aanwezig: dezelfde werkwijze, dezelfde drive, dezelfde standaard.
             </p>
-            <div style={{ marginTop: 64, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
+            <div className="subbranding-grid" style={{ marginTop: 64, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
               {[
                 ['Eigen identiteit', 'Logo, kleuren, fonts. Eigen visuele taal. Eigen verhaal.'],
                 ['Eigen website', 'Eigen domein. Eigen platform. Eigen go-to-market.'],

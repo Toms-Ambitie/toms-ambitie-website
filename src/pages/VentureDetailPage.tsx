@@ -123,7 +123,7 @@ const VentureDetailPage = () => {
       <Navbar />
 
       {/* HERO */}
-      <section className="pt-20 sm:pt-28 pb-16 sm:pb-20" style={{ background: "#0E0E0C", borderTop: `5px solid ${accent}`, paddingTop: "calc(80px + 64px)" }}>
+      <section className="page-hero pb-16 sm:pb-20" style={{ background: "#0E0E0C", borderTop: `5px solid ${accent}`, paddingTop: "calc(80px + 64px)" }}>
         <div className="max-w-[1200px] mx-auto px-5 sm:px-10">
           <Link to="/ventures" className="font-mono inline-flex items-center gap-2 mb-8 typo-sm typo-caption-dark min-h-[44px]" style={{ textDecoration: "none" }}>
             <ArrowLeft className="w-3.5 h-3.5" />

@@ -40,7 +40,7 @@ const OverOnsPage = () => {
       <main id="main-content">
 
         {/* ═══ HERO ════════════════════════════════════════════════ */}
-        <section className="surface-wit" style={{ padding: '140px 0 100px' }}>
+        <section className="surface-wit page-hero" style={{ padding: '140px 0 100px' }}>
           <div className="container-wide">
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
               <span className="volt-dot" />
@@ -62,6 +62,8 @@ const OverOnsPage = () => {
               <img
                 src="/photos/studio-team-bw.jpg"
                 alt="Studio Zwolle"
+                loading="lazy"
+                decoding="async"
                 style={{ width: '100%', aspectRatio: '21/9', objectFit: 'cover', display: 'block' }}
               />
               <div style={{ position: 'absolute', bottom: 20, left: 20, padding: '10px 16px', background: 'var(--wit-warm)', display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -87,8 +89,7 @@ const OverOnsPage = () => {
                 Vijf principes.<br /><span style={{ color: 'var(--inkt-40)' }}>Eén werkwijze. Eén richting.</span>
               </h2>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 16 }}
-              className="responsive-4-to-2">
+            <div className="values-grid-5" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 16 }}>
               {VALUES.map((p, i) => (
                 <div key={p.t} className="reveal" style={{ background: 'var(--wit-warm)', padding: 28, borderTop: '3px solid var(--volt)', minHeight: 260 }}>
                   <div className="num" style={{ fontSize: 11, letterSpacing: '0.18em', color: 'var(--inkt-40)', marginBottom: 16 }}>0{i + 1} / 05</div>
@@ -110,6 +111,8 @@ const OverOnsPage = () => {
                 <img
                   src="/photos/tom-portrait-dark.jpg"
                   alt="Tom Mulder"
+                  loading="lazy"
+                  decoding="async"
                   style={{ width: '100%', aspectRatio: '4/5', objectFit: 'cover', display: 'block' }}
                 />
                 <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: 24, background: 'linear-gradient(to top, rgba(14,14,12,0.85), transparent)' }}>
@@ -180,8 +183,8 @@ const OverOnsPage = () => {
               {/* Timeline items */}
               <div>
                 {MILESTONES.map((m) => (
-                  <div key={m.y} className="reveal" style={{ display: 'grid', gridTemplateColumns: '200px 1fr', gap: 32, padding: '32px 0', borderTop: '1px solid var(--inkt-20)' }}>
-                    <div className="display" style={{ fontSize: 40, lineHeight: 0.95 }}>{m.y}</div>
+                  <div key={m.y} className="reveal timeline-item" style={{ display: 'grid', gridTemplateColumns: '200px 1fr', gap: 32, padding: '32px 0', borderTop: '1px solid var(--inkt-20)' }}>
+                    <div className="display timeline-year" style={{ fontSize: 40, lineHeight: 0.95 }}>{m.y}</div>
                     <div>
                       <h4 className="h4" style={{ marginBottom: 8 }}>{m.t}</h4>
                       <p className="body" style={{ maxWidth: 480 }}>{m.d}</p>
@@ -217,6 +220,7 @@ const OverOnsPage = () => {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24 }}>
               <div className="reveal" style={{ position: 'relative', overflow: 'hidden' }}>
                 <img src="/photos/studio-collab.jpg" alt="Studio collab"
+                  loading="lazy" decoding="async"
                   style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block', filter: 'grayscale(0.15)' }} />
                 <div style={{ position: 'absolute', top: 16, left: 16, padding: '6px 12px', background: 'var(--wit-warm)' }}>
                   <span className="meta">FIG.02 · STRATEGIE</span>
@@ -224,6 +228,7 @@ const OverOnsPage = () => {
               </div>
               <div className="reveal" style={{ position: 'relative', overflow: 'hidden' }}>
                 <img src="/photos/studio-pair.jpg" alt="Studio pair"
+                  loading="lazy" decoding="async"
                   style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block', filter: 'grayscale(0.15)' }} />
                 <div style={{ position: 'absolute', top: 16, left: 16, padding: '6px 12px', background: 'var(--wit-warm)' }}>
                   <span className="meta">FIG.03 · UITVOERING</span>

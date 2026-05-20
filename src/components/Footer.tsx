@@ -36,13 +36,13 @@ export const Footer = () => {
       <div className="container-wide">
 
         {/* Newsletter signup */}
-        <div style={{
+        <div className="footer-newsletter-grid" style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
           gap: 64,
           paddingBottom: 64,
           alignItems: 'center',
-        }} className="footer-newsletter-grid">
+        }}>
           <div>
             <div className="meta" style={{ color: 'var(--volt)', marginBottom: 16 }}>WERKNOTITIES</div>
             <h3 className="display" style={{ fontSize: 'clamp(36px, 4vw, 56px)', lineHeight: 0.95, color: 'var(--wit-warm)' }}>
@@ -62,12 +62,13 @@ export const Footer = () => {
               </div>
             ) : (
               <form onSubmit={(e) => { e.preventDefault(); setSubscribed(true); }}>
-                <div style={{ display: 'flex', gap: 0 }}>
+                <div style={{ display: 'flex', gap: 0, flexWrap: 'wrap' }}>
                   <input
                     type="email"
                     required
                     placeholder="naam@bedrijf.nl"
                     className="newsletter-input"
+                    style={{ minWidth: 0, flex: '1 1 200px' }}
                   />
                   <button
                     type="submit"
@@ -84,6 +85,7 @@ export const Footer = () => {
                       cursor: 'pointer',
                       border: 0,
                       flexShrink: 0,
+                      minHeight: 48,
                     }}
                   >
                     Aanmelden →

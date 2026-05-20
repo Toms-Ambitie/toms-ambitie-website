@@ -129,7 +129,7 @@ export const VenturesGrid = () => {
             style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 0, minHeight: 560 }}
           >
             {/* Left: info */}
-            <div style={{ padding: 56, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            <div className="ventures-featured-text" style={{ padding: 56, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
                   <Tag>VENTURE 01 · FEATURED</Tag>
@@ -158,6 +158,8 @@ export const VenturesGrid = () => {
               <img
                 src="/photos/postpilot-new.png"
                 alt="Post Pilot — create new post"
+                loading="lazy"
+                decoding="async"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top left', display: 'block' }}
               />
             </div>

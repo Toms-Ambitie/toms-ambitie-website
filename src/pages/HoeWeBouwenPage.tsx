@@ -63,7 +63,7 @@ const HoeWeBouwenPage = () => {
       <main id="main-content">
 
         {/* ═══ HERO ════════════════════════════════════════════════ */}
-        <section className="surface-wit" style={{ padding: '140px 0 100px' }}>
+        <section className="surface-wit page-hero" style={{ padding: '140px 0 100px' }}>
           <div className="container-wide">
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'flex-end' }}
               className="hero-two-col">
@@ -122,7 +122,7 @@ const HoeWeBouwenPage = () => {
                       <div className="num" style={{ fontSize: 13, letterSpacing: '0.18em', color: isDark ? 'rgba(244,241,232,0.5)' : 'var(--inkt-60)', marginBottom: 16 }}>
                         STAP {s.n} / 07
                       </div>
-                      <div className="display" style={{
+                      <div className="display werkwijze-step-num" style={{
                         fontSize: 'clamp(120px, 16vw, 240px)',
                         lineHeight: 0.84,
                         color: isDark ? 'var(--volt)' : 'var(--inkt)',
@@ -197,7 +197,7 @@ const HoeWeBouwenPage = () => {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}
               className="responsive-4-to-2">
               {WHAT_YOU_GET.map(([t, d], i) => (
-                <div key={t} className="reveal" style={{ background: 'var(--wit-warm)', padding: 32, borderTop: '4px solid var(--volt)', minHeight: 260 }}>
+                <div key={t} className="reveal" style={{ background: 'var(--wit-warm)', padding: 28, borderTop: '4px solid var(--volt)' }}>
                   <div className="num" style={{ fontSize: 11, letterSpacing: '0.18em', color: 'var(--inkt-40)', marginBottom: 16 }}>0{i + 1} / 04</div>
                   <h4 className="display" style={{ fontSize: 32, lineHeight: 0.95, marginBottom: 16 }}>{t}</h4>
                   <p className="body-sm">{d}</p>

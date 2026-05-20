@@ -11,70 +11,73 @@ const VENTURES = [
     slug: 'post-pilot',
     tag: 'Marketing AI',
     tagline: 'AI doet je content.',
-    long: 'Zichtbaar willen zijn maar geen tijd hebben voor content. Dat kennen we. Post Pilot laat AI het werk doen, zonder dat het klinkt als AI. Jouw toon. Jouw ideeën. Schaalbaar naar meerdere kanalen en talen.',
+    long: 'Zichtbaar willen zijn maar geen tijd hebben voor content. Dat kennen we. Post Pilot laat AI het werk doen, zonder dat het klinkt als AI. Jouw toon. Jouw ideeën. Schaalbaar naar meerdere kanalen.',
     status: 'Live',
     year: '2024',
     url: 'postpilotapp.nl',
+    externalUrl: 'postpilotapp.nl',
     accent: '#00DC93',
     dark: '#0A1820',
-    metrics: [['100+', 'merken'], ['10×', 'content output'], ['NL/EN/DE/FR', 'talen']],
+    metrics: [['1 min', 'per post'], ['LinkedIn', 'eerste kanaal'], ['AI', 'content assistent']],
     images: ['/photos/postpilot-new.png', '/photos/postpilot-historie.png', '/photos/postpilot-analytics.png'],
   },
   {
     name: 'Pactly',
     slug: 'pactly',
-    tag: 'Legal SaaS',
-    tagline: 'Contracten, zonder jurist.',
-    long: 'Wanneer liep je rentevastperiode ook alweer af? Welke NDAs heb je getekend? De meeste ondernemers weten het niet. Contracten stapelen zich op, overzicht ontbreekt. Pactly brengt structuur. Geen jurist nodig.',
+    tag: 'Consumer fintech',
+    tagline: 'Grip op je vaste lasten.',
+    long: 'Energie, telecom, verzekeringen, abonnementen. Vaste lasten die stilletjes doorlopen. De meeste mensen weten niet wat ze betalen, wanneer iets afloopt of waar ze geld laten liggen. Pactly brengt overzicht, helpt besparen en laat jou beslissen.',
     status: 'In ontwikkeling',
     year: '2024',
     url: 'pactly.nl',
     accent: '#CC007E',
     dark: '#1A0010',
-    metrics: [['<5 min', 'tot eerste contract'], ['NL', 'juridisch'], ['AI', 'opstel-engine']],
-    images: [],
+    metrics: [['overzicht', 'vaste lasten'], ['besparen', 'zonder gedoe'], ['controle', 'jij beslist']],
+    images: ['/photos/pactly_venture_visual.png'],
   },
   {
     name: 'OAK Marketing',
     slug: 'oak-marketing',
     tag: 'Marketing bureau',
     tagline: 'Marketing voor groei-MKB.',
-    long: 'OAK stapt tijdelijk in als operator, niet als bureau dat campagnes draait. Wij bouwen systemen, implementeren AI en maken marketing volwassen. Daarna kan een bedrijf verder zonder ons.',
+    long: 'OAK stapt tijdelijk in als operator. Geen bureau dat campagnes draait en vertrekt. Wij bouwen systemen, implementeren AI en maken marketing volwassen. Daarna kan een bedrijf zelf verder.',
     status: 'Live',
     year: '2023',
     url: 'oakmarketing.nl',
     accent: '#1B3A8A',
     dark: '#0A1228',
-    metrics: [['Operator', 'model'], ['AI first', 'aanpak'], ['MKB', 'focus']],
-    images: [],
+    metrics: [['operator', 'tijdelijk in je bedrijf'], ['AI first', 'sneller bouwen'], ['MKB', 'groei en structuur']],
+    images: ['/photos/oak_marketing_venture_visual.png'],
   },
   {
     name: 'Plug and Power',
     slug: 'plug-and-power',
     tag: 'Energy Tech',
     tagline: 'Plug erin. Power eruit.',
-    long: 'Traditionele installateurs begrijpen e-commerce niet. Consumenten willen gewoon stekker erin en klaar. Plug and Power brengt slim laden naar MKB en thuis. Geen gedoe. Plug and play. Letterlijk.',
+    long: 'Traditionele installateurs snappen e-commerce niet. Consumenten willen gewoon stekker erin en klaar. Plug and Power brengt slim laden naar MKB en thuis. Geen gedoe. Plug and play.',
     status: 'In ontwikkeling',
     year: '2024',
     url: 'plugandpower.nl',
+    externalUrl: 'plugandpower.nl',
     accent: '#FFAA00',
     dark: '#1A1408',
-    metrics: [['MKB + B2C', 'markt'], ['Slim', 'load-balancing'], ['NL', 'first']],
-    images: [],
+    metrics: [['MKB + B2C', 'markt'], ['slim', 'advies'], ['NL', 'startmarkt']],
+    images: ['/photos/plug_and_power_venture_visual.png'],
   },
   {
     name: 'EmmaBoekt',
     slug: 'emmaboekt',
     tag: 'AI assistent',
-    tagline: 'Planning zonder gedoe.',
-    long: 'Zelfstandigen besteden te veel tijd aan administratie. Plannen, factureren, afspraken bijhouden. EmmaBoekt is een AI-assistent die dat overneemt. Geen software leren. Gewoon vragen. En het is geregeld.',
+    tagline: 'Boekhouden zonder gedoe.',
+    long: 'Zelfstandigen zijn te veel tijd kwijt aan administratie. Factureren, bonnetjes, overzicht bijhouden. EmmaBoekt neemt dat over met AI. Geen software leren. Gewoon vragen. En het is geregeld.',
     status: 'In ontwikkeling',
     year: '2025',
     url: 'emmaboekt.nl',
+    externalUrl: 'emmaboekt.nl',
     accent: '#9333EA',
     dark: '#0F0A1E',
-    metrics: [['AI first', 'assistent'], ['ZZP + MKB', 'doelgroep'], ['NL', 'markt']],
-    images: [],
+    metrics: [['AI first', 'boekhouden'], ['ZZP + MKB', 'doelgroep'], ['NL', 'startmarkt']],
+    images: ['/photos/emmaboekt_venture_visual.png'],
   },
 ];
 
@@ -140,16 +143,18 @@ const VentureSection = ({ v, index }: { v: typeof VENTURES[0]; index: number }) 
               >
                 Bekijk venture →
               </Link>
-              <a
-                href={`https://${v.url}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(244,241,232,0.5)', textDecoration: 'none', transition: 'color .2s' }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(244,241,232,0.9)'; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(244,241,232,0.5)'; }}
-              >
-                {v.url} ↗
-              </a>
+              {v.externalUrl && (
+                <a
+                  href={`https://${v.externalUrl}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(244,241,232,0.5)', textDecoration: 'none', transition: 'color .2s' }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(244,241,232,0.9)'; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(244,241,232,0.5)'; }}
+                >
+                  {v.externalUrl} ↗
+                </a>
+              )}
             </div>
           </div>
 
@@ -245,7 +250,7 @@ const VenturesPage = () => {
               <span>Waar we nu<br />aan bouwen.</span>
             </h1>
             <p className="lead reveal" style={{ marginTop: 48, fontSize: 22, maxWidth: 640 }}>
-              Geen losse ideeën. Wel ventures gebouwd vanuit echte frustratie, schaalbare markten en gedrag dat verandert. Sommige groeien uit tot zelfstandige bedrijven. Andere verdwijnen weer. Dat is geen risico van het model. Dat IS het model.
+              Geen losse ideeën. Vijf ventures gebouwd vanuit echte frustratie, behoefte of marktkans. Post Pilot en OAK Marketing zijn live. Pactly, Plug and Power en EmmaBoekt zijn in actieve ontwikkeling.
             </p>
 
             {/* Quick-jump grid */}

@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import ScrollToTop from "./components/ScrollToTop";
 import { useGtmPageView } from "./hooks/useGtmPageView";
+import { Analytics } from "@vercel/analytics/react";
 
 // Critical route — eagerly loaded for fastest FCP
 import Index from "./pages/Index.tsx";
@@ -62,6 +63,7 @@ const App = () => (
       <BrowserRouter>
         <AppRoutes />
       </BrowserRouter>
+      <Analytics />
     </TooltipProvider>
   </QueryClientProvider>
 );

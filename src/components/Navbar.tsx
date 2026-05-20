@@ -72,7 +72,7 @@ export const Navbar = () => {
       Ga naar inhoud
     </a>
     <nav
-      className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-8"
+      className="fixed top-0 inset-x-0 z-50"
       style={{
         height: 64,
         background: scrolled
@@ -84,6 +84,7 @@ export const Navbar = () => {
         transition: "background 0.2s ease, border-color 0.2s ease",
       }}
     >
+      <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 32px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64, width: "100%" }}>
       <Link to="/" className="flex items-center gap-3 shrink-0" aria-label="Toms Ambitie — Home">
         <LogoDark />
         <span
@@ -186,6 +187,7 @@ export const Navbar = () => {
           </div>
         </div>
       )}
+      </div>
     </nav>
     </>
   );

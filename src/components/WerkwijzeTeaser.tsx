@@ -1,18 +1,36 @@
 import { Link } from "react-router-dom";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
-const steps = [
-  { num: "01", title: "PROBLEEM", desc: "We voelen het zelf. Frustratie in werk, leven of een bestaand venture." },
-  { num: "02", title: "INTERNE TOOL", desc: "Eenvoudigste werkende versie. Eén kernfunctie, geen featurelijst." },
-  { num: "03", title: "TESTEN IN DE PRAKTIJK", desc: "Wij gebruiken het dagelijks. Werkt het intern niet, dan stopt het hier." },
-  { num: "04", title: "EERSTE GEBRUIKERS", desc: "Mensen om ons heen die het probleem herkennen. Geen marketing, geen launch." },
-  { num: "05", title: "VENTURE OF STOPPEN", desc: "Retentie en betalende klanten? Schalen. Anders: stoppen, leren, volgende." },
+const columns = [
+  {
+    label: "PROBLEEM",
+    steps: [
+      { num: "01", title: "We voelen het zelf", desc: "Frustratie vanuit eigen werk, leven of een bestaand venture — geen derdehands ideeën." },
+      { num: "02", title: "We valideren intern", desc: "Is het probleem herkenbaar? We toetsen met mensen om ons heen vóór we één regel code schrijven." },
+      { num: "03", title: "We scherpen de propositie", desc: "Niet brainstormen tot we erbij neervallen. Eén duidelijke zin: voor wie, welk probleem, waarom nu." },
+    ],
+  },
+  {
+    label: "OPLOSSING",
+    steps: [
+      { num: "04", title: "We bouwen de MVP", desc: "Eenvoudigste werkende versie. Eén kernfunctie, geen featurelijst, geen perfectie." },
+      { num: "05", title: "We testen in de praktijk", desc: "Wij gebruiken het dagelijks. Werkt het intern niet, dan stopt het hier. Geen uitzonderingen." },
+      { num: "06", title: "We halen eerste gebruikers", desc: "Mensen om ons heen die het probleem herkennen. Geen marketing, geen launch, geen persberichten." },
+    ],
+  },
+  {
+    label: "PLATFORM",
+    steps: [
+      { num: "07", title: "Venture of stoppen", desc: "Retentie en betalende klanten? We schalen. Anders: stoppen, leren en verder naar het volgende probleem." },
+    ],
+    note: "Niet elk idee wordt een venture. Dat is de bedoeling.",
+  },
 ];
 
 export const WerkwijzeTeaser = () => {
   return (
     <section style={{ background: "#F4F1E8", padding: "120px 0" }}>
-      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}>
+      <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 32px" }}>
         <ScrollReveal>
           <p
             className="font-mono uppercase"
@@ -33,14 +51,15 @@ export const WerkwijzeTeaser = () => {
             <h2
               className="font-display"
               style={{
-                fontSize: "clamp(52px, 7vw, 104px)",
-                lineHeight: 0.88,
+                fontSize: "clamp(44px, 6vw, 96px)",
+                lineHeight: 0.9,
                 letterSpacing: "-0.01em",
                 color: "#0E0E0C",
               }}
             >
-              VAN IDEE<br />
-              NAAR VENTURE.
+              VAN PROBLEEM<br />
+              NAAR PLATFORM.<br />
+              <span style={{ color: "rgba(14,14,12,0.3)" }}>IN ZEVEN STAPPEN.<br />MAX ZES WEKEN.</span>
             </h2>
             <Link
               to="/hoe-we-bouwen"
@@ -64,45 +83,73 @@ export const WerkwijzeTeaser = () => {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
               gap: 2,
               background: "#C0BDB0",
             }}
           >
-            {steps.map((step, i) => (
+            {columns.map((col) => (
               <div
-                key={step.num}
-                style={{
-                  background: "#F4F1E8",
-                  padding: "32px 28px",
-                  borderTop: i === 0 ? "3px solid #C8F000" : "3px solid transparent",
-                  transition: "border-color 0.2s ease",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.borderTopColor = "#C8F000";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.borderTopColor = i === 0 ? "#C8F000" : "transparent";
-                }}
+                key={col.label}
+                style={{ background: "#F4F1E8", padding: "40px 36px 36px" }}
               >
                 <div
-                  className="font-display"
-                  style={{ fontSize: 48, color: "rgba(14,14,12,0.1)", lineHeight: 1, marginBottom: 16 }}
-                >
-                  {step.num}
-                </div>
-                <div
                   className="font-mono uppercase"
-                  style={{ fontSize: 11, letterSpacing: "0.12em", color: "#0E0E0C", fontWeight: 700, marginBottom: 12 }}
+                  style={{
+                    fontSize: 10,
+                    letterSpacing: "0.2em",
+                    color: "#C8F000",
+                    background: "#0E0E0C",
+                    display: "inline-block",
+                    padding: "5px 10px",
+                    marginBottom: 32,
+                  }}
                 >
-                  {step.title}
+                  {col.label}
                 </div>
-                <p
-                  className="font-sans"
-                  style={{ fontSize: 14, color: "rgba(14,14,12,0.6)", lineHeight: 1.6 }}
-                >
-                  {step.desc}
-                </p>
+
+                <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+                  {col.steps.map((step) => (
+                    <div key={step.num} style={{ display: "flex", gap: 16 }}>
+                      <div
+                        className="font-display"
+                        style={{ fontSize: 28, color: "rgba(14,14,12,0.12)", lineHeight: 1, flexShrink: 0, width: 36 }}
+                      >
+                        {step.num}
+                      </div>
+                      <div>
+                        <div
+                          className="font-mono uppercase"
+                          style={{ fontSize: 10, letterSpacing: "0.12em", color: "#0E0E0C", fontWeight: 700, marginBottom: 6 }}
+                        >
+                          {step.title}
+                        </div>
+                        <p
+                          className="font-sans"
+                          style={{ fontSize: 14, color: "rgba(14,14,12,0.6)", lineHeight: 1.65 }}
+                        >
+                          {step.desc}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {col.note && (
+                  <p
+                    className="font-mono"
+                    style={{
+                      fontSize: 11,
+                      color: "rgba(14,14,12,0.35)",
+                      marginTop: 32,
+                      paddingTop: 24,
+                      borderTop: "1px solid rgba(14,14,12,0.1)",
+                      fontStyle: "italic",
+                    }}
+                  >
+                    {col.note}
+                  </p>
+                )}
               </div>
             ))}
           </div>

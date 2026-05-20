@@ -70,10 +70,18 @@ const AlumniTicker = () => (
   </div>
 );
 
+const dutchNumbers: Record<number, string> = {
+  1: "ÉÉN", 2: "TWEE", 3: "DRIE", 4: "VIER", 5: "VIJF",
+  6: "ZES", 7: "ZEVEN", 8: "ACHT", 9: "NEGEN", 10: "TIEN",
+};
+
 export const VenturesGrid = () => {
+  const count = ventures.length;
+  const dutchCount = dutchNumbers[count] ?? String(count);
+
   return (
     <section style={{ background: "#FBFAF6", padding: "120px 0" }}>
-      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}>
+      <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 32px" }}>
         <ScrollReveal>
           <div className="flex items-baseline gap-3 mb-6">
             <span
@@ -88,13 +96,14 @@ export const VenturesGrid = () => {
             className="font-display"
             style={{ fontSize: "clamp(52px, 7vw, 104px)", lineHeight: 0.88, letterSpacing: "-0.01em", color: "#0E0E0C" }}
           >
-            HET BESTE MOET<br />NOG KOMEN.
+            {dutchCount} EIGEN BEDRIJVEN.<br />
+            <span style={{ color: "rgba(14,14,12,0.35)" }}>ALLEMAAL VANUIT ECHTE<br />FRUSTRATIE ONTSTAAN.</span>
           </h2>
           <p
             className="font-sans"
             style={{ fontSize: 18, color: "rgba(14,14,12,0.6)", marginTop: 20, marginBottom: 56, maxWidth: 560, lineHeight: 1.6 }}
           >
-            Vijf ventures die nu draaien. Gebouwd vanuit echte problemen, duidelijke markten en schaalbare modellen.
+            Gebouwd vanuit echte problemen, duidelijke markten en schaalbare modellen.
           </p>
         </ScrollReveal>
 
@@ -193,7 +202,7 @@ export const VenturesGrid = () => {
           })}
         </div>
 
-        <div style={{ marginTop: 48, display: "flex", justifyContent: "center" }}>
+        <div style={{ marginTop: 48, display: "flex", justifyContent: "flex-start" }}>
           <Link
             to="/ventures"
             className="font-mono font-bold uppercase inline-flex items-center justify-center hover:bg-ink hover:text-paper transition-colors"

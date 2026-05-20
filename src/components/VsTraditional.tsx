@@ -1,27 +1,27 @@
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 const traditional = [
-  "Bureaus met lagen en accountmanagers",
-  "Lange trajecten, trage besluitvorming",
-  "Advies zonder skin in the game",
-  "Focus op uren, niet op resultaat",
-  "Externe uitvoerders die weglopen",
-  "Complexe contracten, vage deliverables",
+  "Externe adviseurs zonder eigen skin in the game",
+  "Lange trajecten met trage besluitvorming",
+  "Bureaulagen tussen idee en uitvoering",
+  "Focus op uren en rapportages, niet op resultaat",
+  "Pitchdecks die de werkelijkheid overschatten",
+  "Afhankelijk van externe financiering om te starten",
 ];
 
 const ourWay = [
-  "Directe lijn met de oprichter",
-  "Van idee naar live in maximaal 6 weken",
-  "Wij investeren mee — echte betrokkenheid",
-  "Focus op groei, marktbewijs en schaal",
-  "Vaste kern, aangescherpte schil",
-  "Heldere afspraken, concrete output",
+  "Oprichter bouwt mee — altijd eigen skin in the game",
+  "Van probleem naar platform in maximaal 6 weken",
+  "Directe lijn: geen lagen, geen accountmanagers",
+  "Focus op marktbewijs, retentie en schaal",
+  "We gebruiken het zelf — eerst intern gevalideerd",
+  "Geen externe investeerders nodig om te starten",
 ];
 
 export const VsTraditional = () => {
   return (
     <section style={{ background: "#0E0E0C", padding: "120px 0" }}>
-      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}>
+      <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 32px" }}>
         <ScrollReveal>
           <p
             className="font-mono uppercase"
@@ -39,8 +39,9 @@ export const VsTraditional = () => {
               marginBottom: 64,
             }}
           >
-            ANDERS DAN<br />
-            <span style={{ color: "#C8F000" }}>DE REST.</span>
+            WE ZIJN GEEN<br />
+            <span style={{ color: "#C8F000" }}>KLASSIEKE</span><br />
+            VENTURE BUILDER.
           </h2>
         </ScrollReveal>
 
@@ -59,7 +60,7 @@ export const VsTraditional = () => {
                 className="font-mono uppercase"
                 style={{ fontSize: 10, letterSpacing: "0.2em", color: "#FF4A00", marginBottom: 32 }}
               >
-                Traditioneel bureau
+                KLASSIEKE VENTURE BUILDER
               </div>
               <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 16 }}>
                 {traditional.map((item) => (

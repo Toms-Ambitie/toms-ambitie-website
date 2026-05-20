@@ -11,13 +11,13 @@ const MILESTONES = [
   { y: '2015–2023', t: 'Parallel bouwen', d: 'Verschillende bureaus en eerste eigen ventures naast elkaar.' },
   { y: '2023', t: 'AI-first', d: 'Definitieve omslag. AI niet als experiment, maar als werkwijze.' },
   { y: '2024', t: 'Post Pilot + Pactly', d: 'Twee nieuwe ventures: marketing AI en legal SaaS.' },
-  { y: 'Nu', t: '4 actieve ventures', d: 'Post Pilot, Pactly, OAK Marketing, Plug and Power. Volgende staat klaar.' },
+  { y: 'Nu', t: '5 actieve ventures', d: 'Post Pilot, Pactly, OAK Marketing, Plug and Power, EmmaBoekt. Volgende staat klaar.' },
 ];
 
 const VALUES = [
   { t: 'Oplossing eerst', d: 'We bouwen wat we zelf nodig hebben. De oplossing is altijd belangrijker dan de business case.' },
   { t: 'Altijd onderbouwd', d: 'Elk idee krijgt een plan. Nooit roekeloos. Maar ook nooit zo lang gepland dat het niet gebeurt.' },
-  { t: 'AI als versneller', d: 'Niet als experiment — als werkwijze. Snelheid van een team van tien.' },
+  { t: 'AI als versneller', d: 'Niet als experiment, maar als werkwijze. Snelheid van een team van tien.' },
   { t: 'Samen bouwen', d: 'Het liefst met partners, maar ook solo als het moet. Geen ego.' },
   { t: 'Eerlijk', d: 'Over wat werkte. Maar vooral ook over wat niet werkte.' },
 ];
@@ -50,7 +50,7 @@ const OverOnsPage = () => {
               <span>Een venture club.<br />Een vaste kern.</span>
             </h1>
             <p className="lead reveal" style={{ marginTop: 48, fontSize: 22, maxWidth: 720 }}>
-              Toms Ambitie is geen agency, geen consultancy, geen fonds. Het is een actief systeem dat eigen bedrijven bouwt — vanuit een vaste kern, aangevuld met top-specialisten waar nodig.
+              Toms Ambitie is geen agency, geen consultancy, geen fonds. Een actief systeem dat eigen bedrijven bouwt. Vanuit een vaste kern, aangevuld met specialisten waar nodig.
             </p>
           </div>
         </section>
@@ -129,13 +129,13 @@ const OverOnsPage = () => {
                   17 jaar bouwen.<br /><span style={{ color: 'var(--inkt-40)' }}>Eén constante: doen.</span>
                 </h2>
                 <p className="lead" style={{ marginTop: 32, fontSize: 22 }}>
-                  "Marketing is mijn superkracht. AI is mijn versneller. Bouwen is mijn passie."
+                  "Elke dag nieuwe ideeën. En dan ook echt bouwen."
                 </p>
                 <p className="body-lg" style={{ marginTop: 24, color: 'var(--inkt-80)' }}>
-                  Tom richtte in 2008 Aardbei Communicatie op. Verkocht het bureau in 2015. Bouwt sindsdien aan eigen ventures — met dezelfde discipline, maar nu met AI als versneller.
+                  Tom richtte in 2008 Aardbei Communicatie op. Verkocht het bureau in 2015. Sindsdien bouwt hij eigen ventures, met dezelfde discipline en AI als versneller.
                 </p>
                 <p className="body-lg" style={{ marginTop: 16, color: 'var(--inkt-80)' }}>
-                  Tom bedenkt elke dag nieuwe ideeën. Als iets aanspreekt, maakt hij een plan. Altijd onderbouwd, nooit roekeloos. De ventures van vandaag zijn het gevolg van dat ritme.
+                  Ideeën worden pas interessant zodra iemand ze gebruikt. Niet eindeloos brainstormen. Niet vergaderen. Gewoon bouwen.
                 </p>
                 <div style={{ marginTop: 40, display: 'flex', gap: 32, flexWrap: 'wrap' }}>
                   <a href="mailto:tom@tomsambitie.nl" className="btn-link">tom@tomsambitie.nl →</a>
@@ -156,7 +156,7 @@ const OverOnsPage = () => {
               <span>"We hebben toiletborstels<br />verhuurd. Serieus."</span>
             </h2>
             <p className="lead" style={{ marginTop: 32, color: 'rgba(244,241,232,0.7)', maxWidth: 640, marginInline: 'auto' }}>
-              Een van Tom's eerste ondernemingen — vergeet niet, dit was vóór Aardbei, vóór Toms Ambitie. Het was gek. Het werkte (een beetje). En het leerde een belangrijke les: ondernemen is doen, niet praten.
+              Een van Tom's eerste ondernemingen, vóór Aardbei, vóór Toms Ambitie. Het was gek. Het werkte een beetje. En het leerde één les: ondernemen is doen, niet praten.
             </p>
           </div>
         </section>
@@ -209,7 +209,7 @@ const OverOnsPage = () => {
               </div>
               <div style={{ paddingTop: 24 }}>
                 <p className="lead">
-                  We werken hybride: een vaste kern die elk venture mee draagt, aangevuld met top-specialisten op maat. Snel waar het kan, grondig waar het moet.
+                  We werken met builders, developers, marketeers, designers en operators. Soms fulltime. Soms tijdelijk. Maar altijd mensen die sneller willen bouwen dan traditionele bedrijven bewegen.
                 </p>
               </div>
             </div>
@@ -232,8 +232,8 @@ const OverOnsPage = () => {
             </div>
 
             <p className="body-lg" style={{ marginTop: 48, maxWidth: 720, color: 'var(--inkt-80)' }}>
-              Werk je als specialist (development, design, marketing, legal) en interesseert deze werkwijze je?{' '}
-              <Link to="/meebouwen" style={{ borderBottom: '1px solid var(--inkt)', color: 'var(--inkt)' }}>Neem contact op</Link>.
+              Developer, designer, marketeer of specialist? Als je sneller wilt bouwen dan traditionele bedrijven bewegen,{' '}
+              <Link to="/meebouwen" style={{ borderBottom: '1px solid var(--inkt)', color: 'var(--inkt)' }}>praten we graag</Link>.
             </p>
           </div>
         </section>
@@ -258,7 +258,7 @@ const OverOnsPage = () => {
           <div className="container-narrow">
             <h2 className="h2">Bouw mee.</h2>
             <p className="lead" style={{ marginTop: 24 }}>
-              Partner, ondernemer, specialist — we zoeken altijd nieuwe mensen om mee te bouwen.
+              Partner, ondernemer, specialist. Wij zoeken altijd mensen om mee te bouwen.
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginTop: 40, flexWrap: 'wrap' }}>
               <Link to="/meebouwen" className="btn btn-volt">Start gesprek →</Link>

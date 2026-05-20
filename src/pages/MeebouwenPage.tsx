@@ -51,10 +51,10 @@ const MeebouwenPage = () => {
               <span className="eyebrow"><span style={{ marginRight: 8 }}>05</span>Contact</span>
             </div>
             <h1 className="clip-reveal display" style={{ fontSize: 'clamp(80px, 11vw, 168px)', lineHeight: 0.84, marginTop: 32, letterSpacing: '-0.02em' }}>
-              <span>Bouw mee.</span>
+              <span>Doe mee.<br />Op jouw manier.</span>
             </h1>
             <p className="lead reveal" style={{ marginTop: 48, fontSize: 22, maxWidth: 640 }}>
-              Heb je een idee, een probleem dat een bedrijf verdient, of wil je gewoon eens sparren? Reactie meestal binnen 24 uur.
+              Toms Ambitie bouwt ventures vanuit echte problemen, gedrag en schaalbare ideeën. Sommige mensen investeren. Anderen bouwen mee. Soms ontstaat daaruit een compleet nieuwe venture.
             </p>
           </div>
         </section>
@@ -89,7 +89,7 @@ const MeebouwenPage = () => {
 
                   {/* Topic picker */}
                   <div style={{ marginBottom: 32 }}>
-                    <label className="meta" style={{ display: 'block', marginBottom: 12 }}>Onderwerp</label>
+                    <label className="meta" style={{ display: 'block', marginBottom: 12 }}>Waar gaat het over?</label>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                       {TOPICS.map((t) => (
                         <button
@@ -167,8 +167,8 @@ const MeebouwenPage = () => {
                   Voor klantwerk: bekijk{' '}
                   <Link to="/ventures#oak-marketing" style={{ color: 'var(--volt)', borderBottom: '1px solid var(--volt)' }}>
                     OAK Marketing
-                  </Link>{' '}
-                  — dat is waar we voor klanten werken.
+                  </Link>
+                  . Dat is waar we voor klanten werken.
                 </p>
               </div>
             </aside>

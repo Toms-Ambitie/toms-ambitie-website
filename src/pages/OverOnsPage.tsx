@@ -1,571 +1,275 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
-import { ScrollReveal } from "@/components/ScrollReveal";
-import { applySEO } from "@/lib/seo";
-import founderImg from "@/assets/founder.webp";
+import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { Navbar } from '@/components/Navbar';
+import { Footer } from '@/components/Footer';
+import { useReveal } from '@/hooks/useReveal';
+import { applySEO } from '@/lib/seo';
 
-/* ─── Data ─────────────────────────────────────────────────────────── */
-
-const principles = [
-  {
-    title: "PROBLEM-FIRST",
-    body: "We beginnen nooit met een businessplan. We beginnen met iets wat we zelf missen.",
-  },
-  {
-    title: "AI ALS VERSNELLER",
-    body: "We gebruiken AI omdat het ons sneller maakt — niet als marketingterm.",
-  },
-  {
-    title: "ALTIJD ONDERBOUWD",
-    body: "Geen aannames. Geen buikgevoel. Iedere stap wordt onderbouwd met data of bewijs.",
-  },
-  {
-    title: "EERLIJK OVER RESULTATEN",
-    body: "Stoppen is ook een beslissing. Snel stoppen is goedkoper dan langzaam falen.",
-  },
-  {
-    title: "INTERN GETEST",
-    body: "Als wij het niet dagelijks gebruiken, lanceren we het niet. Punt. Geen uitzonderingen.",
-  },
+const MILESTONES = [
+  { y: '2008', t: 'Aardbei Communicatie', d: 'Opgericht in Nijverdal door Tom Mulder met partners. Eerste bureau.' },
+  { y: '2015', t: 'Exit + start TA', d: 'Aardbei verkocht. Het startschot voor Toms Ambitie.' },
+  { y: '2015–2023', t: 'Parallel bouwen', d: 'Verschillende bureaus en eerste eigen ventures naast elkaar.' },
+  { y: '2023', t: 'AI-first', d: 'Definitieve omslag. AI niet als experiment, maar als werkwijze.' },
+  { y: '2024', t: 'Post Pilot + Pactly', d: 'Twee nieuwe ventures: marketing AI en legal SaaS.' },
+  { y: 'Nu', t: '4 actieve ventures', d: 'Post Pilot, Pactly, OAK Marketing, Plug and Power. Volgende staat klaar.' },
 ];
 
-const timeline = [
-  { year: "2008", label: "Notabilis", detail: "Drie ondernemers aan de keukentafel. Communicatiebureau vanuit de regio." },
-  { year: "2012", label: "Aardbei", detail: "Gerebrand naar Aardbei Communicatie. Team van 10." },
-  { year: "2015", label: "Exit", detail: "Aardbei verkocht. Nieuwe fase. FreshGuys als tussenstap." },
-  { year: "2016", label: "LED-IBC", detail: "Venture: grootste verhuurder van verlichte IBC's in de Benelux." },
-  { year: "2017", label: "Toms Ambitie", detail: "Van bureau-denken naar venture-denken." },
-  { year: "NU", label: "Venture Club", detail: "Post Pilot, Pactly, OAK Marketing, Plug and Power.", pulse: true },
+const VALUES = [
+  { t: 'Oplossing eerst', d: 'We bouwen wat we zelf nodig hebben. De oplossing is altijd belangrijker dan de business case.' },
+  { t: 'Altijd onderbouwd', d: 'Elk idee krijgt een plan. Nooit roekeloos. Maar ook nooit zo lang gepland dat het niet gebeurt.' },
+  { t: 'AI als versneller', d: 'Niet als experiment — als werkwijze. Snelheid van een team van tien.' },
+  { t: 'Samen bouwen', d: 'Het liefst met partners, maar ook solo als het moet. Geen ego.' },
+  { t: 'Eerlijk', d: 'Over wat werkte. Maar vooral ook over wat niet werkte.' },
 ];
-
-/* ─── Page ──────────────────────────────────────────────────────────── */
 
 const OverOnsPage = () => {
+  const rootRef = useRef<HTMLDivElement>(null);
+  useReveal(rootRef);
+
   useEffect(() => {
     applySEO({
-      title: "Over ons. Toms Ambitie",
-      description:
-        "De oorsprong van Toms Ambitie. Een venture club uit Zwolle die bedrijven bouwt vanuit gedrag, frustratie en ondernemende nieuwsgierigheid.",
-      canonical: "https://www.toms-ambitie.nl/over-ons",
+      title: 'Over ons — Toms Ambitie',
+      description: 'Een venture club. Een vaste kern. Tom Mulder bouwt eigen bedrijven vanuit echte frustratie — met AI als versneller.',
+      canonical: 'https://www.toms-ambitie.nl/over-ons',
     });
   }, []);
 
   return (
-    <main style={{ minHeight: "100vh", background: "#F4F1E8" }}>
+    <div ref={rootRef} style={{ background: 'var(--wit-warm)' }}>
       <Navbar />
+      <main id="main-content">
 
-      {/* ── HERO — light, two-column ────────────────────────── */}
-      <section style={{ background: "#F4F1E8", paddingTop: 64 }}>
-        <div
-          style={{
-            maxWidth: 1440,
-            margin: "0 auto",
-            padding: "80px 32px 96px",
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 64,
-            alignItems: "center",
-          }}
-          className="over-ons-hero-grid"
-        >
-          <div>
-            <p
-              className="font-mono uppercase"
-              style={{ fontSize: 11, letterSpacing: "0.18em", color: "rgba(14,14,12,0.4)", marginBottom: 40 }}
-            >
-              — Over ons
-            </p>
-            <h1
-              className="font-display"
-              style={{
-                fontSize: "clamp(56px, 7vw, 112px)",
-                lineHeight: 0.88,
-                color: "#0E0E0C",
-                marginBottom: 32,
-              }}
-            >
-              EEN VENTURE CLUB.<br />
-              <span style={{ color: "rgba(14,14,12,0.3)" }}>EEN VASTE KERN.</span>
+        {/* ═══ HERO ════════════════════════════════════════════════ */}
+        <section className="surface-wit" style={{ padding: '140px 0 100px' }}>
+          <div className="container-wide">
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
+              <span className="volt-dot" />
+              <span className="eyebrow"><span style={{ marginRight: 8 }}>03</span>Over ons</span>
+            </div>
+            <h1 className="clip-reveal display" style={{ fontSize: 'clamp(80px, 11vw, 168px)', lineHeight: 0.84, marginTop: 32, letterSpacing: '-0.02em' }}>
+              <span>Een venture club.<br />Een vaste kern.</span>
             </h1>
-            <p
-              className="font-sans"
-              style={{ fontSize: 18, lineHeight: 1.65, color: "rgba(14,14,12,0.65)", maxWidth: 480 }}
-            >
-              Toms Ambitie is geen traditioneel bureau. Wel een vaste kern van builders,
-              marketeers, developers en specialisten die per venture samenkomen.
+            <p className="lead reveal" style={{ marginTop: 48, fontSize: 22, maxWidth: 720 }}>
+              Toms Ambitie is geen agency, geen consultancy, geen fonds. Het is een actief systeem dat eigen bedrijven bouwt — vanuit een vaste kern, aangevuld met top-specialisten waar nodig.
             </p>
           </div>
+        </section>
 
-          {/* Right: team photo */}
-          <div style={{ position: "relative" }}>
-            <img
-              src={founderImg}
-              alt="Tom Mulder — Toms Ambitie"
-              style={{
-                width: "100%",
-                aspectRatio: "4/3",
-                objectFit: "cover",
-                objectPosition: "top",
-                filter: "grayscale(30%)",
-                display: "block",
-              }}
-              loading="eager"
-            />
-            <div
-              style={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                right: 0,
-                height: "40%",
-                background: "linear-gradient(transparent, rgba(14,14,12,0.6))",
-              }}
-            />
-            <div style={{ position: "absolute", bottom: 20, left: 24 }}>
-              <div className="font-display" style={{ fontSize: 22, color: "#F4F1E8", lineHeight: 1 }}>Tom Mulder</div>
-              <div className="font-mono uppercase" style={{ fontSize: 9, color: "rgba(255,255,255,0.6)", letterSpacing: "0.14em", marginTop: 4 }}>
-                Oprichter · Venture Club · Zwolle
+        {/* ═══ STUDIO PANORAMA ═════════════════════════════════════ */}
+        <section className="surface-wit" style={{ paddingBottom: 100 }}>
+          <div className="container-wide">
+            <div className="reveal" style={{ position: 'relative', overflow: 'hidden', background: 'var(--inkt)' }}>
+              <img
+                src="/photos/studio-team-bw.jpg"
+                alt="Studio Zwolle"
+                style={{ width: '100%', aspectRatio: '21/9', objectFit: 'cover', display: 'block' }}
+              />
+              <div style={{ position: 'absolute', bottom: 20, left: 20, padding: '10px 16px', background: 'var(--wit-warm)', display: 'flex', alignItems: 'center', gap: 10 }}>
+                <span style={{ width: 7, height: 7, background: 'var(--volt)' }} />
+                <span className="meta">STUDIO ZWOLLE · 2025</span>
+              </div>
+              <div style={{ position: 'absolute', top: 20, right: 20, padding: '10px 16px', background: 'rgba(14,14,12,0.7)', backdropFilter: 'blur(10px)', color: 'var(--wit-warm)' }}>
+                <span className="meta" style={{ color: 'var(--wit-warm)' }}>FIG.01 · DE WERKVLOER</span>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ── VIJF PRINCIPES ───────────────────────────────────── */}
-      <section style={{ background: "#FBFAF6", padding: "96px 0" }}>
-        <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 32px" }}>
-          <ScrollReveal>
-            <h2
-              className="font-display"
-              style={{
-                fontSize: "clamp(44px, 6vw, 88px)",
-                lineHeight: 0.9,
-                color: "#0E0E0C",
-                marginBottom: 8,
-              }}
-            >
-              VIJF PRINCIPES.
-            </h2>
-            <h2
-              className="font-display"
-              style={{
-                fontSize: "clamp(44px, 6vw, 88px)",
-                lineHeight: 0.9,
-                color: "rgba(14,14,12,0.25)",
-                marginBottom: 56,
-              }}
-            >
-              EEN WERKWIJZE. EEN RICHTING.
-            </h2>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.1}>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-                gap: 2,
-                background: "#C0BDB0",
-              }}
-            >
-              {principles.map((p) => (
-                <div
-                  key={p.title}
-                  style={{ background: "#FBFAF6", padding: "32px 24px", borderTop: "3px solid #C8F000" }}
-                >
-                  <div
-                    className="font-mono uppercase"
-                    style={{ fontSize: 10, letterSpacing: "0.14em", color: "#0E0E0C", fontWeight: 700, marginBottom: 16 }}
-                  >
-                    {p.title}
-                  </div>
-                  <p className="font-sans" style={{ fontSize: 14, lineHeight: 1.65, color: "rgba(14,14,12,0.6)" }}>
-                    {p.body}
-                  </p>
+        {/* ═══ VALUES — 5-col ══════════════════════════════════════ */}
+        <section className="surface-papier" style={{ padding: '160px 0' }}>
+          <div className="container-wide">
+            <div style={{ marginBottom: 80, textAlign: 'center' }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
+                <span className="volt-dot" />
+                <span className="eyebrow"><span style={{ marginRight: 8 }}>01</span>Kernwaarden</span>
+              </div>
+              <h2 className="h2" style={{ marginTop: 24 }}>
+                Vijf principes.<br /><span style={{ color: 'var(--inkt-40)' }}>Eén werkwijze. Eén richting.</span>
+              </h2>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 16 }}
+              className="responsive-4-to-2">
+              {VALUES.map((p, i) => (
+                <div key={p.t} className="reveal" style={{ background: 'var(--wit-warm)', padding: 28, borderTop: '3px solid var(--volt)', minHeight: 260 }}>
+                  <div className="num" style={{ fontSize: 11, letterSpacing: '0.18em', color: 'var(--inkt-40)', marginBottom: 16 }}>0{i + 1} / 05</div>
+                  <h4 className="display" style={{ fontSize: 28, lineHeight: 0.95, marginBottom: 12 }}>{p.t}</h4>
+                  <p className="body-sm">{p.d}</p>
                 </div>
               ))}
             </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ── 17 JAAR BOUWEN ───────────────────────────────────── */}
-      <section style={{ background: "#F4F1E8", padding: "120px 0" }}>
-        <div
-          style={{
-            maxWidth: 1440,
-            margin: "0 auto",
-            padding: "0 32px",
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 80,
-            alignItems: "start",
-          }}
-          className="over-ons-tom-grid"
-        >
-          {/* Left: Tom photo */}
-          <div style={{ position: "relative" }}>
-            <img
-              src={founderImg}
-              alt="Tom Mulder"
-              style={{
-                width: "100%",
-                aspectRatio: "3/4",
-                objectFit: "cover",
-                objectPosition: "top",
-                filter: "grayscale(100%)",
-                display: "block",
-              }}
-              loading="lazy"
-            />
           </div>
+        </section>
 
-          {/* Right: text */}
-          <div>
-            <p
-              className="font-mono uppercase"
-              style={{ fontSize: 11, letterSpacing: "0.18em", color: "rgba(14,14,12,0.4)", marginBottom: 32 }}
-            >
-              — De achtergrond
+        {/* ═══ FOUNDER SPOTLIGHT ═══════════════════════════════════ */}
+        <section className="surface-wit" style={{ padding: '160px 0' }}>
+          <div className="container-wide">
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 96, alignItems: 'center' }}
+              className="hero-two-col">
+              {/* Photo */}
+              <div className="reveal" style={{ position: 'relative', overflow: 'hidden', background: 'var(--inkt)' }}>
+                <img
+                  src="/photos/tom-portrait-dark.jpg"
+                  alt="Tom Mulder"
+                  style={{ width: '100%', aspectRatio: '4/5', objectFit: 'cover', display: 'block' }}
+                />
+                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: 24, background: 'linear-gradient(to top, rgba(14,14,12,0.85), transparent)' }}>
+                  <div style={{ width: 32, height: 3, background: 'var(--volt)', marginBottom: 8 }} />
+                  <div className="display" style={{ fontSize: 36, lineHeight: 1, color: 'var(--wit-warm)' }}>Tom Mulder</div>
+                  <div className="meta" style={{ color: 'rgba(244,241,232,0.7)', marginTop: 4 }}>FOUNDER · TOMS AMBITIE</div>
+                </div>
+              </div>
+
+              {/* Text */}
+              <div>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
+                  <span className="volt-dot" />
+                  <span className="eyebrow"><span style={{ marginRight: 8 }}>02</span>De Founder</span>
+                </div>
+                <h2 className="h2" style={{ marginTop: 24 }}>
+                  17 jaar bouwen.<br /><span style={{ color: 'var(--inkt-40)' }}>Eén constante: doen.</span>
+                </h2>
+                <p className="lead" style={{ marginTop: 32, fontSize: 22 }}>
+                  "Marketing is mijn superkracht. AI is mijn versneller. Bouwen is mijn passie."
+                </p>
+                <p className="body-lg" style={{ marginTop: 24, color: 'var(--inkt-80)' }}>
+                  Tom richtte in 2008 Aardbei Communicatie op. Verkocht het bureau in 2015. Bouwt sindsdien aan eigen ventures — met dezelfde discipline, maar nu met AI als versneller.
+                </p>
+                <p className="body-lg" style={{ marginTop: 16, color: 'var(--inkt-80)' }}>
+                  Tom bedenkt elke dag nieuwe ideeën. Als iets aanspreekt, maakt hij een plan. Altijd onderbouwd, nooit roekeloos. De ventures van vandaag zijn het gevolg van dat ritme.
+                </p>
+                <div style={{ marginTop: 40, display: 'flex', gap: 32, flexWrap: 'wrap' }}>
+                  <a href="mailto:tom@tomsambitie.nl" className="btn-link">tom@tomsambitie.nl →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ ANEKDOTE ════════════════════════════════════════════ */}
+        <section className="surface-inkt" style={{ padding: '120px 0', textAlign: 'center' }}>
+          <div className="container-narrow">
+            <div className="meta" style={{ color: 'rgba(244,241,232,0.5)', marginBottom: 24, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16 }}>
+              <span style={{ width: 32, height: 3, background: 'var(--volt)', display: 'inline-block' }} />
+              ANEKDOTE · 1996
+            </div>
+            <h2 className="clip-reveal display" style={{ fontSize: 'clamp(48px, 6vw, 88px)', lineHeight: 0.95, color: 'var(--wit-warm)' }}>
+              <span>"We hebben toiletborstels<br />verhuurd. Serieus."</span>
+            </h2>
+            <p className="lead" style={{ marginTop: 32, color: 'rgba(244,241,232,0.7)', maxWidth: 640, marginInline: 'auto' }}>
+              Een van Tom's eerste ondernemingen — vergeet niet, dit was vóór Aardbei, vóór Toms Ambitie. Het was gek. Het werkte (een beetje). En het leerde een belangrijke les: ondernemen is doen, niet praten.
             </p>
-            <h2
-              className="font-display"
-              style={{
-                fontSize: "clamp(44px, 6vw, 96px)",
-                lineHeight: 0.9,
-                color: "#0E0E0C",
-                marginBottom: 8,
-              }}
-            >
-              17 JAAR BOUWEN.
-            </h2>
-            <h2
-              className="font-display"
-              style={{
-                fontSize: "clamp(44px, 6vw, 96px)",
-                lineHeight: 0.9,
-                color: "rgba(14,14,12,0.3)",
-                marginBottom: 40,
-              }}
-            >
-              EEN CONSTANTE: DOEN.
-            </h2>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 16,
-              }}
-            >
-              <p className="font-sans" style={{ fontSize: 17, lineHeight: 1.7, color: "rgba(14,14,12,0.65)" }}>
-                Sinds 2008 bouw ik bedrijven, concepten, campagnes en ventures. Soms succesvol,
-                soms pijnlijk leerzaam — maar altijd vanuit dezelfde drijfveer: begrijpen
-                waarom mensen doen wat ze doen en daar iets op bouwen dat echt gebruikt wordt.
-              </p>
-              <p className="font-sans" style={{ fontSize: 17, lineHeight: 1.7, color: "rgba(14,14,12,0.65)" }}>
-                Wat begon bij Notabilis en later Aardbei Communicatie groeide uiteindelijk
-                uit tot Toms Ambitie: een venture club waarin ideeën sneller gebouwd,
-                getest en gevalideerd worden.
-              </p>
-              <p className="font-sans" style={{ fontSize: 17, lineHeight: 1.7, color: "#0E0E0C", fontWeight: 500 }}>
-                Maar uiteindelijk geloof ik vooral in bouwen. Niet eindeloos brainstormen.
-                Ideeën worden pas interessant zodra iemand ze gebruikt.
-              </p>
-            </div>
-            <div style={{ marginTop: 32 }}>
-              <a
-                href="https://www.linkedin.com/in/tommulder85"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-mono uppercase inline-flex items-center"
-                style={{
-                  fontSize: 11,
-                  fontWeight: 700,
-                  letterSpacing: "0.12em",
-                  color: "#0E0E0C",
-                  textDecoration: "none",
-                  borderBottom: "2px solid #C8F000",
-                  paddingBottom: 4,
-                }}
-              >
-                Verbind op LinkedIn →
-              </a>
-            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ── DARK QUOTE ───────────────────────────────────────── */}
-      <section style={{ background: "#0E0E0C", padding: "96px 0" }}>
-        <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 32px" }}>
-          <ScrollReveal>
-            <h2
-              className="font-display"
-              style={{
-                fontSize: "clamp(44px, 6vw, 96px)",
-                lineHeight: 0.9,
-                color: "#F4F1E8",
-                marginBottom: 8,
-              }}
-            >
-              "WE HEBBEN TOILETBORSTELS
-            </h2>
-            <h2
-              className="font-display"
-              style={{
-                fontSize: "clamp(44px, 6vw, 96px)",
-                lineHeight: 0.9,
-                color: "rgba(255,255,255,0.3)",
-              }}
-            >
-              VERHUURD. SERIEUS."
-            </h2>
-          </ScrollReveal>
-        </div>
-      </section>
+        {/* ═══ TIMELINE ════════════════════════════════════════════ */}
+        <section className="surface-papier" style={{ padding: '160px 0' }}>
+          <div className="container-wide">
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 96, alignItems: 'flex-start' }}
+              className="hero-two-col">
+              {/* Sticky left */}
+              <div style={{ position: 'sticky', top: 100 }}>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
+                  <span className="volt-dot" />
+                  <span className="eyebrow"><span style={{ marginRight: 8 }}>03</span>Tijdlijn</span>
+                </div>
+                <h2 className="h2" style={{ marginTop: 24 }}>
+                  17 jaar.<br /><span style={{ color: 'var(--inkt-40)' }}>Van bureau tot venture club.</span>
+                </h2>
+              </div>
 
-      {/* ── TIMELINE ─────────────────────────────────────────── */}
-      <section style={{ background: "#F4F1E8", padding: "120px 0" }}>
-        <div
-          style={{
-            maxWidth: 1440,
-            margin: "0 auto",
-            padding: "0 32px",
-            display: "grid",
-            gridTemplateColumns: "1fr 2fr",
-            gap: 80,
-            alignItems: "start",
-          }}
-          className="over-ons-timeline-grid"
-        >
-          <div>
-            <h2
-              className="font-display"
-              style={{
-                fontSize: "clamp(44px, 5vw, 80px)",
-                lineHeight: 0.9,
-                color: "#0E0E0C",
-                marginBottom: 8,
-              }}
-            >
-              17 JAAR.
-            </h2>
-            <h2
-              className="font-display"
-              style={{
-                fontSize: "clamp(44px, 5vw, 80px)",
-                lineHeight: 0.9,
-                color: "rgba(14,14,12,0.3)",
-                marginBottom: 8,
-              }}
-            >
-              VAN BUREAU TOT VENTURE CLUB.
-            </h2>
-            <h2
-              className="font-display"
-              style={{
-                fontSize: "clamp(44px, 5vw, 80px)",
-                lineHeight: 0.9,
-                color: "rgba(14,14,12,0.15)",
-              }}
-            >
-              PLUS TOP-SPECIALISTEN.
-            </h2>
-          </div>
-
-          <ScrollReveal delay={0.1}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 2, background: "#C0BDB0" }}>
-              {timeline.map((t) => (
-                <div
-                  key={t.year}
-                  style={{
-                    background: t.pulse ? "#0E0E0C" : "#FBFAF6",
-                    padding: "28px 32px",
-                    display: "grid",
-                    gridTemplateColumns: "80px 1fr",
-                    gap: 32,
-                    alignItems: "baseline",
-                  }}
-                >
-                  <div>
-                    <div
-                      className="font-display"
-                      style={{
-                        fontSize: 32,
-                        lineHeight: 1,
-                        color: t.pulse ? "#C8F000" : "#0E0E0C",
-                      }}
-                    >
-                      {t.year}
+              {/* Timeline items */}
+              <div>
+                {MILESTONES.map((m) => (
+                  <div key={m.y} className="reveal" style={{ display: 'grid', gridTemplateColumns: '200px 1fr', gap: 32, padding: '32px 0', borderTop: '1px solid var(--inkt-20)' }}>
+                    <div className="display" style={{ fontSize: 40, lineHeight: 0.95 }}>{m.y}</div>
+                    <div>
+                      <h4 className="h4" style={{ marginBottom: 8 }}>{m.t}</h4>
+                      <p className="body" style={{ maxWidth: 480 }}>{m.d}</p>
                     </div>
                   </div>
-                  <div>
-                    <div
-                      className="font-mono uppercase"
-                      style={{
-                        fontSize: 10,
-                        letterSpacing: "0.14em",
-                        color: t.pulse ? "#C8F000" : "rgba(14,14,12,0.4)",
-                        marginBottom: 6,
-                      }}
-                    >
-                      {t.label}
-                    </div>
-                    <p
-                      className="font-sans"
-                      style={{
-                        fontSize: 15,
-                        lineHeight: 1.55,
-                        color: t.pulse ? "rgba(255,255,255,0.6)" : "rgba(14,14,12,0.65)",
-                      }}
-                    >
-                      {t.detail}
-                    </p>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </ScrollReveal>
-        </div>
-      </section>
+          </div>
+        </section>
 
-      {/* ── VASTE KERN ───────────────────────────────────────── */}
-      <section style={{ background: "#FBFAF6", padding: "120px 0" }}>
-        <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 32px" }}>
-          <ScrollReveal>
-            <h2
-              className="font-display"
-              style={{
-                fontSize: "clamp(56px, 7vw, 112px)",
-                lineHeight: 0.88,
-                color: "#0E0E0C",
-                marginBottom: 8,
-              }}
-            >
-              VASTE KERN.
-            </h2>
-            <h2
-              className="font-display"
-              style={{
-                fontSize: "clamp(56px, 7vw, 112px)",
-                lineHeight: 0.88,
-                color: "rgba(14,14,12,0.25)",
-                marginBottom: 48,
-              }}
-            >
-              PLUS TOP-SPECIALISTEN.
-            </h2>
-            <p
-              className="font-sans"
-              style={{ fontSize: 18, lineHeight: 1.65, color: "rgba(14,14,12,0.6)", maxWidth: 600, marginBottom: 56 }}
-            >
-              Geen lagen, geen accountmanagers, geen standaard trajecten. Wel een vaste kern
-              die per venture de beste specialisten samenbrengt. Soms tijdelijk. Soms jarenlang.
+        {/* ═══ TEAM GRID ═══════════════════════════════════════════ */}
+        <section className="surface-wit" style={{ padding: '160px 0' }}>
+          <div className="container-wide">
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 64, alignItems: 'flex-start', marginBottom: 64 }}
+              className="hero-two-col">
+              <div>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
+                  <span className="volt-dot" />
+                  <span className="eyebrow"><span style={{ marginRight: 8 }}>04</span>Het Team</span>
+                </div>
+                <h2 className="h2" style={{ marginTop: 24 }}>
+                  Vaste kern.<br /><span style={{ color: 'var(--inkt-40)' }}>Plus top-specialisten.</span>
+                </h2>
+              </div>
+              <div style={{ paddingTop: 24 }}>
+                <p className="lead">
+                  We werken hybride: een vaste kern die elk venture mee draagt, aangevuld met top-specialisten op maat. Snel waar het kan, grondig waar het moet.
+                </p>
+              </div>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24 }}>
+              <div className="reveal" style={{ position: 'relative', overflow: 'hidden' }}>
+                <img src="/photos/studio-collab.jpg" alt="Studio collab"
+                  style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block', filter: 'grayscale(0.15)' }} />
+                <div style={{ position: 'absolute', top: 16, left: 16, padding: '6px 12px', background: 'var(--wit-warm)' }}>
+                  <span className="meta">FIG.02 · STRATEGIE</span>
+                </div>
+              </div>
+              <div className="reveal" style={{ position: 'relative', overflow: 'hidden' }}>
+                <img src="/photos/studio-pair.jpg" alt="Studio pair"
+                  style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block', filter: 'grayscale(0.15)' }} />
+                <div style={{ position: 'absolute', top: 16, left: 16, padding: '6px 12px', background: 'var(--wit-warm)' }}>
+                  <span className="meta">FIG.03 · UITVOERING</span>
+                </div>
+              </div>
+            </div>
+
+            <p className="body-lg" style={{ marginTop: 48, maxWidth: 720, color: 'var(--inkt-80)' }}>
+              Werk je als specialist (development, design, marketing, legal) en interesseert deze werkwijze je?{' '}
+              <Link to="/meebouwen" style={{ borderBottom: '1px solid var(--inkt)', color: 'var(--inkt)' }}>Neem contact op</Link>.
             </p>
-          </ScrollReveal>
+          </div>
+        </section>
 
-          <ScrollReveal delay={0.1}>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 2, background: "#C0BDB0" }}>
-              {["Strategy", "AI", "Neuromarketing", "Development", "Positioning", "Content", "Data", "Operations"].map((d) => (
-                <div
-                  key={d}
-                  style={{ background: "#FBFAF6", padding: "24px 20px", display: "flex", alignItems: "center", gap: 10 }}
-                >
-                  <span style={{ width: 5, height: 5, background: "#C8F000", display: "inline-block", flexShrink: 0 }} />
-                  <span className="font-mono uppercase" style={{ fontSize: 11, letterSpacing: "0.12em", color: "#0E0E0C" }}>
-                    {d}
-                  </span>
-                </div>
-              ))}
+        {/* ═══ MOTTO ═══════════════════════════════════════════════ */}
+        <section className="surface-inkt" style={{ padding: '180px 0', textAlign: 'center', position: 'relative' }}>
+          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: 'var(--volt)' }} />
+          <div className="container-narrow">
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
+              <span className="volt-dot" />
+              <span className="eyebrow" style={{ color: 'rgba(244,241,232,0.6)' }}><span style={{ marginRight: 8 }}>M</span>Motto</span>
             </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ── MANIFESTO ────────────────────────────────────────── */}
-      <section style={{ background: "#0E0E0C", padding: "120px 0" }}>
-        <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 32px" }}>
-          <ScrollReveal>
-            <h2
-              className="font-display"
-              style={{
-                fontSize: "clamp(56px, 8vw, 140px)",
-                lineHeight: 0.88,
-                color: "#F4F1E8",
-                marginBottom: 0,
-              }}
-            >
-              "ALS JE HET KUNT BEDENKEN,{" "}
-              <span style={{ color: "#C8F000" }}>KUN JE HET OOK DOEN."</span>
+            <h2 className="clip-reveal display" style={{ fontSize: 'clamp(56px, 7vw, 120px)', lineHeight: 0.92, color: 'var(--wit-warm)', marginTop: 32 }}>
+              <span>"Als je het kunt bedenken,<br />kun je het ook doen."</span>
             </h2>
-          </ScrollReveal>
-        </div>
-      </section>
+            <p className="meta" style={{ marginTop: 40, color: 'var(--volt)' }}>WAT NIET KAN IS NOG NOOIT GEBEURD</p>
+          </div>
+        </section>
 
-      {/* ── CTA ──────────────────────────────────────────────── */}
-      <section style={{ background: "#F4F1E8", padding: "120px 0" }}>
-        <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 32px" }}>
-          <ScrollReveal>
-            <h2
-              className="font-display"
-              style={{
-                fontSize: "clamp(80px, 12vw, 200px)",
-                lineHeight: 0.85,
-                color: "#0E0E0C",
-                marginBottom: 40,
-              }}
-            >
-              BOUW MEE.
-            </h2>
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <Link
-                to="/meebouwen"
-                className="font-mono font-bold uppercase inline-flex items-center hover:bg-[#DCF55E] transition-colors"
-                style={{
-                  background: "#C8F000",
-                  color: "#0E0E0C",
-                  fontSize: 11,
-                  letterSpacing: "0.12em",
-                  padding: "14px 28px",
-                  textDecoration: "none",
-                }}
-              >
-                START EEN GESPREK →
-              </Link>
-              <Link
-                to="/ventures"
-                className="font-mono font-bold uppercase inline-flex items-center transition-colors"
-                style={{
-                  border: "1.5px solid rgba(14,14,12,0.3)",
-                  background: "transparent",
-                  color: "#0E0E0C",
-                  fontSize: 11,
-                  letterSpacing: "0.12em",
-                  padding: "14px 28px",
-                  textDecoration: "none",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "#0E0E0C";
-                  (e.currentTarget as HTMLAnchorElement).style.background = "#0E0E0C";
-                  (e.currentTarget as HTMLAnchorElement).style.color = "#F4F1E8";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(14,14,12,0.3)";
-                  (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
-                  (e.currentTarget as HTMLAnchorElement).style.color = "#0E0E0C";
-                }}
-              >
-                ONZE VENTURES
-              </Link>
+        {/* ═══ CTA ═════════════════════════════════════════════════ */}
+        <section className="surface-papier" style={{ padding: '180px 0', textAlign: 'center' }}>
+          <div className="container-narrow">
+            <h2 className="h2">Bouw mee.</h2>
+            <p className="lead" style={{ marginTop: 24 }}>
+              Partner, ondernemer, specialist — we zoeken altijd nieuwe mensen om mee te bouwen.
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginTop: 40, flexWrap: 'wrap' }}>
+              <Link to="/meebouwen" className="btn btn-volt">Start gesprek →</Link>
+              <Link to="/ventures" className="btn-ghost">Bekijk ventures</Link>
             </div>
-          </ScrollReveal>
-        </div>
-      </section>
+          </div>
+        </section>
 
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 };
 

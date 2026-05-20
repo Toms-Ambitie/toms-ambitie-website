@@ -1,444 +1,229 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Navbar } from "@/components/Navbar";
-import { Ticker } from "@/components/Ticker";
-import { Footer } from "@/components/Footer";
-import { ScrollReveal } from "@/components/ScrollReveal";
-import { applySEO } from "@/lib/seo";
+import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { Navbar } from '@/components/Navbar';
+import { Ticker } from '@/components/Ticker';
+import { Counter } from '@/components/Counter';
+import { Footer } from '@/components/Footer';
+import { useReveal } from '@/hooks/useReveal';
+import { applySEO } from '@/lib/seo';
 
-/* ─── Data ─────────────────────────────────────────────────────────── */
-
-const steps = [
-  {
-    num: "01",
-    title: "PROBLEEM IDENTIFICEREN",
-    body: "Elk venture start met een frustratie van binnenuit. Niet een trendje, niet een pitchdeck, niet een LinkedIn-poll. Een echt probleem dat we zelf tegenkomen in werk, leven of een bestaand venture.",
-    dark: false,
-  },
-  {
-    num: "02",
-    title: "VALIDEREN MET AI",
-    body: "Voordat we ook maar één regel code schrijven, toetsen we het probleem met mensen direct om ons heen. Is het herkenbaar? Is het frequent? Is het pijnlijk genoeg om iets voor te willen betalen? AI helpt ons sneller patronen te herkennen.",
-    dark: true,
-  },
-  {
-    num: "03",
-    title: "WERKENDE DEMO BOUWEN",
-    body: "De eenvoudigste werkende versie. Eén kernfunctie, geen featurelijst, geen landing page vol beloftes. Zo snel mogelijk iets wat daadwerkelijk werkt, zodat we iets echts kunnen testen.",
-    dark: false,
-  },
-  {
-    num: "04",
-    title: "BUSINESS CASE MAKEN",
-    body: "Eén zin. Niet een missie, niet een visie, niet een businessplan. Eén heldere zin: voor wie, welk probleem, waarom nu. Als we die zin niet kunnen schrijven, bouwen we niet.",
-    dark: true,
-  },
-  {
-    num: "05",
-    title: "TESTEN & VERFIJNEN",
-    body: "Wij zijn altijd zelf de testgroep. Als we het niet dagelijks gebruiken, bouwen we niet verder. Interne adoptie is het eerste bewijs. Geen intern gebruik, geen extern product.",
-    dark: false,
-  },
-  {
-    num: "06",
-    title: "EERSTE PLATFORM BOUWEN",
-    body: "Mensen direct om ons heen die het probleem herkennen. Geen betaalde marketing, geen productlaunch, geen persbericht. Echte adoptie begint altijd met één iemand die het zelf wil gebruiken.",
-    dark: true,
-  },
-  {
-    num: "07",
-    title: "LANCEREN",
-    body: "Retentie. Betalende klanten. Echte traction. Zijn die er? Dan schalen we. Zijn die er niet? Dan stoppen we. We schrijven op wat we geleerd hebben en starten met het volgende probleem. Geen uitzonderingen.",
-    dark: false,
-  },
+const STAPPEN = [
+  { n: '01', title: 'Probleem identificeren', meta: 'Eigen ervaring als validatie', body: 'Elk venture begint met een probleem dat we zelf ervaren — of dat iemand in onze directe omgeving heeft. Geen denkbeeldige klant, geen marktonderzoek op papier. Echte frustratie, echte behoefte.', tool: 'Eigen ervaring' },
+  { n: '02', title: 'Valideren met AI', meta: 'Concurrentie · markt · probleem', body: 'Is het probleem valide? Bestaat er al een goede oplossing? Is de bedachte aanpak een goed idee? AI doet concurrentie-analyse, marktonderzoek en probleemvalidatie — in uren, niet weken.', tool: 'Claude · Perplexity · ChatGPT' },
+  { n: '03', title: 'Werkende demo bouwen', meta: 'Oplossing voor business case', body: 'Eerst de oplossing ontwerpen — daarna pas de business case. Met Lovable of Replit een werkende demo, of met Claude Design een visuele mockup. De oplossing moet voelbaar zijn voordat er gerekend wordt.', tool: 'Lovable · Replit · Claude Design' },
+  { n: '04', title: 'Business case maken', meta: 'Pas als de oplossing staat', body: 'Pas als de oplossing staat, volgt de vraag of er een bedrijf in zit. Businessmodel, verdienmodel, marktgrootte — met AI uitgewerkt. De business case volgt de oplossing. Nooit andersom.', tool: 'Claude · business case' },
+  { n: '05', title: 'Brand book maken', meta: 'Identiteit van dag één', body: 'Elke oplossing krijgt direct een visuele identiteit. Een brand book zorgt dat de oplossing consistent gecommuniceerd en ontworpen wordt — en geeft het project body en geloofwaardigheid van dag één.', tool: 'Claude · brand systeem' },
+  { n: '06', title: 'Eerste platform bouwen', meta: 'Functioneel, niet perfect', body: 'Met AI een eerste werkende versie van het platform of de oplossing bouwen. Geen uitgebreid development-traject — een snelle, functionele eerste versie die getest kan worden door echte gebruikers.', tool: 'Claude · Lovable · Cursor' },
+  { n: '07', title: 'Lanceren', meta: 'Echte gebruikers, echte data', body: 'Het platform gaat live. Echte gebruikers, echte feedback, echte data. Pas na lancering en validatie wordt besloten of er verder gebouwd, opgeschaald of gestopt wordt.', tool: 'Marketing-DNA + automatisering' },
 ];
 
-const principles = [
-  {
-    title: "PROBLEM-FIRST",
-    body: "We beginnen nooit met een businessplan. We beginnen met iets wat we zelf missen.",
-  },
-  {
-    title: "AI ALS VERSNELLER",
-    body: "We gebruiken AI omdat het ons sneller maakt. Niet als marketingterm. Niet als excuus voor slechte beslissingen.",
-  },
-  {
-    title: "ALTIJD ONDERBOUWD",
-    body: "Geen aannames. Geen buikgevoel. Iedere stap wordt onderbouwd met data, gedrag of bewijs.",
-  },
-  {
-    title: "EERLIJK OVER RESULTATEN",
-    body: "Stoppen is ook een beslissing. Snel stoppen is goedkoper dan langzaam falen.",
-  },
+const WHAT_YOU_GET = [
+  ['Werkende platform', 'Eerste functionele versie, live testbaar door echte gebruikers.'],
+  ['Brand book', 'Volledige visuele identiteit. Logo, kleuren, fonts, tone of voice.'],
+  ['Business case', 'Verdienmodel, marktgrootte, go-to-market — onderbouwd met AI-research.'],
+  ['Werkwijze', '7-stappen recept om door te bouwen. Dezelfde methode op elk venture.'],
 ];
 
-/* ─── Page ──────────────────────────────────────────────────────────── */
+const TICKER_ITEMS = [
+  'Week 1 · Probleem identificeren',
+  'Week 1 · Valideren met AI',
+  'Week 2-3 · Werkende demo',
+  'Week 3 · Business case',
+  'Week 4 · Brand book',
+  'Week 4-5 · Eerste platform',
+  'Week 6 · Lanceren',
+];
+
+const Tag = ({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) => (
+  <span style={{
+    display: 'inline-flex', alignItems: 'center',
+    padding: '6px 12px',
+    background: dark ? 'var(--volt)' : 'var(--inkt)',
+    color: dark ? 'var(--inkt)' : 'var(--wit-warm)',
+    fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700,
+    letterSpacing: '0.14em', textTransform: 'uppercase',
+  }}>{children}</span>
+);
 
 const HoeWeBouwenPage = () => {
+  const rootRef = useRef<HTMLDivElement>(null);
+  useReveal(rootRef);
+
   useEffect(() => {
     applySEO({
-      title: "Werkwijze. Toms Ambitie",
-      description:
-        "Van probleem naar platform in 7 stappen en maximaal 6 weken. Hoe Toms Ambitie ventures bouwt vanuit echte frustratie, met AI als versneller.",
-      canonical: "https://www.toms-ambitie.nl/werkwijze",
+      title: 'De Werkwijze — Toms Ambitie',
+      description: 'Van probleem naar platform in zeven stappen. Altijd AI-assisted. Altijd vanuit eigen ervaring. Live binnen 6 weken.',
+      canonical: 'https://www.toms-ambitie.nl/werkwijze',
     });
   }, []);
 
   return (
-    <>
-      <main style={{ minHeight: "100vh", background: "#0E0E0C" }}>
-        <Navbar />
+    <div ref={rootRef} style={{ background: 'var(--wit-warm)' }}>
+      <Navbar />
+      <main id="main-content">
 
-        {/* ── HERO — dark bg, two-column ─────────────────────── */}
-        <section style={{ background: "#0E0E0C", paddingTop: 64 }}>
-          <div
-            style={{
-              maxWidth: 1440,
-              margin: "0 auto",
-              padding: "80px 32px 96px",
-              display: "grid",
-              gridTemplateColumns: "1fr auto",
-              gap: 64,
-              alignItems: "flex-end",
-            }}
-            className="werkwijze-hero-grid"
-          >
-            {/* Left: headline */}
-            <div>
-              <p
-                className="font-mono uppercase"
-                style={{ fontSize: 11, letterSpacing: "0.18em", color: "rgba(255,255,255,0.3)", marginBottom: 40 }}
-              >
-                — Werkwijze
-              </p>
-              <h1
-                className="font-display"
-                style={{
-                  fontSize: "clamp(64px, 9vw, 144px)",
-                  lineHeight: 0.88,
-                  letterSpacing: "-0.01em",
-                  color: "#F4F1E8",
-                }}
-              >
-                VAN PROBLEEM<br />
-                NAAR<br />
-                PLATFORM.
-              </h1>
-            </div>
+        {/* ═══ HERO ════════════════════════════════════════════════ */}
+        <section className="surface-wit" style={{ padding: '140px 0 100px' }}>
+          <div className="container-wide">
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'flex-end' }}
+              className="hero-two-col">
+              <div>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
+                  <span className="volt-dot" />
+                  <span className="eyebrow"><span style={{ marginRight: 8 }}>01</span>De Werkwijze</span>
+                </div>
+                <h1 className="clip-reveal display" style={{ fontSize: 'clamp(72px, 10vw, 152px)', lineHeight: 0.84, marginTop: 32, letterSpacing: '-0.02em' }}>
+                  <span>Van probleem<br />naar platform.</span>
+                </h1>
+                <p className="lead reveal reveal-delay-1" style={{ marginTop: 48, fontSize: 22, maxWidth: 560 }}>
+                  Elk venture doorloopt hetzelfde zeven-stappen systeem. De oplossing staat altijd voorop — de business case volgt daarna. Altijd AI-assisted. Altijd vanuit eigen ervaring.
+                </p>
+              </div>
 
-            {/* Right: small stats */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 2, minWidth: 160 }}>
-              <div
-                style={{
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  padding: "20px 24px",
-                }}
-              >
-                <div className="font-display" style={{ fontSize: 48, lineHeight: 1, color: "#C8F000" }}>7</div>
-                <div className="font-mono uppercase" style={{ fontSize: 9, letterSpacing: "0.14em", color: "rgba(255,255,255,0.35)", marginTop: 6 }}>
-                  Stappen
-                </div>
-              </div>
-              <div
-                style={{
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  padding: "20px 24px",
-                }}
-              >
-                <div className="font-display" style={{ fontSize: 48, lineHeight: 1, color: "#F4F1E8" }}>6WK</div>
-                <div className="font-mono uppercase" style={{ fontSize: 9, letterSpacing: "0.14em", color: "rgba(255,255,255,0.35)", marginTop: 6 }}>
-                  Max. doorlooptijd
-                </div>
-              </div>
-              <div
-                style={{
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  padding: "20px 24px",
-                }}
-              >
-                <div className="font-display" style={{ fontSize: 48, lineHeight: 1, color: "#F4F1E8" }}>100%</div>
-                <div className="font-mono uppercase" style={{ fontSize: 9, letterSpacing: "0.14em", color: "rgba(255,255,255,0.35)", marginTop: 6 }}>
-                  Eigen kapitaal
-                </div>
+              {/* Stats grid */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24, alignSelf: 'end' }}>
+                {[
+                  { n: 7, suf: '', l: 'Stappen', m: 'Vast systeem' },
+                  { n: 6, suf: 'wk', l: 'Maximaal', m: 'Tot eerste versie' },
+                  { isText: true, txt: 'AI', l: 'Versnelling', m: 'Op elke stap' },
+                  { n: 100, suf: '%', l: 'Onderbouwd', m: 'Nooit roekeloos' },
+                ].map((s, i) => (
+                  <div key={i} className="reveal" style={{ borderTop: '1px solid var(--inkt-20)', paddingTop: 20 }}>
+                    <div className="display" style={{ fontSize: 56, lineHeight: 0.9 }}>
+                      {'isText' in s && s.isText ? s.txt : <Counter to={(s as { n: number; suf: string }).n} suffix={(s as { n: number; suf: string }).suf} />}
+                    </div>
+                    <div className="label" style={{ marginTop: 12, color: 'var(--inkt)' }}>{s.l}</div>
+                    <div className="body-sm">{s.m}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </section>
 
-        {/* ── 7 STEPS — alternating light/dark rows ──────────── */}
-        {steps.map((step) => {
-          const bg = step.dark ? "#0E0E0C" : "#F4F1E8";
-          const headingColor = step.dark ? "#F4F1E8" : "#0E0E0C";
-          const bodyColor = step.dark ? "rgba(255,255,255,0.55)" : "rgba(14,14,12,0.65)";
-          const numColor = step.dark ? "rgba(255,255,255,0.07)" : "rgba(14,14,12,0.07)";
+        {/* ═══ TICKER ══════════════════════════════════════════════ */}
+        <Ticker items={TICKER_ITEMS} separator="→" />
 
+        {/* ═══ 7 STAPPEN ═══════════════════════════════════════════ */}
+        {STAPPEN.map((s, i) => {
+          const isDark = i % 2 === 1;
           return (
-            <ScrollReveal key={step.num}>
-              <section
-                style={{
-                  background: bg,
-                  borderTop: step.dark ? "3px solid #C8F000" : "1px solid rgba(14,14,12,0.06)",
-                }}
-              >
-                <div
-                  style={{
-                    maxWidth: 1440,
-                    margin: "0 auto",
-                    padding: "0 32px",
-                    display: "grid",
-                    gridTemplateColumns: "200px 1fr",
-                    minHeight: 200,
-                  }}
-                  className="step-row-grid"
-                >
-                  {/* Large step number */}
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "flex-start",
-                      borderRight: step.dark
-                        ? "1px solid rgba(255,255,255,0.06)"
-                        : "1px solid rgba(14,14,12,0.06)",
-                      paddingRight: 32,
-                      paddingTop: 56,
-                      paddingBottom: 56,
-                    }}
-                  >
-                    <span
-                      className="font-display"
-                      style={{
-                        fontSize: "clamp(80px, 10vw, 140px)",
-                        lineHeight: 1,
-                        color: numColor,
-                        userSelect: "none",
-                      }}
-                    >
-                      {step.num}
-                    </span>
+            <section
+              key={s.n}
+              className={isDark ? 'surface-inkt' : 'surface-papier'}
+              style={{ padding: '160px 0' }}
+            >
+              <div className="container-wide">
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 96, alignItems: 'flex-start' }}
+                  className="werkwijze-step-grid">
+                  {/* Sticky step number */}
+                  <div style={{ position: 'sticky', top: 100 }}>
+                    <div className="reveal">
+                      <div className="num" style={{ fontSize: 13, letterSpacing: '0.18em', color: isDark ? 'rgba(244,241,232,0.5)' : 'var(--inkt-60)', marginBottom: 16 }}>
+                        STAP {s.n} / 07
+                      </div>
+                      <div className="display" style={{
+                        fontSize: 'clamp(120px, 16vw, 240px)',
+                        lineHeight: 0.84,
+                        color: isDark ? 'var(--volt)' : 'var(--inkt)',
+                        letterSpacing: '-0.04em',
+                      }}>
+                        {s.n}
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Title + body */}
-                  <div style={{ padding: "56px 0 56px 64px" }}>
-                    <h2
-                      className="font-display"
-                      style={{
-                        fontSize: "clamp(32px, 4vw, 56px)",
-                        lineHeight: 0.9,
-                        color: headingColor,
-                        marginBottom: 24,
-                      }}
-                    >
-                      {step.title}
+                  {/* Step content */}
+                  <div className="reveal">
+                    <h2 className="display" style={{
+                      fontSize: 'clamp(56px, 7vw, 96px)', lineHeight: 0.92, marginBottom: 40,
+                      color: isDark ? 'var(--wit-warm)' : 'var(--inkt)',
+                    }}>
+                      {s.title}
                     </h2>
-                    <p
-                      className="font-sans"
-                      style={{
-                        fontSize: 17,
-                        lineHeight: 1.7,
-                        color: bodyColor,
-                        maxWidth: 560,
-                      }}
-                    >
-                      {step.body}
+                    <p className="lead" style={{
+                      marginBottom: 40, fontSize: 22, maxWidth: 720,
+                      color: isDark ? 'rgba(244,241,232,0.75)' : 'var(--inkt-80)',
+                    }}>
+                      {s.body}
                     </p>
-                    {step.dark && (
-                      <div style={{ marginTop: 24 }}>
-                        <span style={{ display: "inline-block", width: 32, height: 3, background: "#C8F000" }} />
+
+                    <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginBottom: 40, alignItems: 'center' }}>
+                      <Tag dark={isDark}>⚡ {s.tool}</Tag>
+                      <span className="meta" style={{ color: isDark ? 'rgba(244,241,232,0.5)' : 'var(--inkt-60)' }}>{s.meta}</span>
+                    </div>
+
+                    <div style={{ marginTop: 48, paddingTop: 24, borderTop: `1px solid ${isDark ? 'rgba(244,241,232,0.15)' : 'var(--inkt-20)'}` }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase', color: isDark ? 'rgba(244,241,232,0.5)' : 'var(--inkt-60)' }}>
+                        <span>{i === 0 ? 'Start' : `Volg op stap ${STAPPEN[i - 1].n}`}</span>
+                        <span>{i < STAPPEN.length - 1 ? `→ Volgende: ${STAPPEN[i + 1].title}` : 'Voltooid · platform live'}</span>
                       </div>
-                    )}
+                    </div>
                   </div>
                 </div>
-              </section>
-            </ScrollReveal>
+              </div>
+            </section>
           );
         })}
 
-        {/* ── PRINCIPLES ───────────────────────────────────── */}
-        <section style={{ background: "#F4F1E8", padding: "120px 0" }}>
-          <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 32px" }}>
-            <ScrollReveal>
-              <h2
-                className="font-display"
-                style={{
-                  fontSize: "clamp(44px, 6vw, 96px)",
-                  lineHeight: 0.9,
-                  color: "#0E0E0C",
-                  marginBottom: 16,
-                  maxWidth: 900,
-                }}
-              >
-                DE OPLOSSING STAAT ALTIJD VOOROP.
-              </h2>
-              <h2
-                className="font-display"
-                style={{
-                  fontSize: "clamp(44px, 6vw, 96px)",
-                  lineHeight: 0.9,
-                  color: "rgba(14,14,12,0.25)",
-                  marginBottom: 64,
-                  maxWidth: 900,
-                }}
-              >
-                DE BUSINESS CASE VOLGT. ALTIJD.
-              </h2>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.1}>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-                  gap: 2,
-                  background: "#C0BDB0",
-                }}
-              >
-                {principles.map((p) => (
-                  <div
-                    key={p.title}
-                    style={{ background: "#F4F1E8", padding: "36px 28px", borderTop: "3px solid #C8F000" }}
-                  >
-                    <div
-                      className="font-mono uppercase"
-                      style={{ fontSize: 11, letterSpacing: "0.14em", color: "#0E0E0C", fontWeight: 700, marginBottom: 16 }}
-                    >
-                      {p.title}
-                    </div>
-                    <p className="font-sans" style={{ fontSize: 14, lineHeight: 1.7, color: "rgba(14,14,12,0.6)" }}>
-                      {p.body}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </ScrollReveal>
+        {/* ═══ PRINCIPE ════════════════════════════════════════════ */}
+        <section className="surface-wit" style={{ padding: '180px 0' }}>
+          <div className="container-narrow" style={{ textAlign: 'center' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
+              <span className="volt-dot" />
+              <span className="eyebrow"><span style={{ marginRight: 8 }}>P</span>Principe</span>
+            </div>
+            <h2 className="clip-reveal display" style={{ fontSize: 'clamp(48px, 6vw, 96px)', lineHeight: 0.95, marginTop: 32 }}>
+              <span>De oplossing staat altijd voorop.<br /><span style={{ color: 'var(--inkt-40)' }}>De business case volgt. Altijd.</span></span>
+            </h2>
+            <p className="lead" style={{ marginTop: 40, fontSize: 22 }}>
+              Door eerst de oplossing te bouwen en daarna de business case te maken, blijft de kwaliteit van de oplossing leidend. Een business case die een slechte oplossing rechtvaardigt is waardeloos. Een goede oplossing zonder business case is een kans.
+            </p>
           </div>
         </section>
 
-        {/* ── TIMELINE SUMMARY ─────────────────────────────── */}
-        <section style={{ background: "#FBFAF6", padding: "96px 0" }}>
-          <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 32px" }}>
-            <ScrollReveal>
-              <h2
-                className="font-display"
-                style={{
-                  fontSize: "clamp(32px, 4vw, 64px)",
-                  lineHeight: 0.92,
-                  color: "#0E0E0C",
-                  marginBottom: 48,
-                  maxWidth: 800,
-                }}
-              >
-                NA ZES WEKEN HEB JE EEN PLATFORM — EN ALLES OM HET TE LANCEREN.
-              </h2>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.1}>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 2, background: "#C0BDB0", marginBottom: 48 }}>
-                {steps.map((s, i) => (
-                  <div
-                    key={s.num}
-                    style={{
-                      background: i % 2 === 1 ? "#0E0E0C" : "#FBFAF6",
-                      padding: "20px 24px",
-                      flex: "1 1 130px",
-                    }}
-                  >
-                    <div
-                      className="font-display"
-                      style={{ fontSize: 28, color: i % 2 === 1 ? "#C8F000" : "#0E0E0C", lineHeight: 1, marginBottom: 6 }}
-                    >
-                      {s.num}
-                    </div>
-                    <div
-                      className="font-mono uppercase"
-                      style={{ fontSize: 9, letterSpacing: "0.12em", color: i % 2 === 1 ? "rgba(255,255,255,0.45)" : "rgba(14,14,12,0.5)" }}
-                    >
-                      {s.title}
-                    </div>
-                  </div>
-                ))}
+        {/* ═══ WAT KRIJGT EEN VENTURE ══════════════════════════════ */}
+        <section className="surface-papier" style={{ padding: '160px 0' }}>
+          <div className="container-wide">
+            <div style={{ textAlign: 'center', marginBottom: 80 }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
+                <span className="volt-dot" />
+                <span className="eyebrow"><span style={{ marginRight: 8 }}>06</span>Wat krijgt een venture</span>
               </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.15}>
-              <p
-                className="font-mono"
-                style={{ fontSize: 12, color: "rgba(14,14,12,0.4)", lineHeight: 1.65, maxWidth: 560, fontStyle: "italic" }}
-              >
-                Niet elk idee wordt een venture. Dat is de bedoeling. Snel stoppen is goedkoper dan
-                langzaam falen. We schrijven altijd op wat we hebben geleerd.
-              </p>
-            </ScrollReveal>
+              <h2 className="h2" style={{ marginTop: 24 }}>
+                Na zes weken heb je een platform —<br /><span style={{ color: 'var(--inkt-40)' }}>en alles om het te lanceren.</span>
+              </h2>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}
+              className="responsive-4-to-2">
+              {WHAT_YOU_GET.map(([t, d], i) => (
+                <div key={t} className="reveal" style={{ background: 'var(--wit-warm)', padding: 32, borderTop: '4px solid var(--volt)', minHeight: 260 }}>
+                  <div className="num" style={{ fontSize: 11, letterSpacing: '0.18em', color: 'var(--inkt-40)', marginBottom: 16 }}>0{i + 1} / 04</div>
+                  <h4 className="display" style={{ fontSize: 32, lineHeight: 0.95, marginBottom: 16 }}>{t}</h4>
+                  <p className="body-sm">{d}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* ── CLOSING CTA — dark ───────────────────────────── */}
-        <section style={{ background: "#0E0E0C", padding: "120px 0" }}>
-          <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 32px" }}>
-            <ScrollReveal>
-              <h2
-                className="font-display"
-                style={{
-                  fontSize: "clamp(56px, 8vw, 140px)",
-                  lineHeight: 0.88,
-                  color: "#F4F1E8",
-                  marginBottom: 48,
-                }}
-              >
-                HEB JE EEN IDEE?<br />
-                <span style={{ color: "#C8F000" }}>BOUW MEE.</span>
-              </h2>
-              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                <Link
-                  to="/meebouwen"
-                  className="font-mono font-bold uppercase inline-flex items-center hover:bg-[#DCF55E] transition-colors"
-                  style={{
-                    background: "#C8F000",
-                    color: "#0E0E0C",
-                    fontSize: 11,
-                    letterSpacing: "0.12em",
-                    padding: "14px 28px",
-                    textDecoration: "none",
-                  }}
-                >
-                  START EEN GESPREK →
-                </Link>
-                <Link
-                  to="/ventures"
-                  className="font-mono font-bold uppercase inline-flex items-center transition-colors"
-                  style={{
-                    border: "1.5px solid rgba(255,255,255,0.2)",
-                    background: "transparent",
-                    color: "#F4F1E8",
-                    fontSize: 11,
-                    letterSpacing: "0.12em",
-                    padding: "14px 28px",
-                    textDecoration: "none",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "#F4F1E8";
-                    (e.currentTarget as HTMLAnchorElement).style.background = "#F4F1E8";
-                    (e.currentTarget as HTMLAnchorElement).style.color = "#0E0E0C";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.2)";
-                    (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
-                    (e.currentTarget as HTMLAnchorElement).style.color = "#F4F1E8";
-                  }}
-                >
-                  BEKIJK ONZE VENTURES
-                </Link>
-              </div>
-            </ScrollReveal>
+        {/* ═══ CTA ═════════════════════════════════════════════════ */}
+        <section className="surface-inkt" style={{ padding: '180px 0', textAlign: 'center' }}>
+          <div className="container-narrow">
+            <div style={{ width: 48, height: 4, background: 'var(--volt)', margin: '0 auto 32px' }} />
+            <h2 className="clip-reveal display" style={{ fontSize: 'clamp(56px, 7vw, 104px)', lineHeight: 0.92, color: 'var(--wit-warm)' }}>
+              <span>Heb je een idee?<br />Bouw mee.</span>
+            </h2>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginTop: 48, flexWrap: 'wrap' }}>
+              <Link to="/meebouwen" className="btn btn-volt">Start gesprek →</Link>
+              <Link to="/ventures" className="btn-ghost" style={{ color: 'var(--wit-warm)', borderColor: 'rgba(244,241,232,0.3)' }}>Bekijk ventures</Link>
+            </div>
           </div>
         </section>
 
-        <Footer />
       </main>
-    </>
+      <Footer />
+    </div>
   );
 };
 

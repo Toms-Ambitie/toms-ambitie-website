@@ -4,17 +4,7 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { useReveal } from '@/hooks/useReveal';
 import { applySEO } from '@/lib/seo';
-
-const POSTS = [
-  { slug: 'oplossing-voor-business-case', date: '12 mei 2026', cat: 'Werkwijze', title: 'Waarom de oplossing altijd voorop staat — en de business case nooit', read: '6 min', featured: true, cover: '/photos/postpilot-analytics.png' },
-  { slug: 'ai-team-van-tien', date: '28 apr 2026', cat: 'AI', title: 'Hoe Claude één persoon laat werken als een team van tien', read: '4 min', cover: '/photos/studio-collab.jpg' },
-  { slug: 'post-pilot-launch', date: '14 apr 2026', cat: 'Venture', title: 'Post Pilot lanceert: van eigen marketing-frustratie naar product', read: '5 min', cover: '/photos/postpilot-new.png' },
-  { slug: 'toiletborstels', date: '02 apr 2026', cat: 'Lessen', title: 'We hebben toiletborstels verhuurd. Wat dat me geleerd heeft.', read: '7 min', cover: '/photos/studio-team-bw.jpg' },
-  { slug: 'brand-book-dag-een', date: '18 mrt 2026', cat: 'Werkwijze', title: 'Brand book op dag één — waarom dat geen overhead is', read: '4 min', cover: '/photos/studio-pair.jpg' },
-  { slug: 'exit-aardbei', date: '05 mrt 2026', cat: 'Ondernemen', title: 'Exit Aardbei: 7 jaar bouwen, 1 dag tekenen', read: '6 min', cover: '/photos/tom-portrait-dark.jpg' },
-  { slug: 'validatie-met-ai', date: '20 feb 2026', cat: 'AI', title: 'Validatie in uren, niet weken — concurrentieanalyse met AI', read: '5 min', cover: '/photos/postpilot-historie.png' },
-  { slug: 'pactly-ontstaan', date: '08 feb 2026', cat: 'Venture', title: 'Pactly: contracten zonder jurist — hoe het ontstond', read: '4 min', cover: '/photos/tom-casual.jpg' },
-];
+import { POSTS } from '@/data/posts';
 
 const CATS = ['Alles', 'Werkwijze', 'Venture', 'AI', 'Lessen', 'Ondernemen'];
 
@@ -89,6 +79,7 @@ const News = () => {
                   border: `1px solid ${cat === c ? 'var(--inkt)' : 'var(--inkt-20)'}`,
                   fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase',
                   transition: 'background .2s, color .2s, border-color .2s',
+                  cursor: 'pointer',
                 }}
               >
                 {c}

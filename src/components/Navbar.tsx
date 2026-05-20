@@ -13,8 +13,8 @@ const LogoDark = () => (
 );
 
 const links = [
+  { to: "/werkwijze", label: "Werkwijze" },
   { to: "/ventures", label: "Ventures" },
-  { to: "/hoe-we-bouwen", label: "Hoe we bouwen" },
   { to: "/over-ons", label: "Over ons" },
   { to: "/nieuws", label: "Nieuws" },
 ];

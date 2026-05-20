@@ -19,8 +19,8 @@ const ventures = [
 ];
 
 const navLinks = [
+  { to: "/werkwijze", label: "Werkwijze" },
   { to: "/ventures", label: "Ventures" },
-  { to: "/hoe-we-bouwen", label: "Hoe we bouwen" },
   { to: "/over-ons", label: "Over ons" },
   { to: "/nieuws", label: "Nieuws" },
   { to: "/meebouwen", label: "Meebouwen" },

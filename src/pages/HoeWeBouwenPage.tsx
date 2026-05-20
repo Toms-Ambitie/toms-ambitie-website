@@ -1,922 +1,641 @@
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
-import { applySEO } from "@/lib/seo";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Navbar } from "@/components/Navbar";
+import { FixedTicker } from "@/components/FixedTicker";
+import { Footer } from "@/components/Footer";
+import { ScrollReveal } from "@/components/ScrollReveal";
+import { applySEO } from "@/lib/seo";
 
-const steps = [
+/* ─── Data ─────────────────────────────────────────────────────────── */
+
+const phases = [
+  {
+    label: "PROBLEEM",
+    accent: "#C8F000",
+    steps: [
+      {
+        num: "01",
+        title: "WE VOELEN HET ZELF",
+        body: "Elk venture start met een frustratie van binnenuit. Niet een trendje, niet een pitchdeck, niet een LinkedIn-poll. Een echt probleem dat we zelf tegenkomen in werk, leven of een bestaand venture.",
+      },
+      {
+        num: "02",
+        title: "WE VALIDEREN INTERN",
+        body: "Voordat we ook maar één regel code schrijven, toetsen we het probleem met mensen direct om ons heen. Is het herkenbaar? Is het frequent? Is het pijnlijk genoeg om iets voor te willen betalen?",
+      },
+      {
+        num: "03",
+        title: "WE SCHERPEN DE PROPOSITIE",
+        body: "Eén zin. Niet een missie, niet een visie, niet een businessplan. Eén heldere zin: voor wie, welk probleem, waarom nu. Als we die zin niet kunnen schrijven, bouwen we niet.",
+      },
+    ],
+  },
+  {
+    label: "OPLOSSING",
+    accent: "#C8F000",
+    steps: [
+      {
+        num: "04",
+        title: "WE BOUWEN DE MVP",
+        body: "De eenvoudigste werkende versie. Eén kernfunctie, geen featurelijst, geen landing page vol beloftes. Zo snel mogelijk iets wat daadwerkelijk werkt, zodat we iets echts kunnen testen.",
+      },
+      {
+        num: "05",
+        title: "WE TESTEN IN DE PRAKTIJK",
+        body: "Wij zijn altijd zelf de testgroep. Als we het niet dagelijks gebruiken, bouwen we niet verder. Interne adoptie is het eerste bewijs. Geen intern gebruik, geen extern product.",
+      },
+      {
+        num: "06",
+        title: "WE HALEN EERSTE GEBRUIKERS",
+        body: "Mensen direct om ons heen die het probleem herkennen. Geen betaalde marketing, geen productlaunch, geen persbericht. Echte adoptie begint altijd met één iemand die het zelf wil gebruiken.",
+      },
+    ],
+  },
+  {
+    label: "PLATFORM",
+    accent: "#C8F000",
+    steps: [
+      {
+        num: "07",
+        title: "VENTURE OF STOPPEN",
+        body: "Retentie. Betalende klanten. Echte traction. Zijn die er? Dan schalen we. Zijn die er niet? Dan stoppen we. We schrijven op wat we geleerd hebben en starten met het volgende probleem. Geen uitzonderingen.",
+      },
+    ],
+  },
+];
+
+const aiUsecases = [
   {
     num: "01",
-    label: "PROBLEEM",
-    title: "PROBLEEM",
-    body: "We voelen het zelf. Frustratie in werk, leven of een bestaand venture.",
+    title: "EERSTE CODEBASES",
+    body: "AI genereert de eerste versie van een product. Wij verfijnen, debuggen en bouwen door. Wat vroeger weken kostte, duurt nu dagen.",
   },
   {
     num: "02",
-    label: "BOUW",
-    title: "INTERNE TOOL",
-    body: "Eenvoudigste werkende versie. Eén kernfunctie, geen featurelijst.",
+    title: "MARKTONDERZOEK",
+    body: "Concurrentie, prijzen, trends, gebruikersgedrag. Uren werk in plaats van dagen. AI filtert het ruwe signaal, wij interpreteren de patronen.",
   },
   {
     num: "03",
-    label: "TEST",
-    title: "TESTEN IN DE PRAKTIJK",
-    body: "Wij gebruiken het dagelijks. Werkt het intern niet, dan stopt het hier.",
+    title: "CONTENT & STRUCTUUR",
+    body: "Eerste drafts voor teksten, e-mailflows, productdocumentatie. Wij bewaken de stem, de toon en het merk. AI versnelt de uitvoering.",
   },
   {
     num: "04",
-    label: "VALIDATIE",
-    title: "EERSTE GEBRUIKERS",
-    body: "Mensen om ons heen die het probleem herkennen. Geen marketing, geen launch.",
+    title: "SUPPORT & FAQ",
+    body: "AI handelt eerstelijns vragen af zodat wij kunnen focussen op wat er echt toe doet. Klantcontact op schaal, zonder groot team.",
   },
   {
     num: "05",
-    label: "BESLISSING",
-    title: "VENTURE OF STOPPEN",
-    body: "Retentie en betalende klanten? Schalen. Anders: stoppen, leren, volgende.",
+    title: "VALIDATIE",
+    body: "Snel hypotheses testen, gebruikersinterviews samenvatten, signalen filteren. AI bespaart ons de tijd van handmatig doorzoeken.",
+  },
+  {
+    num: "06",
+    title: "GEDRAGSANALYSE",
+    body: "Gebruikersgedrag uitlezen, patronen herkennen, beslissingen onderbouwen met data. Niet buikgevoel, maar bewijs.",
   },
 ];
 
-const aiItems = [
+const principles = [
   {
-    title: "EERSTE CODEBASES",
-    body: "AI genereert de eerste versie van een product. Wij verfijnen, debuggen en bouwen door.",
+    title: "PROBLEEM EERST, ALTIJD",
+    body: "We beginnen nooit met een businessplan. We beginnen met iets wat we zelf missen. Als het probleem niet echt is, is er geen product.",
   },
   {
-    title: "MARKTONDERZOEK",
-    body: "Concurrentie, prijzen, trends. Uren werk in plaats van dagen.",
+    title: "INTERN GETEST VOOR EXTERN GELANCEERD",
+    body: "Als wij het niet dagelijks gebruiken, lanceren we het niet. Punt. Geen uitzonderingen.",
   },
   {
-    title: "CONTENT & STRUCTUUR",
-    body: "Eerste drafts voor teksten, social, e-mailflows. Wij houden de stem.",
+    title: "AI IS EEN MIDDEL, GEEN DOEL",
+    body: "We gebruiken AI omdat het ons sneller maakt. Niet als marketingterm. Niet als excuus voor slechte beslissingen.",
   },
   {
-    title: "SUPPORT",
-    body: "AI handelt eerstelijns vragen af. Wij springen in waar het ertoe doet.",
-  },
-  {
-    title: "VALIDATIE",
-    body: "Snel hypotheses testen, gebruikersinterviews samenvatten, signalen filteren.",
-  },
-  {
-    title: "GEDRAGSANALYSE",
-    body: "Gebruikersgedrag uitlezen, patronen herkennen, beslissingen onderbouwen.",
+    title: "STOPPEN IS OOK EEN BESLISSING",
+    body: "Niet elk idee wordt een venture. Dat is de bedoeling. Snel stoppen is goedkoper dan langzaam falen.",
   },
 ];
+
+/* ─── Page ──────────────────────────────────────────────────────────── */
 
 const HoeWeBouwenPage = () => {
   useEffect(() => {
     applySEO({
-      title: "Hoe we bouwen. Toms Ambitie",
+      title: "Werkwijze. Toms Ambitie",
       description:
-        "Vijf stappen van probleem naar venture. We bouwen vanuit frustratie, gedrag en echte behoeften — niet vanuit brainstorms of trendrapporten.",
-      canonical: "https://www.toms-ambitie.nl/hoe-we-bouwen",
+        "Van probleem naar platform in 7 stappen en maximaal 6 weken. Hoe Toms Ambitie ventures bouwt vanuit echte frustratie, met AI als versneller.",
+      canonical: "https://www.toms-ambitie.nl/werkwijze",
     });
   }, []);
 
   return (
-    <main style={{ minHeight: "100vh", background: "#FBFAF6" }}>
-      <Navbar />
+    <>
+      <FixedTicker />
+      <main className="pb-9" style={{ minHeight: "100vh", background: "#FBFAF6" }}>
+        <Navbar />
 
-      {/* HERO */}
-      <section
-        style={{
-          background: "#FBFAF6",
-          paddingTop: 64,
-          paddingBottom: 120,
-        }}
-      >
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}>
-          <p
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "0.75rem",
-              fontWeight: 500,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              color: "rgba(14,14,12,0.45)",
-              marginBottom: 40,
-              marginTop: 64,
-            }}
-          >
-            — Methode
-          </p>
-
-          <h1
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(56px, 9vw, 128px)",
-              lineHeight: 0.92,
-              letterSpacing: "-0.01em",
-              color: "#0E0E0C",
-              marginBottom: 48,
-              maxWidth: 1000,
-            }}
-          >
-            WIJ ZIJN ALTIJD ZELF{" "}
-            <span style={{ color: "#C8F000" }}>DE TESTGROEP.</span>
-          </h1>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "32px 80px",
-              maxWidth: 880,
-              marginBottom: 64,
-            }}
-          >
+        {/* ── HERO ─────────────────────────────────────────── */}
+        <section style={{ background: "#F4F1E8", paddingTop: 64 }}>
+          <div style={{ maxWidth: 1440, margin: "0 auto", padding: "80px 32px 96px" }}>
             <p
+              className="font-mono uppercase"
+              style={{ fontSize: 11, letterSpacing: "0.18em", color: "rgba(14,14,12,0.4)", marginBottom: 40 }}
+            >
+              — Werkwijze
+            </p>
+
+            <h1
+              className="font-display"
               style={{
-                fontFamily: "var(--font-sans)",
-                fontSize: "1.125rem",
-                lineHeight: 1.65,
-                color: "rgba(14,14,12,0.7)",
+                fontSize: "clamp(64px, 9vw, 144px)",
+                lineHeight: 0.88,
+                letterSpacing: "-0.01em",
+                color: "#0E0E0C",
+                marginBottom: 40,
+                maxWidth: 1100,
               }}
             >
-              We bouwen vanuit frustratie, gedrag en echte behoeften. Niet
-              vanuit brainstorms of trendrapporten.
-            </p>
-            <p
+              VAN PROBLEEM<br />
+              NAAR PLATFORM.<br />
+              <span style={{ color: "rgba(14,14,12,0.28)" }}>IN ZEVEN STAPPEN.<br />MAX ZES WEKEN.</span>
+            </h1>
+
+            <div
               style={{
-                fontFamily: "var(--font-sans)",
-                fontSize: "1.125rem",
-                lineHeight: 1.65,
-                color: "rgba(14,14,12,0.7)",
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                gap: "24px 64px",
+                maxWidth: 900,
+                marginBottom: 56,
               }}
             >
-              Als wij het probleem zelf voelen, bouwen we eerst een interne
-              oplossing. Werkt dat? Dan testen we het in de praktijk. Pas daarna
-              ontstaat soms een venture.
-            </p>
-          </div>
+              <p className="font-sans" style={{ fontSize: 18, lineHeight: 1.65, color: "rgba(14,14,12,0.65)" }}>
+                We bouwen vanuit frustratie, gedrag en echte behoeften. Niet vanuit brainstorms
+                of trendrapporten. Niet voor klanten. Voor onszelf.
+              </p>
+              <p className="font-sans" style={{ fontSize: 18, lineHeight: 1.65, color: "rgba(14,14,12,0.65)" }}>
+                Als wij het probleem zelf voelen, bouwen we eerst een interne oplossing.
+                Werkt dat intern? Dan testen we extern. Pas daarna ontstaat soms een venture.
+              </p>
+            </div>
 
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
-            {[
-              "Probleem eerst",
-              "Intern getest",
-              "AI als versneller",
-              "Idee → build in weken",
-            ].map((tag) => (
-              <span
-                key={tag}
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.75rem",
-                  fontWeight: 600,
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  color: "#0E0E0C",
-                  border: "1.5px solid rgba(14,14,12,0.25)",
-                  padding: "8px 16px",
-                }}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 01 — HET SYSTEEM */}
-      <section style={{ background: "#F4F1E8", paddingTop: 120, paddingBottom: 120 }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}>
-          <p
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "0.75rem",
-              fontWeight: 500,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              color: "rgba(14,14,12,0.45)",
-              marginBottom: 24,
-            }}
-          >
-            01 — Operating system
-          </p>
-          <h2
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(40px, 6vw, 80px)",
-              lineHeight: 0.95,
-              color: "#0E0E0C",
-              marginBottom: 24,
-            }}
-          >
-            HET SYSTEEM.
-          </h2>
-          <p
-            style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: "1.125rem",
-              lineHeight: 1.65,
-              color: "rgba(14,14,12,0.6)",
-              maxWidth: 640,
-              marginBottom: 80,
-            }}
-          >
-            Vijf stappen. Geen kwartaalplanning, geen pivots na een jaar. Elk
-            idee gaat door dezelfde pipeline — en stopt zodra een stap niet werkt.
-          </p>
-
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 2,
-              background: "#0E0E0C",
-              border: "2px solid #0E0E0C",
-            }}
-          >
-            {steps.map((step, i) => (
-              <div
-                key={i}
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "200px 1fr",
-                  background: "#F4F1E8",
-                }}
-              >
-                <div
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+              {["Probleem eerst", "Intern getest", "AI als versneller", "Max 6 weken"].map((tag) => (
+                <span
+                  key={tag}
+                  className="font-mono uppercase"
                   style={{
-                    position: "sticky",
-                    top: 88,
-                    alignSelf: "flex-start",
-                    padding: "40px 32px",
-                    borderRight: "2px solid rgba(14,14,12,0.12)",
+                    fontSize: 10,
+                    letterSpacing: "0.12em",
+                    color: "#0E0E0C",
+                    border: "1.5px solid rgba(14,14,12,0.2)",
+                    padding: "7px 14px",
                   }}
                 >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── STAPPEN PER FASE ─────────────────────────────── */}
+        <section style={{ background: "#F4F1E8", paddingBottom: 120 }}>
+          <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 32px" }}>
+            <ScrollReveal>
+              <p
+                className="font-mono uppercase"
+                style={{ fontSize: 11, letterSpacing: "0.18em", color: "rgba(14,14,12,0.4)", marginBottom: 48, paddingTop: 0 }}
+              >
+                — Het systeem
+              </p>
+            </ScrollReveal>
+
+            {phases.map((phase, pi) => (
+              <ScrollReveal key={phase.label} delay={pi * 0.05}>
+                <div style={{ marginBottom: 4 }}>
+                  {/* Phase label header */}
                   <div
                     style={{
-                      fontFamily: "var(--font-display)",
-                      fontSize: "clamp(3rem, 5vw, 4.5rem)",
-                      lineHeight: 1,
-                      color: "rgba(14,14,12,0.07)",
-                      marginBottom: 8,
+                      background: "#0E0E0C",
+                      padding: "14px 32px",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 16,
                     }}
                   >
-                    {step.num}
+                    <span
+                      style={{ width: 8, height: 8, background: "#C8F000", display: "inline-block", flexShrink: 0 }}
+                    />
+                    <span
+                      className="font-mono uppercase"
+                      style={{ fontSize: 11, letterSpacing: "0.2em", color: "#C8F000" }}
+                    >
+                      {phase.label}
+                    </span>
                   </div>
-                  <div
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.7rem",
-                      fontWeight: 600,
-                      letterSpacing: "0.14em",
-                      textTransform: "uppercase",
-                      color: "rgba(14,14,12,0.4)",
-                    }}
-                  >
-                    {step.label}
+
+                  {/* Steps */}
+                  <div style={{ display: "flex", flexDirection: "column", gap: 2, background: "#C0BDB0" }}>
+                    {phase.steps.map((step, si) => (
+                      <div
+                        key={step.num}
+                        style={{
+                          background: "#F4F1E8",
+                          display: "grid",
+                          gridTemplateColumns: "80px 1fr",
+                        }}
+                      >
+                        {/* Step number */}
+                        <div
+                          style={{
+                            borderRight: "1px solid rgba(14,14,12,0.08)",
+                            display: "flex",
+                            alignItems: "flex-start",
+                            justifyContent: "center",
+                            paddingTop: 40,
+                          }}
+                        >
+                          <span
+                            className="font-display"
+                            style={{ fontSize: 40, color: "rgba(14,14,12,0.1)", lineHeight: 1 }}
+                          >
+                            {step.num}
+                          </span>
+                        </div>
+
+                        {/* Step content */}
+                        <div
+                          style={{
+                            padding: "40px 48px 40px 40px",
+                            borderTop: si === 0 && pi === 0 ? "3px solid #C8F000" : undefined,
+                          }}
+                        >
+                          <div
+                            className="font-display"
+                            style={{ fontSize: "clamp(20px, 2.5vw, 30px)", color: "#0E0E0C", lineHeight: 1, marginBottom: 16 }}
+                          >
+                            {step.title}
+                          </div>
+                          <p
+                            className="font-sans"
+                            style={{ fontSize: 16, lineHeight: 1.75, color: "rgba(14,14,12,0.65)", maxWidth: 680 }}
+                          >
+                            {step.body}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
+              </ScrollReveal>
+            ))}
 
-                <div
-                  style={{
-                    padding: "40px 48px",
-                    borderTop: i === 0 ? "4px solid #C8F000" : undefined,
-                  }}
+            {/* Footnote */}
+            <ScrollReveal delay={0.15}>
+              <div
+                style={{
+                  marginTop: 32,
+                  paddingTop: 32,
+                  borderTop: "1px solid rgba(14,14,12,0.1)",
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: 16,
+                }}
+              >
+                <span style={{ width: 3, height: 3, background: "rgba(14,14,12,0.35)", display: "inline-block", marginTop: 9, flexShrink: 0 }} />
+                <p
+                  className="font-mono"
+                  style={{ fontSize: 12, color: "rgba(14,14,12,0.4)", lineHeight: 1.65, maxWidth: 560, fontStyle: "italic" }}
                 >
-                  <h3
-                    style={{
-                      fontFamily: "var(--font-display)",
-                      fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
-                      lineHeight: 1,
-                      color: "#0E0E0C",
-                      marginBottom: 20,
-                    }}
-                  >
-                    {step.title}
-                  </h3>
+                  Niet elk idee wordt een venture. Dat is de bedoeling. Snel stoppen is goedkoper dan
+                  langzaam falen. We schrijven altijd op wat we hebben geleerd.
+                </p>
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* ── SNELHEID ──────────────────────────────────────── */}
+        <section style={{ background: "#0E0E0C", padding: "120px 0" }}>
+          <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 32px" }}>
+            <ScrollReveal>
+              <p
+                className="font-mono uppercase"
+                style={{ fontSize: 11, letterSpacing: "0.18em", color: "rgba(255,255,255,0.3)", marginBottom: 24 }}
+              >
+                — Waarom dit sneller werkt
+              </p>
+              <h2
+                className="font-display"
+                style={{
+                  fontSize: "clamp(44px, 6vw, 96px)",
+                  lineHeight: 0.9,
+                  color: "#F4F1E8",
+                  marginBottom: 24,
+                }}
+              >
+                TRADITIONEEL DUURT<br />
+                <span style={{ color: "#C8F000" }}>MAANDEN.</span><br />
+                WIJ DOEN HET IN WEKEN.
+              </h2>
+              <p
+                className="font-sans"
+                style={{ fontSize: 18, lineHeight: 1.65, color: "rgba(255,255,255,0.5)", maxWidth: 600, marginBottom: 64 }}
+              >
+                Traditionele bedrijven starten met meetings, plannen, budgetten en maanden voorbereiding.
+                Wij starten met een probleem en een prototype. Daardoor zien we binnen weken
+                wat anderen pas na maanden ontdekken.
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.1}>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+                  gap: 2,
+                  background: "rgba(255,255,255,0.06)",
+                  maxWidth: 720,
+                }}
+              >
+                {/* Traditioneel */}
+                <div style={{ background: "#111110", padding: "44px 40px" }}>
                   <p
-                    style={{
-                      fontFamily: "var(--font-sans)",
-                      fontSize: "1.0625rem",
-                      lineHeight: 1.7,
-                      color: "rgba(14,14,12,0.65)",
-                      maxWidth: 560,
-                    }}
+                    className="font-mono uppercase"
+                    style={{ fontSize: 10, letterSpacing: "0.2em", color: "rgba(255,255,255,0.3)", marginBottom: 32 }}
                   >
-                    {step.body}
+                    Traditioneel
+                  </p>
+                  {["01 — Plannen", "02 — Overleggen", "03 — Pitchen", "04 — Bouwen", "05 — Lanceren"].map((s, i) => (
+                    <div
+                      key={s}
+                      style={{ padding: "10px 0", borderBottom: i < 4 ? "1px solid rgba(255,255,255,0.05)" : undefined }}
+                    >
+                      <span
+                        className="font-mono"
+                        style={{ fontSize: 13, color: "rgba(255,255,255,0.22)", textDecoration: "line-through" }}
+                      >
+                        {s}
+                      </span>
+                    </div>
+                  ))}
+                  <p
+                    className="font-mono uppercase"
+                    style={{ fontSize: 11, letterSpacing: "0.12em", color: "rgba(255,255,255,0.2)", marginTop: 28 }}
+                  >
+                    ~ 6 – 18 maanden
+                  </p>
+                </div>
+
+                {/* Toms Ambitie */}
+                <div style={{ background: "#111110", padding: "44px 40px", borderTop: "3px solid #C8F000" }}>
+                  <p
+                    className="font-mono uppercase"
+                    style={{ fontSize: 10, letterSpacing: "0.2em", color: "#C8F000", marginBottom: 32 }}
+                  >
+                    Toms Ambitie
+                  </p>
+                  {[
+                    "01 — Probleem voelen",
+                    "02 — MVP bouwen",
+                    "03 — Intern testen",
+                    "04 — Eerste gebruikers",
+                    "05 — Venture of stop",
+                  ].map((s, i) => (
+                    <div
+                      key={s}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 12,
+                        padding: "10px 0",
+                        borderBottom: i < 4 ? "1px solid rgba(255,255,255,0.05)" : undefined,
+                      }}
+                    >
+                      <span style={{ width: 4, height: 4, background: "#C8F000", flexShrink: 0, display: "inline-block" }} />
+                      <span className="font-mono" style={{ fontSize: 13, color: "#F4F1E8" }}>{s}</span>
+                    </div>
+                  ))}
+                  <p
+                    className="font-mono uppercase"
+                    style={{ fontSize: 11, letterSpacing: "0.12em", color: "#C8F000", marginTop: 28 }}
+                  >
+                    ~ Max 6 weken
                   </p>
                 </div>
               </div>
-            ))}
+            </ScrollReveal>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* 02 — SNELHEID */}
-      <section style={{ background: "#0E0E0C", paddingTop: 120, paddingBottom: 120 }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}>
-          <p
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "0.75rem",
-              fontWeight: 500,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              color: "rgba(244,241,232,0.4)",
-              marginBottom: 24,
-            }}
-          >
-            02 — Snelheid
-          </p>
-          <h2
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(40px, 6vw, 80px)",
-              lineHeight: 0.95,
-              color: "#F4F1E8",
-              marginBottom: 24,
-            }}
-          >
-            WAAROM DIT SNELLER WERKT.
-          </h2>
-          <p
-            style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: "1.125rem",
-              lineHeight: 1.65,
-              color: "rgba(244,241,232,0.6)",
-              maxWidth: 640,
-              marginBottom: 64,
-            }}
-          >
-            Traditionele bedrijven starten met meetings, plannen, budgetten en
-            maanden voorbereiding. Wij starten met een probleem, een prototype en
-            echte gebruikers. Daardoor zien we binnen weken wat anderen pas na
-            maanden ontdekken. Niet alles werkt. Maar dat hoeft ook niet. Snel
-            falen is goedkoper dan langzaam vergaderen.
-          </p>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 2,
-              background: "rgba(255,255,255,0.08)",
-              maxWidth: 800,
-            }}
-          >
-            <div style={{ background: "#111110", padding: "40px 36px" }}>
+        {/* ── AI ALS VERSNELLER ────────────────────────────── */}
+        <section style={{ background: "#F4F1E8", padding: "120px 0" }}>
+          <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 32px" }}>
+            <ScrollReveal>
               <p
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.7rem",
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  color: "rgba(244,241,232,0.35)",
-                  marginBottom: 32,
-                }}
+                className="font-mono uppercase"
+                style={{ fontSize: 11, letterSpacing: "0.18em", color: "rgba(14,14,12,0.4)", marginBottom: 24 }}
               >
-                Traditioneel
+                — AI als versneller
               </p>
-              {["01 Plannen", "02 Overleggen", "03 Bouwen", "04 Testen"].map((s, i) => (
-                <div
-                  key={i}
-                  style={{
-                    padding: "12px 0",
-                    borderBottom: i < 3 ? "1px solid rgba(255,255,255,0.06)" : undefined,
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.875rem",
-                      color: "rgba(244,241,232,0.3)",
-                      textDecoration: "line-through",
-                    }}
-                  >
-                    {s}
-                  </span>
-                </div>
-              ))}
-              <p
+              <h2
+                className="font-display"
                 style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.75rem",
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  color: "rgba(244,241,232,0.25)",
-                  marginTop: 24,
-                }}
-              >
-                ~ Maanden
-              </p>
-            </div>
-
-            <div
-              style={{
-                background: "#111110",
-                padding: "40px 36px",
-                borderTop: "4px solid #C8F000",
-              }}
-            >
-              <p
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.7rem",
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  color: "#C8F000",
-                  marginBottom: 32,
-                }}
-              >
-                Ons model
-              </p>
-              {["01 Probleem", "02 Bouwen", "03 Testen", "04 Beslissen"].map((s, i) => (
-                <div
-                  key={i}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 12,
-                    padding: "12px 0",
-                    borderBottom: i < 3 ? "1px solid rgba(255,255,255,0.06)" : undefined,
-                  }}
-                >
-                  <span
-                    style={{
-                      width: 5,
-                      height: 5,
-                      background: "#C8F000",
-                      display: "inline-block",
-                      flexShrink: 0,
-                    }}
-                  />
-                  <span
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.875rem",
-                      color: "#F4F1E8",
-                    }}
-                  >
-                    {s}
-                  </span>
-                </div>
-              ))}
-              <p
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.75rem",
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  color: "#C8F000",
-                  marginTop: 24,
-                }}
-              >
-                ~ Weken
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* INTERNE CASE — ILZE */}
-      <section style={{ background: "#FBFAF6", paddingTop: 120, paddingBottom: 120 }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}>
-          <p
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "0.75rem",
-              fontWeight: 500,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              color: "rgba(14,14,12,0.45)",
-              marginBottom: 24,
-            }}
-          >
-            — Interne case
-          </p>
-          <h2
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(32px, 5vw, 64px)",
-              lineHeight: 0.95,
-              color: "#0E0E0C",
-              marginBottom: 64,
-              maxWidth: 800,
-            }}
-          >
-            ILZE WILDE EEN PROFORMA LOONSTROOK MAKEN.
-          </h2>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr 1fr",
-              gap: 2,
-              background: "#0E0E0C",
-              border: "2px solid #0E0E0C",
-            }}
-          >
-            <div style={{ background: "#F4F1E8", padding: "40px 36px" }}>
-              <p
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.7rem",
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  color: "rgba(14,14,12,0.4)",
+                  fontSize: "clamp(44px, 6vw, 96px)",
+                  lineHeight: 0.9,
+                  color: "#0E0E0C",
                   marginBottom: 24,
                 }}
               >
-                Probleem
-              </p>
+                AI MAAKT ONS SNELLER.<br />
+                <span style={{ color: "rgba(14,14,12,0.25)" }}>NIET SLIMMER.</span>
+              </h2>
               <p
-                style={{
-                  fontFamily: "var(--font-sans)",
-                  fontSize: "1rem",
-                  lineHeight: 1.65,
-                  color: "rgba(14,14,12,0.7)",
-                }}
+                className="font-sans"
+                style={{ fontSize: 18, lineHeight: 1.65, color: "rgba(14,14,12,0.6)", maxWidth: 600, marginBottom: 64 }}
               >
-                Nergens online kun je een proforma loonstrook berekenen op basis
-                van de CAO Kappersbranche. Accountantskosten of urenlange Excel.
+                We gebruiken AI niet omdat het hip is. We gebruiken het omdat het ons in staat stelt
+                in weken te bouwen wat anders maanden kost. Op zes concrete plekken in onze workflow.
               </p>
-            </div>
+            </ScrollReveal>
 
-            <div
-              style={{
-                background: "#0E0E0C",
-                padding: "40px 36px",
-                borderTop: "4px solid #C8F000",
-              }}
-            >
-              <p
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.7rem",
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  color: "#C8F000",
-                  marginBottom: 24,
-                }}
-              >
-                Oplossing
-              </p>
-              <p
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.875rem",
-                  letterSpacing: "0.08em",
-                  color: "#C8F000",
-                  marginBottom: 24,
-                }}
-              >
-                loonstrook.calc
-              </p>
-              {(
-                [
-                  ["Bruto", "€ 2.412,—", false],
-                  ["Loonheffing", "− € 412,—", true],
-                  ["Pensioen", "− € 138,—", true],
-                  ["Netto", "€ 1.862,—", false],
-                ] as [string, string, boolean][]
-              ).map(([label, value, muted], i) => (
-                <div
-                  key={i}
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    padding: "8px 0",
-                    borderBottom:
-                      i < 3 ? "1px solid rgba(200,240,0,0.15)" : undefined,
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.8125rem",
-                      color: muted
-                        ? "rgba(200,240,0,0.5)"
-                        : "rgba(244,241,232,0.8)",
-                    }}
-                  >
-                    {label}
-                  </span>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.8125rem",
-                      color: muted ? "rgba(200,240,0,0.5)" : "#C8F000",
-                      fontWeight: i === 3 ? 700 : 400,
-                    }}
-                  >
-                    {value}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            <div style={{ background: "#F4F1E8", padding: "40px 36px" }}>
-              <p
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.7rem",
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  color: "rgba(14,14,12,0.4)",
-                  marginBottom: 24,
-                }}
-              >
-                Resultaat
-              </p>
-              <p
-                style={{
-                  fontFamily: "var(--font-sans)",
-                  fontSize: "1rem",
-                  lineHeight: 1.65,
-                  color: "rgba(14,14,12,0.7)",
-                }}
-              >
-                Live binnen één week. Onderdeel van Blondes Incognito. Wordt nu
-                door externe ondernemers gebruikt.
-              </p>
-            </div>
-          </div>
-
-          <p
-            style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: "1.0625rem",
-              lineHeight: 1.7,
-              color: "rgba(14,14,12,0.6)",
-              maxWidth: 640,
-              marginTop: 48,
-            }}
-          >
-            Veel van onze ventures beginnen precies zo: een klein intern probleem
-            dat uiteindelijk groter blijkt te zijn dan alleen onze eigen situatie.
-          </p>
-        </div>
-      </section>
-
-      {/* 03 — AI VERSNELLER */}
-      <section style={{ background: "#F4F1E8", paddingTop: 120, paddingBottom: 120 }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}>
-          <p
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "0.75rem",
-              fontWeight: 500,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              color: "rgba(14,14,12,0.45)",
-              marginBottom: 24,
-            }}
-          >
-            03 — Versnelling
-          </p>
-          <h2
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(40px, 6vw, 80px)",
-              lineHeight: 0.95,
-              color: "#0E0E0C",
-              marginBottom: 24,
-            }}
-          >
-            AI MAAKT ONS SNELLER.
-            <br />
-            <span style={{ color: "rgba(14,14,12,0.25)" }}>NIET SLIMMER.</span>
-          </h2>
-          <p
-            style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: "1.125rem",
-              lineHeight: 1.65,
-              color: "rgba(14,14,12,0.6)",
-              maxWidth: 640,
-              marginBottom: 64,
-            }}
-          >
-            We gebruiken AI niet omdat het hip is. We gebruiken het omdat het ons
-            in staat stelt in weken te bouwen wat anders maanden kost. Concreet,
-            op zes plekken in onze workflow.
-          </p>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: 2,
-              background: "#0E0E0C",
-              border: "2px solid #0E0E0C",
-              marginBottom: 48,
-            }}
-          >
-            {aiItems.map((item, i) => (
+            <ScrollReveal delay={0.1}>
               <div
-                key={i}
                 style={{
-                  background: "#F4F1E8",
-                  padding: "36px 32px",
-                  borderTop: i === 0 ? "4px solid #C8F000" : undefined,
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+                  gap: 2,
+                  background: "#C0BDB0",
+                  marginBottom: 48,
                 }}
               >
-                <h3
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.8125rem",
-                    fontWeight: 700,
-                    letterSpacing: "0.12em",
-                    textTransform: "uppercase",
-                    color: "#0E0E0C",
-                    marginBottom: 16,
-                  }}
-                >
-                  {item.title}
-                </h3>
+                {aiUsecases.map((item) => (
+                  <div
+                    key={item.num}
+                    style={{ background: "#F4F1E8", padding: "36px 32px" }}
+                  >
+                    <div
+                      className="font-display"
+                      style={{ fontSize: 36, color: "rgba(14,14,12,0.08)", lineHeight: 1, marginBottom: 16 }}
+                    >
+                      {item.num}
+                    </div>
+                    <div
+                      className="font-mono uppercase"
+                      style={{ fontSize: 10, letterSpacing: "0.14em", color: "#0E0E0C", fontWeight: 700, marginBottom: 12 }}
+                    >
+                      {item.title}
+                    </div>
+                    <p className="font-sans" style={{ fontSize: 14, lineHeight: 1.7, color: "rgba(14,14,12,0.6)" }}>
+                      {item.body}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.15}>
+              <div style={{ borderLeft: "3px solid #C8F000", paddingLeft: 24, maxWidth: 600 }}>
+                <p className="font-sans" style={{ fontSize: 16, lineHeight: 1.7, color: "rgba(14,14,12,0.6)", marginBottom: 8 }}>
+                  AI maakt geen beslissingen. AI vervangt geen sales, geen vertrouwen, geen klantrelaties. Dat doen wij.
+                </p>
                 <p
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    fontSize: "0.9375rem",
-                    lineHeight: 1.65,
-                    color: "rgba(14,14,12,0.6)",
-                  }}
+                  className="font-mono uppercase"
+                  style={{ fontSize: 10, letterSpacing: "0.14em", color: "#0E0E0C", fontWeight: 700 }}
                 >
-                  {item.body}
+                  Versneller van executie — geen magische oplossing
                 </p>
               </div>
-            ))}
+            </ScrollReveal>
           </div>
+        </section>
 
-          <div
-            style={{
-              borderLeft: "4px solid #C8F000",
-              paddingLeft: 24,
-              maxWidth: 640,
-            }}
-          >
-            <p
-              style={{
-                fontFamily: "var(--font-sans)",
-                fontSize: "1rem",
-                lineHeight: 1.7,
-                color: "rgba(14,14,12,0.6)",
-                marginBottom: 8,
-              }}
-            >
-              AI maakt geen beslissingen. AI vervangt geen sales, geen
-              vertrouwen, geen klantrelaties. Dat doen wij.
-            </p>
-            <p
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "0.8125rem",
-                fontWeight: 600,
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                color: "#0E0E0C",
-              }}
-            >
-              Versneller van executie. Geen magische oplossing.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* CLOSING */}
-      <section style={{ background: "#0E0E0C", paddingTop: 120, paddingBottom: 120 }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}>
-          <h2
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(48px, 8vw, 112px)",
-              lineHeight: 0.92,
-              color: "#F4F1E8",
-              marginBottom: 32,
-              maxWidth: 900,
-            }}
-          >
-            WE BOUWEN WAT WE{" "}
-            <span style={{ color: "#C8F000" }}>ZELF MISSEN.</span>
-          </h2>
-          <p
-            style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: "1.125rem",
-              lineHeight: 1.65,
-              color: "rgba(244,241,232,0.55)",
-              maxWidth: 560,
-              marginBottom: 16,
-            }}
-          >
-            Toms Ambitie is een venture club uit Zwolle die bedrijven bouwt
-            vanuit echte problemen, slimme systemen en ondernemende frustratie.
-          </p>
-
-          <div style={{ marginBottom: 48 }}>
-            <p
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "0.75rem",
-                letterSpacing: "0.14em",
-                textTransform: "uppercase",
-                color: "rgba(244,241,232,0.35)",
-                marginBottom: 12,
-                marginTop: 32,
-              }}
-            >
-              Actieve ventures
-            </p>
-            {["Post Pilot", "EmmaBoekt", "Oak Marketing", "Pactly", "Plug & Power"].map((v) => (
-              <div
-                key={v}
+        {/* ── PRINCIPES ────────────────────────────────────── */}
+        <section style={{ background: "#0E0E0C", padding: "120px 0" }}>
+          <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 32px" }}>
+            <ScrollReveal>
+              <p
+                className="font-mono uppercase"
+                style={{ fontSize: 11, letterSpacing: "0.18em", color: "rgba(255,255,255,0.3)", marginBottom: 24 }}
+              >
+                — Onze bouwprincipes
+              </p>
+              <h2
+                className="font-display"
                 style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 12,
-                  padding: "8px 0",
-                  borderBottom: "1px solid rgba(255,255,255,0.06)",
+                  fontSize: "clamp(44px, 6vw, 96px)",
+                  lineHeight: 0.9,
+                  color: "#F4F1E8",
+                  marginBottom: 64,
                 }}
               >
-                <span
+                WIJ ZIJN ALTIJD<br />
+                <span style={{ color: "#C8F000" }}>ZELF DE TESTGROEP.</span>
+              </h2>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.1}>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+                  gap: 2,
+                  background: "rgba(255,255,255,0.06)",
+                }}
+              >
+                {principles.map((p) => (
+                  <div
+                    key={p.title}
+                    style={{ background: "#111110", padding: "44px 40px", borderLeft: "3px solid #C8F000" }}
+                  >
+                    <div
+                      className="font-display"
+                      style={{ fontSize: "clamp(18px, 2vw, 26px)", color: "#F4F1E8", lineHeight: 1.05, marginBottom: 16 }}
+                    >
+                      {p.title}
+                    </div>
+                    <p className="font-sans" style={{ fontSize: 15, lineHeight: 1.7, color: "rgba(255,255,255,0.5)" }}>
+                      {p.body}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* ── CLOSING CTA ──────────────────────────────────── */}
+        <section style={{ background: "#F4F1E8", padding: "120px 0" }}>
+          <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 32px" }}>
+            <ScrollReveal>
+              <h2
+                className="font-display"
+                style={{
+                  fontSize: "clamp(44px, 7vw, 120px)",
+                  lineHeight: 0.88,
+                  color: "#0E0E0C",
+                  marginBottom: 40,
+                  maxWidth: 1100,
+                }}
+              >
+                HEB JE EEN PROBLEEM<br />
+                DAT EEN BEDRIJF{" "}
+                <span style={{ color: "#C8F000" }}>VERDIENT?</span>
+              </h2>
+              <p
+                className="font-sans"
+                style={{ fontSize: 18, lineHeight: 1.65, color: "rgba(14,14,12,0.65)", maxWidth: 540, marginBottom: 48 }}
+              >
+                We bouwen niet voor klanten. Maar als jij een probleem hebt dat wij herkennen
+                — praten we graag. Geen pitchdeck nodig, geen vrijblijvend gesprek.
+              </p>
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                <Link
+                  to="/meebouwen"
+                  className="font-mono font-bold uppercase inline-flex items-center hover:bg-[#DCF55E] transition-colors"
                   style={{
-                    width: 5,
-                    height: 5,
                     background: "#C8F000",
-                    display: "inline-block",
-                    flexShrink: 0,
-                  }}
-                />
-                <span
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    fontSize: "1rem",
-                    color: "rgba(244,241,232,0.7)",
+                    color: "#0E0E0C",
+                    fontSize: 11,
+                    letterSpacing: "0.12em",
+                    padding: "14px 28px",
+                    textDecoration: "none",
                   }}
                 >
-                  {v}
-                </span>
+                  START EEN GESPREK →
+                </Link>
+                <Link
+                  to="/ventures"
+                  className="font-mono font-bold uppercase inline-flex items-center transition-colors"
+                  style={{
+                    border: "1.5px solid rgba(14,14,12,0.3)",
+                    background: "transparent",
+                    color: "#0E0E0C",
+                    fontSize: 11,
+                    letterSpacing: "0.12em",
+                    padding: "14px 28px",
+                    textDecoration: "none",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLAnchorElement).style.background = "#0E0E0C";
+                    (e.currentTarget as HTMLAnchorElement).style.color = "#F4F1E8";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
+                    (e.currentTarget as HTMLAnchorElement).style.color = "#0E0E0C";
+                  }}
+                >
+                  BEKIJK ONZE VENTURES
+                </Link>
               </div>
-            ))}
+            </ScrollReveal>
           </div>
+        </section>
 
-          <p
-            style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: "1rem",
-              lineHeight: 1.65,
-              color: "rgba(244,241,232,0.45)",
-              maxWidth: 480,
-              marginBottom: 48,
-            }}
-          >
-            Heb jij een markt, een idee of een probleem dat we moeten oplossen?
-            We praten liever niet vrijblijvend. Eén bericht, en we weten binnen
-            een week of er iets ligt om samen te bouwen.
-          </p>
-
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 16 }}>
-            <Link
-              to="/meebouwen"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontFamily: "var(--font-mono)",
-                fontSize: "0.8125rem",
-                fontWeight: 700,
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                background: "#C8F000",
-                color: "#0E0E0C",
-                padding: "0 40px",
-                minHeight: 56,
-                textDecoration: "none",
-              }}
-            >
-              Meebouwen →
-            </Link>
-            <a
-              href="mailto:tom@tomsambitie.nl"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontFamily: "var(--font-mono)",
-                fontSize: "0.8125rem",
-                fontWeight: 700,
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                border: "2px solid rgba(244,241,232,0.25)",
-                color: "rgba(244,241,232,0.7)",
-                padding: "0 40px",
-                minHeight: 56,
-                textDecoration: "none",
-              }}
-            >
-              tom@tomsambitie.nl
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <Footer />
-    </main>
+        <Footer />
+      </main>
+    </>
   );
 };
 

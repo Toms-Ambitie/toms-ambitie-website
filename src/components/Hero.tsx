@@ -72,7 +72,7 @@ export const Hero = () => {
             ONZE VENTURES →
           </Link>
           <Link
-            to="/hoe-we-bouwen"
+            to="/werkwijze"
             className="font-mono font-bold uppercase inline-flex items-center transition-colors"
             style={{
               border: "1.5px solid rgba(14,14,12,0.3)",

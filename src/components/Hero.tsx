@@ -1,132 +1,212 @@
-import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-const HeroProductFrame = () => {
-  const frameRef = useRef<HTMLDivElement>(null);
-
-  const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!frameRef.current) return;
-    const r = frameRef.current.getBoundingClientRect();
-    const x = ((e.clientX - r.left) / r.width - 0.5) * 2;
-    const y = ((e.clientY - r.top) / r.height - 0.5) * 2;
-    frameRef.current.style.transform = `perspective(1200px) rotateX(${-y * 2}deg) rotateY(${x * 2}deg) translateZ(0)`;
-  };
-
-  const handleLeave = () => {
-    if (frameRef.current) frameRef.current.style.transform = '';
-  };
-
-  return (
-    <div
-      className="reveal reveal-delay-3"
-      style={{ position: 'relative' }}
-      onMouseMove={handleMove}
-      onMouseLeave={handleLeave}
-    >
-      <div
-        ref={frameRef}
-        className="parallax-frame"
-        style={{
-          position: 'relative',
-          background: 'var(--inkt)',
-          padding: 20,
-          border: '1px solid rgba(244,241,232,0.1)',
-        }}
-      >
-        {/* Volt top bar */}
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: 'var(--volt)' }} />
-
-        {/* Frame header */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 4px 16px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <span style={{ width: 6, height: 6, background: 'var(--volt)' }} />
-            <span className="meta" style={{ color: 'rgba(244,241,232,0.6)' }}>FIG.01 · POST PILOT · LIVE</span>
-          </div>
-          <span className="meta" style={{ color: 'rgba(244,241,232,0.4)' }}>VENTURE 01/05</span>
-        </div>
-
-        {/* Video */}
-        <div style={{ aspectRatio: '4 / 3', overflow: 'hidden', background: 'var(--wit-warm)', position: 'relative' }}>
-          <video
-            src="/videos/postpilot-demo.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster="/photos/postpilot-analytics.png"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', display: 'block' }}
-          />
-        </div>
-      </div>
-
-      {/* Badge */}
-      <div style={{
-        position: 'absolute',
-        top: -20,
-        right: -20,
-        background: 'var(--volt)',
-        color: 'var(--inkt)',
-        padding: '10px 16px',
-      }}>
-        <span className="meta" style={{ color: 'var(--inkt)' }}>★ NIEUW · 2024</span>
-      </div>
-    </div>
-  );
-};
+/* ═══════════════════════════════════════════════════════════════
+   HERO — Full-bleed founder image · Toms Ambitie v3.1
+   - Cinematic dark background with Tom Mulder (founder)
+   - Gradient: dark left (text legible) → transparent right (image visible)
+   - Mobile: gradient shifts to top-down, face centred in viewport
+   ═══════════════════════════════════════════════════════════════ */
 
 export const Hero = () => {
   return (
-    <section className="surface-wit page-hero" style={{ padding: '140px 0 120px', position: 'relative' }}>
-      <div className="container-wide">
+    <section
+      style={{
+        position: 'relative',
+        minHeight: 'clamp(620px, 92vh, 920px)',
+        overflow: 'hidden',
+        background: 'var(--inkt)', /* fallback while image loads */
+        display: 'flex',
+        alignItems: 'flex-start',
+      }}
+    >
+      {/* ── Founder image — LCP, eager, high priority ── */}
+      <img
+        src="/photos/tom-founder-01.jpg"
+        srcSet={[
+          '/photos/tom-founder-01-768.jpg 768w',
+          '/photos/tom-founder-01-1024.jpg 1024w',
+          '/photos/tom-founder-01.jpg 1536w',
+        ].join(', ')}
+        sizes="100vw"
+        alt="Tom Mulder, founder Toms Ambitie — aan het werk in het studio"
+        fetchPriority="high"
+        decoding="sync"
+        className="hero-founder-img"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          /* Desktop: Tom centred, looking left toward copy */
+          objectPosition: '62% center',
+          display: 'block',
+          userSelect: 'none',
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* ── Gradient layers — left-heavy on desktop, top-down on mobile ── */}
+
+      {/* Primary: dark left → transparent right (desktop: text readability) */}
+      <div
+        aria-hidden="true"
+        className="hero-gradient-left"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background:
+            'linear-gradient(to right, rgba(14,14,12,0.96) 0%, rgba(14,14,12,0.90) 32%, rgba(14,14,12,0.65) 58%, rgba(14,14,12,0.20) 78%, rgba(14,14,12,0.02) 100%)',
+        }}
+      />
+
+      {/* Secondary: subtle bottom vignette — grounds the section */}
+      <div
+        aria-hidden="true"
+        className="hero-gradient-bottom"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background:
+            'linear-gradient(to top, rgba(14,14,12,0.55) 0%, rgba(14,14,12,0.08) 30%, transparent 60%)',
+        }}
+      />
+
+      {/* ── Content ── */}
+      <div
+        className="container-wide"
+        style={{
+          position: 'relative',
+          zIndex: 1,
+          width: '100%',
+          /* Top padding: nav height + breathing room */
+          paddingTop: 'clamp(104px, 14vh, 160px)',
+          paddingBottom: 'clamp(56px, 8vh, 100px)',
+        }}
+      >
+        {/* Eyebrow tag */}
         <div
-          className="hero-two-col"
-          style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }}
+          className="reveal"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 12,
+            padding: '8px 14px',
+            background: 'rgba(255,255,255,0.07)',
+            border: '1px solid rgba(244,241,232,0.14)',
+            marginBottom: 40,
+          }}
         >
-          {/* Left */}
-          <div>
-            <div
-              className="reveal"
+          <span style={{ width: 7, height: 7, background: 'var(--volt)', flexShrink: 0 }} />
+          <span className="meta" style={{ color: 'rgba(244,241,232,0.75)' }}>
+            VENTURE CLUB · ZWOLLE · 2025
+          </span>
+        </div>
+
+          {/* H1 — wider so "We bouwen wat" fits on line 1 */}
+          <h1
+            className="clip-reveal display"
+            style={{
+              fontSize: 'clamp(68px, 9vw, 152px)',
+              letterSpacing: '-0.02em',
+              lineHeight: 0.84,
+              color: 'var(--wit-warm)',
+              maxWidth: 900,
+            }}
+          >
+            <span>We bouwen wat<br />we zelf missen.</span>
+          </h1>
+
+          {/* Lead — narrower for readability */}
+          <p
+            className="lead reveal reveal-delay-1"
+            style={{
+              marginTop: 36,
+              fontSize: 'clamp(17px, 1.5vw, 21px)',
+              maxWidth: 520,
+              color: 'rgba(244,241,232,0.76)',
+              lineHeight: 1.55,
+            }}
+          >
+            Van frustratie naar platform. In weken. Niet in jaren.
+            <br /><br />
+            We bouwen eigen ventures vanuit problemen die we zelf voelen.
+            Eerst intern. Daarna testen. Werkt het? Dan maken we er een bedrijf van.
+          </p>
+
+          {/* CTAs */}
+          <div
+            className="reveal reveal-delay-2"
+            style={{
+              display: 'flex',
+              gap: 16,
+              marginTop: 44,
+              alignItems: 'center',
+              flexWrap: 'wrap',
+              maxWidth: 520,
+            }}
+          >
+            <Link to="/ventures" className="btn btn-volt">
+              Bekijk ventures →
+            </Link>
+            <Link
+              to="/meebouwen"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: 12,
-                padding: '8px 14px',
-                background: 'var(--inkt-05)',
-                marginBottom: 40,
+                gap: 6,
+                fontFamily: 'var(--mono)',
+                fontSize: 12,
+                fontWeight: 700,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: 'rgba(244,241,232,0.75)',
+                borderBottom: '1.5px solid rgba(244,241,232,0.35)',
+                paddingBottom: 3,
+                textDecoration: 'none',
+                transition: 'color .2s, border-color .2s',
+                whiteSpace: 'nowrap',
+                minHeight: 44,
+                alignSelf: 'center',
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLAnchorElement;
+                el.style.color = 'var(--volt)';
+                el.style.borderColor = 'var(--volt)';
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLAnchorElement;
+                el.style.color = 'rgba(244,241,232,0.75)';
+                el.style.borderColor = 'rgba(244,241,232,0.35)';
               }}
             >
-              <span style={{ width: 7, height: 7, background: 'var(--volt)' }} />
-              <span className="meta">VENTURE CLUB · ZWOLLE · 2025</span>
-            </div>
-
-            <h1
-              className="clip-reveal display"
-              style={{ fontSize: 'clamp(72px, 9vw, 152px)', letterSpacing: '-0.02em', lineHeight: 0.84 }}
-            >
-              <span>We bouwen wat<br />we zelf missen.</span>
-            </h1>
-
-            <p
-              className="lead reveal reveal-delay-1"
-              style={{ marginTop: 40, fontSize: 22, maxWidth: 540 }}
-            >
-              Van frustratie naar platform. In weken. Niet in jaren.<br /><br />
-              We bouwen eigen ventures vanuit problemen die we zelf voelen. Eerst intern. Daarna testen. Werkt het? Dan maken we er een bedrijf van.
-            </p>
-
-            <div
-              className="reveal reveal-delay-2"
-              style={{ display: 'flex', gap: 16, marginTop: 48, alignItems: 'center', flexWrap: 'wrap' }}
-            >
-              <Link to="/ventures" className="btn">Bekijk ventures →</Link>
-              <Link to="/meebouwen" className="btn-link">Bouw mee</Link>
-            </div>
+              Bouw mee
+            </Link>
           </div>
-
-          {/* Right — PostPilot frame */}
-          <HeroProductFrame />
-        </div>
       </div>
+
+      {/* ── Founder caption — bottom right corner ── */}
+      <div
+        className="hero-caption"
+        style={{
+          position: 'absolute',
+          bottom: 24,
+          right: 32,
+          padding: '7px 12px',
+          background: 'rgba(14,14,12,0.55)',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(244,241,232,0.08)',
+          zIndex: 2,
+        }}
+      >
+        <span
+          className="meta"
+          style={{ color: 'rgba(244,241,232,0.55)', fontSize: 9, letterSpacing: '0.16em' }}
+        >
+          TOM MULDER · FOUNDER · TOMS AMBITIE
+        </span>
+      </div>
+
     </section>
   );
 };

@@ -6,6 +6,7 @@ const VENTURES = [
   { name: 'Pactly', slug: 'pactly', tag: 'Legal SaaS', url: 'pactly.nl', accent: '#CC007E' },
   { name: 'OAK Marketing', slug: 'oak-marketing', tag: 'Marketing bureau', url: 'oakmarketing.nl', accent: '#1B3A8A' },
   { name: 'Plug and Power', slug: 'plug-and-power', tag: 'Energy Tech', url: 'plugandpower.nl', accent: '#FFAA00' },
+  { name: 'EmmaBoekt', slug: 'emmaboekt', tag: 'AI assistent', url: 'emmaboekt.nl', accent: '#9333EA' },
 ];
 
 const NAV_LINKS = [
@@ -45,7 +46,7 @@ export const Footer = () => {
           <div>
             <div className="meta" style={{ color: 'var(--volt)', marginBottom: 16 }}>WERKNOTITIES</div>
             <h3 className="display" style={{ fontSize: 'clamp(36px, 4vw, 56px)', lineHeight: 0.95, color: 'var(--wit-warm)' }}>
-              Lees mee terwijl<br />we bouwen.
+              Volg wat<br />we bouwen.
             </h3>
             <p className="body" style={{ marginTop: 16, color: 'rgba(244,241,232,0.6)', maxWidth: 440 }}>
               Maandelijkse notities over werkwijze, ventures en wat we leren tijdens het bouwen. Geen spam. Eerlijk.
@@ -105,7 +106,7 @@ export const Footer = () => {
             className="footer-ventures"
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
+              gridTemplateColumns: 'repeat(5, 1fr)',
               gap: 0,
               borderTop: '1px solid rgba(244,241,232,0.08)',
             }}
@@ -161,6 +162,9 @@ export const Footer = () => {
             <div className="display" style={{ fontSize: 40, marginTop: 28, color: 'var(--wit-warm)', lineHeight: 0.9 }}>
               WE BOUWEN<br />WAT WE ZELF<br />MISSEN.
             </div>
+            <p className="body-sm" style={{ marginTop: 16, color: 'rgba(244,241,232,0.5)', maxWidth: 280 }}>
+              Van interne tools tot schaalbare ventures. Altijd gebouwd vanuit echte frustratie.
+            </p>
             <div style={{ width: 96, height: 4, marginTop: 24, background: 'var(--volt)' }} />
           </div>
 

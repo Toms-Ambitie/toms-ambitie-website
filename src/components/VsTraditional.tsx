@@ -11,7 +11,7 @@ const tomsAmbitie = [
   'Werkende oplossing eerst, business case daarna',
   'Eigen problemen, eigen ervaring',
   'Vaste kern + top specialisten waar nodig',
-  'Geen extern kapitaal — eigen middelen',
+  'Geen extern kapitaal. Eigen middelen.',
   'Live binnen 6 weken',
   'Marketing als DNA',
 ];
@@ -25,7 +25,7 @@ export const VsTraditional = () => (
           <span className="eyebrow" style={{ color: 'rgba(244,241,232,0.5)' }}><span style={{ marginRight: 8 }}>02</span>Positionering</span>
         </div>
         <h2 className="h2 reveal" style={{ marginTop: 24, color: 'var(--wit-warm)', maxWidth: 1100, marginInline: 'auto' }}>
-          We zijn geen klassieke<br />venture builder.
+          Wij geloven meer in bouwen<br />dan in vergaderen.
         </h2>
       </div>
 
@@ -73,7 +73,7 @@ export const VsTraditional = () => (
       </div>
 
       <p className="lead reveal" style={{ marginTop: 64, textAlign: 'center', color: 'rgba(244,241,232,0.7)', maxWidth: 720, marginInline: 'auto' }}>
-        Geen agency, geen fonds, geen holding. Een actief systeem dat problemen omzet in bedrijven — en dat sneller, eerlijker en met minder mensen doet dan de klassieke aanpak.
+        Geen agency, geen fonds, geen holding. Een actief systeem dat problemen omzet in bedrijven. Sneller, eerlijker, met minder mensen dan de klassieke aanpak.
       </p>
     </div>
   </section>

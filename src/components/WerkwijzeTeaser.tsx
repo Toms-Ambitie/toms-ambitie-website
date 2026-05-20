@@ -41,12 +41,12 @@ export const WerkwijzeTeaser = () => (
           </div>
           <h2 className="h2" style={{ marginTop: 24 }}>
             Van probleem naar platform.<br />
-            <span style={{ color: 'var(--inkt-40)' }}>In zeven stappen. Max zes weken.</span>
+            <span style={{ color: 'var(--inkt-40)' }}>In weken. Niet in jaren.</span>
           </h2>
         </div>
         <div style={{ paddingTop: 24 }}>
           <p className="lead">
-            De oplossing staat altijd voorop — de business case volgt daarna. Altijd AI-assisted. Altijd vanuit eigen ervaring.
+            Van SaaS tot AI tools, van e-commerce tot interne tools. De oplossing staat altijd voorop. De business case volgt daarna. Altijd AI-assisted. Altijd vanuit eigen ervaring.
           </p>
           <Link to="/werkwijze" className="btn" style={{ marginTop: 32, display: 'inline-flex' }}>
             Volledige werkwijze →

@@ -5,7 +5,7 @@ const PILLARS = [
   },
   {
     t: 'AI als versneller',
-    d: 'Niet als experiment — als werkwijze. Wat een team van tien deed in maanden, doen wij in weken.',
+    d: 'Niet als experiment, maar als werkwijze. Wat een team van tien deed in maanden, doen wij in weken.',
   },
   {
     t: 'Altijd onderbouwd',
@@ -13,7 +13,7 @@ const PILLARS = [
   },
   {
     t: 'Eerlijk over resultaten',
-    d: 'Ook — vooral — over wat niet werkte. Een goede oplossing zonder business case is een kans. Andersom is waardeloos.',
+    d: 'Ook, en vooral, over wat niet werkte. Een goede oplossing zonder business case is een kans. Andersom is waardeloos.',
   },
 ];
 

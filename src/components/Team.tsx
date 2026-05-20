@@ -31,10 +31,10 @@ export const TeamTeaser = () => (
           <span className="eyebrow"><span style={{ marginRight: 8 }}>04</span>De Makers</span>
         </div>
         <h2 className="h2" style={{ marginTop: 24 }}>
-          Een vaste kern.<br />Top specialisten.
+          Een vaste kern.<br />Een scherpe schil.
         </h2>
         <p className="lead" style={{ marginTop: 32 }}>
-          Geen agency. Wel een team dat bouwt — een vaste kern aangevuld met top-specialisten. AI versnelt het werk. Mensen bepalen de richting.
+          Geen agency. Wel een team dat bouwt. Een vaste kern van builders, developers, designers, marketeers, contentmakers en operators. Aangevuld met een scherpe schil van specialisten per venture.
         </p>
         <Link to="/over-ons" className="btn-link" style={{ marginTop: 40, display: 'inline-flex' }}>
           Maak kennis met het team →

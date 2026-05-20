@@ -42,7 +42,7 @@ const HeroProductFrame = () => {
             <span style={{ width: 6, height: 6, background: 'var(--volt)' }} />
             <span className="meta" style={{ color: 'rgba(244,241,232,0.6)' }}>FIG.01 · POST PILOT · LIVE</span>
           </div>
-          <span className="meta" style={{ color: 'rgba(244,241,232,0.4)' }}>VENTURE 01/04</span>
+          <span className="meta" style={{ color: 'rgba(244,241,232,0.4)' }}>VENTURE 01/05</span>
         </div>
 
         {/* Video */}
@@ -110,15 +110,16 @@ export const Hero = () => {
               className="lead reveal reveal-delay-1"
               style={{ marginTop: 40, fontSize: 22, maxWidth: 540 }}
             >
-              Een venture club die problemen omzet in bedrijven. Vier eigen platformen, gebouwd vanuit echte eigen ervaring — met AI als versneller.
+              Van frustratie naar platform. In weken. Niet in jaren.<br /><br />
+              We bouwen eigen ventures vanuit problemen die we zelf voelen. Eerst intern. Daarna testen. Werkt het? Dan maken we er een bedrijf van.
             </p>
 
             <div
               className="reveal reveal-delay-2"
               style={{ display: 'flex', gap: 16, marginTop: 48, alignItems: 'center', flexWrap: 'wrap' }}
             >
-              <Link to="/ventures" className="btn">Onze ventures →</Link>
-              <Link to="/werkwijze" className="btn-link">Hoe we bouwen</Link>
+              <Link to="/ventures" className="btn">Bekijk ventures →</Link>
+              <Link to="/meebouwen" className="btn-link">Bouw mee</Link>
             </div>
           </div>
 

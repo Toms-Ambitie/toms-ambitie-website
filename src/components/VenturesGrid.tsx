@@ -49,6 +49,18 @@ const VENTURES = [
     accent: '#FFAA00',
     dark: '#1A1408',
   },
+  {
+    name: 'EmmaBoekt',
+    slug: 'emmaboekt',
+    tag: 'AI assistent',
+    tagline: 'Planning zonder gedoe.',
+    desc: 'AI-gestuurde planning en administratie voor zelfstandigen en kleine teams. Slimmer werken, minder rompslomp.',
+    status: 'Live',
+    year: '2025',
+    url: 'emmaboekt.nl',
+    accent: '#9333EA',
+    dark: '#0F0A1E',
+  },
 ];
 
 const LiveDot = ({ children = 'Actief' }: { children?: string }) => (
@@ -83,7 +95,7 @@ export const VenturesGrid = () => {
             <span className="eyebrow"><span style={{ marginRight: 8 }}>01</span>De Ventures</span>
           </div>
           <h2 className="h2 reveal" style={{ marginTop: 24, maxWidth: 1100, marginInline: 'auto' }}>
-            Vier eigen bedrijven.<br />
+            Vijf eigen ventures.<br />
             <span style={{ color: 'var(--inkt-40)' }}>Allemaal vanuit echte frustratie ontstaan.</span>
           </h2>
         </div>
@@ -151,7 +163,7 @@ export const VenturesGrid = () => {
         {/* 3-up grid */}
         <div
           className="ventures-grid-3"
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}
         >
           {secondary.map((v) => (
             <Link

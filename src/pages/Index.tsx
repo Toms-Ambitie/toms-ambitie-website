@@ -29,10 +29,21 @@ const Index = () => {
 
   useEffect(() => {
     applySEO({
-      title: 'Toms Ambitie. Venture Club',
+      title: 'Toms Ambitie — Venture Studio Zwolle | Eigen bedrijven bouwen',
       description:
-        'We bouwen wat we zelf missen. Van probleem naar platform in maximaal 6 weken. Doe mee als investeerder, partner of ideebringer.',
+        'Venture studio in Zwolle die eigen bedrijven bouwt vanuit echte problemen. Tom Mulder zoekt co-founders, investeerders en specialisten. Post Pilot, Pactly, OAK Marketing, Plug and Power, EmmaBoekt.',
       canonical: 'https://www.toms-ambitie.nl/',
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        '@id': 'https://www.toms-ambitie.nl/#webpage',
+        'name': 'Toms Ambitie — Venture Studio Zwolle',
+        'url': 'https://www.toms-ambitie.nl/',
+        'description': 'Venture studio in Zwolle die eigen bedrijven bouwt vanuit echte problemen. Open voor co-founders, investeerders en specialisten.',
+        'isPartOf': { '@id': 'https://www.toms-ambitie.nl/#website' },
+        'about': { '@id': 'https://www.toms-ambitie.nl/#organization' },
+        'author': { '@id': 'https://www.toms-ambitie.nl/#tom-mulder' },
+      },
     });
   }, []);
 

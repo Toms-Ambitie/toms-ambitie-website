@@ -51,9 +51,18 @@ const HoeWeBouwenPage = () => {
 
   useEffect(() => {
     applySEO({
-      title: 'De Werkwijze — Toms Ambitie',
-      description: 'Wij bouwen vanuit frustratie, gedrag en echte problemen. Zeven stappen, zes weken, altijd AI-assisted. Wij zijn altijd zelf de testgroep.',
+      title: 'Hoe We Bouwen — Venture Studio Werkwijze | Toms Ambitie',
+      description: 'Van frustratie naar werkend bedrijf in zes weken. Zo werkt onze venture studio: probleem valideren, intern bouwen, testen en schalen. Werkt het? Dan wordt het een zelfstandige venture.',
       canonical: 'https://www.toms-ambitie.nl/werkwijze',
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        'name': 'Hoe We Bouwen — Werkwijze Toms Ambitie',
+        'url': 'https://www.toms-ambitie.nl/werkwijze',
+        'description': 'De werkwijze van Toms Ambitie: van frustratie naar venture in zes weken.',
+        'isPartOf': { '@id': 'https://www.toms-ambitie.nl/#website' },
+        'about': { '@id': 'https://www.toms-ambitie.nl/#organization' },
+      },
     });
   }, []);
 

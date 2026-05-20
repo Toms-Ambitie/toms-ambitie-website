@@ -412,9 +412,18 @@ const VenturesPage = () => {
 
   useEffect(() => {
     applySEO({
-      title: 'Ventures — Toms Ambitie',
-      description: 'Vijf actieve ventures, gebouwd vanuit echte frustratie. Post Pilot, Pactly, OAK Marketing, Plug and Power en EmmaBoekt.',
+      title: 'Ventures — Post Pilot, Pactly, OAK Marketing en meer | Toms Ambitie',
+      description: 'Vijf eigen ventures gebouwd vanuit echte problemen. Post Pilot (live SaaS), OAK Marketing (actief bureau), Pactly, Plug and Power en EmmaBoekt in ontwikkeling. Interesse in investeren of meebouwen?',
       canonical: 'https://www.toms-ambitie.nl/ventures',
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        'name': 'Ventures van Toms Ambitie',
+        'url': 'https://www.toms-ambitie.nl/ventures',
+        'description': 'Vijf eigen ventures gebouwd vanuit echte problemen — open voor investeerders, co-founders en specialisten.',
+        'isPartOf': { '@id': 'https://www.toms-ambitie.nl/#website' },
+        'author': { '@id': 'https://www.toms-ambitie.nl/#tom-mulder' },
+      },
     });
   }, []);
 

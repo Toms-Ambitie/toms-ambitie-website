@@ -32,9 +32,74 @@ const MeebouwenPage = () => {
 
   useEffect(() => {
     applySEO({
-      title: 'Bouw mee — Toms Ambitie',
-      description: 'Heb je een idee dat een bedrijf verdient? Wil je mee bouwen aan een venture? Start een gesprek met Tom Mulder.',
+      title: 'Meebouwen — Co-founder, Investeerder of Specialist worden | Toms Ambitie',
+      description: 'Wil je co-founder worden, investeren of als specialist meebouwen aan Post Pilot, Pactly, Plug and Power of EmmaBoekt? Neem contact op met Tom Mulder van Toms Ambitie in Zwolle.',
       canonical: 'https://www.toms-ambitie.nl/meebouwen',
+      jsonLd: [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'ContactPage',
+          'name': 'Meebouwen aan Toms Ambitie',
+          'url': 'https://www.toms-ambitie.nl/meebouwen',
+          'description': 'Neem contact op om co-founder, investeerder of specialist te worden bij een van de ventures van Toms Ambitie.',
+          'isPartOf': { '@id': 'https://www.toms-ambitie.nl/#website' },
+          'about': { '@id': 'https://www.toms-ambitie.nl/#organization' },
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          'mainEntity': [
+            {
+              '@type': 'Question',
+              'name': 'Hoe kan ik meebouwen aan Toms Ambitie?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Stuur een bericht via het contactformulier op deze pagina. Geef aan of je mee wilt bouwen als co-founder, specialist of vanuit een andere hoek. Tom Mulder reageert persoonlijk.',
+              },
+            },
+            {
+              '@type': 'Question',
+              'name': 'Zoekt Toms Ambitie co-founders?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Ja. Voor Pactly, Plug and Power en EmmaBoekt zoeken we actief co-founders met kennis van product, techniek, finance, growth, UX of domeinspecifieke expertise. Post Pilot zoekt ook specialisten voor de volgende groeifase.',
+              },
+            },
+            {
+              '@type': 'Question',
+              'name': 'Kan ik investeren in de ventures van Toms Ambitie?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Toms Ambitie staat open voor gesprekken met investeerders die strategische waarde toevoegen — kapitaal, kennis, netwerk of een combinatie daarvan. Neem contact op via het formulier op deze pagina.',
+              },
+            },
+            {
+              '@type': 'Question',
+              'name': 'Wat is een venture studio?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Een venture studio bouwt eigen bedrijven vanuit een vaste kern — in plaats van te werken voor klanten. Toms Ambitie valideert problemen intern, bouwt een MVP en maakt er een zelfstandige onderneming van als het werkt. Sneller dan een traditionele startup, met minder risico omdat we alles zelf testen.',
+              },
+            },
+            {
+              '@type': 'Question',
+              'name': 'Welke ventures zijn beschikbaar om aan mee te bouwen?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Toms Ambitie heeft vijf actieve ventures: Post Pilot (live SaaS voor LinkedIn-contentautomatisering), Pactly (consumer fintech voor vaste lasten), OAK Marketing (actief marketingbureau), Plug and Power (e-commerce platform voor energie) en EmmaBoekt (AI-assistent voor administratie). Alle ventures staan open voor de juiste mensen.',
+              },
+            },
+            {
+              '@type': 'Question',
+              'name': 'Wat voor specialisten zoekt Toms Ambitie?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Per venture verschilt dat. In het algemeen zijn we geinteresseerd in mensen met expertise op het gebied van product, technologie, growth marketing, finance, legal, UX/design, AI, energiemarkt of consumentenmarketing. Maar ook als jij iets anders toevoegt dat past — stuur een bericht.',
+              },
+            },
+          ],
+        },
+      ],
     });
   }, []);
 

@@ -66,6 +66,34 @@ const CtaButton = ({
   );
 };
 
+/* Per-venture SEO titles — keyword-rich, investor/co-founder angle */
+const VENTURE_TITLES: Record<string, string> = {
+  "post-pilot":
+    "Post Pilot — AI Content Platform voor LinkedIn | Toms Ambitie",
+  "pactly":
+    "Pactly — Grip op Vaste Lasten en Contracten | Toms Ambitie",
+  "oak-marketing":
+    "OAK Marketing — Hybride Marketingbureau voor Groei-MKB | Toms Ambitie",
+  "plug-and-power":
+    "Plug and Power — Plug-and-Play Energie-oplossingen | Toms Ambitie",
+  "emmaboekt":
+    "EmmaBoekt — AI-assistent voor Administratie | Toms Ambitie",
+};
+
+/* Per-venture meta descriptions — action-oriented, mention opportunity */
+const VENTURE_DESCRIPTIONS: Record<string, string> = {
+  "post-pilot":
+    "Post Pilot automatiseert LinkedIn-content met AI. Live SaaS-platform met eerste betalende gebruikers. Toms Ambitie zoekt co-founders en growth-specialisten voor de volgende groeifase.",
+  "pactly":
+    "Pactly brengt contracten, abonnementen en vaste lasten samen op één plek. Consumer fintech in vroeg stadium vanuit Zwolle. Toms Ambitie zoekt investeerders en co-founders om Pactly groot te maken.",
+  "oak-marketing":
+    "OAK Marketing is het hybride marketingbureau van Toms Ambitie. AI waar het kan, mensen waar het moet. Actief en winstgevend. Interesse in samenwerking of partnership? Start een gesprek.",
+  "plug-and-power":
+    "Plug and Power bouwt hét e-commerce platform voor plug-and-play energie. In opbouw vanuit Zwolle. Toms Ambitie zoekt kapitaal, kennis en netwerk om dit energieventure te versnellen.",
+  "emmaboekt":
+    "EmmaBoekt maakt administratie menselijker via AI-assistentie. In ontwikkeling voor ZZP en MKB. Toms Ambitie zoekt co-founders en early adopters voor dit AI-platform.",
+};
+
 const VentureDetailPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const venture = slug ? getVentureBySlug(slug) : undefined;
@@ -73,26 +101,45 @@ const VentureDetailPage = () => {
   useEffect(() => {
     if (venture) {
       const url = `https://www.toms-ambitie.nl/ventures/${venture.slug}`;
-      const description =
-        venture.slug === "pactly"
-          ? "Pactly brengt contracten, abonnementen en vaste lasten samen in één huishoudplatform. Toms Ambitie zoekt investeerders, partners en mede-ondernemers om Pactly groot te maken."
-          : venture.tagline;
+      const title = VENTURE_TITLES[venture.slug] ?? `${venture.name} — Toms Ambitie`;
+      const description = VENTURE_DESCRIPTIONS[venture.slug] ?? venture.tagline;
       applySEO({
-        title:
-          venture.slug === "pactly"
-            ? "Pactly · Het slimme huishoudplatform voor contracten en vaste lasten"
-            : `${venture.name} — Toms Ambitie`,
+        title,
         description,
         canonical: url,
-        jsonLd: {
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          name: venture.name,
-          url: venture.url ?? url,
-          description,
-          parentOrganization: { "@type": "Organization", name: "Toms Ambitie", url: "https://www.toms-ambitie.nl/" },
-          mainEntityOfPage: { "@type": "WebPage", "@id": url },
-        },
+        jsonLd: [
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "@id": `${url}#webpage`,
+            "name": title,
+            "url": url,
+            "description": description,
+            "isPartOf": { "@id": "https://www.toms-ambitie.nl/#website" },
+            "about": { "@id": "https://www.toms-ambitie.nl/#organization" },
+            "author": { "@id": "https://www.toms-ambitie.nl/#tom-mulder" },
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": venture.name,
+            "url": venture.url ?? url,
+            "description": description,
+            "parentOrganization": { "@id": "https://www.toms-ambitie.nl/#organization" },
+            "founder": { "@id": "https://www.toms-ambitie.nl/#tom-mulder" },
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Zwolle",
+              "addressCountry": "NL",
+            },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "email": "hallo@toms-ambitie.nl",
+              "contactType": "partnerships",
+              "url": "https://www.toms-ambitie.nl/meebouwen",
+            },
+          },
+        ],
       });
     }
   }, [venture]);

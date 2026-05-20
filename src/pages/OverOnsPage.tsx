@@ -28,9 +28,39 @@ const OverOnsPage = () => {
 
   useEffect(() => {
     applySEO({
-      title: 'Over ons — Toms Ambitie',
-      description: 'Een venture club. Een vaste kern. Tom Mulder bouwt eigen bedrijven vanuit echte frustratie — met AI als versneller.',
+      title: 'Over Toms Ambitie — Tom Mulder, Venture Builder uit Zwolle',
+      description: 'Tom Mulder bouwt eigen bedrijven vanuit echte frustratie. Geen bureau, geen fonds. Een vaste kern met specialisten die meebouwen. Open voor co-founders, investeerders en partners die geloven in het model.',
       canonical: 'https://www.toms-ambitie.nl/over-ons',
+      jsonLd: [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'AboutPage',
+          'name': 'Over Toms Ambitie — Tom Mulder',
+          'url': 'https://www.toms-ambitie.nl/over-ons',
+          'isPartOf': { '@id': 'https://www.toms-ambitie.nl/#website' },
+          'about': { '@id': 'https://www.toms-ambitie.nl/#tom-mulder' },
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Person',
+          '@id': 'https://www.toms-ambitie.nl/#tom-mulder',
+          'name': 'Tom Mulder',
+          'givenName': 'Tom',
+          'familyName': 'Mulder',
+          'jobTitle': 'Founder & Venture Builder',
+          'description': 'Ondernemer en venture builder uit Zwolle. Tom Mulder bouwt eigen bedrijven vanuit echte frustratie, met AI als versneller. Oprichter van Toms Ambitie, OAK Marketing, Post Pilot, Pactly, Plug and Power en EmmaBoekt.',
+          'url': 'https://www.toms-ambitie.nl/over-ons',
+          'image': 'https://www.toms-ambitie.nl/photos/tom-founder-01.jpg',
+          'email': 'hallo@toms-ambitie.nl',
+          'worksFor': { '@id': 'https://www.toms-ambitie.nl/#organization' },
+          'address': {
+            '@type': 'PostalAddress',
+            'addressLocality': 'Zwolle',
+            'addressRegion': 'Overijssel',
+            'addressCountry': 'NL',
+          },
+        },
+      ],
     });
   }, []);
 

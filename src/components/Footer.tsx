@@ -11,6 +11,7 @@ const LogoLight = () => (
 );
 
 const ventures = [
+  { name: "EmmaBoekt", url: "emmaboekt.nl", accent: "#1BBFA0", href: "/ventures/emma-boekt" },
   { name: "Post Pilot", url: "postpilotapp.nl", accent: "#00DC93", href: "/ventures/post-pilot" },
   { name: "Pactly", url: "pactly.nl", accent: "#CC007E", href: "/ventures/pactly" },
   { name: "OAK Marketing", url: "oakmarketing.nl", accent: "#1B3A8A", href: "/ventures/oak-marketing" },
@@ -21,7 +22,7 @@ const navLinks = [
   { to: "/ventures", label: "Ventures" },
   { to: "/hoe-we-bouwen", label: "Hoe we bouwen" },
   { to: "/over-ons", label: "Over ons" },
-  { to: "/nieuws", label: "Build log" },
+  { to: "/nieuws", label: "Nieuws" },
   { to: "/meebouwen", label: "Meebouwen" },
 ];
 

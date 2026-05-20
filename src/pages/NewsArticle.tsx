@@ -144,12 +144,12 @@ const NewsArticle = () => {
               >
                 ← Alle berichten
               </Link>
-              <a
-                href="/#contact"
+              <Link
+                to="/meebouwen"
                 className="inline-flex items-center gap-3 bg-ink text-paper px-5 py-3 font-mono text-[11px] uppercase tracking-[0.12em] hover:bg-orange hover:text-ink transition-colors duration-200"
               >
                 Reageer of stel een vraag →
-              </a>
+              </Link>
             </div>
 
             {(prev || next) && (

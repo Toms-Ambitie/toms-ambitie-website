@@ -16,7 +16,7 @@ const links = [
   { to: "/ventures", label: "Ventures" },
   { to: "/hoe-we-bouwen", label: "Hoe we bouwen" },
   { to: "/over-ons", label: "Over ons" },
-  { to: "/nieuws", label: "Build log" },
+  { to: "/nieuws", label: "Nieuws" },
 ];
 
 export const Navbar = () => {

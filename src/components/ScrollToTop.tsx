@@ -71,7 +71,11 @@ const ScrollToTop = () => {
       // Small delay to let React render the new page before looking for the anchor
       requestAnimationFrame(() => scrollToHash(hash));
     } else {
-      smoothScrollTo(0);
+      // Instant scroll on route change — smooth scroll between pages is disorienting
+      // and causes a race with useReveal's IntersectionObserver (which sets up while
+      // window.scrollY is still at the previous page's position, making above-fold
+      // elements invisible until the async scroll completes — or forever if it races).
+      window.scrollTo(0, 0);
     }
   }, [pathname, hash, scrollToHash]);
 

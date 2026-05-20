@@ -1,273 +1,108 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { Manifesto } from "@/components/Manifesto";
 import { applySEO } from "@/lib/seo";
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { gtmEvent } from "@/lib/gtm";
-import { ArrowRight } from "lucide-react";
+import { ScrollReveal } from "@/components/ScrollReveal";
+
+/* ─── Helpers ───────────────────────────────────────────────────────── */
 
 const inputStyle: React.CSSProperties = {
-  background: "rgba(255,255,255,0.04)",
-  border: "1px solid rgba(255,255,255,0.18)",
-  color: "#FFFFFF",
-  padding: "16px 18px",
+  background: "#FFFFFF",
+  border: "1px solid rgba(14,14,12,0.15)",
+  color: "#0E0E0C",
+  padding: "14px 16px",
   fontFamily: "'Space Grotesk', sans-serif",
-  fontSize: "var(--text-md)",
+  fontSize: 15,
   width: "100%",
   borderRadius: 0,
   outline: "none",
-  minHeight: 52,
+  minHeight: 48,
 };
 
-const blocks = [
-  {
-    label: "01 — HET ECOSYSTEEM",
-    title: "INVESTEER IN DE CLUB.",
-    desc:
-      "Sommige mensen geloven niet alleen in één venture, maar in het hele systeem erachter. Als investeerder of strategische partner bouw je mee aan meerdere ventures tegelijk — van AI en SaaS tot energie en automatisering. Geen passieve betrokkenheid. Wel toegang tot ideeën, operators en ventures in vroege fase.",
-    cta: "Start een gesprek",
-    interest: "investeren",
-  },
-  {
-    label: "02 — ACTIEVE VENTURES",
-    title: "STAP IN VOORDAT HET GROOT WORDT.",
-    desc:
-      "Spreekt één specifieke venture je aan? Dan kun je instappen als investeerder, specialist, operator of co-builder. Geen standaard samenwerkingen. Wel gerichte betrokkenheid bij ventures die nog volop in beweging zijn.",
-    cta: "Vertel welke venture",
-    interest: "venture",
-  },
-  {
-    label: "03 — JOUW IDEE",
-    title: "BRENG EEN PROBLEEM IN.",
-    desc:
-      "De meeste ventures binnen Toms Ambitie begonnen met frustratie, gedrag of iets dat slimmer moest kunnen. Heb jij een probleem dat blijft terugkomen? Grote kans dat daar iets interessants in zit. Als het idee klopt, bouwen we samen verder.",
-    cta: "Stuur je idee in",
-    interest: "idee",
-  },
+const interestOptions = [
+  { value: "saas", label: "SaaS" },
+  { value: "ventures", label: "Ventures" },
+  { value: "oak-marketing", label: "OAK Mkt." },
+  { value: "pactly", label: "Pactly" },
+  { value: "plug-and-power", label: "Plug and Power" },
 ];
 
-const principles = [
-  "AI-first bouwen",
-  "Idee → build in weken",
-  "Operators i.p.v. consultants",
-  "Ventures i.p.v. klantwerk",
-  "Testen boven vergaderen",
-  "Kleine teams, hoge snelheid",
-];
+/* ─── Page ──────────────────────────────────────────────────────────── */
 
 const MeebouwenPage = () => {
   const [submitting, setSubmitting] = useState(false);
-  const [presetInterest, setPresetInterest] = useState<string>("");
+  const [interests, setInterests] = useState<string[]>([]);
   const navigate = useNavigate();
   const { toast } = useToast();
 
   useEffect(() => {
     applySEO({
-      title: "Meebouwen. Toms Ambitie",
+      title: "Bouw mee. Toms Ambitie",
       description:
-        "Toetreden tot een venture ecosystem. Investeer in de club, stap in bij een venture of breng een probleem in. Voor builders, operators en investeerders.",
+        "Heb je een idee, een probleem dat een bedrijf verdient, of wil je gewoon eens sparren? Reactie meestal binnen 24 uur.",
       canonical: "https://www.toms-ambitie.nl/meebouwen",
     });
   }, []);
 
-  const scrollToContact = (interest?: string) => {
-    if (interest) setPresetInterest(interest);
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  const toggleInterest = (value: string) => {
+    setInterests((prev) =>
+      prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value]
+    );
   };
 
   return (
-    <main style={{ minHeight: "100vh", background: "#FBFAF6" }}>
+    <main style={{ minHeight: "100vh", background: "#F4F1E8" }}>
       <Navbar />
-        {/* HERO */}
-        <section
-          className="py-20 sm:py-28 md:py-32"
-          style={{ background: "#0E0E0C", paddingTop: "calc(120px + 64px)" }}
+
+      {/* ── HERO — light ─────────────────────────────────────── */}
+      <section style={{ background: "#F4F1E8", paddingTop: 64 }}>
+        <div style={{ maxWidth: 1440, margin: "0 auto", padding: "80px 32px 64px" }}>
+          <p
+            className="font-mono uppercase"
+            style={{ fontSize: 11, letterSpacing: "0.18em", color: "rgba(14,14,12,0.4)", marginBottom: 32 }}
+          >
+            — In contact
+          </p>
+          <h1
+            className="font-display"
+            style={{
+              fontSize: "clamp(96px, 14vw, 220px)",
+              lineHeight: 0.85,
+              color: "#0E0E0C",
+              marginBottom: 32,
+            }}
+          >
+            BOUW MEE.
+          </h1>
+          <p
+            className="font-sans"
+            style={{ fontSize: 18, lineHeight: 1.65, color: "rgba(14,14,12,0.65)", maxWidth: 560 }}
+          >
+            Heb je een idee, een probleem dat een bedrijf verdient, of wil je
+            gewoon eens sparren? Reactie meestal binnen 24 uur.
+          </p>
+        </div>
+      </section>
+
+      {/* ── FORM + CONTACT INFO ──────────────────────────────── */}
+      <section style={{ background: "#FBFAF6", padding: "64px 0 120px" }}>
+        <div
+          style={{
+            maxWidth: 1440,
+            margin: "0 auto",
+            padding: "0 32px",
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 64,
+            alignItems: "start",
+          }}
+          className="meebouwen-form-grid"
         >
-          <div className="max-w-[1200px] mx-auto px-5 sm:px-10">
-            <p
-              className="font-mono uppercase typo-label typo-muted-dark mb-6"
-              style={{ letterSpacing: "0.18em" }}
-            >
-              — Venture club · Builders · Operators · Investeerders
-            </p>
-            <h1 className="font-display typo-page-heading typo-heading-dark mb-8 sm:mb-10">
-              DOE MEE.<br />OP JOUW MANIER.
-            </h1>
-            <div className="space-y-4 max-w-[620px]">
-              <p className="font-sans typo-lg typo-caption-dark" style={{ lineHeight: "var(--leading-loose)" }}>
-                Toms Ambitie bouwt ventures vanuit echte problemen, gedrag en schaalbare ideeën.
-              </p>
-              <p className="font-sans typo-md typo-body-dark" style={{ lineHeight: "var(--leading-loose)" }}>
-                Sommige mensen stappen financieel in. Anderen bouwen actief mee. En soms ontstaat een compleet nieuwe venture vanuit één goed probleem.
-              </p>
-              <p className="font-sans typo-md typo-heading-dark" style={{ fontWeight: 500 }}>
-                Kies wat bij je past. Of combineer meerdere rollen.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* DRIE BLOKKEN */}
-        <section className="py-20 sm:py-28 md:py-32" style={{ background: "#0E0E0C", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-          <div className="max-w-[1200px] mx-auto px-5 sm:px-10">
-            <p
-              className="font-mono uppercase typo-label mb-10 sm:mb-14"
-              style={{ color: "rgba(255,255,255,0.45)", letterSpacing: "0.18em" }}
-            >
-              — Drie manieren om in te stappen
-            </p>
-
-            <div
-              className="grid grid-cols-1 md:grid-cols-3"
-              style={{ gap: 2, background: "rgba(255,255,255,0.08)" }}
-            >
-              {blocks.map((b) => (
-                <div
-                  key={b.label}
-                  className="p-7 sm:p-10 lg:p-12 flex flex-col"
-                  style={{ background: "#111110", borderTop: "3px solid #C8F000", minHeight: 420 }}
-                >
-                  <div
-                    className="font-mono uppercase mb-6"
-                    style={{ color: "#C8F000", fontSize: 10, letterSpacing: "0.18em" }}
-                  >
-                    {b.label}
-                  </div>
-                  <div
-                    className="font-display mb-5"
-                    style={{
-                      fontSize: "clamp(1.6rem, 2.4vw, 2rem)",
-                      color: "#FFFFFF",
-                      lineHeight: "var(--leading-tight)",
-                    }}
-                  >
-                    {b.title}
-                  </div>
-                  <p
-                    className="font-sans flex-1 mb-8"
-                    style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", lineHeight: 1.75 }}
-                  >
-                    {b.desc}
-                  </p>
-                  <button
-                    onClick={() => {
-                      gtmEvent("cta_click", { cta_label: b.label, cta_destination: "meebouwen_contact" });
-                      scrollToContact(b.interest);
-                    }}
-                    className="font-mono inline-flex items-center gap-2 self-start group/cta"
-                    style={{
-                      fontSize: 12,
-                      color: "#C8F000",
-                      background: "none",
-                      border: "none",
-                      cursor: "pointer",
-                      padding: "0 0 4px",
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                      borderBottom: "1px solid rgba(200,240,0,0.4)",
-                    }}
-                  >
-                    {b.cta}
-                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/cta:translate-x-1" />
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* WAAROM MENSEN AANSLUITEN */}
-        <section className="py-20 sm:py-28 md:py-32" style={{ background: "#F4F1E8" }}>
-          <div className="max-w-[1200px] mx-auto px-5 sm:px-10">
-            <p className="font-mono uppercase typo-label typo-caption mb-4" style={{ letterSpacing: "0.18em" }}>
-              — De club
-            </p>
-            <h2 className="font-display typo-section-heading typo-heading mb-10 sm:mb-12">
-              WAAROM MENSEN<br />AANSLUITEN.
-            </h2>
-
-            <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
-              <div className="space-y-5 font-sans typo-md typo-body" style={{ lineHeight: "var(--leading-loose)" }}>
-                <p>
-                  Mensen sluiten zich meestal niet aan omdat ze "een investering zoeken".
-                </p>
-                <p>Ze sluiten zich aan omdat:</p>
-                <ul className="space-y-2 pl-0 list-none">
-                  {[
-                    "ze energie krijgen van bouwen",
-                    "ze sneller willen bewegen dan traditionele bedrijven",
-                    "ze onderdeel willen zijn van meerdere ventures",
-                    "ze toegang willen tot operators en specialisten",
-                    "ze geloven in testen boven eindeloos plannen",
-                  ].map((p) => (
-                    <li key={p} className="flex items-baseline gap-3">
-                      <span style={{ width: 6, height: 6, background: "#C8F000", display: "inline-block", flexShrink: 0, transform: "translateY(-2px)" }} />
-                      <span>{p}</span>
-                    </li>
-                  ))}
-                </ul>
-                <p className="font-sans typo-md typo-heading" style={{ fontWeight: 500 }}>
-                  Niet iedereen past bij Toms Ambitie. En dat hoeft ook niet.
-                </p>
-                <p>
-                  Wij bouwen liever met een kleine groep mensen die écht energie geven, dan met zoveel mogelijk mensen tegelijk.
-                </p>
-              </div>
-
-              {/* Principles grid */}
-              <div>
-                <p className="font-mono uppercase typo-label typo-caption mb-4" style={{ letterSpacing: "0.16em" }}>
-                  — Hoe wij werken
-                </p>
-                <div className="grid grid-cols-2" style={{ border: "2px solid #0E0E0C" }}>
-                  {principles.map((p, i) => {
-                    const isLastRow = i >= principles.length - 2;
-                    const isRight = i % 2 === 1;
-                    return (
-                      <div
-                        key={p}
-                        className="p-5 flex items-start gap-3"
-                        style={{
-                          background: i % 3 === 0 ? "#FFFFFF" : "#F4F1E8",
-                          borderRight: isRight ? undefined : "1px solid #C0BDB0",
-                          borderBottom: isLastRow ? undefined : "1px solid #C0BDB0",
-                          minHeight: 90,
-                        }}
-                      >
-                        <span
-                          style={{ width: 6, height: 6, background: "#C8F000", display: "inline-block", flexShrink: 0, marginTop: 8 }}
-                        />
-                        <span className="font-mono uppercase typo-sm typo-heading" style={{ letterSpacing: "0.1em", lineHeight: 1.35 }}>
-                          {p}
-                        </span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* FORMULIER */}
-        <div style={{ height: 5, background: "#C8F000" }} />
-        <section id="contact" className="py-20 sm:py-28 md:py-32" style={{ background: "#0E0E0C" }}>
-          <div className="max-w-[640px] mx-auto px-5 sm:px-10">
-            <p className="font-mono uppercase typo-label mb-6" style={{ color: "#C8F000", letterSpacing: "0.18em" }}>
-              — Builder application
-            </p>
-            <h2
-              className="font-display typo-heading-dark mb-5"
-              style={{ fontSize: "clamp(2rem, 5vw, 3rem)", lineHeight: "var(--leading-tight)" }}
-            >
-              VERTEL WAAR JIJ<br />ENERGIE VAN KRIJGT.
-            </h2>
-            <p className="font-sans typo-md typo-body-dark mb-10 sm:mb-12" style={{ lineHeight: "var(--leading-loose)" }}>
-              Geen verkooppraatje, geen pitchdeck. Eén bericht, dan weten we binnen een week of er iets ligt om samen te bouwen.
-            </p>
-
+          {/* Left: form */}
+          <div>
             <form
               onSubmit={async (e) => {
                 e.preventDefault();
@@ -275,11 +110,11 @@ const MeebouwenPage = () => {
                 const form = e.currentTarget;
                 const data = new FormData(form);
                 const formValues = {
-                  name: (data.get("name") as string).trim(),
+                  name: `${(data.get("voornaam") as string).trim()} ${(data.get("achternaam") as string).trim()}`.trim(),
                   email: (data.get("email") as string).trim(),
-                  interest: data.get("interest") as string,
+                  interest: interests.join(", ") || (data.get("interest") as string) || "",
                   message: (data.get("message") as string).trim(),
-                  linkedin: (data.get("linkedin") as string)?.trim() || null,
+                  bedrijf: (data.get("bedrijf") as string)?.trim() || null,
                 };
                 try {
                   const res = await fetch("/api/contact", {
@@ -296,156 +131,408 @@ const MeebouwenPage = () => {
                 } catch {
                   toast({
                     title: "Er ging iets mis",
-                    description: "Probeer het opnieuw of mail naar hallo@toms-ambitie.nl",
+                    description: "Probeer het opnieuw of mail naar tom@tomsambitie.nl",
                     variant: "destructive",
                   });
                 } finally {
                   setSubmitting(false);
                 }
               }}
-              className="flex flex-col gap-4"
+              style={{ display: "flex", flexDirection: "column", gap: 12 }}
             >
-              <input
-                type="text"
-                name="name"
-                placeholder="Je naam"
-                aria-label="Je naam"
-                required
-                maxLength={100}
-                style={inputStyle}
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="je@emailadres.nl"
-                aria-label="E-mailadres"
-                required
-                maxLength={255}
-                style={inputStyle}
-              />
-              <select
-                name="interest"
-                aria-label="Waar wil je bij aansluiten?"
-                required
-                value={presetInterest}
-                onChange={(e) => setPresetInterest(e.target.value)}
-                style={{ ...inputStyle, appearance: "none" }}
-              >
-                <option value="" disabled style={{ color: "#7A7870" }}>
-                  Waar wil je bij aansluiten?
-                </option>
-                <option value="investeren">Ik wil investeren</option>
-                <option value="meebouwen">Ik wil meebouwen</option>
-                <option value="idee">Ik wil een idee bespreken</option>
-                <option value="samenwerken">Ik wil samenwerken</option>
-                <option value="specialist">Ik wil aansluiten als specialist</option>
-                <option value="venture">Ik wil instappen bij een venture</option>
-                <option value="anders">Iets anders</option>
-              </select>
-              <textarea
-                name="message"
-                placeholder="Waar zie jij kansen, energie of momentum?"
-                aria-label="Jouw bericht — waar zie jij kansen, energie of momentum?"
-                required
-                maxLength={2000}
-                style={{ ...inputStyle, minHeight: 160, resize: "vertical" }}
-              />
-              <input
-                type="url"
-                name="linkedin"
-                placeholder="linkedin.com/in/jouw-naam"
-                aria-label="LinkedIn-profiel URL (optioneel)"
-                maxLength={300}
-                style={inputStyle}
-              />
+              {/* Naam / Achternaam */}
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+                <div>
+                  <label className="font-mono uppercase" style={{ fontSize: 9, letterSpacing: "0.14em", color: "rgba(14,14,12,0.5)", display: "block", marginBottom: 6 }}>
+                    Voornaam
+                  </label>
+                  <input
+                    type="text"
+                    name="voornaam"
+                    placeholder="Jan of An"
+                    required
+                    maxLength={60}
+                    style={inputStyle}
+                  />
+                </div>
+                <div>
+                  <label className="font-mono uppercase" style={{ fontSize: 9, letterSpacing: "0.14em", color: "rgba(14,14,12,0.5)", display: "block", marginBottom: 6 }}>
+                    Achternaam
+                  </label>
+                  <input
+                    type="text"
+                    name="achternaam"
+                    placeholder="Jansen"
+                    required
+                    maxLength={60}
+                    style={inputStyle}
+                  />
+                </div>
+              </div>
+
+              {/* Email */}
+              <div>
+                <label className="font-mono uppercase" style={{ fontSize: 9, letterSpacing: "0.14em", color: "rgba(14,14,12,0.5)", display: "block", marginBottom: 6 }}>
+                  E-mail
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="naam@bedrijf.nl"
+                  required
+                  maxLength={255}
+                  style={inputStyle}
+                />
+              </div>
+
+              {/* Bedrijf */}
+              <div>
+                <label className="font-mono uppercase" style={{ fontSize: 9, letterSpacing: "0.14em", color: "rgba(14,14,12,0.5)", display: "block", marginBottom: 6 }}>
+                  Bedrijf
+                </label>
+                <input
+                  type="text"
+                  name="bedrijf"
+                  placeholder="Optioneel"
+                  maxLength={100}
+                  style={inputStyle}
+                />
+              </div>
+
+              {/* Interest checkboxes */}
+              <div>
+                <label className="font-mono uppercase" style={{ fontSize: 9, letterSpacing: "0.14em", color: "rgba(14,14,12,0.5)", display: "block", marginBottom: 10 }}>
+                  Interesse
+                </label>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                  {interestOptions.map((opt) => {
+                    const active = interests.includes(opt.value);
+                    return (
+                      <button
+                        key={opt.value}
+                        type="button"
+                        onClick={() => toggleInterest(opt.value)}
+                        className="font-mono uppercase"
+                        style={{
+                          fontSize: 10,
+                          letterSpacing: "0.12em",
+                          padding: "8px 14px",
+                          background: active ? "#0E0E0C" : "transparent",
+                          color: active ? "#C8F000" : "#0E0E0C",
+                          border: `1.5px solid ${active ? "#0E0E0C" : "rgba(14,14,12,0.2)"}`,
+                          cursor: "pointer",
+                          transition: "all 0.15s",
+                        }}
+                      >
+                        {opt.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Message */}
+              <div>
+                <label className="font-mono uppercase" style={{ fontSize: 9, letterSpacing: "0.14em", color: "rgba(14,14,12,0.5)", display: "block", marginBottom: 6 }}>
+                  Bericht
+                </label>
+                <textarea
+                  name="message"
+                  placeholder="Vertel kort waar het over gaat."
+                  required
+                  maxLength={2000}
+                  style={{ ...inputStyle, minHeight: 140, resize: "vertical" }}
+                />
+              </div>
+
               <button
                 type="submit"
                 disabled={submitting}
-                className="font-mono uppercase font-bold typo-btn min-h-[56px] w-full inline-flex items-center justify-center gap-2 mt-2"
+                className="font-mono font-bold uppercase inline-flex items-center justify-center hover:bg-[#DCF55E] transition-colors"
                 style={{
                   background: "#C8F000",
                   color: "#0E0E0C",
+                  fontSize: 11,
+                  letterSpacing: "0.12em",
+                  padding: "16px 32px",
                   border: "none",
                   cursor: submitting ? "wait" : "pointer",
                   opacity: submitting ? 0.7 : 1,
-                  letterSpacing: "0.12em",
+                  marginTop: 8,
+                  alignSelf: "flex-start",
                 }}
               >
-                {submitting ? "Versturen..." : "Start het gesprek →"}
+                {submitting ? "Versturen..." : "VERSTUUR BERICHT →"}
               </button>
             </form>
           </div>
-        </section>
 
-        {/* MANIFESTO QUOTE */}
-        <Manifesto
-          theme="light"
-          kicker="— Slotstatement"
-          statement="NIET IEDEREEN HOEFT MEE TE BOUWEN."
-          highlightIndex={1}
-          attribution="Maar als wel — dan moeten we waarschijnlijk praten."
-        />
+          {/* Right: contact info */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            {/* Contact card */}
+            <div
+              style={{
+                border: "1px solid rgba(14,14,12,0.1)",
+                padding: "32px",
+                background: "#FBFAF6",
+              }}
+            >
+              <div
+                className="font-mono uppercase"
+                style={{ fontSize: 9, letterSpacing: "0.18em", color: "rgba(14,14,12,0.4)", marginBottom: 24 }}
+              >
+                IN DIRECT CONTACT
+              </div>
 
-        {/* CLOSING CTA */}
-        <section className="py-20 sm:py-28" style={{ background: "#F4F1E8", borderTop: "1px solid #C0BDB0" }}>
-          <div className="max-w-[1200px] mx-auto px-5 sm:px-10">
-            <p className="font-mono uppercase typo-label typo-caption mb-6" style={{ letterSpacing: "0.18em" }}>
-              — Maar als je energie krijgt van
-            </p>
-            <div className="flex flex-wrap gap-2 mb-10">
-              {["ideeën", "systemen", "ventures", "snelheid", "bouwen"].map((w) => (
-                <span
-                  key={w}
-                  className="font-display typo-heading"
-                  style={{
-                    fontSize: "clamp(1.6rem, 4vw, 2.5rem)",
-                    lineHeight: 1,
-                    padding: "6px 14px",
-                    background: "#0E0E0C",
-                    color: "#F4F1E8",
-                  }}
-                >
-                  {w.toUpperCase()}
-                </span>
-              ))}
+              <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                <div>
+                  <div className="font-mono uppercase" style={{ fontSize: 9, letterSpacing: "0.14em", color: "rgba(14,14,12,0.4)", marginBottom: 4 }}>
+                    E-MAIL
+                  </div>
+                  <a
+                    href="mailto:tom@tomsambitie.nl"
+                    className="font-sans"
+                    style={{ fontSize: 16, color: "#0E0E0C", textDecoration: "none" }}
+                  >
+                    tom@tomsambitie.nl
+                  </a>
+                </div>
+
+                <div>
+                  <div className="font-mono uppercase" style={{ fontSize: 9, letterSpacing: "0.14em", color: "rgba(14,14,12,0.4)", marginBottom: 4 }}>
+                    NAAM
+                  </div>
+                  <div className="font-sans" style={{ fontSize: 16, color: "#0E0E0C" }}>
+                    Tom Mulder
+                  </div>
+                </div>
+
+                <div>
+                  <div className="font-mono uppercase" style={{ fontSize: 9, letterSpacing: "0.14em", color: "rgba(14,14,12,0.4)", marginBottom: 4 }}>
+                    LOCATIE
+                  </div>
+                  <div className="font-sans" style={{ fontSize: 16, color: "#0E0E0C" }}>
+                    Zwolle, Nederland
+                  </div>
+                </div>
+              </div>
             </div>
-            <p className="font-display typo-heading mb-10" style={{ fontSize: "clamp(1.4rem,3vw,2rem)", lineHeight: "var(--leading-tight)" }}>
-              …dan moeten we waarschijnlijk praten.
-            </p>
 
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Link
-                to="/ventures"
-                className="inline-flex items-center justify-center font-mono font-bold uppercase typo-btn min-h-[52px] transition-colors"
-                style={{
-                  border: "2px solid #0E0E0C",
-                  color: "#0E0E0C",
-                  padding: "0 32px",
-                  letterSpacing: "0.12em",
-                  textDecoration: "none",
-                }}
+            {/* Dark filter/info card */}
+            <div
+              style={{
+                background: "#0E0E0C",
+                padding: "32px",
+              }}
+            >
+              <div
+                className="font-mono uppercase"
+                style={{ fontSize: 9, letterSpacing: "0.18em", color: "rgba(255,255,255,0.4)", marginBottom: 20 }}
               >
-                Bekijk ventures →
-              </Link>
-              <button
-                onClick={() => scrollToContact()}
-                className="inline-flex items-center justify-center font-mono font-bold uppercase typo-btn min-h-[52px] transition-colors"
-                style={{
-                  background: "#0E0E0C",
-                  color: "#C8F000",
-                  padding: "0 32px",
-                  letterSpacing: "0.12em",
-                  border: "none",
-                  cursor: "pointer",
-                }}
-              >
-                Start gesprek →
-              </button>
+                NIET VOOR
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                {[
+                  "Standaard opdrachten of bureauwerk",
+                  "Freelance kortetermijnopdrachten",
+                  "Pitchen zonder echte frustratie",
+                  "Als je alleen geld zoekt, geen probleem",
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      display: "flex",
+                      alignItems: "flex-start",
+                      gap: 10,
+                      paddingBottom: 10,
+                      borderBottom: i < 3 ? "1px solid rgba(255,255,255,0.06)" : "none",
+                    }}
+                  >
+                    <span style={{ width: 4, height: 4, background: "rgba(255,255,255,0.2)", display: "inline-block", flexShrink: 0, marginTop: 6 }} />
+                    <span className="font-sans" style={{ fontSize: 14, color: "rgba(255,255,255,0.45)", lineHeight: 1.5 }}>
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+                <span className="font-mono uppercase" style={{ fontSize: 9, color: "#C8F000", letterSpacing: "0.14em" }}>
+                  OAK Marketing
+                </span>
+                <p className="font-sans" style={{ fontSize: 13, color: "rgba(255,255,255,0.45)", marginTop: 6, lineHeight: 1.5 }}>
+                  Voor strategische marketing die er al staat, maar nu écht gas moet geven.
+                </p>
+              </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
+
+      {/* ── QUOTE ────────────────────────────────────────────── */}
+      <section style={{ background: "#0E0E0C", padding: "120px 0" }}>
+        <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 32px" }}>
+          <ScrollReveal>
+            <h2
+              className="font-display"
+              style={{
+                fontSize: "clamp(44px, 7vw, 120px)",
+                lineHeight: 0.88,
+                color: "#F4F1E8",
+                textAlign: "center",
+              }}
+            >
+              "ALS JE HET KUNT BEDENKEN,<br />
+              <span style={{ color: "#C8F000" }}>KUN JE HET OOK DOEN."</span>
+            </h2>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ── NEWSLETTER ───────────────────────────────────────── */}
+      <section style={{ background: "#0E0E0C", borderTop: "1px solid rgba(255,255,255,0.06)", padding: "96px 0" }}>
+        <div
+          style={{
+            maxWidth: 1440,
+            margin: "0 auto",
+            padding: "0 32px",
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 64,
+            alignItems: "center",
+          }}
+          className="meebouwen-newsletter-grid"
+        >
+          <div>
+            <p
+              className="font-mono uppercase"
+              style={{ fontSize: 10, letterSpacing: "0.18em", color: "rgba(255,255,255,0.35)", marginBottom: 16 }}
+            >
+              — Werknotities
+            </p>
+            <h2
+              className="font-display"
+              style={{ fontSize: "clamp(40px, 5vw, 72px)", lineHeight: 0.9, color: "#F4F1E8", marginBottom: 16 }}
+            >
+              LEES MEE TERWIJL<br />
+              <span style={{ color: "rgba(255,255,255,0.3)" }}>WE BOUWEN.</span>
+            </h2>
+            <p
+              className="font-sans"
+              style={{ fontSize: 16, lineHeight: 1.65, color: "rgba(255,255,255,0.5)", maxWidth: 400 }}
+            >
+              Maandelijkse notities over ventures en alles ertussen. Geen spam. Geen newsletter.
+            </p>
+          </div>
+
+          <div>
+            <NewsletterForm />
+          </div>
+        </div>
+      </section>
+
+      {/* ── VENTURE STRIP ────────────────────────────────────── */}
+      <section style={{ background: "#0E0E0C", borderTop: "1px solid rgba(255,255,255,0.06)", padding: "48px 0" }}>
+        <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 32px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 2 }}>
+            {[
+              { name: "Post Pilot", slug: "post-pilot", accent: "#00DC93", url: "postpilotapp.nl" },
+              { name: "Pactly", slug: "pactly", accent: "#CC007E", url: "pactly.nl" },
+              { name: "OAK Marketing", slug: "oak-marketing", accent: "#1B3A8A", url: "oakmarketing.nl" },
+              { name: "Plug and Power", slug: "plug-and-power", accent: "#FFAA00", url: "plugandpower.nl" },
+            ].map((v) => (
+              <Link
+                key={v.slug}
+                to={`/ventures/${v.slug}`}
+                style={{ display: "block", textDecoration: "none", padding: "24px 0" }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+                  <span style={{ width: 6, height: 6, background: v.accent, display: "inline-block" }} />
+                  <span className="font-mono uppercase" style={{ fontSize: 11, color: "#F4F1E8", letterSpacing: "0.1em" }}>
+                    {v.name}
+                  </span>
+                </div>
+                <div className="font-mono" style={{ fontSize: 9, color: "rgba(255,255,255,0.3)", letterSpacing: "0.06em", paddingLeft: 14 }}>
+                  {v.url}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </main>
+  );
+};
+
+/* ─── Newsletter sub-form ───────────────────────────────────────────── */
+
+const NewsletterForm = () => {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: "Nieuwsbrief", email, interest: "nieuws", message: "Nieuwsbrief aanmelding" }),
+      });
+      if (!res.ok) throw new Error();
+      setStatus("done");
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  if (status === "done") {
+    return (
+      <div className="font-sans" style={{ fontSize: 16, color: "#C8F000" }}>
+        Goed! Je leest mee.
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} style={{ display: "flex", gap: 2 }}>
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="naam@bedrijf.nl"
+        required
+        style={{
+          flex: 1,
+          background: "rgba(255,255,255,0.06)",
+          border: "1px solid rgba(255,255,255,0.12)",
+          color: "#F4F1E8",
+          padding: "14px 16px",
+          fontFamily: "'Space Grotesk', sans-serif",
+          fontSize: 15,
+          borderRadius: 0,
+          outline: "none",
+        }}
+      />
+      <button
+        type="submit"
+        disabled={status === "sending"}
+        className="font-mono font-bold uppercase hover:bg-[#DCF55E] transition-colors"
+        style={{
+          background: "#C8F000",
+          color: "#0E0E0C",
+          fontSize: 11,
+          letterSpacing: "0.12em",
+          padding: "14px 20px",
+          border: "none",
+          cursor: "pointer",
+          flexShrink: 0,
+        }}
+      >
+        {status === "sending" ? "..." : "INSCHRIJVEN →"}
+      </button>
+    </form>
   );
 };
 

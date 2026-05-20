@@ -307,5 +307,15 @@
     .venture-row-grid {
       grid-template-columns: 1fr !important;
     }
+    .over-ons-hero-grid,
+    .over-ons-tom-grid,
+    .over-ons-timeline-grid,
+    .meebouwen-form-grid,
+    .meebouwen-newsletter-grid,
+    .news-newsletter-grid,
+    .featured-article-grid,
+    .article-newsletter-grid {
+      grid-template-columns: 1fr !important;
+    }
   }
 }

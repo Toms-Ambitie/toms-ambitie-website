@@ -283,4 +283,14 @@
     .manifesto-volt { animation: none; }
     .manifesto-volt::after { animation: none; transform: scaleX(1); }
   }
+
+  /* Hero two-column responsive */
+  @media (max-width: 768px) {
+    .hero-grid {
+      grid-template-columns: 1fr !important;
+    }
+    .ventures-featured-inner {
+      grid-template-columns: 1fr !important;
+    }
+  }
 }

@@ -1,7 +1,6 @@
-import { ventureDetails } from "@/data/ventures";
-
 export const StatsBar = () => {
-  const ventureCount = ventureDetails.length;
+  // 4 active ventures shown on homepage (Post Pilot, Pactly, OAK Marketing, Plug and Power)
+  const ventureCount = 4;
   const yearsActive = new Date().getFullYear() - 2008;
 
   const stats = [

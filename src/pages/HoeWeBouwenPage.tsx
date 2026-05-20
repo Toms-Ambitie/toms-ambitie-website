@@ -8,20 +8,20 @@ import { useReveal } from '@/hooks/useReveal';
 import { applySEO } from '@/lib/seo';
 
 const STAPPEN = [
-  { n: '01', title: 'Probleem identificeren', meta: 'Eigen ervaring als validatie', body: 'Elk venture begint met een probleem dat we zelf ervaren — of dat iemand in onze directe omgeving heeft. Geen denkbeeldige klant, geen marktonderzoek op papier. Echte frustratie, echte behoefte.', tool: 'Eigen ervaring' },
-  { n: '02', title: 'Valideren met AI', meta: 'Concurrentie · markt · probleem', body: 'Is het probleem valide? Bestaat er al een goede oplossing? Is de bedachte aanpak een goed idee? AI doet concurrentie-analyse, marktonderzoek en probleemvalidatie — in uren, niet weken.', tool: 'Claude · Perplexity · ChatGPT' },
-  { n: '03', title: 'Werkende demo bouwen', meta: 'Oplossing voor business case', body: 'Eerst de oplossing ontwerpen — daarna pas de business case. Met Lovable of Replit een werkende demo, of met Claude Design een visuele mockup. De oplossing moet voelbaar zijn voordat er gerekend wordt.', tool: 'Lovable · Replit · Claude Design' },
-  { n: '04', title: 'Business case maken', meta: 'Pas als de oplossing staat', body: 'Pas als de oplossing staat, volgt de vraag of er een bedrijf in zit. Businessmodel, verdienmodel, marktgrootte — met AI uitgewerkt. De business case volgt de oplossing. Nooit andersom.', tool: 'Claude · business case' },
-  { n: '05', title: 'Brand book maken', meta: 'Identiteit van dag één', body: 'Elke oplossing krijgt direct een visuele identiteit. Een brand book zorgt dat de oplossing consistent gecommuniceerd en ontworpen wordt — en geeft het project body en geloofwaardigheid van dag één.', tool: 'Claude · brand systeem' },
-  { n: '06', title: 'Eerste platform bouwen', meta: 'Functioneel, niet perfect', body: 'Met AI een eerste werkende versie van het platform of de oplossing bouwen. Geen uitgebreid development-traject — een snelle, functionele eerste versie die getest kan worden door echte gebruikers.', tool: 'Claude · Lovable · Cursor' },
-  { n: '07', title: 'Lanceren', meta: 'Echte gebruikers, echte data', body: 'Het platform gaat live. Echte gebruikers, echte feedback, echte data. Pas na lancering en validatie wordt besloten of er verder gebouwd, opgeschaald of gestopt wordt.', tool: 'Marketing-DNA + automatisering' },
+  { n: '01', title: 'Probleem identificeren', meta: 'Eigen ervaring als validatie', body: 'Elk venture begint met een probleem dat we zelf voelen, of iemand in onze directe omgeving. Geen denkbeeldige klant. Geen marktonderzoek op papier. Echte frustratie, echte behoefte.', tool: 'Eigen ervaring' },
+  { n: '02', title: 'Valideren met AI', meta: 'Concurrentie · markt · probleem', body: 'Is het probleem valide? Bestaat er al iets soortgelijks? AI kijkt mee. Concurrentieanalyse, marktonderzoek, probleemvalidatie. In uren. Niet weken.', tool: 'Claude · Perplexity · ChatGPT' },
+  { n: '03', title: 'Werkende demo bouwen', meta: 'Oplossing voor business case', body: 'We bouwen eerst iets simpels dat werkt. Geen features. Geen eindeloze roadmap. Gewoon kijken of het probleem echt bestaat. De oplossing moet voelbaar zijn voordat er gerekend wordt.', tool: 'Lovable · Replit · Claude Design' },
+  { n: '04', title: 'Business case maken', meta: 'Pas als de oplossing staat', body: 'Pas als de oplossing staat, kijken we of er een bedrijf in zit. Businessmodel, verdienmodel, marktgrootte. Met AI uitgewerkt. Altijd in die volgorde.', tool: 'Claude · business case' },
+  { n: '05', title: 'Brand book maken', meta: 'Identiteit van dag één', body: 'Elke oplossing krijgt direct een identiteit. Logo, kleuren, toon. Zodat alles er van dag één professioneel uitziet. En consistent blijft naarmate het groeit.', tool: 'Claude · brand systeem' },
+  { n: '06', title: 'Eerste platform bouwen', meta: 'Functioneel, niet perfect', body: 'We bouwen een eerste werkende versie. Geen uitgebreid dev-traject. Snel, functioneel, testbaar door echte gebruikers. Perfectionisme is voor later.', tool: 'Claude · Lovable · Cursor' },
+  { n: '07', title: 'Lanceren', meta: 'Echte gebruikers, echte data', body: 'Live. Echte gebruikers, echte feedback, echte data. Pas daarna beslissen we of we doorgaan, opschalen of stoppen. Niet eerder.', tool: 'Marketing-DNA + automatisering' },
 ];
 
 const WHAT_YOU_GET = [
-  ['Werkende platform', 'Eerste functionele versie, live testbaar door echte gebruikers.'],
-  ['Brand book', 'Volledige visuele identiteit. Logo, kleuren, fonts, tone of voice.'],
-  ['Business case', 'Verdienmodel, marktgrootte, go-to-market — onderbouwd met AI-research.'],
-  ['Werkwijze', '7-stappen recept om door te bouwen. Dezelfde methode op elk venture.'],
+  ['Werkend platform', 'Eerste versie. Live. Testbaar door echte gebruikers.'],
+  ['Brand book', 'Visuele identiteit. Logo, kleuren, fonts, tone of voice.'],
+  ['Business case', 'Verdienmodel, marktgrootte, go-to-market. Onderbouwd met AI.'],
+  ['Werkwijze', '7 stappen om door te bouwen. Dezelfde aanpak op elk venture.'],
 ];
 
 const TICKER_ITEMS = [
@@ -52,7 +52,7 @@ const HoeWeBouwenPage = () => {
   useEffect(() => {
     applySEO({
       title: 'De Werkwijze — Toms Ambitie',
-      description: 'Van probleem naar platform in zeven stappen. Altijd AI-assisted. Altijd vanuit eigen ervaring. Live binnen 6 weken.',
+      description: 'Wij bouwen vanuit frustratie, gedrag en echte problemen. Zeven stappen, zes weken, altijd AI-assisted. Wij zijn altijd zelf de testgroep.',
       canonical: 'https://www.toms-ambitie.nl/werkwijze',
     });
   }, []);
@@ -73,10 +73,10 @@ const HoeWeBouwenPage = () => {
                   <span className="eyebrow"><span style={{ marginRight: 8 }}>01</span>De Werkwijze</span>
                 </div>
                 <h1 className="clip-reveal display" style={{ fontSize: 'clamp(72px, 10vw, 152px)', lineHeight: 0.84, marginTop: 32, letterSpacing: '-0.02em' }}>
-                  <span>Van probleem<br />naar platform.</span>
+                  <span>Wij zijn altijd<br />zelf de testgroep.</span>
                 </h1>
                 <p className="lead reveal reveal-delay-1" style={{ marginTop: 48, fontSize: 22, maxWidth: 560 }}>
-                  Elk venture doorloopt hetzelfde zeven-stappen systeem. De oplossing staat altijd voorop — de business case volgt daarna. Altijd AI-assisted. Altijd vanuit eigen ervaring.
+                  Wij bouwen vanuit frustratie, gedrag en echte problemen. Niet vanuit brainstorms. Voelt een oplossing intern goed? Dan testen we hem direct in de praktijk. Pas daarna ontstaat soms een venture.
                 </p>
               </div>
 
@@ -177,7 +177,7 @@ const HoeWeBouwenPage = () => {
               <span>De oplossing staat altijd voorop.<br /><span style={{ color: 'var(--inkt-40)' }}>De business case volgt. Altijd.</span></span>
             </h2>
             <p className="lead" style={{ marginTop: 40, fontSize: 22 }}>
-              Door eerst de oplossing te bouwen en daarna de business case te maken, blijft de kwaliteit van de oplossing leidend. Een business case die een slechte oplossing rechtvaardigt is waardeloos. Een goede oplossing zonder business case is een kans.
+              Als je begint met de business case, bouw je al snel voor de spreadsheet. Niet voor het probleem. Wij doen het andersom. Altijd. Een slechte oplossing met een goede business case is waardeloos. Een goede oplossing zonder business case is een kans.
             </p>
           </div>
         </section>
@@ -191,7 +191,7 @@ const HoeWeBouwenPage = () => {
                 <span className="eyebrow"><span style={{ marginRight: 8 }}>06</span>Wat krijgt een venture</span>
               </div>
               <h2 className="h2" style={{ marginTop: 24 }}>
-                Na zes weken heb je een platform —<br /><span style={{ color: 'var(--inkt-40)' }}>en alles om het te lanceren.</span>
+                Na zes weken heb je een platform.<br /><span style={{ color: 'var(--inkt-40)' }}>En alles om het te lanceren.</span>
               </h2>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}
@@ -212,7 +212,7 @@ const HoeWeBouwenPage = () => {
           <div className="container-narrow">
             <div style={{ width: 48, height: 4, background: 'var(--volt)', margin: '0 auto 32px' }} />
             <h2 className="clip-reveal display" style={{ fontSize: 'clamp(56px, 7vw, 104px)', lineHeight: 0.92, color: 'var(--wit-warm)' }}>
-              <span>Heb je een idee?<br />Bouw mee.</span>
+              <span>Alles begint<br />met iets dat schuurt.</span>
             </h2>
             <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginTop: 48, flexWrap: 'wrap' }}>
               <Link to="/meebouwen" className="btn btn-volt">Start gesprek →</Link>

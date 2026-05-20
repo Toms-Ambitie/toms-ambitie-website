@@ -163,6 +163,33 @@ ul { margin: 0; padding: 0; list-style: none; }
 .body-sm { font-size: 14px; line-height: 1.55; color: var(--inkt-60); }
 
 /* ═══════════════════════════════════════════════════════════════
+   VENTURE DETAIL TYPOGRAPHY SYSTEM (typo-* classes)
+   Used exclusively in VentureDetailPage — no default color means
+   dark body text shows on dark sections, so we set explicit colors.
+   ─────────────────────────────────────────────────────────────── */
+
+/* Size tokens */
+.typo-xs  { font-size: 10px; letter-spacing: 0.12em; }
+.typo-sm  { font-size: 12px; }
+.typo-md  { font-size: 15px; line-height: 1.55; }
+.typo-lg  { font-size: 18px; line-height: 1.55; }
+.typo-btn { font-size: 11px; letter-spacing: 0.14em; font-weight: 700; }
+.typo-label { font-size: 10px; letter-spacing: 0.14em; line-height: 1.4; }
+.typo-section-heading { font-size: clamp(2rem, 4vw, 3.5rem); }
+
+/* Color tokens — light backgrounds */
+.typo-heading      { color: #0E0E0C; }
+.typo-heading-volt { color: #0E0E0C; }
+.typo-body         { color: rgba(14,14,12,0.80); }
+.typo-caption      { color: rgba(14,14,12,0.55); }
+
+/* Color tokens — dark backgrounds */
+.typo-heading-dark  { color: #F4F1E8; }
+.typo-body-dark     { color: rgba(244,241,232,0.82); }
+.typo-caption-dark  { color: rgba(244,241,232,0.55); }
+.typo-muted-dark    { color: rgba(244,241,232,0.40); }
+
+/* ═══════════════════════════════════════════════════════════════
    LAYOUT PRIMITIVES
    ═══════════════════════════════════════════════════════════════ */
 
@@ -437,6 +464,46 @@ body.menu-open { overflow: hidden; }
 
 /* Page hero sections — extra top padding so content clears sticky nav */
 /* Overridden per breakpoint below */
+
+/* ── Hero founder image — responsive gradient + crop ── */
+/* Mobile: gradient goes top-down (text full-width), crop shows face */
+@media (max-width: 768px) {
+  .hero-founder-img {
+    /* Centre on Tom's face/upper body for portrait viewports */
+    object-position: 60% 18% !important;
+  }
+  .hero-gradient-left {
+    /* Replace left-right gradient with top-down on mobile */
+    background: linear-gradient(
+      to bottom,
+      rgba(14,14,12,0.88) 0%,
+      rgba(14,14,12,0.72) 45%,
+      rgba(14,14,12,0.55) 100%
+    ) !important;
+  }
+  .hero-gradient-bottom {
+    background: linear-gradient(
+      to top,
+      rgba(14,14,12,0.70) 0%,
+      transparent 40%
+    ) !important;
+  }
+  .hero-caption { display: none; }
+}
+
+/* Tablet (769–1024px): softer left gradient */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-gradient-left {
+    background: linear-gradient(
+      to right,
+      rgba(14,14,12,0.94) 0%,
+      rgba(14,14,12,0.82) 35%,
+      rgba(14,14,12,0.45) 58%,
+      rgba(14,14,12,0.08) 80%,
+      rgba(14,14,12,0.00) 100%
+    ) !important;
+  }
+}
 
 /* ── Tablet ≤1024px ─────────────────────────────────────────── */
 @media (max-width: 1024px) {

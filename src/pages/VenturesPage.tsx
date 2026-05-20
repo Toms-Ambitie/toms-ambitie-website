@@ -27,6 +27,7 @@ type Venture = {
   url: string;
   externalUrl?: string;
   accent: string;
+  accentInk: string;
   bg: string;
   isLight?: boolean;
   metrics: Metric[];
@@ -46,6 +47,7 @@ const VENTURES: Venture[] = [
     url: 'postpilotapp.nl',
     externalUrl: 'postpilotapp.nl',
     accent: '#00DC93',
+    accentInk: '#0A1820',
     bg: '#0A1820',
     metrics: [
       { Icon: Zap, value: 'AI content engine', label: 'automatisering' },
@@ -65,6 +67,7 @@ const VENTURES: Venture[] = [
     year: '2024',
     url: 'pactly.nl',
     accent: '#CC007E',
+    accentInk: '#FFFFFF',
     bg: '#1A0010',
     metrics: [
       { Icon: FolderOpen, value: 'overzicht', label: 'vaste lasten' },
@@ -84,6 +87,7 @@ const VENTURES: Venture[] = [
     year: '2023',
     url: 'oakmarketing.nl',
     accent: '#1B3A8A',
+    accentInk: '#FFFFFF',
     bg: '#0A1228',
     metrics: [
       { Icon: Users, value: 'operator', label: 'tijdelijk in je bedrijf' },
@@ -104,6 +108,7 @@ const VENTURES: Venture[] = [
     url: 'plugandpower.nl',
     externalUrl: 'plugandpower.nl',
     accent: '#FFAA00',
+    accentInk: '#0E0E0C',
     bg: '#1A1408',
     metrics: [
       { Icon: Users, value: 'MKB + B2C', label: 'markt' },
@@ -124,6 +129,7 @@ const VENTURES: Venture[] = [
     url: 'emmaboekt.nl',
     externalUrl: 'emmaboekt.nl',
     accent: '#7C3AED',
+    accentInk: '#FFFFFF',
     bg: '#EDE9FF',
     isLight: true,
     metrics: [
@@ -171,12 +177,31 @@ const VentureSection = ({ v, index }: { v: Venture; index: number }) => {
           <Link
             to={`/ventures/${v.slug}`}
             style={{
-              fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em',
-              textTransform: 'uppercase', color: v.accent, textDecoration: 'none',
-              transition: 'opacity .2s',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 8,
+              fontFamily: 'var(--mono)',
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: '0.14em',
+              textTransform: 'uppercase',
+              color: v.accent,
+              textDecoration: 'none',
+              border: `1.5px solid ${v.accent}`,
+              padding: '9px 18px',
+              minHeight: 38,
+              transition: 'background .2s, color .2s',
             }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.opacity = '0.7'; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.opacity = '1'; }}
+            onMouseEnter={(e) => {
+              const el = e.currentTarget as HTMLAnchorElement;
+              el.style.background = v.accent;
+              el.style.color = v.accentInk;
+            }}
+            onMouseLeave={(e) => {
+              const el = e.currentTarget as HTMLAnchorElement;
+              el.style.background = 'transparent';
+              el.style.color = v.accent;
+            }}
           >
             BEKIJK VENTURE →
           </Link>

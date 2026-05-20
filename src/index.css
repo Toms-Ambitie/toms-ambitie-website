@@ -462,6 +462,12 @@ ul { margin: 0; padding: 0; list-style: none; }
     gap: 32px !important;
   }
 
+  /* Legal pages: stack section number/title above content */
+  .legal-section {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
   /* Metrics row — 2×2 on mobile */
   .metrics-row { grid-template-columns: 1fr 1fr !important; gap: 24px !important; }
   .metrics-row > * { border-left: none !important; padding-left: 0 !important; }

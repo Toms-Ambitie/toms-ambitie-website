@@ -292,5 +292,20 @@
     .ventures-featured-inner {
       grid-template-columns: 1fr !important;
     }
+    .werkwijze-hero-grid {
+      grid-template-columns: 1fr !important;
+    }
+    .step-row-grid {
+      grid-template-columns: 80px 1fr !important;
+    }
+    .step-row-grid > :first-child {
+      padding-right: 16px !important;
+    }
+    .step-row-grid > :last-child {
+      padding-left: 20px !important;
+    }
+    .venture-row-grid {
+      grid-template-columns: 1fr !important;
+    }
   }
 }

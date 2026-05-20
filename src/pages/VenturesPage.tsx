@@ -2,151 +2,76 @@ import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import { applySEO } from "@/lib/seo";
-import { ventureDetails } from "@/data/ventures";
+import { getVentureStatusMeta } from "@/data/ventures";
+
+/* ─── Data ─────────────────────────────────────────────────────────── */
 
 const ventures = [
   {
-    slug: "pactly",
-    category: "Consumer Fintech · Huishoudplatform",
-    problemLabel: "HET PROBLEEM",
-    problem:
-      "Veel huishoudens hebben geen idee waar geld weglekt aan contracten en abonnementen.",
-    description:
-      "Pactly brengt vaste lasten samen in één slim overzicht. Een schaalbaar consumentenplatform in een markt waar miljarden onnodig blijven liggen.",
-    whyNow:
-      "Acht miljoen huishoudens in Nederland. Geen partij die hier echt grip op geeft. Pactly bouwt de regielaag die er nog niet is.",
-    url: "pactly.nl",
-    accent: "#CC007E",
-    dark: "#1A0010",
-    status: "IN ONTWIKKELING",
-  },
-  {
-    slug: "emma-boekt",
-    category: "AI · Administratie · Automatisering",
-    problemLabel: "DE AANPAK",
-    problem: "EmmaBoekt maakt administratie menselijker.",
-    description:
-      "Geen ingewikkelde boekhoudomgeving, maar een slimme assistent bovenop software die ondernemers vaak al gebruiken. Je hoeft niet opnieuw te leren hoe administratie werkt. Je hoeft alleen nog te vertellen wat je geregeld wilt hebben.",
-    whyNow:
-      "Vrijwel iedere ondernemer gebruikt administratiesoftware. Maar bijna niemand wordt enthousiast van de ervaring. EmmaBoekt draait dat om: minder mentale weerstand, meer rust.",
-    url: "",
-    accent: "#1BBFA0",
-    dark: "#1B2D5E",
-    status: "IN ONTWIKKELING",
-  },
-  {
     slug: "post-pilot",
+    name: "POST PILOT",
     category: "SaaS · AI · Contentautomatisering",
-    problemLabel: "HET PROBLEEM",
-    problem:
-      "LinkedIn groeit harder dan ooit, maar de meeste ondernemers posten veel te weinig.",
-    description:
-      "Post Pilot automatiseert zichtbaarheid met AI. Een SaaS-model met een markt die elke dag groter wordt en een probleem dat ondernemers structureel niet oplossen.",
-    whyNow:
-      "AI-content en LinkedIn vormen samen de grootste B2B-groeikans van dit moment. Eerste klanten draaien, terugkerende omzet groeit, schaalbaar SaaS-model.",
     url: "postpilotapp.nl",
     accent: "#00DC93",
     dark: "#0A1820",
-    status: "LIVE",
+    description:
+      "De meeste ondernemers weten dat ze zichtbaar moeten zijn. Maar zodra het druk wordt, verdwijnen ze van LinkedIn. Post Pilot maakt zichtbaarheid voorspelbaar met AI die voor je denkt, plant en publiceert.",
+    stats: [
+      { value: "125+", label: "Gebruikers" },
+      { value: "13+", label: "Branches" },
+      { value: "NL/EN", label: "Talen" },
+    ],
   },
   {
-    slug: "plug-and-power",
-    category: "Energie · E-commerce · Hardware",
-    problemLabel: "HET PROBLEEM",
-    problem:
-      "De energiemarkt verandert snel, maar consumenten krijgen vooral installateurs en verkooppraatjes.",
+    slug: "pactly",
+    name: "PACTLY",
+    category: "LegalTech · Consumer Fintech",
+    url: "pactly.nl",
+    accent: "#CC007E",
+    dark: "#1A0010",
     description:
-      "Plug and Power maakt plug-and-play energie-oplossingen toegankelijk zonder technisch gedoe. Een moderne challenger in een markt die hard openbreekt.",
-    whyNow:
-      "Thuisbatterijen, stekkerstroom en mobiele power groeien explosief. Plug-and-play wint het van complexe installaties.",
-    url: "plugandpower.nl",
-    accent: "#FFAA00",
-    dark: "#1A1408",
-    status: "IN ONTWIKKELING",
+      "Iedereen heeft vaste lasten. Bijna niemand heeft er echt grip op. Pactly bouwt aan de regielaag voor contracten, abonnementen en alles wat maandelijks loopt, zonder ooit iets te regelen zonder akkoord.",
+    stats: [
+      { value: "8M+", label: "Huishoudens NL" },
+      { value: "B2C", label: "Model" },
+      { value: "NL", label: "Markt" },
+    ],
   },
   {
     slug: "oak-marketing",
+    name: "OAK MARKETING",
     category: "Marketing · Strategie · AI",
-    problemLabel: "DE BEHOEFTE",
-    problem:
-      "Veel bedrijven doen iets met marketing, maar missen richting, structuur en data.",
-    description:
-      "OAK Marketing is de operator-laag van het ecosysteem: tijdelijk binnen bij bedrijven om marketingteams, AI en groeistrategie naar een hoger niveau te brengen.",
-    whyNow:
-      "AI verandert marketing van binnenuit. Oak helpt teams die de overstap nog moeten maken — met directe omzetimpact.",
     url: "oakmarketing.nl",
     accent: "#1B3A8A",
     dark: "#0A1228",
-    status: "LIVE",
-    tag: "Operator",
+    description:
+      "Veel bedrijven doen 'iets' met marketing, maar missen richting, ritme en resultaat. OAK Marketing stapt tijdelijk in als operator, bewust selectief, bewust kortdurend, met directe slagkracht.",
+    stats: [
+      { value: "B2B", label: "Model" },
+      { value: "SLIM", label: "Aanpak" },
+      { value: "NL", label: "Markt" },
+    ],
+  },
+  {
+    slug: "plug-and-power",
+    name: "PLUG AND POWER",
+    category: "Energie · E-commerce · Hardware",
+    url: "plugandpower.nl",
+    accent: "#FFAA00",
+    dark: "#1A1408",
+    description:
+      "Iedereen wil onafhankelijker worden van energie. Maar niemand zit te wachten op technisch gedoe en verkooppraatjes. Plug and Power maakt plug-and-play energie toegankelijk, zonder installateur.",
+    stats: [
+      { value: "B2C", label: "Model" },
+      { value: "E2C", label: "Aanpak" },
+      { value: "NL", label: "Markt" },
+    ],
   },
 ];
 
-const alumni = [
-  {
-    name: "AARDBEI COMMUNICATIE",
-    type: "Alumni",
-    period: "2008 — 2015 · Nijverdal",
-    description:
-      "Aardbei Communicatie begon in 2008 onder de naam Notabilis — Opmerkelijke Communicatie. Wat startte vanuit drie jonge ondernemers aan de keukentafel groeide uit tot een communicatiebureau gespecialiseerd in conceptontwikkeling en campagnes.",
-    detail:
-      "Vanuit Nijverdal werkten we voor merken als Wolters Kluwer, Van Keulen Interieurbouw, Kartplaza en Auto Aaltink. In 2012 werd Notabilis gerebrand naar Aardbei Communicatie en groeiden we door naar een team van 10 mensen.",
-    leftBehind: "Concepten bouwen, ondernemerschap en dingen creëren waar mensen energie van krijgen.",
-    lesson: "Ondernemen draait niet alleen om groei. Ook om weten wanneer het tijd is voor een nieuw hoofdstuk.",
-  },
-  {
-    name: "DESIGNERSHIRTS",
-    type: "Venture",
-    period: "2010 — 2015 · Notabilis × REF Drukkerij",
-    description:
-      "DesignerShirts begon als samenwerking tussen Notabilis en REF Drukkerij. Het idee was simpel: laat mensen zelf bepalen welk kledingstuk, welke kleur en welke opdruk ze willen.",
-    detail:
-      "Wat begon als webshop voor funny shirts groeide uit tot een digitaal testlab waarin we alles testten op het gebied van e-commerce, UX, online marketing en conversie.",
-    leftBehind: "Door zelf te bouwen leer je sneller dan welk advies dan ook.",
-    lesson:
-      "De beste manier om online te leren, is door zelf iets te bouwen en het publiek erop los te laten.",
-  },
-  {
-    name: "PARTYBLENDER",
-    type: "Venture → Exit",
-    period: "2013 — 2015 · Twente / Hellendoorn",
-    description:
-      "PartyBlender ontstond vanuit een simpele observatie: uitgaanspubliek werd steeds minder trouw aan vaste locaties en koos steeds vaker last minute waar ze heen gingen.",
-    detail:
-      "We bouwden een platformconcept waarbij je zelf de ingrediënten van jouw ideale avond koos. Wat begon als community groeide uit tot eigen events, waaronder Tinderlove Festival in 2014.",
-    leftBehind:
-      "Sterke concepten ontstaan vaak vanuit veranderend gedrag dat anderen nog niet zien.",
-    lesson:
-      "Sterke concepten ontstaan vaak vanuit veranderend gedrag dat anderen nog niet zien.",
-  },
-  {
-    name: "LED-IBC",
-    type: "Alumni",
-    period: "2016 — 2023 · Nijverdal / Zwolle / Antwerpen",
-    description:
-      "LED-IBC ontstond vanuit een praktisch probleem: er was simpelweg geen schaalbare oplossing voor het verlichten en afzetten van grote evenemententerreinen.",
-    detail:
-      "Wat begon met experimenteren in een achtertuin in Nijverdal groeide uit tot de grootste verhuurder van verlichte IBC's in de Benelux. In 2023 verkocht aan Woodpeckers in Antwerpen.",
-    leftBehind:
-      "Bouw een beter product, snap het proces van je klant en groei alleen wanneer de cashflow dat toelaat.",
-    lesson:
-      "Slimme logistiek en nuchter ondernemerschap zijn vaak sterker dan grootse plannen.",
-  },
-  {
-    name: "ENTRANZ",
-    type: "Venture",
-    period: "2018 — 2022 · Twente / Zwolle",
-    description:
-      "Entranz werd gebouwd als uitdager van traditionele ticketproviders. Niet alleen gericht op ticketverkoop, maar vooral op data, marketing en inzichten voor organisatoren.",
-    detail:
-      "De ambitie was groot, de eerste tractie veelbelovend — maar de lancering viel vlak voor COVID, waardoor de evenementenbranche volledig stilviel.",
-    leftBehind:
-      "Data, targeting en community ownership zijn waardevoller dan een kassasysteem.",
-    lesson:
-      "Soms klopt het idee, het team én de markt — maar niet de timing.",
-  },
-];
+/* ─── Page ──────────────────────────────────────────────────────────── */
 
 const VenturesPage = () => {
   const anchorRefs = useRef<Record<string, HTMLElement | null>>({});
@@ -155,7 +80,7 @@ const VenturesPage = () => {
     applySEO({
       title: "Ventures. Toms Ambitie",
       description:
-        "Waar we nu aan bouwen. Vier actieve ventures in SaaS, fintech, energie en marketing. Gebouwd vanuit echte problemen, schaalbare markten en ondernemende frustratie.",
+        "Vier eigen platformen in SaaS, fintech, energie en marketing. Gebouwd vanuit echte problemen, schaalbare markten en ondernemende frustratie.",
       canonical: "https://www.toms-ambitie.nl/ventures",
     });
   }, []);
@@ -165,606 +90,334 @@ const VenturesPage = () => {
   };
 
   return (
-    <main style={{ minHeight: "100vh", background: "#FBFAF6" }}>
+    <main style={{ minHeight: "100vh", background: "#0E0E0C" }}>
       <Navbar />
 
-      {/* HERO */}
-      <section style={{ background: "#FBFAF6", paddingTop: 64, paddingBottom: 80 }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}>
+      {/* ── HERO — dark ──────────────────────────────────────── */}
+      <section style={{ background: "#0E0E0C", paddingTop: 64 }}>
+        <div style={{ maxWidth: 1440, margin: "0 auto", padding: "80px 32px 64px" }}>
           <p
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "0.75rem",
-              fontWeight: 500,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              color: "rgba(14,14,12,0.45)",
-              marginBottom: 40,
-              marginTop: 64,
-            }}
+            className="font-mono uppercase"
+            style={{ fontSize: 11, letterSpacing: "0.18em", color: "rgba(255,255,255,0.3)", marginBottom: 40 }}
           >
-            — Actieve ventures
+            — Eigen ventures
           </p>
 
           <h1
+            className="font-display"
             style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(56px, 9vw, 128px)",
-              lineHeight: 0.92,
+              fontSize: "clamp(72px, 10vw, 160px)",
+              lineHeight: 0.88,
               letterSpacing: "-0.01em",
-              color: "#0E0E0C",
-              marginBottom: 48,
+              color: "#F4F1E8",
+              marginBottom: 40,
             }}
           >
-            WAAR WE NU AAN{" "}
-            <span style={{ color: "#C8F000" }}>BOUWEN.</span>
+            VIER EIGEN<br />
+            PLATFORMEN.
           </h1>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "24px 80px",
-              maxWidth: 880,
-              marginBottom: 64,
-            }}
+          <p
+            className="font-sans"
+            style={{ fontSize: 18, lineHeight: 1.65, color: "rgba(255,255,255,0.5)", maxWidth: 560, marginBottom: 56 }}
           >
-            <p
-              style={{
-                fontFamily: "var(--font-sans)",
-                fontSize: "1.125rem",
-                lineHeight: 1.65,
-                color: "rgba(14,14,12,0.7)",
-              }}
-            >
-              Geen losse ideeën. Maar bedrijven gebouwd vanuit echte problemen,
-              duidelijke markten en schaalbare modellen.
-            </p>
-            <p
-              style={{
-                fontFamily: "var(--font-sans)",
-                fontSize: "1.125rem",
-                lineHeight: 1.65,
-                color: "rgba(14,14,12,0.7)",
-              }}
-            >
-              Sommige ventures groeien uit tot zelfstandige bedrijven. Andere
-              verdwijnen weer. Dat is geen risico van het model. Dat is precies
-              het model.
-            </p>
-          </div>
+            Geen losse ideeën. Bedrijven gebouwd vanuit echte problemen,
+            duidelijke markten en schaalbare modellen.
+          </p>
 
           {/* Anchor nav */}
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: 2,
-              background: "#0E0E0C",
-              border: "2px solid #0E0E0C",
-              width: "fit-content",
-            }}
-          >
-            {ventures.map((v) => {
-              const data = ventureDetails.find((d) => d.slug === v.slug);
-              return (
-                <button
-                  key={v.slug}
-                  onClick={() => scrollTo(v.slug)}
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.75rem",
-                    fontWeight: 600,
-                    letterSpacing: "0.12em",
-                    textTransform: "uppercase",
-                    background: "#FBFAF6",
-                    color: "#0E0E0C",
-                    border: "none",
-                    cursor: "pointer",
-                    padding: "14px 24px",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 10,
-                  }}
-                >
-                  <span
-                    style={{
-                      width: 7,
-                      height: 7,
-                      background: v.accent,
-                      display: "inline-block",
-                      flexShrink: 0,
-                    }}
-                  />
-                  {data?.name ?? v.slug}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* VENTURE SECTIONS */}
-      {ventures.map((v, i) => {
-        const data = ventureDetails.find((d) => d.slug === v.slug);
-        const isEven = i % 2 === 0;
-
-        return (
-          <section
-            key={v.slug}
-            id={v.slug}
-            ref={(el) => { anchorRefs.current[v.slug] = el; }}
-            style={{
-              background: isEven ? "#F4F1E8" : "#FBFAF6",
-              paddingTop: 120,
-              paddingBottom: 120,
-              scrollMarginTop: 80,
-            }}
-          >
-            <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}>
-              {/* Venture header */}
-              <div
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
+            {ventures.map((v) => (
+              <button
+                key={v.slug}
+                onClick={() => scrollTo(v.slug)}
+                className="font-mono uppercase"
                 style={{
+                  fontSize: 11,
+                  fontWeight: 700,
+                  letterSpacing: "0.12em",
+                  background: "rgba(255,255,255,0.06)",
+                  color: "rgba(255,255,255,0.7)",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: "12px 20px",
                   display: "flex",
-                  alignItems: "flex-start",
-                  justifyContent: "space-between",
-                  flexWrap: "wrap",
-                  gap: 24,
-                  marginBottom: 64,
-                  paddingBottom: 40,
-                  borderBottom: "1px solid rgba(14,14,12,0.1)",
+                  alignItems: "center",
+                  gap: 10,
+                  transition: "background 0.15s",
                 }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.1)"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.06)"; }}
               >
-                <div>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 12,
-                      marginBottom: 16,
-                    }}
-                  >
-                    <span
-                      style={{
-                        width: 8,
-                        height: 8,
-                        background: v.accent,
-                        display: "inline-block",
-                      }}
-                    />
-                    <span
-                      style={{
-                        fontFamily: "var(--font-mono)",
-                        fontSize: "0.7rem",
-                        letterSpacing: "0.16em",
-                        textTransform: "uppercase",
-                        color: "rgba(14,14,12,0.45)",
-                      }}
-                    >
-                      {v.status}
-                    </span>
-                    {v.tag && (
-                      <>
-                        <span style={{ color: "rgba(14,14,12,0.25)" }}>·</span>
-                        <span
-                          style={{
-                            fontFamily: "var(--font-mono)",
-                            fontSize: "0.7rem",
-                            letterSpacing: "0.16em",
-                            textTransform: "uppercase",
-                            color: v.accent,
-                          }}
-                        >
-                          {v.tag}
-                        </span>
-                      </>
-                    )}
-                  </div>
-                  <h2
-                    style={{
-                      fontFamily: "var(--font-display)",
-                      fontSize: "clamp(40px, 6vw, 80px)",
-                      lineHeight: 0.95,
-                      color: "#0E0E0C",
-                      marginBottom: 8,
-                    }}
-                  >
-                    {data?.name ?? v.slug.toUpperCase()}
-                  </h2>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.75rem",
-                      letterSpacing: "0.14em",
-                      textTransform: "uppercase",
-                      color: "rgba(14,14,12,0.4)",
-                    }}
-                  >
-                    {v.category}
-                  </p>
-                </div>
-                <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                  <Link
-                    to={`/ventures/${v.slug}`}
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.75rem",
-                      fontWeight: 700,
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                      background: v.accent,
-                      color: v.dark === "#0A1228" || v.dark === "#0A1820" || v.dark === "#1A0010" || v.dark === "#1A1408" ? "#FFFFFF" : "#0E0E0C",
-                      padding: "12px 24px",
-                      textDecoration: "none",
-                      minHeight: 44,
-                    }}
-                  >
-                    Meer over {data?.name} →
-                  </Link>
-                </div>
-              </div>
-
-              {/* Two-column: problem/description + momentum card */}
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: 64,
-                  alignItems: "start",
-                }}
-              >
-                <div>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.7rem",
-                      letterSpacing: "0.18em",
-                      textTransform: "uppercase",
-                      color: "rgba(14,14,12,0.4)",
-                      marginBottom: 16,
-                    }}
-                  >
-                    {v.problemLabel}
-                  </p>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-display)",
-                      fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
-                      lineHeight: 1.1,
-                      color: "#0E0E0C",
-                      marginBottom: 24,
-                      borderLeft: `4px solid ${v.accent}`,
-                      paddingLeft: 20,
-                    }}
-                  >
-                    "{v.problem}"
-                  </p>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-sans)",
-                      fontSize: "1.0625rem",
-                      lineHeight: 1.7,
-                      color: "rgba(14,14,12,0.7)",
-                      marginBottom: 32,
-                    }}
-                  >
-                    {v.description}
-                  </p>
-                  <Link
-                    to={`/ventures/${v.slug}`}
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.75rem",
-                      fontWeight: 600,
-                      letterSpacing: "0.14em",
-                      textTransform: "uppercase",
-                      color: "#0E0E0C",
-                      textDecoration: "none",
-                      borderBottom: `2px solid ${v.accent}`,
-                      paddingBottom: 4,
-                    }}
-                  >
-                    Bekijk venture →
-                  </Link>
-                </div>
-
-                {/* Momentum card */}
-                <div
-                  style={{
-                    background: v.dark,
-                    padding: "48px 40px",
-                    borderTop: `4px solid ${v.accent}`,
-                  }}
-                >
-                  <p
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.7rem",
-                      letterSpacing: "0.18em",
-                      textTransform: "uppercase",
-                      color: v.accent,
-                      marginBottom: 24,
-                    }}
-                  >
-                    Waarom nu
-                  </p>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-display)",
-                      fontSize: "clamp(1.25rem, 2vw, 1.625rem)",
-                      lineHeight: 1.15,
-                      color: "#F4F1E8",
-                      marginBottom: 32,
-                    }}
-                  >
-                    "{v.whyNow}"
-                  </p>
-                  {v.url && (
-                    <a
-                      href={`https://www.${v.url}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{
-                        fontFamily: "var(--font-mono)",
-                        fontSize: "0.75rem",
-                        letterSpacing: "0.12em",
-                        textTransform: "uppercase",
-                        color: v.accent,
-                        textDecoration: "none",
-                        opacity: 0.7,
-                      }}
-                    >
-                      ↗ {v.url}
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
-          </section>
-        );
-      })}
-
-      {/* TRACK RECORD */}
-      <section style={{ background: "#0E0E0C", paddingTop: 120, paddingBottom: 120 }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}>
-          <p
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "0.75rem",
-              fontWeight: 500,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              color: "rgba(244,241,232,0.4)",
-              marginBottom: 24,
-            }}
-          >
-            — Track record
-          </p>
-          <h2
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(40px, 6vw, 80px)",
-              lineHeight: 0.95,
-              color: "#F4F1E8",
-              marginBottom: 64,
-            }}
-          >
-            WAT ER AL VOOR{" "}
-            <span style={{ color: "#C8F000" }}>KWam.</span>
-          </h2>
-
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 2,
-              background: "rgba(255,255,255,0.08)",
-              border: "2px solid rgba(255,255,255,0.08)",
-            }}
-          >
-            {alumni.map((a, i) => (
-              <div
-                key={i}
-                style={{
-                  background: "#111110",
-                  padding: "48px 48px",
-                  display: "grid",
-                  gridTemplateColumns: "280px 1fr",
-                  gap: 64,
-                  alignItems: "start",
-                }}
-              >
-                <div>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.65rem",
-                      letterSpacing: "0.18em",
-                      textTransform: "uppercase",
-                      color: "rgba(244,241,232,0.35)",
-                      display: "block",
-                      marginBottom: 12,
-                    }}
-                  >
-                    {a.type}
-                  </span>
-                  <h3
-                    style={{
-                      fontFamily: "var(--font-display)",
-                      fontSize: "1.5rem",
-                      lineHeight: 1.05,
-                      color: "#F4F1E8",
-                      marginBottom: 12,
-                    }}
-                  >
-                    {a.name}
-                  </h3>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.7rem",
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                      color: "rgba(244,241,232,0.35)",
-                    }}
-                  >
-                    {a.period}
-                  </p>
-                </div>
-
-                <div>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-sans)",
-                      fontSize: "0.9375rem",
-                      lineHeight: 1.7,
-                      color: "rgba(244,241,232,0.65)",
-                      marginBottom: 16,
-                    }}
-                  >
-                    {a.description}
-                  </p>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-sans)",
-                      fontSize: "0.9375rem",
-                      lineHeight: 1.7,
-                      color: "rgba(244,241,232,0.45)",
-                      marginBottom: 24,
-                    }}
-                  >
-                    {a.detail}
-                  </p>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.8125rem",
-                      fontStyle: "italic",
-                      color: "#C8F000",
-                      borderLeft: "3px solid #C8F000",
-                      paddingLeft: 16,
-                    }}
-                  >
-                    "{a.lesson}"
-                  </p>
-                </div>
-              </div>
+                <span style={{ width: 6, height: 6, background: v.accent, display: "inline-block", flexShrink: 0 }} />
+                {v.name}
+              </button>
             ))}
           </div>
         </div>
       </section>
 
-      {/* VISIE */}
-      <section style={{ background: "#F4F1E8", paddingTop: 120, paddingBottom: 120 }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}>
-          <p
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "0.75rem",
-              fontWeight: 500,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              color: "rgba(14,14,12,0.45)",
-              marginBottom: 24,
-            }}
-          >
-            — Richting
-          </p>
-          <h2
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(40px, 6vw, 80px)",
-              lineHeight: 0.95,
-              color: "#0E0E0C",
-              marginBottom: 48,
-            }}
-          >
-            WAAR DIT NAARTOE GAAT.
-          </h2>
+      {/* ── VENTURE SECTIONS ─────────────────────────────────── */}
+      {ventures.map((v) => {
+        const status = getVentureStatusMeta(v.slug);
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 80,
-              alignItems: "start",
-            }}
-          >
-            <div
+        return (
+          <ScrollReveal key={v.slug}>
+            <section
+              id={v.slug}
+              ref={(el) => { anchorRefs.current[v.slug] = el; }}
               style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 20,
-                fontFamily: "var(--font-sans)",
-                fontSize: "1.0625rem",
-                lineHeight: 1.7,
-                color: "rgba(14,14,12,0.7)",
+                background: v.dark,
+                borderTop: `4px solid ${v.accent}`,
+                scrollMarginTop: 80,
               }}
             >
-              <p>Toms Ambitie bouwt geen losse projecten.</p>
-              <p>
-                We bouwen een portfolio van bedrijven die ontstaan uit echte
-                problemen, schaalbare markten en ondernemende frustratie.
-              </p>
-              <p>
-                Sommige ventures verdwijnen weer. Andere groeien uit tot
-                zelfstandige bedrijven.
-              </p>
-              <p style={{ color: "#0E0E0C", fontWeight: 500 }}>
-                Dat is precies het systeem.
-              </p>
-              <p>
-                Het doel is niet om zoveel mogelijk ideeën te starten. Het doel
-                is om een omgeving te bouwen waarin sterke ideeën sneller
-                werkelijkheid worden.
-              </p>
-            </div>
+              <div
+                style={{
+                  maxWidth: 1440,
+                  margin: "0 auto",
+                  padding: "72px 32px",
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: 64,
+                  alignItems: "start",
+                }}
+                className="venture-row-grid"
+              >
+                {/* Left: info */}
+                <div>
+                  <div
+                    className="font-mono uppercase inline-flex items-center gap-2"
+                    style={{ fontSize: 10, color: status.color, letterSpacing: "0.14em", marginBottom: 20 }}
+                  >
+                    <span
+                      style={{ width: 6, height: 6, background: status.color, display: "inline-block" }}
+                      className={status.isLive ? "animate-pulse-live" : ""}
+                    />
+                    {status.label}
+                  </div>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                  <h2
+                    className="font-display"
+                    style={{
+                      fontSize: "clamp(40px, 6vw, 88px)",
+                      lineHeight: 0.9,
+                      color: "#F4F1E8",
+                      marginBottom: 8,
+                    }}
+                  >
+                    {v.name}
+                  </h2>
+
+                  <div
+                    className="font-mono uppercase"
+                    style={{ fontSize: 10, letterSpacing: "0.12em", color: "rgba(255,255,255,0.4)", marginBottom: 28 }}
+                  >
+                    {v.category}
+                  </div>
+
+                  <p
+                    className="font-sans"
+                    style={{ fontSize: 16, lineHeight: 1.7, color: "rgba(255,255,255,0.6)", marginBottom: 36, maxWidth: 520 }}
+                  >
+                    {v.description}
+                  </p>
+
+                  {/* Stats row */}
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: 2,
+                      marginBottom: 36,
+                      background: "rgba(255,255,255,0.04)",
+                    }}
+                  >
+                    {v.stats.map((s) => (
+                      <div
+                        key={s.label}
+                        style={{ padding: "16px 20px", flex: 1 }}
+                      >
+                        <div className="font-display" style={{ fontSize: 28, color: v.accent, lineHeight: 1 }}>
+                          {s.value}
+                        </div>
+                        <div className="font-mono uppercase" style={{ fontSize: 9, letterSpacing: "0.12em", color: "rgba(255,255,255,0.35)", marginTop: 4 }}>
+                          {s.label}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                    <Link
+                      to={`/ventures/${v.slug}`}
+                      className="font-mono font-bold uppercase inline-flex items-center transition-colors"
+                      style={{
+                        background: v.accent,
+                        color: "#0E0E0C",
+                        fontSize: 11,
+                        letterSpacing: "0.12em",
+                        padding: "12px 24px",
+                        textDecoration: "none",
+                      }}
+                    >
+                      Meer over {v.name} →
+                    </Link>
+                    {v.url && (
+                      <a
+                        href={`https://www.${v.url}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-mono uppercase inline-flex items-center"
+                        style={{
+                          fontSize: 10,
+                          letterSpacing: "0.12em",
+                          color: "rgba(255,255,255,0.35)",
+                          textDecoration: "none",
+                          padding: "12px 0",
+                        }}
+                      >
+                        ↗ {v.url}
+                      </a>
+                    )}
+                  </div>
+                </div>
+
+                {/* Right: product card / visual */}
+                <div
+                  style={{
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    padding: "32px",
+                    minHeight: 280,
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <div
+                    className="font-display"
+                    style={{
+                      fontSize: "clamp(80px, 12vw, 160px)",
+                      lineHeight: 0.85,
+                      color: "rgba(255,255,255,0.04)",
+                      textAlign: "center",
+                      userSelect: "none",
+                    }}
+                  >
+                    {v.name.split(" ").map((word, i) => (
+                      <div key={i}>{word}</div>
+                    ))}
+                  </div>
+                  <div style={{ marginTop: 24, textAlign: "center" }}>
+                    <div style={{ width: 40, height: 3, background: v.accent, margin: "0 auto 12px" }} />
+                    <div className="font-mono uppercase" style={{ fontSize: 9, letterSpacing: "0.14em", color: "rgba(255,255,255,0.25)" }}>
+                      {v.url || "In aanbouw"}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </ScrollReveal>
+        );
+      })}
+
+      {/* ── MANIFESTO ────────────────────────────────────────── */}
+      <section style={{ background: "#F4F1E8", padding: "120px 0" }}>
+        <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 32px" }}>
+          <ScrollReveal>
+            <h2
+              className="font-display"
+              style={{
+                fontSize: "clamp(44px, 7vw, 112px)",
+                lineHeight: 0.88,
+                color: "#0E0E0C",
+                marginBottom: 8,
+              }}
+            >
+              ELK VENTURE IS EEN EIGEN MERK.
+            </h2>
+            <h2
+              className="font-display"
+              style={{
+                fontSize: "clamp(44px, 7vw, 112px)",
+                lineHeight: 0.88,
+                color: "rgba(14,14,12,0.25)",
+                marginBottom: 56,
+              }}
+            >
+              TOMS AMBITIE IS DE MOTOR.
+            </h2>
+            <p
+              className="font-sans"
+              style={{ fontSize: 18, lineHeight: 1.65, color: "rgba(14,14,12,0.6)", maxWidth: 600 }}
+            >
+              Elk bedrijf heeft zijn eigen identiteit, markt en aanpak. Maar achter elk van hen
+              zit hetzelfde systeem: probleem eerst, bouwen met AI, stoppen als het niet werkt.
+            </p>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ── CTA ──────────────────────────────────────────────── */}
+      <section style={{ background: "#0E0E0C", padding: "120px 0" }}>
+        <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 32px" }}>
+          <ScrollReveal>
+            <h2
+              className="font-display"
+              style={{
+                fontSize: "clamp(44px, 7vw, 112px)",
+                lineHeight: 0.88,
+                color: "#F4F1E8",
+                marginBottom: 48,
+                maxWidth: 900,
+              }}
+            >
+              DE VOLGENDE VENTURE KAN VANAF JOUW PROBLEEM{" "}
+              <span style={{ color: "#C8F000" }}>BEGINNEN.</span>
+            </h2>
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
               <Link
                 to="/meebouwen"
+                className="font-mono font-bold uppercase inline-flex items-center hover:bg-[#DCF55E] transition-colors"
                 style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.8125rem",
-                  fontWeight: 700,
+                  background: "#C8F000",
+                  color: "#0E0E0C",
+                  fontSize: 11,
                   letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  background: "#0E0E0C",
-                  color: "#C8F000",
-                  padding: "0 40px",
-                  minHeight: 56,
+                  padding: "14px 28px",
                   textDecoration: "none",
                 }}
               >
-                Bouw mee →
+                START EEN GESPREK →
               </Link>
               <Link
-                to="/hoe-we-bouwen"
+                to="/werkwijze"
+                className="font-mono font-bold uppercase inline-flex items-center transition-colors"
                 style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.8125rem",
-                  fontWeight: 700,
+                  border: "1.5px solid rgba(255,255,255,0.2)",
+                  background: "transparent",
+                  color: "#F4F1E8",
+                  fontSize: 11,
                   letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  border: "2px solid #0E0E0C",
-                  color: "#0E0E0C",
-                  padding: "0 40px",
-                  minHeight: 56,
+                  padding: "14px 28px",
                   textDecoration: "none",
                 }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "#F4F1E8";
+                  (e.currentTarget as HTMLAnchorElement).style.background = "#F4F1E8";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "#0E0E0C";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.2)";
+                  (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "#F4F1E8";
+                }}
               >
-                Hoe we bouwen →
+                HOE WE BOUWEN
               </Link>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 

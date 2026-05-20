@@ -89,7 +89,7 @@ const NewsArticle = () => {
         <section className="surface-wit" style={{ padding: '120px 0 64px' }}>
           <div className="container-narrow">
             <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 32 }}>
-              <Link to="/nieuws" className="meta" style={{ color: 'var(--inkt-60)' }}>← Blog</Link>
+              <Link to="/nieuws" className="meta" style={{ color: 'var(--inkt-60)' }}>← Nieuws</Link>
               <span style={{ color: 'var(--inkt-20)' }}>/</span>
               <span className="meta" style={{ color: 'var(--inkt)' }}>{post.cat}</span>
             </div>
@@ -108,14 +108,16 @@ const NewsArticle = () => {
           </div>
         </section>
 
-        {/* ═══ COVER IMAGE ═════════════════════════════════════════ */}
-        <section className="surface-wit" style={{ paddingBottom: 80 }}>
-          <div className="container-wide">
-            <div style={{ aspectRatio: '21/9', overflow: 'hidden', background: 'var(--papier-deep)' }}>
-              <img src={post.cover} alt={post.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+        {/* ═══ COVER IMAGE (only when a unique image exists) ═══════ */}
+        {post.cover && (
+          <section className="surface-wit" style={{ paddingBottom: 80 }}>
+            <div className="container-wide">
+              <div style={{ aspectRatio: '21/9', overflow: 'hidden', background: 'var(--papier-deep)' }}>
+                <img src={post.cover} alt={post.title} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', display: 'block' }} />
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* ═══ ARTICLE BODY ════════════════════════════════════════ */}
         <section className="surface-wit" style={{ padding: '80px 0 120px' }}>

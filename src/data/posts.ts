@@ -10,9 +10,11 @@ export interface Post {
   title: string;
   date: string;
   cat: string;
+  statusLabel?: string;  // 'Origin story' | 'Venture update' | 'Les geleerd' | 'Beslissing' | 'Experiment' | 'Achter de schermen'
+  venture?: string;      // venture name if applicable
   read: string;
   featured?: boolean;
-  cover: string;
+  cover?: string;        // only set when a truly unique image is available
   lead: string;
   body: Block[];
 }
@@ -23,9 +25,10 @@ export const POSTS: Post[] = [
     title: 'Pactly: het probleem',
     date: '8 mei 2026',
     cat: 'Venture',
+    statusLabel: 'Origin story',
+    venture: 'Pactly',
     read: '5 min',
     featured: true,
-    cover: '/photos/tom-portrait-dark.jpg',
     lead: 'Iedereen heeft vaste lasten. Bijna niemand heeft er echt grip op. Dat is het probleem waar Pactly uit is ontstaan.',
     body: [
       { t: 'p', c: 'Iedereen heeft vaste lasten. Energie. Internet. Verzekeringen. Streaming. Telecom. Software. Sport. Hypotheek. Huur. Kinderopvang. Zakelijke tools. Kleine abonnementen. Grote contracten.' },
@@ -50,8 +53,9 @@ export const POSTS: Post[] = [
     title: 'We bouwen aan iets nieuws',
     date: '24 april 2026',
     cat: 'Venture',
+    statusLabel: 'Venture update',
+    venture: 'Pactly',
     read: '4 min',
-    cover: '/photos/studio-pair.jpg',
     lead: 'Soms begint een idee niet met een brainstorm, maar met irritatie. Pactly is daar een goed voorbeeld van.',
     body: [
       { t: 'p', c: 'We bouwen aan iets nieuws. Nog niet omdat er al een compleet product staat. Nog niet omdat alles al af is. Maar omdat het probleem te herkenbaar is om te laten liggen.' },
@@ -73,6 +77,8 @@ export const POSTS: Post[] = [
     title: 'Post Pilot bereikt eerste 100 klanten',
     date: '18 april 2026',
     cat: 'Venture',
+    statusLabel: 'Venture update',
+    venture: 'Post Pilot',
     read: '2 min',
     cover: '/photos/postpilot-analytics.png',
     lead: 'Een belangrijke validatiemijlpaal: Post Pilot heeft de honderdste betalende klant verwelkomd en bewijst daarmee product-market fit in de niche.',
@@ -88,8 +94,9 @@ export const POSTS: Post[] = [
     title: 'Plug and Power start pilot in Zwolle',
     date: '29 maart 2026',
     cat: 'Venture',
+    statusLabel: 'Venture update',
+    venture: 'Plug and Power',
     read: '2 min',
-    cover: '/photos/studio-collab.jpg',
     lead: 'Eerste pilot loopt in eigen stad. Drie locaties, één doel: bewijzen dat het concept ook buiten papier werkt.',
     body: [
       { t: 'p', c: 'Plug and Power is uit de tekentafelfase. Op drie locaties in Zwolle draait nu een gesloten pilot waarin we het concept op echte gebruikers loslaten.' },
@@ -102,8 +109,8 @@ export const POSTS: Post[] = [
     title: 'Nieuw project in stille onderzoeksfase',
     date: '11 februari 2026',
     cat: 'Venture',
+    statusLabel: 'Achter de schermen',
     read: '1 min',
-    cover: '/photos/studio-team-bw.jpg',
     lead: 'Een vierde venture wordt momenteel verkend. Nog geen naam, geen pagina — wel een sterk vermoeden dat het ergens heen gaat.',
     body: [
       { t: 'p', c: 'Achter de schermen loopt een verkenning voor een vierde venture. Het idee zit op het snijvlak van automatisering en MKB-dienstverlening.' },
@@ -116,8 +123,9 @@ export const POSTS: Post[] = [
     title: 'Waarom ik LED-IBC verkocht terwijl het juist zo goed ging',
     date: '22 september 2023',
     cat: 'Lessen',
+    statusLabel: 'Beslissing',
+    venture: 'LED-IBC',
     read: '3 min',
-    cover: '/photos/tom-portrait-dark.jpg',
     lead: 'Het bedrijf draaide beter dan ooit. En toch was verkopen op dat moment de juiste keuze. Een terugblik op een van de vreemdste ondernemersbeslissingen die ik ooit heb genomen.',
     body: [
       { t: 'p', c: 'LED-IBC verkopen was misschien wel een van de vreemdste ondernemersbeslissingen die ik ooit heb genomen. Niet omdat het slecht ging. Juist niet.' },
@@ -137,8 +145,9 @@ export const POSTS: Post[] = [
     title: 'Soms verlies je niet van concurrentie, maar van timing',
     date: '11 mei 2022',
     cat: 'Lessen',
+    statusLabel: 'Les geleerd',
+    venture: 'Entranz',
     read: '2 min',
-    cover: '/photos/studio-pair.jpg',
     lead: 'Entranz leerde me één van de hardste ondernemerslessen: je kunt alles goed doen en toch verliezen. Niet van concurrentie, maar van timing.',
     body: [
       { t: 'p', c: 'We hadden een heldere positionering. Een marktprobleem. Technische visie. Ambitie. Energie. En een sterk team. Maar sommige factoren kun je gewoon niet controleren.' },
@@ -154,8 +163,9 @@ export const POSTS: Post[] = [
     title: 'Hoe COVID precies op het verkeerde moment kwam voor Entranz',
     date: '9 februari 2021',
     cat: 'Lessen',
+    statusLabel: 'Les geleerd',
+    venture: 'Entranz',
     read: '2 min',
-    cover: '/photos/studio-team-bw.jpg',
     lead: 'Entranz stond klaar voor de doorbraak. Sterk verhaal, innovatieve visie, groeiend netwerk. En toen sloot de evenementenbranche haar deuren.',
     body: [
       { t: 'p', c: 'Entranz had op het moment dat we instapten echt momentum. Sterk verhaal. Innovatieve kijk op de markt. Groeiend netwerk. Een product dat precies aansloot op waar de evenementenbranche heen ging.' },
@@ -171,8 +181,9 @@ export const POSTS: Post[] = [
     title: 'Waarom PartyBlender uiteindelijk stopte',
     date: '3 oktober 2020',
     cat: 'Lessen',
+    statusLabel: 'Les geleerd',
+    venture: 'PartyBlender',
     read: '3 min',
-    cover: '/photos/studio-team-bw.jpg',
     lead: 'Soms heb je een goed idee op het verkeerde moment. Of beter gezegd: een goed idee zonder de middelen om het echt groot te maken. Dat was PartyBlender.',
     body: [
       { t: 'p', c: 'Soms heb je een goed idee op het verkeerde moment. Of misschien beter gezegd: een goed idee zonder de middelen om het echt groot te maken.' },
@@ -189,8 +200,8 @@ export const POSTS: Post[] = [
     title: 'Het bouwen zat er altijd al in',
     date: '22 september 2020',
     cat: 'Ondernemen',
+    statusLabel: 'Origin story',
     read: '3 min',
-    cover: '/photos/tom-portrait-dark.jpg',
     lead: 'Bij Aardbei waren we eigenlijk de hele tijd aan het rommelen met nieuwe ideeën. Niet omdat het hoorde, maar omdat we het niet konden laten.',
     body: [
       { t: 'p', c: 'Ik denk weleens terug aan de avonden boven het bureau in Nijverdal. Iedereen al naar huis. Twee schermen aan, een halve pizza op tafel, en Marcel die vanaf de andere kant van de kamer riep dat hij wéér iets had bedacht.' },
@@ -208,8 +219,9 @@ export const POSTS: Post[] = [
     title: 'Waarom we stopten met DesignerShirts',
     date: '18 maart 2020',
     cat: 'Lessen',
+    statusLabel: 'Les geleerd',
+    venture: 'DesignerShirts',
     read: '2 min',
-    cover: '/photos/tom-casual.jpg',
     lead: 'DesignerShirts was jarenlang een project op de achtergrond. Niet extreem winstgevend, maar het gaf energie. Tot de markt en het bureau veranderden.',
     body: [
       { t: 'p', c: 'DesignerShirts was jarenlang een van die projecten die altijd op de achtergrond bleef draaien. Niet omdat het extreem winstgevend was. Maar omdat het energie gaf.' },
@@ -225,8 +237,9 @@ export const POSTS: Post[] = [
     title: 'LED-IBC: van achtertuin naar grootste speler van de Benelux',
     date: '14 februari 2020',
     cat: 'Lessen',
+    statusLabel: 'Venture update',
+    venture: 'LED-IBC',
     read: '2 min',
-    cover: '/photos/studio-collab.jpg',
     lead: 'Een paar units in 2017. Eind 2018 al meer dan twintig. En een paar jaar later groter dan alle concurrenten bij elkaar. Niet door geld, maar door slimmer groeien.',
     body: [
       { t: 'p', c: 'LED-IBC groeide harder dan we ooit hadden verwacht. In 2017 hadden we een paar units. Eind 2018 stonden er al meer dan 20. En een paar jaar later waren we groter dan alle concurrenten bij elkaar.' },
@@ -242,8 +255,9 @@ export const POSTS: Post[] = [
     title: 'Waarom ik direct wilde instappen in Entranz',
     date: '17 januari 2020',
     cat: 'Lessen',
+    statusLabel: 'Origin story',
+    venture: 'Entranz',
     read: '2 min',
-    cover: '/photos/studio-pair.jpg',
     lead: 'Soms krijg je een pitchdeck onder ogen waarvan je direct voelt: hier zit iets in. Dat gebeurde bij Entranz.',
     body: [
       { t: 'p', c: 'Soms krijg je een pitchdeck onder ogen waarvan je direct voelt: hier zit iets in. Dat gebeurde bij Entranz.' },
@@ -258,8 +272,9 @@ export const POSTS: Post[] = [
     title: 'DesignerShirts was eigenlijk ons eerste online testlab',
     date: '4 juni 2019',
     cat: 'Lessen',
+    statusLabel: 'Experiment',
+    venture: 'DesignerShirts',
     read: '2 min',
-    cover: '/photos/tom-casual.jpg',
     lead: 'Achteraf gezien draaide DesignerShirts misschien minder om shirts dan om nieuwsgierigheid. We wilden begrijpen hoe online gedrag werkt.',
     body: [
       { t: 'p', c: 'Achteraf gezien draaide DesignerShirts misschien minder om shirts dan om nieuwsgierigheid. We wilden begrijpen: waarom koopt iemand online iets? Waarom klikt iemand wel? Waarom haakt iemand af?' },
@@ -274,8 +289,9 @@ export const POSTS: Post[] = [
     title: 'Hoe Tinderlove Festival in zes weken werd gebouwd',
     date: '14 februari 2019',
     cat: 'Lessen',
+    statusLabel: 'Origin story',
+    venture: 'PartyBlender',
     read: '3 min',
-    cover: '/photos/studio-collab.jpg',
     lead: 'PartyBlender begon klein. Een Facebookpagina met reviews. Tot we besloten dat een lancering geen persbericht nodig had, maar een eigen festival.',
     body: [
       { t: 'p', c: 'PartyBlender begon eerst klein. Samen met Jorieke Preuter startte ik simpelweg een Facebookpagina waarop we elke week feestjes reviewden. We gingen zelf naar evenementen, maakten foto\'s, schreven reviews en deelden onze tip van de week.' },
@@ -291,8 +307,8 @@ export const POSTS: Post[] = [
     title: 'Het besluit om Aardbei te verkopen',
     date: '6 februari 2019',
     cat: 'Ondernemen',
+    statusLabel: 'Beslissing',
     read: '4 min',
-    cover: '/photos/tom-portrait-dark.jpg',
     lead: 'Het bureau liep goed. Daarom was het besluit om te verkopen ook zo verwarrend. Het ging niet over cijfers. Het ging over iets anders.',
     body: [
       { t: 'p', c: 'Het bureau liep goed in die laatste jaren. Mooie klanten. Een hecht team van tien mensen. Een naam in de regio. Op papier was er weinig reden om iets te veranderen.' },
@@ -312,8 +328,9 @@ export const POSTS: Post[] = [
     title: 'Waarom we in 2010 begonnen met een webshop voor funny shirts',
     date: '12 september 2018',
     cat: 'Lessen',
+    statusLabel: 'Origin story',
+    venture: 'DesignerShirts',
     read: '2 min',
-    cover: '/photos/tom-casual.jpg',
     lead: 'Funny shirts waren ineens een ding. Maar je kon ze nergens zelf samenstellen. Dat vonden wij vreemd — en zo ontstond DesignerShirts.',
     body: [
       { t: 'p', c: 'Rond 2010 waren funny shirts ineens een ding. Maar eigenlijk kon je ze maar op een paar plekken kopen. Vaak bij winkels zoals CoolCat. Gewoon fysiek in de winkel en altijd precies zoals zij hadden bedacht.' },
@@ -328,8 +345,9 @@ export const POSTS: Post[] = [
     title: 'Waarom PartyBlender eigenlijk veel meer was dan een uitgaansplatform',
     date: '8 mei 2018',
     cat: 'Lessen',
+    statusLabel: 'Origin story',
+    venture: 'PartyBlender',
     read: '3 min',
-    cover: '/photos/studio-team-bw.jpg',
     lead: 'PartyBlender begon niet met een platform. Het begon met een verandering die we om ons heen zagen gebeuren in hoe mensen kozen waar ze heen gingen.',
     body: [
       { t: 'p', c: 'Vroeger wist je op maandag al waar je vrijdagavond stond. Vrijdag naar De Budde. Zaterdag naar Lucky of Zaal Dijk. Klaar. Maar ergens rond 2013 veranderde dat compleet. Mensen besloten steeds later waar ze heen gingen. Soms letterlijk pas op vrijdagavond zelf.' },
@@ -346,8 +364,8 @@ export const POSTS: Post[] = [
     title: 'Klanten kochten geen website',
     date: '11 april 2018',
     cat: 'Ondernemen',
+    statusLabel: 'Les geleerd',
     read: '3 min',
-    cover: '/photos/tom-portrait-dark.jpg',
     lead: 'Jarenlang dachten we dat we websites en vormgeving verkochten. Tot we begonnen te zien wat er écht over de toonbank ging.',
     body: [
       { t: 'p', c: 'We hebben jaren gedacht dat we websites en vormgeving verkochten. Logisch ook. Dat was wat op de offerte stond. Dat was waar we op werden afgerekend. Dat was wat we opleverden.' },
@@ -366,8 +384,9 @@ export const POSTS: Post[] = [
     title: 'Waarom wij onze LED-IBC\'s compleet anders bouwden',
     date: '9 april 2018',
     cat: 'Lessen',
+    statusLabel: 'Achter de schermen',
+    venture: 'LED-IBC',
     read: '2 min',
-    cover: '/photos/studio-collab.jpg',
     lead: 'De meeste verhuurders hingen een lamp achter een IBC met een tie-wrap. Wij wilden egaal licht. Daar begon het echte verschil.',
     body: [
       { t: 'p', c: 'De meeste verhuurbedrijven hingen een lamp achter een IBC met een tie-wrap of een beugel. Prima voor een feestje. Maar niet voor hoe wij vonden dat het eruit moest zien.' },
@@ -382,8 +401,9 @@ export const POSTS: Post[] = [
     title: 'Waarom wij dachten dat ticketing slimmer moest kunnen',
     date: '21 maart 2018',
     cat: 'Lessen',
+    statusLabel: 'Origin story',
+    venture: 'Entranz',
     read: '2 min',
-    cover: '/photos/studio-pair.jpg',
     lead: 'De meeste mensen zien ticketing als een ticket verkopen en iemand binnenlaten. Hoe langer ik naar de evenementenbranche keek, hoe vreemder ik het eigenlijk vond.',
     body: [
       { t: 'p', c: 'De meeste mensen zien ticketing als: een ticket verkopen en iemand binnenlaten. Maar hoe langer ik naar de evenementenbranche keek, hoe vreemder ik het eigenlijk vond.' },
@@ -399,8 +419,9 @@ export const POSTS: Post[] = [
     title: 'Hoe een mislukt evenement leidde tot LED-IBC',
     date: '18 november 2017',
     cat: 'Lessen',
+    statusLabel: 'Origin story',
+    venture: 'LED-IBC',
     read: '2 min',
-    cover: '/photos/studio-collab.jpg',
     lead: 'Sommige bedrijven beginnen met een goed businessplan. LED-IBC begon met een evenement dat nooit doorging.',
     body: [
       { t: 'p', c: 'Sommige bedrijven beginnen met een goed businessplan. LED-IBC begon met een evenement dat nooit doorging.' },

@@ -208,11 +208,11 @@ const AlgemeneVoorwaardenPage = () => {
               </p>
               <p className="mt-3">
                 <a
-                  href="mailto:info@toms-ambitie.nl"
+                  href="mailto:hallo@toms-ambitie.nl"
                   className="underline hover:opacity-70 transition-opacity"
                   style={{ color: "hsl(var(--ink))" }}
                 >
-                  info@toms-ambitie.nl
+                  hallo@toms-ambitie.nl
                 </a>
               </p>
             </Section>

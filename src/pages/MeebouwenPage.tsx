@@ -136,7 +136,7 @@ const MeebouwenPage = () => {
               <div className="meta" style={{ marginBottom: 32 }}>OF DIRECT</div>
               <div style={{ display: 'grid', gap: 24 }}>
                 {[
-                  { label: 'E-mail', value: 'tom@tomsambitie.nl', link: 'mailto:tom@tomsambitie.nl' },
+                  { label: 'E-mail', value: 'hallo@toms-ambitie.nl', link: 'mailto:hallo@toms-ambitie.nl' },
                   { label: 'LinkedIn', value: 'Tom Mulder', link: 'https://linkedin.com' },
                   { label: 'Studio', value: 'Zwolle, Nederland' },
                 ].map(({ label, value, link }) => (

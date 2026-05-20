@@ -27,8 +27,8 @@ export const MeedoenCTA = () => (
         className="reveal reveal-delay-2"
         style={{ display: 'flex', justifyContent: 'center', gap: 16, marginTop: 56, flexWrap: 'wrap' }}
       >
-        <a href="mailto:tom@tomsambitie.nl" className="btn btn-volt">
-          tom@tomsambitie.nl →
+        <a href="mailto:hallo@toms-ambitie.nl" className="btn btn-volt">
+          hallo@toms-ambitie.nl →
         </a>
         <Link to="/meebouwen" className="btn-ghost">
           Contact pagina →

@@ -220,7 +220,7 @@ export const ventureDetails: VentureDetail[] = [
     logo: oakMarketingLogo,
     category: "Marketing · Strategie · AI",
     tags: ["MARKETING", "AI", "DATA", "STRATEGIE", "NEUROMARKETING"],
-    email: "tom@oakmarketing.nl",
+    email: "hallo@toms-ambitie.nl",
     status: "LIVE",
     identity: {
       accent: "#1B3A8A",
@@ -229,7 +229,7 @@ export const ventureDetails: VentureDetail[] = [
       proof: ["Actief sinds 2018", "Meerdere lopende trajecten", "Selectief klantenbestand"],
       proofTagline: "Operator · meerdere bedrijven actief begeleid",
     },
-    cta: { label: "Start gesprek", href: "mailto:tom@oakmarketing.nl" },
+    cta: { label: "Start gesprek", href: "mailto:hallo@toms-ambitie.nl" },
     secondaryCta: { label: "Bekijk andere ventures", href: "/ventures" },
     origin: {
       title: "Het originele probleem",
@@ -274,7 +274,7 @@ export const ventureDetails: VentureDetail[] = [
       title: "WERKEN MET OAK MARKETING",
       description:
         "OAK Marketing is geen bureau waar je simpelweg een pakket afneemt. Het werkt alleen wanneer er vertrouwen is, ambitie is en energie ontstaat aan beide kanten. Daarom werken we bewust selectief.\n\nHeb je een bedrijf waar marketing, positionering, AI of groei écht beter kan? Dan praten we graag verder.",
-      primary: { label: "Start gesprek", href: "mailto:tom@oakmarketing.nl" },
+      primary: { label: "Start gesprek", href: "mailto:hallo@toms-ambitie.nl" },
       secondary: { label: "Bekijk andere ventures", href: "/ventures" },
     },
   },

@@ -2,7 +2,7 @@ import { useState, type FormEvent } from "react";
 import { z } from "zod";
 import { gtmEvent } from "@/lib/gtm";
 
-const RECIPIENT = "tom@oakmarketing.nl";
+const RECIPIENT = "hallo@toms-ambitie.nl";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Vul je naam in").max(100),

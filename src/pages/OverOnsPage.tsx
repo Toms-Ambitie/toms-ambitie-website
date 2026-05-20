@@ -138,7 +138,7 @@ const OverOnsPage = () => {
                   Ideeën worden pas interessant zodra iemand ze gebruikt. Niet eindeloos brainstormen. Niet vergaderen. Gewoon bouwen.
                 </p>
                 <div style={{ marginTop: 40, display: 'flex', gap: 32, flexWrap: 'wrap' }}>
-                  <a href="mailto:tom@tomsambitie.nl" className="btn-link">tom@tomsambitie.nl →</a>
+                  <a href="mailto:hallo@toms-ambitie.nl" className="btn-link">hallo@toms-ambitie.nl →</a>
                 </div>
               </div>
             </div>

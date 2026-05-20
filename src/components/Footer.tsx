@@ -206,11 +206,11 @@ export const Footer = () => {
             <div className="eyebrow" style={{ marginBottom: 20 }}>Contact</div>
             <ul style={{ display: 'grid', gap: 12, fontSize: 15 }}>
               <li>
-                <a href="mailto:tom@tomsambitie.nl"
+                <a href="mailto:hallo@toms-ambitie.nl"
                   style={{ color: 'rgba(244,241,232,0.6)', textDecoration: 'none', transition: 'color .2s' }}
                   onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'var(--volt)'; }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(244,241,232,0.6)'; }}>
-                  tom@tomsambitie.nl
+                  hallo@toms-ambitie.nl
                 </a>
               </li>
               <li style={{ color: 'rgba(244,241,232,0.4)' }}>Zwolle, Nederland</li>

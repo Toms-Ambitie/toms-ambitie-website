@@ -15,7 +15,7 @@ const FACTSHEET = [
   ['Werkwijze (kort)', 'Probleem-first · AI als versneller · oplossing voor business case'],
   ['AI-first sinds', '2023'],
   ['Website', 'toms-ambitie.nl'],
-  ['Contact', 'tom@tomsambitie.nl'],
+  ['Contact', 'hallo@toms-ambitie.nl'],
 ];
 
 const LOGOS = [
@@ -181,13 +181,13 @@ const PersMapPage = () => {
             </div>
             <div style={{ display: 'grid', gap: 16 }}>
               <a
-                href="mailto:tom@tomsambitie.nl"
+                href="mailto:hallo@toms-ambitie.nl"
                 style={{ display: 'block', padding: 28, border: '1px solid rgba(244,241,232,0.15)', transition: 'border-color .2s', textDecoration: 'none' }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'var(--volt)'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(244,241,232,0.15)'; }}
               >
                 <div className="meta" style={{ color: 'var(--volt)', marginBottom: 12 }}>E-MAIL</div>
-                <div className="display" style={{ fontSize: 22, color: 'var(--wit-warm)' }}>tom@tomsambitie.nl</div>
+                <div className="display" style={{ fontSize: 22, color: 'var(--wit-warm)' }}>hallo@toms-ambitie.nl</div>
               </a>
               <a
                 href="https://linkedin.com/in/tommulder"

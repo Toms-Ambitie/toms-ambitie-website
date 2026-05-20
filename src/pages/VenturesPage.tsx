@@ -26,7 +26,7 @@ const VENTURES = [
     tag: 'Legal SaaS',
     tagline: 'Contracten, zonder jurist.',
     long: 'Wanneer liep je rentevastperiode ook alweer af? Welke NDAs heb je getekend? De meeste ondernemers weten het niet. Contracten stapelen zich op, overzicht ontbreekt. Pactly brengt structuur. Geen jurist nodig.',
-    status: 'Live',
+    status: 'In ontwikkeling',
     year: '2024',
     url: 'pactly.nl',
     accent: '#CC007E',
@@ -54,7 +54,7 @@ const VENTURES = [
     tag: 'Energy Tech',
     tagline: 'Plug erin. Power eruit.',
     long: 'Traditionele installateurs begrijpen e-commerce niet. Consumenten willen gewoon stekker erin en klaar. Plug and Power brengt slim laden naar MKB en thuis. Geen gedoe. Plug and play. Letterlijk.',
-    status: 'Live',
+    status: 'In ontwikkeling',
     year: '2024',
     url: 'plugandpower.nl',
     accent: '#FFAA00',
@@ -68,7 +68,7 @@ const VENTURES = [
     tag: 'AI assistent',
     tagline: 'Planning zonder gedoe.',
     long: 'Zelfstandigen besteden te veel tijd aan administratie. Plannen, factureren, afspraken bijhouden. EmmaBoekt is een AI-assistent die dat overneemt. Geen software leren. Gewoon vragen. En het is geregeld.',
-    status: 'Live',
+    status: 'In ontwikkeling',
     year: '2025',
     url: 'emmaboekt.nl',
     accent: '#9333EA',
@@ -78,9 +78,13 @@ const VENTURES = [
   },
 ];
 
-const LiveDot = ({ children = 'Actief' }: { children?: string }) => (
+const LiveDot = ({ children = 'Actief', isLive = true }: { children?: string; isLive?: boolean }) => (
   <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(244,241,232,0.5)' }}>
-    <span style={{ width: 7, height: 7, background: 'var(--volt)', boxShadow: '0 0 0 3px rgba(200,240,0,0.18)' }} />
+    <span style={{
+      width: 7, height: 7,
+      background: isLive ? 'var(--volt)' : 'var(--oranje)',
+      boxShadow: isLive ? '0 0 0 3px rgba(200,240,0,0.18)' : '0 0 0 3px rgba(255,74,0,0.18)',
+    }} />
     {children}
   </span>
 );
@@ -109,7 +113,7 @@ const VentureSection = ({ v, index }: { v: typeof VENTURES[0]; index: number }) 
             <span style={{ width: 8, height: 8, background: v.accent }} />
             <span className="meta" style={{ color: 'rgba(244,241,232,0.5)' }}>VENTURE 0{index + 1} / 05 · {v.tag}</span>
           </div>
-          <LiveDot>{v.status} · {v.year}</LiveDot>
+          <LiveDot isLive={v.status === 'Live'}>{v.status} · {v.year}</LiveDot>
         </div>
 
         {/* Main grid */}
@@ -161,7 +165,7 @@ const VentureSection = ({ v, index }: { v: typeof VENTURES[0]; index: number }) 
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 4px 16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <span style={{ width: 5, height: 5, background: v.accent }} />
-                <span className="meta" style={{ color: 'rgba(244,241,232,0.6)' }}>{v.url} · LIVE</span>
+                <span className="meta" style={{ color: 'rgba(244,241,232,0.6)' }}>{v.url} · {v.status === 'Live' ? 'LIVE' : 'IN ONTWIKKELING'}</span>
               </div>
               <span className="meta" style={{ color: 'rgba(244,241,232,0.4)' }}>FIG.{index + 1}</span>
             </div>
@@ -265,7 +269,11 @@ const VenturesPage = () => {
                   </div>
                   <div className="display" style={{ fontSize: 28, lineHeight: 0.95 }}>{v.name}</div>
                   <div className="meta" style={{ marginTop: 8 }}>{v.tag}</div>
-                  <div style={{ marginTop: 16, paddingTop: 12, borderTop: '1px solid var(--inkt-10)', fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--inkt-40)' }}>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, marginTop: 12, fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--inkt-40)' }}>
+                    <span style={{ width: 5, height: 5, background: v.status === 'Live' ? 'var(--volt)' : 'var(--oranje)' }} />
+                    {v.status}
+                  </div>
+                  <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid var(--inkt-10)', fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--inkt-40)' }}>
                     Bekijk venture →
                   </div>
                 </Link>

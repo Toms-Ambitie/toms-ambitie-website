@@ -19,7 +19,7 @@ const VENTURES = [
     tag: 'Legal SaaS',
     tagline: 'Contracten, zonder jurist.',
     desc: 'Eenvoudig contracten opstellen en beheren — voor ondernemers die geen jurist hebben.',
-    status: 'Live',
+    status: 'In ontwikkeling',
     year: '2024',
     url: 'pactly.nl',
     accent: '#CC007E',
@@ -43,7 +43,7 @@ const VENTURES = [
     tag: 'Energy Tech',
     tagline: 'Plug erin. Power eruit.',
     desc: 'Slim opladen voor MKB en thuis. Stekker erin, klaar.',
-    status: 'Live',
+    status: 'In ontwikkeling',
     year: '2024',
     url: 'plugandpower.nl',
     accent: '#FFAA00',
@@ -55,7 +55,7 @@ const VENTURES = [
     tag: 'AI assistent',
     tagline: 'Planning zonder gedoe.',
     desc: 'AI-gestuurde planning en administratie voor zelfstandigen en kleine teams. Slimmer werken, minder rompslomp.',
-    status: 'Live',
+    status: 'In ontwikkeling',
     year: '2025',
     url: 'emmaboekt.nl',
     accent: '#9333EA',
@@ -63,9 +63,13 @@ const VENTURES = [
   },
 ];
 
-const LiveDot = ({ children = 'Actief' }: { children?: string }) => (
+const LiveDot = ({ children = 'Actief', isLive = true }: { children?: string; isLive?: boolean }) => (
   <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--inkt-60)' }}>
-    <span style={{ width: 7, height: 7, background: 'var(--volt)', boxShadow: '0 0 0 3px rgba(200,240,0,0.18)' }} />
+    <span style={{
+      width: 7, height: 7,
+      background: isLive ? 'var(--volt)' : 'var(--oranje)',
+      boxShadow: isLive ? '0 0 0 3px rgba(200,240,0,0.18)' : '0 0 0 3px rgba(255,74,0,0.18)',
+    }} />
     {children}
   </span>
 );
@@ -142,7 +146,7 @@ export const VenturesGrid = () => {
                 </p>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 48, paddingTop: 24, borderTop: '1px solid rgba(244,241,232,0.15)' }}>
-                <LiveDot>{featured.status} · {featured.year}</LiveDot>
+                <LiveDot isLive={featured.status === 'Live'}>{featured.status} · {featured.year}</LiveDot>
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: 12, fontFamily: 'var(--mono)', fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', color: featured.accent }}>
                   Bekijk {featured.url} <span style={{ width: 24, height: 1, background: featured.accent, display: 'inline-block' }} /> →
                 </span>
@@ -197,7 +201,7 @@ export const VenturesGrid = () => {
               <div style={{ padding: 32, display: 'flex', flexDirection: 'column', height: '100%' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                   <span className="meta">{v.tag}</span>
-                  <LiveDot>{v.year}</LiveDot>
+                  <LiveDot isLive={v.status === 'Live'}>{v.status === 'Live' ? 'Live' : 'In ontwikkeling'}</LiveDot>
                 </div>
                 <div className="display" style={{ fontSize: 48, lineHeight: 0.92, marginTop: 32, marginBottom: 12 }}>
                   {v.name}

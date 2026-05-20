@@ -4,7 +4,6 @@ import { Manifesto } from "@/components/Manifesto";
 import { applySEO } from "@/lib/seo";
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { gtmEvent } from "@/lib/gtm";
 import { ArrowRight } from "lucide-react";
@@ -282,27 +281,27 @@ const MeebouwenPage = () => {
                   message: (data.get("message") as string).trim(),
                   linkedin: (data.get("linkedin") as string)?.trim() || null,
                 };
-                const { error } = await supabase
-                  .from("meebouwen_submissions")
-                  .insert(formValues);
-                if (error) {
-                  setSubmitting(false);
+                try {
+                  const res = await fetch("/api/contact", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(formValues),
+                  });
+                  if (!res.ok) throw new Error("Versturen mislukt");
+                  gtmEvent("form_submit", {
+                    form_name: "meebouwen",
+                    form_interest: formValues.interest,
+                  });
+                  navigate("/bedankt");
+                } catch {
                   toast({
                     title: "Er ging iets mis",
-                    description: "Probeer het opnieuw of mail naar tom@oakmarketing.nl",
+                    description: "Probeer het opnieuw of mail naar hallo@toms-ambitie.nl",
                     variant: "destructive",
                   });
-                  return;
+                } finally {
+                  setSubmitting(false);
                 }
-                supabase.functions
-                  .invoke("notify-submission", { body: formValues })
-                  .catch(console.error);
-                gtmEvent("form_submit", {
-                  form_name: "meebouwen",
-                  form_interest: formValues.interest,
-                });
-                setSubmitting(false);
-                navigate("/bedankt");
               }}
               className="flex flex-col gap-4"
             >

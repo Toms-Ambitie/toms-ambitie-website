@@ -21,6 +21,7 @@ const MeebouwenPage = lazy(() => import("./pages/MeebouwenPage.tsx"));
 const News = lazy(() => import("./pages/News.tsx"));
 const NewsArticle = lazy(() => import("./pages/NewsArticle.tsx"));
 const BedanktPage = lazy(() => import("./pages/BedanktPage.tsx"));
+const PersMapPage = lazy(() => import("./pages/PersMapPage.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 
 const queryClient = new QueryClient();
@@ -46,6 +47,7 @@ const AppRoutes = () => {
           <Route path="/nieuws" element={<News />} />
           <Route path="/nieuws/:slug" element={<NewsArticle />} />
           <Route path="/bedankt" element={<BedanktPage />} />
+          <Route path="/persmap" element={<PersMapPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

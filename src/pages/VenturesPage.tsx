@@ -223,8 +223,7 @@ const VenturesPage = () => {
             </p>
 
             {/* Quick-jump grid */}
-            <div className="reveal" style={{ marginTop: 80, display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}
-              className="responsive-4-to-2">
+            <div className="reveal responsive-4-to-2" style={{ marginTop: 80, display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
               {VENTURES.map((v, i) => (
                 <a
                   key={v.slug}

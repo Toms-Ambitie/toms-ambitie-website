@@ -11,7 +11,7 @@ const VENTURES = [
     slug: 'post-pilot',
     tag: 'Marketing AI',
     tagline: 'AI doet je content.',
-    long: 'Post Pilot ontstond toen we merkten dat onze eigen marketing-output gelimiteerd was door tijd, niet door ideeën. AI laat één persoon werken als een team. Schaalt social-content zonder dat de eigenheid verloren gaat.',
+    long: 'Zichtbaar willen zijn maar geen tijd hebben voor content. Dat kennen we. Post Pilot laat AI het werk doen, zonder dat het klinkt als AI. Jouw toon. Jouw ideeën. Schaalbaar naar meerdere kanalen en talen.',
     status: 'Live',
     year: '2024',
     url: 'postpilotapp.nl',
@@ -25,7 +25,7 @@ const VENTURES = [
     slug: 'pactly',
     tag: 'Legal SaaS',
     tagline: 'Contracten, zonder jurist.',
-    long: 'Pactly maakt contracten opstellen en beheren eenvoudig — voor ondernemers die geen jurist op snelkiezen hebben. Snel, duidelijk, juridisch correct. NL-recht als uitgangspunt.',
+    long: 'Wanneer liep je rentevastperiode ook alweer af? Welke NDAs heb je getekend? De meeste ondernemers weten het niet. Contracten stapelen zich op, overzicht ontbreekt. Pactly brengt structuur. Geen jurist nodig.',
     status: 'Live',
     year: '2024',
     url: 'pactly.nl',
@@ -39,13 +39,13 @@ const VENTURES = [
     slug: 'oak-marketing',
     tag: 'Marketing bureau',
     tagline: 'Marketing voor groei-MKB.',
-    long: 'OAK Marketing is geen klassiek bureau — wel een vaste kern + top-specialisten die AI inzetten waar het kan, en mensen waar het moet. Eerlijk over wat wel en niet werkt.',
+    long: 'OAK stapt tijdelijk in als operator, niet als bureau dat campagnes draait. Wij bouwen systemen, implementeren AI en maken marketing volwassen. Daarna kan een bedrijf verder zonder ons.',
     status: 'Live',
     year: '2023',
     url: 'oakmarketing.nl',
     accent: '#1B3A8A',
     dark: '#0A1228',
-    metrics: [['Hybride', 'team'], ['MKB', 'focus'], ['Snel', 'execution']],
+    metrics: [['Operator', 'model'], ['AI first', 'aanpak'], ['MKB', 'focus']],
     images: [],
   },
   {
@@ -53,13 +53,27 @@ const VENTURES = [
     slug: 'plug-and-power',
     tag: 'Energy Tech',
     tagline: 'Plug erin. Power eruit.',
-    long: 'Plug and Power maakt slim laden beschikbaar voor MKB en thuis. Geen ingewikkelde installatie, geen abonnementsstapels — gewoon stekker erin en klaar.',
+    long: 'Traditionele installateurs begrijpen e-commerce niet. Consumenten willen gewoon stekker erin en klaar. Plug and Power brengt slim laden naar MKB en thuis. Geen gedoe. Plug and play. Letterlijk.',
     status: 'Live',
     year: '2024',
     url: 'plugandpower.nl',
     accent: '#FFAA00',
     dark: '#1A1408',
     metrics: [['MKB + B2C', 'markt'], ['Slim', 'load-balancing'], ['NL', 'first']],
+    images: [],
+  },
+  {
+    name: 'EmmaBoekt',
+    slug: 'emmaboekt',
+    tag: 'AI assistent',
+    tagline: 'Planning zonder gedoe.',
+    long: 'Zelfstandigen besteden te veel tijd aan administratie. Plannen, factureren, afspraken bijhouden. EmmaBoekt is een AI-assistent die dat overneemt. Geen software leren. Gewoon vragen. En het is geregeld.',
+    status: 'Live',
+    year: '2025',
+    url: 'emmaboekt.nl',
+    accent: '#9333EA',
+    dark: '#0F0A1E',
+    metrics: [['AI first', 'assistent'], ['ZZP + MKB', 'doelgroep'], ['NL', 'markt']],
     images: [],
   },
 ];
@@ -93,7 +107,7 @@ const VentureSection = ({ v, index }: { v: typeof VENTURES[0]; index: number }) 
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 64, flexWrap: 'wrap', gap: 24 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
             <span style={{ width: 8, height: 8, background: v.accent }} />
-            <span className="meta" style={{ color: 'rgba(244,241,232,0.5)' }}>VENTURE 0{index + 1} / 04 · {v.tag}</span>
+            <span className="meta" style={{ color: 'rgba(244,241,232,0.5)' }}>VENTURE 0{index + 1} / 05 · {v.tag}</span>
           </div>
           <LiveDot>{v.status} · {v.year}</LiveDot>
         </div>
@@ -198,7 +212,7 @@ const VenturesPage = () => {
   useEffect(() => {
     applySEO({
       title: 'Ventures — Toms Ambitie',
-      description: 'Vier eigen platformen, gebouwd vanuit echte frustratie. Post Pilot, Pactly, OAK Marketing en Plug and Power.',
+      description: 'Vijf actieve ventures, gebouwd vanuit echte frustratie. Post Pilot, Pactly, OAK Marketing, Plug and Power en EmmaBoekt.',
       canonical: 'https://www.toms-ambitie.nl/ventures',
     });
   }, []);
@@ -216,10 +230,10 @@ const VenturesPage = () => {
               <span className="eyebrow"><span style={{ marginRight: 8 }}>02</span>De Ventures</span>
             </div>
             <h1 className="clip-reveal display" style={{ fontSize: 'clamp(80px, 11vw, 168px)', lineHeight: 0.84, marginTop: 32, letterSpacing: '-0.02em' }}>
-              <span>Vier eigen<br />platformen.</span>
+              <span>Waar we nu<br />aan bouwen.</span>
             </h1>
             <p className="lead reveal" style={{ marginTop: 48, fontSize: 22, maxWidth: 640 }}>
-              Elke venture is ontstaan vanuit een probleem dat we zelf hadden — of waar iemand in onze directe omgeving tegenaan liep. Hieronder: wat ze doen, en waarom we ze bouwen.
+              Geen losse ideeën. Wel ventures gebouwd vanuit echte frustratie, schaalbare markten en gedrag dat verandert. Sommige groeien uit tot zelfstandige bedrijven. Andere verdwijnen weer. Dat is geen risico van het model. Dat IS het model.
             </p>
 
             {/* Quick-jump grid */}
@@ -239,7 +253,7 @@ const VenturesPage = () => {
                 >
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 24 }}>
                     <span style={{ width: 8, height: 8, background: v.accent }} />
-                    <span className="meta">0{i + 1} / 04</span>
+                    <span className="meta">0{i + 1} / 05</span>
                   </div>
                   <div className="display" style={{ fontSize: 28, lineHeight: 0.95 }}>{v.name}</div>
                   <div className="meta" style={{ marginTop: 8 }}>{v.tag}</div>
@@ -265,17 +279,17 @@ const VenturesPage = () => {
               <span className="eyebrow"><span style={{ marginRight: 8 }}>P</span>Sub-branding</span>
             </div>
             <h2 className="display" style={{ fontSize: 'clamp(48px, 6vw, 88px)', lineHeight: 0.95, marginTop: 32 }}>
-              Elk venture is een eigen merk.<br /><span style={{ color: 'var(--inkt-40)' }}>Toms Ambitie is de motor.</span>
+              Elk venture staat op eigen benen.<br /><span style={{ color: 'var(--inkt-40)' }}>Toms Ambitie is de motor.</span>
             </h2>
             <p className="lead" style={{ marginTop: 32, fontSize: 20 }}>
-              Elke venture krijgt eigen naam, logo, kleuren en website. De verbinding met het moedermerk is subtiel maar consistent: TA-monogram in de footer, dezelfde 7-stappen werkwijze als fundament, dezelfde drive om problemen om te zetten in bedrijven.
+              Eigen naam, eigen logo, eigen website. De link met Toms Ambitie is subtiel maar altijd aanwezig: dezelfde werkwijze, dezelfde drive, dezelfde standaard.
             </p>
 
             <div style={{ marginTop: 64, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
               {[
-                ['Eigen identiteit', 'Logo, kleuren, fonts. Eigen visuele taal per venture.'],
-                ['Eigen website', 'Eigen domein, eigen platform, eigen go-to-market.'],
-                ['TA als fundament', 'Werkwijze, principes en netwerk komen vanuit Toms Ambitie.'],
+                ['Eigen identiteit', 'Logo, kleuren, fonts. Eigen visuele taal. Eigen verhaal.'],
+                ['Eigen website', 'Eigen domein. Eigen platform. Eigen go-to-market.'],
+                ['TA als fundament', 'Dezelfde werkwijze en principes. Gebouwd om te groeien.'],
               ].map(([t, d], i) => (
                 <div key={t} className="reveal" style={{ background: 'var(--papier)', padding: 28, textAlign: 'left' }}>
                   <div className="num" style={{ fontSize: 11, letterSpacing: '0.18em', color: 'var(--inkt-40)', marginBottom: 16 }}>0{i + 1}</div>
@@ -292,13 +306,13 @@ const VenturesPage = () => {
           <div className="container-narrow">
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
               <span className="volt-dot" />
-              <span className="eyebrow"><span style={{ marginRight: 8 }}>06</span>Venture 05</span>
+              <span className="eyebrow"><span style={{ marginRight: 8 }}>06</span>Wat volgt</span>
             </div>
             <h2 className="clip-reveal display" style={{ fontSize: 'clamp(56px, 7vw, 104px)', lineHeight: 0.92, marginTop: 32 }}>
-              <span>De volgende venture<br />kan vanaf jouw probleem<br />beginnen.</span>
+              <span>Het doel is niet<br />één succesvol bedrijf.</span>
             </h2>
             <p className="lead" style={{ marginTop: 32, fontSize: 22 }}>
-              Heb je een probleem dat een bedrijf verdient? Of wil je mee bouwen aan een idee dat al op de plank ligt?
+              Het doel is een omgeving bouwen waarin ventures sneller ontstaan, getest worden en kunnen groeien. Heb je een probleem dat een bedrijf verdient? Begin daar.
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginTop: 48, flexWrap: 'wrap' }}>
               <Link to="/meebouwen" className="btn btn-volt">Start gesprek →</Link>

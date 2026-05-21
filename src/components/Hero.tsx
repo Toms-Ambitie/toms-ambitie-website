@@ -30,7 +30,7 @@ export const Hero = () => {
         ].join(', ')}
         sizes="100vw"
         alt="Tom Mulder, founder Toms Ambitie — aan het werk in het studio"
-        fetchPriority="high"
+        fetchpriority="high"
         decoding="sync"
         className="hero-founder-img"
         style={{

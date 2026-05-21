@@ -41,7 +41,7 @@ export const WerkwijzeTeaser = () => (
           </div>
           <h2 className="h2" style={{ marginTop: 24 }}>
             Van probleem naar platform.<br />
-            <span style={{ color: 'var(--inkt-40)' }}>In weken. Niet in jaren.</span>
+            <span style={{ color: 'rgba(14,14,12,0.65)' }}>In weken. Niet in jaren.</span>
           </h2>
         </div>
         <div style={{ paddingTop: 24 }}>

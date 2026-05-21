@@ -91,7 +91,7 @@ export const Footer = () => {
                     Aanmelden →
                   </button>
                 </div>
-                <div className="meta" style={{ marginTop: 12, color: 'rgba(244,241,232,0.4)' }}>
+                <div className="meta" style={{ marginTop: 12, color: 'rgba(244,241,232,0.55)' }}>
                   ✓ GRATIS · ✓ STOPPEN WANNEER JE WIL · ✓ NL · EN
                 </div>
               </form>
@@ -139,7 +139,7 @@ export const Footer = () => {
                 </span>
                 <div>
                   <div className="display" style={{ fontSize: 32, lineHeight: 0.95, color: 'var(--wit-warm)' }}>{v.name}</div>
-                  <div className="meta" style={{ marginTop: 8, color: 'rgba(244,241,232,0.4)' }}>{v.url} →</div>
+                  <div className="meta" style={{ marginTop: 8, color: 'rgba(244,241,232,0.55)' }}>{v.url} →</div>
                 </div>
               </Link>
             ))}
@@ -215,7 +215,7 @@ export const Footer = () => {
                   hallo@toms-ambitie.nl
                 </a>
               </li>
-              <li style={{ color: 'rgba(244,241,232,0.4)' }}>Zwolle, Nederland</li>
+              <li style={{ color: 'rgba(244,241,232,0.55)' }}>Zwolle, Nederland</li>
             </ul>
           </div>
         </div>
@@ -230,14 +230,14 @@ export const Footer = () => {
           fontSize: 11,
           letterSpacing: '0.14em',
           textTransform: 'uppercase',
-          color: 'rgba(244,241,232,0.4)',
+          color: 'rgba(244,241,232,0.55)',
           flexWrap: 'wrap',
           gap: 16,
         }}>
           <div>© 2025 Toms Ambitie · Een venture club uit Zwolle</div>
           <div style={{ display: 'flex', gap: 24 }}>
-            <Link to="/privacy" style={{ color: 'rgba(244,241,232,0.4)', textDecoration: 'none' }}>Privacy</Link>
-            <Link to="/voorwaarden" style={{ color: 'rgba(244,241,232,0.4)', textDecoration: 'none' }}>Voorwaarden</Link>
+            <Link to="/privacy" style={{ color: 'rgba(244,241,232,0.55)', textDecoration: 'none' }}>Privacy</Link>
+            <Link to="/voorwaarden" style={{ color: 'rgba(244,241,232,0.55)', textDecoration: 'none' }}>Voorwaarden</Link>
             <span>v3.0 · Definitief</span>
           </div>
         </div>

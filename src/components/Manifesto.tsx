@@ -45,12 +45,12 @@ export const Manifesto = () => (
             <div className="num" style={{ fontSize: 11, letterSpacing: '0.18em', color: 'var(--volt)', marginBottom: 16 }}>
               0{i + 1} / 04
             </div>
-            <h4
+            <h3
               className="display"
               style={{ fontSize: 'clamp(22px, 2.3vw, 32px)', lineHeight: 1.1, marginBottom: 32, color: 'var(--wit-warm)', overflowWrap: 'break-word', hyphens: 'auto' }}
             >
               {p.t}
-            </h4>
+            </h3>
             <p className="body" style={{ color: 'rgba(244,241,232,0.7)' }}>{p.d}</p>
           </div>
         ))}

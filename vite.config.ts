@@ -81,18 +81,18 @@ function criticalCssPlugin(): Plugin {
           );
         }
 
-        // 2. Defer non-critical CSS: convert <link rel="stylesheet"> to async loading
+        // 2. Defer all app CSS: match <link rel="stylesheet"> regardless of attribute order
+        // Captures any attributes before/after href so crossorigin is preserved correctly
         html = html.replace(
-          /<link rel="stylesheet"(?=[^>]*crossorigin) href="([^"]+)"[^>]*>/g,
-          (_, href) =>
-            `<link rel="preload" as="style" href="${href}" crossorigin onload="this.onload=null;this.rel='stylesheet'" />\n    <noscript><link rel="stylesheet" href="${href}" crossorigin /></noscript>`
-        );
-
-        // Also defer app CSS (without crossorigin)
-        html = html.replace(
-          /<link rel="stylesheet"(?![^>]*crossorigin) href="(\/assets\/[^"]+\.css)"[^>]*>/g,
-          (_, href) =>
-            `<link rel="preload" as="style" href="${href}" onload="this.onload=null;this.rel='stylesheet'" />\n    <noscript><link rel="stylesheet" href="${href}" /></noscript>`
+          /<link rel="stylesheet"([^>]*?) href="(\/assets\/[^"]+\.css)"([^>]*)>/g,
+          (_full, before, href, after) => {
+            const hasCrossorigin = (before + after).includes('crossorigin');
+            const co = hasCrossorigin ? ' crossorigin' : '';
+            return (
+              `<link rel="preload" as="style" href="${href}"${co} onload="this.onload=null;this.rel='stylesheet'" />\n    ` +
+              `<noscript><link rel="stylesheet" href="${href}"${co} /></noscript>`
+            );
+          }
         );
 
         return html;

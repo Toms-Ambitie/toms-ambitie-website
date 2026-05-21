@@ -77,15 +77,14 @@ export const Navbar = () => {
 
       {/* ── Nav bar ───────────────────────────────────────────── */}
       <nav
-        className="fixed top-0 inset-x-0 z-50"
+        className="sticky top-0 inset-x-0 z-50"
         style={{
           height: 64,
-          background: scrolled ? "rgba(251,250,246,0.92)" : "rgba(251,250,246,0.80)",
+          background: "rgba(251,250,246,0.96)",
           backdropFilter: "blur(20px) saturate(140%)",
           WebkitBackdropFilter: "blur(20px) saturate(140%)",
           borderBottom: scrolled ? "1px solid rgba(14,14,12,0.08)" : "1px solid transparent",
-          transition: "background 0.2s ease, border-color 0.2s ease",
-          willChange: "transform",
+          transition: "border-color 0.2s ease",
         }}
       >
         <div

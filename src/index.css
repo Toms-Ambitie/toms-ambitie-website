@@ -515,10 +515,9 @@ body.menu-open { overflow: hidden; }
   .nav-inner { padding: 0 24px; gap: 24px; }
   .nav-links { gap: 20px; }
 
-  /* Reduce heavy desktop section padding */
-  section { padding-top: 96px !important; padding-bottom: 96px !important; }
-  /* page-hero: nav=64px + 32px breathing */
-  .page-hero { padding-top: 96px !important; padding-bottom: 72px !important; }
+  /* Compact desktop section padding on tablet */
+  section { padding-top: 80px !important; padding-bottom: 80px !important; }
+  .page-hero { padding-top: 80px !important; padding-bottom: 64px !important; }
 
   /* 4-col → 2-col grids */
   .responsive-4-to-2 { grid-template-columns: 1fr 1fr !important; }
@@ -547,10 +546,9 @@ body.menu-open { overflow: hidden; }
   .nav-logo span { font-size: 16px; }
   .nav-cta { padding: 8px 12px; font-size: 10px; letter-spacing: 0.12em; }
 
-  /* Section padding reset */
-  section { padding-top: 64px !important; padding-bottom: 64px !important; }
-  /* page-hero: nav=64px + 20px breathing → 84px keeps gap minimal on mobile */
-  .page-hero { padding-top: 84px !important; padding-bottom: 48px !important; }
+  /* Compact section padding on mobile */
+  section { padding-top: 56px !important; padding-bottom: 56px !important; }
+  .page-hero { padding-top: 32px !important; padding-bottom: 40px !important; }
 
   /* Venture card names: 2-col mobile (≈155px wide) can't fit 48px display fonts */
   .ventures-grid-3 .display { font-size: 28px !important; line-height: 0.92 !important; }

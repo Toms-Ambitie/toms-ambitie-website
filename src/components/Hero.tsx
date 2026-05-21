@@ -10,9 +10,10 @@ import { Link } from 'react-router-dom';
 export const Hero = () => {
   return (
     <section
+      className="hero-section"
       style={{
         position: 'relative',
-        minHeight: 'clamp(620px, 92vh, 920px)',
+        minHeight: 'clamp(560px, 92vh, 920px)',
         overflow: 'hidden',
         background: 'var(--inkt)', /* fallback while image loads */
         display: 'flex',
@@ -79,8 +80,8 @@ export const Hero = () => {
           position: 'relative',
           zIndex: 1,
           width: '100%',
-          /* Top padding: nav height + breathing room */
-          paddingTop: 'clamp(104px, 14vh, 160px)',
+          /* Top padding: nav height (64px) + breathing room */
+          paddingTop: 'clamp(84px, 12vh, 160px)',
           paddingBottom: 'clamp(56px, 8vh, 100px)',
         }}
       >
@@ -107,7 +108,7 @@ export const Hero = () => {
           <h1
             className="clip-reveal display"
             style={{
-              fontSize: 'clamp(68px, 9vw, 152px)',
+              fontSize: 'clamp(44px, 11vw, 152px)',
               letterSpacing: '-0.02em',
               lineHeight: 0.84,
               color: 'var(--wit-warm)',

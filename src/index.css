@@ -465,6 +465,9 @@ body.menu-open { overflow: hidden; }
 /* Page hero sections — extra top padding so content clears sticky nav */
 /* Overridden per breakpoint below */
 
+/* ── Hero homepage: exempt from global section padding overrides ── */
+.hero-section { padding: 0 !important; }
+
 /* ── Hero founder image — responsive gradient + crop ── */
 /* Mobile: gradient goes top-down (text full-width), crop shows face */
 @media (max-width: 768px) {
@@ -514,7 +517,8 @@ body.menu-open { overflow: hidden; }
 
   /* Reduce heavy desktop section padding */
   section { padding-top: 96px !important; padding-bottom: 96px !important; }
-  .page-hero { padding-top: 120px !important; padding-bottom: 72px !important; }
+  /* page-hero: nav=64px + 32px breathing */
+  .page-hero { padding-top: 96px !important; padding-bottom: 72px !important; }
 
   /* 4-col → 2-col grids */
   .responsive-4-to-2 { grid-template-columns: 1fr 1fr !important; }
@@ -545,7 +549,14 @@ body.menu-open { overflow: hidden; }
 
   /* Section padding reset */
   section { padding-top: 64px !important; padding-bottom: 64px !important; }
-  .page-hero { padding-top: 104px !important; padding-bottom: 52px !important; }
+  /* page-hero: nav=64px + 20px breathing → 84px keeps gap minimal on mobile */
+  .page-hero { padding-top: 84px !important; padding-bottom: 48px !important; }
+
+  /* Venture card names: 2-col mobile (≈155px wide) can't fit 48px display fonts */
+  .ventures-grid-3 .display { font-size: 28px !important; line-height: 0.92 !important; }
+  .ventures-grid-3 [style*="font-size: 24"] { font-size: 14px !important; }
+  /* Featured card name */
+  .ventures-featured-inner .display { font-size: clamp(52px, 13vw, 80px) !important; }
 
   /* Type scale — prevent oversized display fonts on small screens */
   .h1 { font-size: clamp(48px, 11vw, 72px); }

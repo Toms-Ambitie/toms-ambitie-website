@@ -50,7 +50,7 @@ const OverOnsPage = () => {
           'jobTitle': 'Founder & Venture Builder',
           'description': 'Ondernemer en venture builder uit Zwolle. Tom Mulder bouwt eigen bedrijven vanuit echte frustratie, met AI als versneller. Oprichter van Toms Ambitie, OAK Marketing, Post Pilot, Pactly, Plug and Power en EmmaBoekt.',
           'url': 'https://www.toms-ambitie.nl/over-ons',
-          'image': 'https://www.toms-ambitie.nl/photos/tom-founder-01.jpg',
+          'image': 'https://www.toms-ambitie.nl/photos/tom-founder-01.webp',
           'email': 'hallo@toms-ambitie.nl',
           'worksFor': { '@id': 'https://www.toms-ambitie.nl/#organization' },
           'address': {
@@ -90,7 +90,7 @@ const OverOnsPage = () => {
           <div className="container-wide">
             <div className="reveal" style={{ position: 'relative', overflow: 'hidden', background: 'var(--inkt)' }}>
               <img
-                src="/photos/studio-team-bw.jpg"
+                src="/photos/studio-team-bw.webp"
                 alt="Studio Zwolle"
                 loading="lazy"
                 decoding="async"
@@ -139,7 +139,7 @@ const OverOnsPage = () => {
               {/* Photo */}
               <div className="reveal" style={{ position: 'relative', overflow: 'hidden', background: 'var(--inkt)' }}>
                 <img
-                  src="/photos/tom-portrait-dark.jpg"
+                  src="/photos/tom-portrait-dark.webp"
                   alt="Tom Mulder"
                   loading="lazy"
                   decoding="async"
@@ -249,7 +249,7 @@ const OverOnsPage = () => {
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24 }}>
               <div className="reveal" style={{ position: 'relative', overflow: 'hidden' }}>
-                <img src="/photos/studio-collab.jpg" alt="Studio collab"
+                <img src="/photos/studio-collab.webp" alt="Studio collab"
                   loading="lazy" decoding="async"
                   style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block', filter: 'grayscale(0.15)' }} />
                 <div style={{ position: 'absolute', top: 16, left: 16, padding: '6px 12px', background: 'var(--wit-warm)' }}>
@@ -257,7 +257,7 @@ const OverOnsPage = () => {
                 </div>
               </div>
               <div className="reveal" style={{ position: 'relative', overflow: 'hidden' }}>
-                <img src="/photos/studio-pair.jpg" alt="Studio pair"
+                <img src="/photos/studio-pair.webp" alt="Studio pair"
                   loading="lazy" decoding="async"
                   style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block', filter: 'grayscale(0.15)' }} />
                 <div style={{ position: 'absolute', top: 16, left: 16, padding: '6px 12px', background: 'var(--wit-warm)' }}>

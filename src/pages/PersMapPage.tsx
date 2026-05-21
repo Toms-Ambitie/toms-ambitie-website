@@ -26,12 +26,12 @@ const LOGOS = [
 ];
 
 const PHOTOS = [
-  { src: '/photos/tom-portrait-dark.jpg', label: 'Tom Mulder · portret donker', credit: 'Wonderwood Fotografie' },
-  { src: '/photos/tom-portrait-light.jpg', label: 'Tom Mulder · portret licht', credit: 'Wonderwood Fotografie' },
-  { src: '/photos/tom-casual.jpg', label: 'Tom Mulder · casual', credit: 'Wonderwood Fotografie' },
-  { src: '/photos/studio-team-bw.jpg', label: 'Studio · team', credit: 'Wonderwood Fotografie' },
-  { src: '/photos/studio-collab.jpg', label: 'Studio · collab', credit: 'Wonderwood Fotografie' },
-  { src: '/photos/studio-pair.jpg', label: 'Studio · pair', credit: 'Wonderwood Fotografie' },
+  { src: '/photos/tom-portrait-dark.webp', label: 'Tom Mulder · portret donker', credit: 'Wonderwood Fotografie' },
+  { src: '/photos/tom-portrait-light.webp', label: 'Tom Mulder · portret licht', credit: 'Wonderwood Fotografie' },
+  { src: '/photos/tom-casual.webp', label: 'Tom Mulder · casual', credit: 'Wonderwood Fotografie' },
+  { src: '/photos/studio-team-bw.webp', label: 'Studio · team', credit: 'Wonderwood Fotografie' },
+  { src: '/photos/studio-collab.webp', label: 'Studio · collab', credit: 'Wonderwood Fotografie' },
+  { src: '/photos/studio-pair.webp', label: 'Studio · pair', credit: 'Wonderwood Fotografie' },
 ];
 
 const PersMapPage = () => {

@@ -54,7 +54,7 @@ const VENTURES: Venture[] = [
       { Icon: Linkedin, value: 'LinkedIn', label: 'eerste kanaal' },
       { Icon: Eye, value: 'Consistent', label: 'zichtbaar' },
     ],
-    image: '/photos/postpilot-new.png',
+    image: '/photos/postpilot-new.webp',
   },
   {
     name: 'Pactly',
@@ -74,7 +74,7 @@ const VENTURES: Venture[] = [
       { Icon: PiggyBank, value: 'besparen', label: 'zonder gedoe' },
       { Icon: Bell, value: 'controle', label: 'jij beslist' },
     ],
-    image: '/photos/pactly_venture_visual.png',
+    image: '/photos/pactly_venture_visual.webp',
   },
   {
     name: 'OAK Marketing',
@@ -94,7 +94,7 @@ const VENTURES: Venture[] = [
       { Icon: Sparkles, value: 'AI first', label: 'sneller bouwen' },
       { Icon: TrendingUp, value: 'MKB', label: 'groei en structuur' },
     ],
-    image: '/photos/oak_marketing_venture_visual.png',
+    image: '/photos/oak_marketing_venture_visual.webp',
   },
   {
     name: 'Plug and Power',
@@ -115,7 +115,7 @@ const VENTURES: Venture[] = [
       { Icon: Zap, value: 'slim', label: 'advies' },
       { Icon: Globe, value: 'NL', label: 'startmarkt' },
     ],
-    image: '/photos/plug_and_power_venture_visual.png',
+    image: '/photos/plug_and_power_venture_visual.webp',
   },
   {
     name: 'EmmaBoekt',
@@ -137,7 +137,7 @@ const VENTURES: Venture[] = [
       { Icon: Users, value: 'ZZP + MKB', label: 'doelgroep' },
       { Icon: Flag, value: 'NL', label: 'startmarkt' },
     ],
-    image: '/photos/emmaboekt_venture_visual.png',
+    image: '/photos/emmaboekt_venture_visual.webp',
   },
 ];
 

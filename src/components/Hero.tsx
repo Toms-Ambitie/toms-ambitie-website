@@ -22,11 +22,11 @@ export const Hero = () => {
     >
       {/* ── Founder image — LCP, eager, high priority ── */}
       <img
-        src="/photos/tom-founder-01.jpg"
+        src="/photos/tom-founder-01.webp"
         srcSet={[
-          '/photos/tom-founder-01-768.jpg 768w',
-          '/photos/tom-founder-01-1024.jpg 1024w',
-          '/photos/tom-founder-01.jpg 1536w',
+          '/photos/tom-founder-01-768.webp 768w',
+          '/photos/tom-founder-01-1024.webp 1024w',
+          '/photos/tom-founder-01.webp 1536w',
         ].join(', ')}
         sizes="100vw"
         alt="Tom Mulder, founder Toms Ambitie — aan het werk in het studio"

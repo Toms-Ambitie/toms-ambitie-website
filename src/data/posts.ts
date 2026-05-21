@@ -80,7 +80,7 @@ export const POSTS: Post[] = [
     statusLabel: 'Venture update',
     venture: 'Post Pilot',
     read: '2 min',
-    cover: '/photos/postpilot-analytics.png',
+    cover: '/photos/postpilot-analytics.webp',
     lead: 'Een belangrijke validatiemijlpaal: Post Pilot heeft de honderdste betalende klant verwelkomd en bewijst daarmee product-market fit in de niche.',
     body: [
       { t: 'p', c: 'Sinds de stille launch eind vorig jaar groeit Post Pilot gestaag. Deze week verwelkomden we de honderdste betalende klant — een mijlpaal die binnen het Toms Ambitie-model staat voor "gevalideerd".' },

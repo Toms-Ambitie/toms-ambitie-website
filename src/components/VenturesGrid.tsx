@@ -156,7 +156,7 @@ export const VenturesGrid = () => {
             {/* Right: screenshot */}
             <div style={{ position: 'relative', overflow: 'hidden', background: 'var(--inkt)' }}>
               <img
-                src="/photos/postpilot-new.png"
+                src="/photos/postpilot-new.webp"
                 alt="Post Pilot — create new post"
                 loading="lazy"
                 decoding="async"

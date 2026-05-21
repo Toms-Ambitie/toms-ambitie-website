@@ -9,7 +9,7 @@ export const TeamTeaser = () => (
       {/* Photo */}
       <div className="reveal" style={{ position: 'relative', overflow: 'hidden' }}>
         <img
-          src="/photos/studio-team-bw.jpg"
+          src="/photos/studio-team-bw.webp"
           alt="Toms Ambitie studio"
           loading="lazy"
           decoding="async"

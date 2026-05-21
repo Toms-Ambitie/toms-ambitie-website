@@ -85,6 +85,7 @@ export const Navbar = () => {
           WebkitBackdropFilter: "blur(20px) saturate(140%)",
           borderBottom: scrolled ? "1px solid rgba(14,14,12,0.08)" : "1px solid transparent",
           transition: "background 0.2s ease, border-color 0.2s ease",
+          willChange: "transform",
         }}
       >
         <div

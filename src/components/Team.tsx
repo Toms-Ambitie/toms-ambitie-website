@@ -11,6 +11,8 @@ export const TeamTeaser = () => (
         <img
           src="/photos/studio-team-bw.jpg"
           alt="Toms Ambitie studio"
+          loading="lazy"
+          decoding="async"
           style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block', filter: 'grayscale(0.2)' }}
         />
         <div style={{

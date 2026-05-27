@@ -69,19 +69,28 @@ function criticalCssPlugin(): Plugin {
       // eslint-disable-next-line no-console
       console.log(`✓ critical CSS: ${extractedCriticalCss.length} bytes extracted`);
     },
+    // Patch dist/index.html AFTER generateBundle has run so extractedCriticalCss is populated.
+    // (transformIndexHtml fires before generateBundle, so it can't inline critical CSS.)
+    async closeBundle() {
+      if (!extractedCriticalCss) return;
+      const fs = await import("fs/promises");
+      const htmlPath = path.resolve("dist", "index.html");
+      let html: string;
+      try {
+        html = await fs.readFile(htmlPath, "utf8");
+      } catch {
+        return; // dist/index.html not yet written — skip
+      }
+      const styleTag = `<style id="critical-css">\n${extractedCriticalCss}\n</style>`;
+      html = html.replace(/<style id="critical-css">[\s\S]*?<\/style>/, styleTag);
+      await fs.writeFile(htmlPath, html, "utf8");
+      // eslint-disable-next-line no-console
+      console.log("✓ critical CSS inlined into dist/index.html");
+    },
     transformIndexHtml: {
       order: "post" as const,
       handler(html: string) {
-        // 1. Inline critical CSS
-        if (extractedCriticalCss) {
-          const styleTag = `<style id="critical-css">\n${extractedCriticalCss}\n</style>`;
-          html = html.replace(
-            /<style id="critical-css">[\s\S]*?<\/style>/,
-            styleTag
-          );
-        }
-
-        // 2. Defer all app CSS: match <link rel="stylesheet"> regardless of attribute order
+        // Defer all app CSS: match <link rel="stylesheet"> regardless of attribute order
         // Captures any attributes before/after href so crossorigin is preserved correctly
         html = html.replace(
           /<link rel="stylesheet"([^>]*?) href="(\/assets\/[^"]+\.css)"([^>]*)>/g,

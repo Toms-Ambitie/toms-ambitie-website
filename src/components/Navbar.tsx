@@ -88,6 +88,11 @@ export const Navbar = () => {
       <nav
         className="fixed top-0 inset-x-0 z-50"
         style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 50,
           height: 64,
           background: scrolled ? "rgba(251,250,246,0.96)" : "rgba(251,250,246,0.80)",
           backdropFilter: "blur(20px) saturate(140%)",

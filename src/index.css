@@ -515,11 +515,9 @@ body.menu-open { overflow: hidden; }
   .nav-inner { padding: 0 24px; gap: 24px; }
   .nav-links { gap: 20px; }
 
-  /* Compact section padding on tablet */
-  section { padding-top: 80px !important; padding-bottom: 80px !important; }
-  /* page-hero: 64px navbar + 16px breathing */
+  /* Compact section padding op tablet — expliciet hero uitgesloten */
+  section:not(.hero-section) { padding-top: 80px !important; padding-bottom: 80px !important; }
   .page-hero { padding-top: 80px !important; padding-bottom: 64px !important; }
-  .hero-section { padding: 0 !important; }
 
   /* 4-col → 2-col grids */
   .responsive-4-to-2 { grid-template-columns: 1fr 1fr !important; }
@@ -548,11 +546,10 @@ body.menu-open { overflow: hidden; }
   .nav-logo span { font-size: 16px; }
   .nav-cta { padding: 8px 12px; font-size: 10px; letter-spacing: 0.12em; }
 
-  /* Compact section padding on mobile */
-  section { padding-top: 56px !important; padding-bottom: 56px !important; }
+  /* Compact section padding op mobiel — expliciet hero uitgesloten */
+  section:not(.hero-section) { padding-top: 56px !important; padding-bottom: 56px !important; }
   /* page-hero: 64px navbar + 16px breathing */
   .page-hero { padding-top: 80px !important; padding-bottom: 40px !important; }
-  .hero-section { padding: 0 !important; margin-top: 0 !important; }
 
   /* Venture card names: 2-col mobile (≈155px wide) can't fit 48px display fonts */
   .ventures-grid-3 .display { font-size: 28px !important; line-height: 0.92 !important; }

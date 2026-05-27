@@ -61,7 +61,7 @@ export const Navbar = () => {
     <>
       <ScrollProgress />
 
-      {/* Skip-to-content */}
+      {/* Skip-to-content — volledig inline styles zodat hij nooit ruimte inneemt vóór CSS laadt */}
       <a
         href="#main-content"
         onClick={(e) => {
@@ -69,22 +69,31 @@ export const Navbar = () => {
           const h1 = document.querySelector<HTMLElement>("h1");
           if (h1) { h1.setAttribute("tabindex", "-1"); h1.focus(); }
         }}
-        className="fixed top-0 left-0 font-mono font-bold uppercase z-[200] -translate-y-full focus:translate-y-0 transition-transform duration-150"
-        style={{ background: "#C8F000", color: "#0E0E0C", fontSize: 11, letterSpacing: "0.12em", padding: "14px 24px" }}
+        style={{
+          position: "fixed", top: 0, left: 0,
+          transform: "translateY(-100%)",
+          background: "#C8F000", color: "#0E0E0C",
+          fontFamily: "var(--mono)", fontSize: 11, fontWeight: 700,
+          letterSpacing: "0.12em", textTransform: "uppercase",
+          padding: "14px 24px", zIndex: 200,
+          textDecoration: "none", transition: "transform 0.15s",
+        }}
+        onFocus={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)"; }}
+        onBlur={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-100%)"; }}
       >
         Ga naar inhoud
       </a>
 
       {/* ── Nav bar ───────────────────────────────────────────── */}
       <nav
-        className="sticky top-0 inset-x-0 z-50"
+        className="fixed top-0 inset-x-0 z-50"
         style={{
           height: 64,
-          background: "rgba(251,250,246,0.96)",
+          background: scrolled ? "rgba(251,250,246,0.96)" : "rgba(251,250,246,0.80)",
           backdropFilter: "blur(20px) saturate(140%)",
           WebkitBackdropFilter: "blur(20px) saturate(140%)",
           borderBottom: scrolled ? "1px solid rgba(14,14,12,0.08)" : "1px solid transparent",
-          transition: "border-color 0.2s ease",
+          transition: "background 0.2s ease, border-color 0.2s ease",
         }}
       >
         <div

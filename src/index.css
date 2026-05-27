@@ -465,8 +465,8 @@ body.menu-open { overflow: hidden; }
 /* Page hero sections — extra top padding so content clears sticky nav */
 /* Overridden per breakpoint below */
 
-/* ── Hero homepage: exempt from global section padding overrides ── */
-.hero-section { padding: 0 !important; }
+/* ── Hero homepage: starts at y=0, covers behind fixed navbar ── */
+.hero-section { padding: 0 !important; margin-top: 0 !important; }
 
 /* ── Hero founder image — responsive gradient + crop ── */
 /* Mobile: gradient goes top-down (text full-width), crop shows face */
@@ -515,9 +515,11 @@ body.menu-open { overflow: hidden; }
   .nav-inner { padding: 0 24px; gap: 24px; }
   .nav-links { gap: 20px; }
 
-  /* Compact desktop section padding on tablet */
+  /* Compact section padding on tablet */
   section { padding-top: 80px !important; padding-bottom: 80px !important; }
+  /* page-hero: 64px navbar + 16px breathing */
   .page-hero { padding-top: 80px !important; padding-bottom: 64px !important; }
+  .hero-section { padding: 0 !important; }
 
   /* 4-col → 2-col grids */
   .responsive-4-to-2 { grid-template-columns: 1fr 1fr !important; }
@@ -548,7 +550,9 @@ body.menu-open { overflow: hidden; }
 
   /* Compact section padding on mobile */
   section { padding-top: 56px !important; padding-bottom: 56px !important; }
-  .page-hero { padding-top: 32px !important; padding-bottom: 40px !important; }
+  /* page-hero: 64px navbar + 16px breathing */
+  .page-hero { padding-top: 80px !important; padding-bottom: 40px !important; }
+  .hero-section { padding: 0 !important; margin-top: 0 !important; }
 
   /* Venture card names: 2-col mobile (≈155px wide) can't fit 48px display fonts */
   .ventures-grid-3 .display { font-size: 28px !important; line-height: 0.92 !important; }

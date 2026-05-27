@@ -13,6 +13,8 @@ export const Hero = () => {
       className="hero-section"
       style={{
         position: 'relative',
+        padding: 0,        /* inline override: nooit cream balk boven de hero */
+        marginTop: 0,
         minHeight: 'clamp(560px, 92vh, 920px)',
         overflow: 'hidden',
         background: 'var(--inkt)', /* fallback while image loads */

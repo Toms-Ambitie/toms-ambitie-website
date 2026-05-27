@@ -69,7 +69,7 @@ const CtaButton = ({
 /* Per-venture SEO titles — keyword-rich, investor/co-founder angle */
 const VENTURE_TITLES: Record<string, string> = {
   "post-pilot":
-    "Post Pilot — AI Content Platform voor LinkedIn | Toms Ambitie",
+    "PostPilot — AI Content Platform voor LinkedIn | Toms Ambitie",
   "pactly":
     "Pactly — Grip op Vaste Lasten en Contracten | Toms Ambitie",
   "oak-marketing":
@@ -83,7 +83,7 @@ const VENTURE_TITLES: Record<string, string> = {
 /* Per-venture meta descriptions — action-oriented, mention opportunity */
 const VENTURE_DESCRIPTIONS: Record<string, string> = {
   "post-pilot":
-    "Post Pilot automatiseert LinkedIn-content met AI. Live SaaS-platform met eerste betalende gebruikers. Toms Ambitie zoekt co-founders en growth-specialisten voor de volgende groeifase.",
+    "PostPilot automatiseert LinkedIn-content met AI. Live SaaS-platform v2.0 met betalende gebruikers. Schrijft in jouw eigen toon. Toms Ambitie zoekt co-founders en growth-specialisten voor de volgende groeifase.",
   "pactly":
     "Pactly brengt contracten, abonnementen en vaste lasten samen op één plek. Consumer fintech in vroeg stadium vanuit Zwolle. Toms Ambitie zoekt investeerders en co-founders om Pactly groot te maken.",
   "oak-marketing":
@@ -180,7 +180,7 @@ const VentureDetailPage = () => {
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-4">
-                <img src={venture.logo} alt={`${venture.name} logo`} className="w-14 h-14 object-cover" loading="lazy" decoding="async" />
+                <img src={venture.logo} alt={`${venture.name} logo`} className="w-14 h-14 object-contain" loading="lazy" decoding="async" style={{ borderRadius: venture.slug === 'post-pilot' ? 8 : 0 }} />
                 <div>
                   <div className="flex items-center gap-2">
                     <span

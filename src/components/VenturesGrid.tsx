@@ -2,16 +2,16 @@ import { Link } from 'react-router-dom';
 
 const VENTURES = [
   {
-    name: 'Post Pilot',
+    name: 'PostPilot',
     slug: 'post-pilot',
     tag: 'Marketing AI',
     tagline: 'AI doet je content.',
-    desc: 'AI-gestuurde social posts en campagnes. Vanuit eigen marketing-frustratie ontstaan.',
+    desc: 'AI-gestuurde LinkedIn content. Van idee naar post in seconden. Schrijft in jouw eigen toon.',
     status: 'Live',
     year: '2024',
     url: 'postpilotapp.nl',
-    accent: '#00DC93',
-    dark: '#0A1820',
+    accent: '#E8A640',
+    dark: '#0E1014',
   },
   {
     name: 'Pactly',
@@ -156,8 +156,8 @@ export const VenturesGrid = () => {
             {/* Right: screenshot */}
             <div style={{ position: 'relative', overflow: 'hidden', background: 'var(--inkt)' }}>
               <img
-                src="/photos/postpilot-new.webp"
-                alt="Post Pilot — create new post"
+                src="/photos/postpilot-app-vandaag.webp"
+                alt="PostPilot — AI content platform voor LinkedIn"
                 loading="lazy"
                 decoding="async"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top left', display: 'block' }}

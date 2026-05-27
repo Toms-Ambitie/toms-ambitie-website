@@ -1,4 +1,4 @@
-import postPilotLogo from "@/assets/venture-logo-post-pilot.webp";
+import postPilotLogo from "@/assets/postpilot-mark-primary.svg";
 import oakMarketingLogo from "@/assets/venture-logo-oak-marketing.webp";
 import pactlyLogo from "@/assets/pactly-beeldmerk.svg";
 import plugAndPowerLogo from "@/assets/venture-logo-plug-and-power.webp";
@@ -146,24 +146,24 @@ export const ventureDetails: VentureDetail[] = [
   },
   {
     slug: "post-pilot",
-    name: "POST PILOT",
+    name: "POSTPILOT",
     tagline:
       "De meeste ondernemers weten dat ze zichtbaar moeten zijn. Maar zodra het druk wordt, verdwijnen ze van LinkedIn.",
     intro:
-      "Post Pilot bouwt aan het content operating system voor ondernemers en professionals: AI die voor jou denkt, schrijft, plant én publiceert. Geen losse tool. Een systeem dat zichtbaarheid voorspelbaar maakt.",
+      "PostPilot is het content operating system voor ondernemers en professionals: AI die voor jou denkt, schrijft, plant en publiceert. Geen losse tool. Een systeem dat zichtbaarheid voorspelbaar maakt. Schrijft in jouw eigen toon. Versie 2.0 is live.",
     logo: postPilotLogo,
     category: "SaaS · Contentautomatisering",
     tags: ["AI", "SAAS", "AUTOMATISERING", "CONTENT", "LINKEDIN"],
     url: "https://www.postpilotapp.nl",
     status: "LIVE",
     identity: {
-      accent: "#00DC93",
-      accentInk: "#0A1820",
+      accent: "#E8A640",
+      accentInk: "#0E1014",
       vibe: "CREATOR ECONOMY · AI LEVERAGE",
-      proof: ["Live platform", "Eerste betalende gebruikers", "Actief doorontwikkeld"],
+      proof: ["Live platform v2.0", "Eerste betalende gebruikers", "Actief doorontwikkeld"],
       proofTagline: "Live · eerste gebruikers actief op het platform",
     },
-    cta: { label: "Bouw mee aan Post Pilot", href: "/meebouwen" },
+    cta: { label: "Bouw mee aan PostPilot", href: "/meebouwen" },
     secondaryCta: { label: "Bekijk platform", href: "https://www.postpilotapp.nl", external: true },
     origin: {
       title: "Het originele probleem",
@@ -203,9 +203,9 @@ export const ventureDetails: VentureDetail[] = [
         "De behoefte aan consistente zichtbaarheid groeit explosief. Tegelijkertijd neemt de druk op ondernemers en professionals alleen maar toe. Post Pilot speelt precies in dat spanningsveld.\n\nWaar traditionele contenttools vooral losse hulpmiddelen zijn, wil Post Pilot uitgroeien tot een volledig AI-gedreven contentplatform: van idee tot publicatie.\n\nIn de toekomst moet het platform meerdere platformen ondersteunen, content automatisch optimaliseren, trends signaleren, persoonlijke schrijfstijl leren herkennen en complete contentflows automatiseren.\n\nHet doel is niet om meer content te produceren. Het doel is om zichtbaarheid structureel makkelijker te maken.",
     },
     ctaBlock: {
-      title: "BOUW MEE AAN POST PILOT",
+      title: "BOUW MEE AAN POSTPILOT",
       description:
-        "Post Pilot is gebouwd vanuit een probleem dat miljoenen professionals herkennen: zichtbaar willen zijn, zonder dat content een fulltime taak wordt. We zoeken mensen die willen meebouwen. strategisch, operationeel, technisch of financieel. Of je nu investeerder, specialist of ondernemer bent: als je gelooft in de toekomst van AI-gedreven contentautomatisering, willen we graag praten.",
+        "PostPilot is gebouwd vanuit een probleem dat miljoenen professionals herkennen: zichtbaar willen zijn, zonder dat content een fulltime taak wordt. We zoeken mensen die willen meebouwen. strategisch, operationeel, technisch of financieel. Of je nu investeerder, specialist of ondernemer bent: als je gelooft in de toekomst van AI-gedreven contentautomatisering, willen we graag praten.",
       primary: { label: "Ik wil meebouwen", href: "/meebouwen" },
       secondary: { label: "Ik wil investeren", href: "/meebouwen" },
     },

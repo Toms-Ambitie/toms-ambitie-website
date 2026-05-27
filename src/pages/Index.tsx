@@ -15,7 +15,7 @@ import { applySEO } from '@/lib/seo';
 
 const TICKER_ITEMS = [
   '4 actieve ventures',
-  'Post Pilot · marketing AI',
+  'PostPilot · marketing AI',
   'Pactly · legal SaaS',
   'OAK Marketing · groei-MKB',
   'Plug and Power · energy tech',
@@ -31,7 +31,7 @@ const Index = () => {
     applySEO({
       title: 'Toms Ambitie — Venture Studio Zwolle | Eigen bedrijven bouwen',
       description:
-        'Venture studio in Zwolle die eigen bedrijven bouwt vanuit echte problemen. Tom Mulder zoekt co-founders, investeerders en specialisten. Post Pilot, Pactly, OAK Marketing, Plug and Power, EmmaBoekt.',
+        'Venture studio in Zwolle die eigen bedrijven bouwt vanuit echte problemen. Tom Mulder zoekt co-founders, investeerders en specialisten. PostPilot, Pactly, OAK Marketing, Plug and Power, EmmaBoekt.',
       canonical: 'https://www.toms-ambitie.nl/',
       jsonLd: {
         '@context': 'https://schema.org',

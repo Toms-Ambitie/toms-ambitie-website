@@ -2,7 +2,7 @@ import { ArrowUpRight, Mail } from "lucide-react";
 import { LinkedNews } from "@/components/LinkedNews";
 import { ProjectTags, type ProjectTag } from "@/data/projectTags";
 import oakLogo from "@/assets/oak-marketing-logo.svg";
-import postPilotLogo from "@/assets/post-pilot-logo.png";
+import postPilotLogo from "@/assets/postpilot-mark-primary.svg";
 import plugAndPowerLogo from "@/assets/plug-and-power-logo.svg";
 import pactlyLogo from "@/assets/pactly-beeldmerk.svg";
 
@@ -52,14 +52,14 @@ const ventures: Venture[] = [
     newsTag: ProjectTags.plugAndPower,
   },
   {
-    name: "POST PILOT",
+    name: "POSTPILOT",
     mark: "PP",
     logo: postPilotLogo,
-    logoBg: "#0B1220",
+    logoBg: "#0E1014",
     cat: "SaaS · Contentautomatisering",
-    pitch: "Post Pilot helpt ondernemers zichtbaar te blijven op LinkedIn zonder dat content een dagelijkse taak wordt.",
+    pitch: "PostPilot helpt ondernemers zichtbaar te blijven op LinkedIn zonder dat content een dagelijkse taak wordt.",
     desc:
-      "Met AI genereer, plan en publiceer je content in minuten in plaats van uren.",
+      "Van idee naar post in seconden. AI schrijft in jouw eigen toon, plant en publiceert automatisch.",
     url: "/ventures/post-pilot",
     cta: "Lees meer",
     ai: true,

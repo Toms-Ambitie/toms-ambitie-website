@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const VENTURES = [
-  { name: 'Post Pilot', slug: 'post-pilot', tag: 'Marketing AI', url: 'postpilotapp.nl', accent: '#00DC93' },
+  { name: 'PostPilot', slug: 'post-pilot', tag: 'Marketing AI', url: 'postpilotapp.nl', accent: '#E8A640' },
   { name: 'Pactly', slug: 'pactly', tag: 'Legal SaaS', url: 'pactly.nl', accent: '#CC007E' },
   { name: 'OAK Marketing', slug: 'oak-marketing', tag: 'Marketing bureau', url: 'oakmarketing.nl', accent: '#1B3A8A' },
   { name: 'Plug and Power', slug: 'plug-and-power', tag: 'Energy Tech', url: 'plugandpower.nl', accent: '#FFAA00' },

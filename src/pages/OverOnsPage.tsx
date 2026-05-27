@@ -10,8 +10,8 @@ const MILESTONES = [
   { y: '2015', t: 'Exit + start TA', d: 'Aardbei verkocht. Het startschot voor Toms Ambitie.' },
   { y: '2015–2023', t: 'Parallel bouwen', d: 'Verschillende bureaus en eerste eigen ventures naast elkaar.' },
   { y: '2023', t: 'AI-first', d: 'Definitieve omslag. AI niet als experiment, maar als werkwijze.' },
-  { y: '2024', t: 'Post Pilot + Pactly', d: 'Twee nieuwe ventures: marketing AI en legal SaaS.' },
-  { y: 'Nu', t: '5 actieve ventures', d: 'Post Pilot, Pactly, OAK Marketing, Plug and Power, EmmaBoekt. Volgende staat klaar.' },
+  { y: '2024', t: 'PostPilot + Pactly', d: 'Twee nieuwe ventures: marketing AI en legal SaaS.' },
+  { y: 'Nu', t: '5 actieve ventures', d: 'PostPilot, Pactly, OAK Marketing, Plug and Power, EmmaBoekt. Volgende staat klaar.' },
 ];
 
 const VALUES = [
@@ -48,7 +48,7 @@ const OverOnsPage = () => {
           'givenName': 'Tom',
           'familyName': 'Mulder',
           'jobTitle': 'Founder & Venture Builder',
-          'description': 'Ondernemer en venture builder uit Zwolle. Tom Mulder bouwt eigen bedrijven vanuit echte frustratie, met AI als versneller. Oprichter van Toms Ambitie, OAK Marketing, Post Pilot, Pactly, Plug and Power en EmmaBoekt.',
+          'description': 'Ondernemer en venture builder uit Zwolle. Tom Mulder bouwt eigen bedrijven vanuit echte frustratie, met AI als versneller. Oprichter van Toms Ambitie, OAK Marketing, PostPilot, Pactly, Plug and Power en EmmaBoekt.',
           'url': 'https://www.toms-ambitie.nl/over-ons',
           'image': 'https://www.toms-ambitie.nl/photos/tom-founder-01.webp',
           'email': 'hallo@toms-ambitie.nl',

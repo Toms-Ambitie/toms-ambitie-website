@@ -33,7 +33,7 @@ const MeebouwenPage = () => {
   useEffect(() => {
     applySEO({
       title: 'Meebouwen — Co-founder, Investeerder of Specialist worden | Toms Ambitie',
-      description: 'Wil je co-founder worden, investeren of als specialist meebouwen aan Post Pilot, Pactly, Plug and Power of EmmaBoekt? Neem contact op met Tom Mulder van Toms Ambitie in Zwolle.',
+      description: 'Wil je co-founder worden, investeren of als specialist meebouwen aan PostPilot, Pactly, Plug and Power of EmmaBoekt? Neem contact op met Tom Mulder van Toms Ambitie in Zwolle.',
       canonical: 'https://www.toms-ambitie.nl/meebouwen',
       jsonLd: [
         {
@@ -62,7 +62,7 @@ const MeebouwenPage = () => {
               'name': 'Zoekt Toms Ambitie co-founders?',
               'acceptedAnswer': {
                 '@type': 'Answer',
-                'text': 'Ja. Voor Pactly, Plug and Power en EmmaBoekt zoeken we actief co-founders met kennis van product, techniek, finance, growth, UX of domeinspecifieke expertise. Post Pilot zoekt ook specialisten voor de volgende groeifase.',
+                'text': 'Ja. Voor Pactly, Plug and Power en EmmaBoekt zoeken we actief co-founders met kennis van product, techniek, finance, growth, UX of domeinspecifieke expertise. PostPilot zoekt ook specialisten voor de volgende groeifase.',
               },
             },
             {
@@ -86,7 +86,7 @@ const MeebouwenPage = () => {
               'name': 'Welke ventures zijn beschikbaar om aan mee te bouwen?',
               'acceptedAnswer': {
                 '@type': 'Answer',
-                'text': 'Toms Ambitie heeft vijf actieve ventures: Post Pilot (live SaaS voor LinkedIn-contentautomatisering), Pactly (consumer fintech voor vaste lasten), OAK Marketing (actief marketingbureau), Plug and Power (e-commerce platform voor energie) en EmmaBoekt (AI-assistent voor administratie). Alle ventures staan open voor de juiste mensen.',
+                'text': 'Toms Ambitie heeft vijf actieve ventures: PostPilot (live SaaS voor LinkedIn-contentautomatisering), Pactly (consumer fintech voor vaste lasten), OAK Marketing (actief marketingbureau), Plug and Power (e-commerce platform voor energie) en EmmaBoekt (AI-assistent voor administratie). Alle ventures staan open voor de juiste mensen.',
               },
             },
             {

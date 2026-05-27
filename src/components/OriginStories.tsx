@@ -17,11 +17,11 @@ const cards = [
     link: { label: "Bekijk EmmaBoekt →", href: "/ventures/emma-boekt" },
   },
   {
-    venture: "POST PILOT",
+    venture: "POSTPILOT",
     quote: "IK WIL ACTIEF ZIJN OP LINKEDIN. MAAR DE DISCIPLINE ONTBREEKT ME.",
-    desc: "Ik weet dat zichtbaarheid belangrijk is. Maar meerdere keren per week iets posten lukt gewoon niet consequent. Tussen werk, meetings en dagelijkse drukte verdwijnt LinkedIn telkens naar de achtergrond. Ideeën zijn er genoeg. Tijd, ritme en discipline niet. Post Pilot helpt om zichtbaar te blijven zonder dat content een dagtaak wordt. Jij bepaalt de richting. AI helpt met de uitvoering.",
-    accent: "#00DC93",
-    link: { label: "Bekijk Post Pilot →", href: "/ventures/post-pilot" },
+    desc: "Ik weet dat zichtbaarheid belangrijk is. Maar meerdere keren per week iets posten lukt gewoon niet consequent. Tussen werk, meetings en dagelijkse drukte verdwijnt LinkedIn telkens naar de achtergrond. Ideeën zijn er genoeg. Tijd, ritme en discipline niet. PostPilot helpt om zichtbaar te blijven zonder dat content een dagtaak wordt. Jij bepaalt de richting. AI helpt met de uitvoering.",
+    accent: "#E8A640",
+    link: { label: "Bekijk PostPilot →", href: "/ventures/post-pilot" },
   },
   {
     venture: "OAK MARKETING",

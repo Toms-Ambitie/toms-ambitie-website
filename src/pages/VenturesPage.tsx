@@ -36,25 +36,25 @@ type Venture = {
 
 const VENTURES: Venture[] = [
   {
-    name: 'Post Pilot',
+    name: 'PostPilot',
     slug: 'post-pilot',
     tag: 'Marketing AI',
     statusLabel: 'LIVE',
-    tagline: 'AI content engine voor LinkedIn.',
-    long: 'Post Pilot helpt ondernemers en bedrijven om consistent zichtbaar te zijn op LinkedIn. Van strategie en ideeën tot automatische posts die passen bij jouw merk en doelgroep.',
+    tagline: 'Van idee naar LinkedIn-post in seconden.',
+    long: 'PostPilot schrijft in jouw eigen toon. Jij geeft een idee of een trigger, AI maakt er een post van die klinkt alsof jij hem zelf hebt geschreven. Plannen en publiceren gaat automatisch.',
     status: 'Live',
     year: '2024',
     url: 'postpilotapp.nl',
     externalUrl: 'postpilotapp.nl',
-    accent: '#00DC93',
-    accentInk: '#0A1820',
-    bg: '#0A1820',
+    accent: '#E8A640',
+    accentInk: '#0E1014',
+    bg: '#0E1014',
     metrics: [
       { Icon: Zap, value: 'AI content engine', label: 'automatisering' },
       { Icon: Linkedin, value: 'LinkedIn', label: 'eerste kanaal' },
       { Icon: Eye, value: 'Consistent', label: 'zichtbaar' },
     ],
-    image: '/photos/postpilot-new.webp',
+    image: '/photos/postpilot-app-vandaag.webp',
   },
   {
     name: 'Pactly',

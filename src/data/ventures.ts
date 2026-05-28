@@ -1,6 +1,6 @@
 import postPilotLogo from "@/assets/postpilot-mark-primary.svg";
 import oakMarketingLogo from "@/assets/venture-logo-oak-marketing.webp";
-import pactlyLogo from "@/assets/pactly-beeldmerk-v2.svg";
+import pactlyLogo from "@/assets/pactly-beeldmerk-v2.webp";
 import plugAndPowerLogo from "@/assets/venture-logo-plug-and-power.webp";
 import emmaBoektLogo from "@/assets/emma-boekt-logo.webp";
 

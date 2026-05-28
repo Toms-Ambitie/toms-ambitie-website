@@ -86,7 +86,7 @@ const MeebouwenPage = () => {
               'name': 'Welke ventures zijn beschikbaar om aan mee te bouwen?',
               'acceptedAnswer': {
                 '@type': 'Answer',
-                'text': 'Toms Ambitie heeft vijf actieve ventures: PostPilot (live SaaS voor LinkedIn-contentautomatisering), Pactly (consumer fintech voor vaste lasten), OAK Marketing (actief marketingbureau), Plug and Power (e-commerce platform voor energie) en EmmaBoekt (AI-assistent voor administratie). Alle ventures staan open voor de juiste mensen.',
+                'text': 'Toms Ambitie heeft vijf ventures: PostPilot (live SaaS voor LinkedIn-contentautomatisering), Pactly (consumer fintech voor vaste lasten), OAK Marketing (marketingbureau, binnenkort live), Plug and Power (e-commerce platform voor energie) en EmmaBoekt (AI-assistent voor administratie). Alle ventures staan open voor de juiste mensen.',
               },
             },
             {

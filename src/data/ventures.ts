@@ -200,7 +200,7 @@ export const ventureDetails: VentureDetail[] = [
     vision: {
       title: "De toekomst",
       description:
-        "De behoefte aan consistente zichtbaarheid groeit explosief. Tegelijkertijd neemt de druk op ondernemers en professionals alleen maar toe. Post Pilot speelt precies in dat spanningsveld.\n\nWaar traditionele contenttools vooral losse hulpmiddelen zijn, wil Post Pilot uitgroeien tot een volledig AI-gedreven contentplatform: van idee tot publicatie.\n\nIn de toekomst moet het platform meerdere platformen ondersteunen, content automatisch optimaliseren, trends signaleren, persoonlijke schrijfstijl leren herkennen en complete contentflows automatiseren.\n\nHet doel is niet om meer content te produceren. Het doel is om zichtbaarheid structureel makkelijker te maken.",
+        "De behoefte aan consistente zichtbaarheid groeit explosief. Tegelijkertijd neemt de druk op ondernemers en professionals alleen maar toe. PostPilot speelt precies in dat spanningsveld.\n\nWaar traditionele contenttools vooral losse hulpmiddelen zijn, wil PostPilot uitgroeien tot een volledig AI-gedreven contentplatform: van idee tot publicatie.\n\nIn de toekomst moet het platform meerdere platformen ondersteunen, content automatisch optimaliseren, trends signaleren, persoonlijke schrijfstijl leren herkennen en complete contentflows automatiseren.\n\nHet doel is niet om meer content te produceren. Het doel is om zichtbaarheid structureel makkelijker te maken.",
     },
     ctaBlock: {
       title: "BOUW MEE AAN POSTPILOT",

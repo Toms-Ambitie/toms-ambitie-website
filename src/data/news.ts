@@ -164,12 +164,12 @@ export const news: NewsItem[] = [
     date: "2026-04-18",
     category: "Venture update",
     tag: ProjectTags.postPilot,
-    title: "Post Pilot bereikt eerste 100 klanten",
+    title: "PostPilot bereikt eerste 100 klanten",
     excerpt:
-      "Een belangrijke validatiemijlpaal: Post Pilot heeft de honderdste betalende klant verwelkomd en bewijst daarmee product-market fit in de niche.",
+      "Een belangrijke validatiemijlpaal: PostPilot heeft de honderdste betalende klant verwelkomd en bewijst daarmee product-market fit in de niche.",
     body: [
-      "Sinds de stille launch eind vorig jaar groeit Post Pilot gestaag. Deze week verwelkomden we de honderdste betalende klant. een mijlpaal die binnen het Toms Ambitie-model staat voor 'gevalideerd'.",
-      "De komende maanden ligt de focus op retentie, onboarding en een eerste integratie met externe tools. Geen grote marketingsprint; eerst de basis verstevigen.",
+      "Sinds de stille launch eind vorig jaar groeit PostPilot gestaag. Deze week verwelkomden we de honderdste betalende klant, een mijlpaal die binnen het Toms Ambitie-model staat voor 'gevalideerd'.",
+      "De focus lag de afgelopen maanden op retentie, onboarding en het verder uitbouwen van de AI-kern. Dat heeft geleid tot Versie 2.0, die inmiddels live is. Een volledig vernieuwd platform: sneller, scherper en beter afgestemd op hoe gebruikers echt schrijven.",
       "Voor wie nieuwsgierig is naar de aanpak: het hele traject werd gebouwd op de leercurves van eerdere ventures. Snel valideren, durven bijsturen, niets afdwingen.",
     ],
   },

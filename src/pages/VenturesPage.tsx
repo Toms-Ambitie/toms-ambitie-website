@@ -80,10 +80,10 @@ const VENTURES: Venture[] = [
     name: 'OAK Marketing',
     slug: 'oak-marketing',
     tag: 'Marketing bureau',
-    statusLabel: 'ACTIEF',
+    statusLabel: 'BINNENKORT',
     tagline: 'Strategie. Branding. Groei.',
     long: 'OAK Marketing is geen bureau, maar een operator in jouw bedrijf. We verbinden strategie, data en creatie om merken te laten groeien. Tijdelijk. Doelgericht. Meetbaar.',
-    status: 'Live',
+    status: 'Binnenkort',
     year: '2023',
     url: 'oakmarketing.nl',
     accent: '#1B3A8A',
@@ -412,8 +412,8 @@ const VenturesPage = () => {
 
   useEffect(() => {
     applySEO({
-      title: 'Ventures — Post Pilot, Pactly, OAK Marketing en meer | Toms Ambitie',
-      description: 'Vijf eigen ventures gebouwd vanuit echte problemen. Post Pilot (live SaaS), OAK Marketing (actief bureau), Pactly, Plug and Power en EmmaBoekt in ontwikkeling. Interesse in investeren of meebouwen?',
+      title: 'Ventures — PostPilot, Pactly, OAK Marketing en meer | Toms Ambitie',
+      description: 'Vijf eigen ventures gebouwd vanuit echte problemen. PostPilot is live (SaaS). Pactly, Plug and Power, EmmaBoekt en OAK Marketing zijn in ontwikkeling. Interesse in investeren of meebouwen?',
       canonical: 'https://www.toms-ambitie.nl/ventures',
       jsonLd: {
         '@context': 'https://schema.org',
@@ -446,7 +446,7 @@ const VenturesPage = () => {
               <span>Waar we nu<br />aan bouwen.</span>
             </h1>
             <p className="lead reveal" style={{ marginTop: 48, fontSize: 22, maxWidth: 640 }}>
-              Geen losse ideeën. Vijf ventures gebouwd vanuit echte frustratie, behoefte of marktkans. Post Pilot en OAK Marketing zijn live. Pactly, Plug and Power en EmmaBoekt zijn in actieve ontwikkeling.
+              Geen losse ideeën. Vijf ventures gebouwd vanuit echte frustratie, behoefte of marktkans. PostPilot is live. Pactly, Plug and Power, EmmaBoekt en OAK Marketing zijn in actieve ontwikkeling.
             </p>
 
             {/* Quick-jump — anchors to section IDs */}

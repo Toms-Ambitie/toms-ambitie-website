@@ -31,7 +31,7 @@ const VENTURES = [
     tag: 'Marketing bureau',
     tagline: 'Marketing voor groei-MKB.',
     desc: 'Hybride bureau dat AI inzet waar het kan, en mensen waar het moet.',
-    status: 'Live',
+    status: 'Binnenkort',
     year: '2023',
     url: 'oakmarketing.nl',
     accent: '#1B3A8A',

@@ -168,12 +168,12 @@ export const ventureDetails: VentureDetail[] = [
     origin: {
       title: "Het originele probleem",
       story:
-        "Iedereen weet dat zichtbaarheid belangrijk is. Zeker op LinkedIn. Maar tussen meetings, klanten, projecten en dagelijkse operatie verdwijnt content bijna altijd naar de achtergrond.\n\nNiet omdat ondernemers niets te vertellen hebben. Juist wel. Maar consistente content vraagt tijd, discipline en ritme. Precies de dingen die onder druk komen te staan zodra het druk wordt.\n\nVeel mensen posten daarom in pieken. Eén week actief. Daarna weken stil. Niet omdat de motivatie ontbreekt, maar omdat content simpelweg geen prioriteit krijgt binnen de dagelijkse praktijk van ondernemen.\n\nPost Pilot ontstond vanuit die frustratie.\n\nHet idee was simpel: wat als AI niet alleen helpt met schrijven, maar het volledige proces van contentplanning en publicatie ondersteunt? Niet nóg een schrijftool. Maar een systeem dat ondernemers helpt zichtbaar te blijven zonder dat het energie blijft kosten.",
+        "Iedereen weet dat zichtbaarheid belangrijk is. Zeker op LinkedIn. Maar tussen meetings, klanten, projecten en dagelijkse operatie verdwijnt content bijna altijd naar de achtergrond.\n\nNiet omdat ondernemers niets te vertellen hebben. Juist wel. Maar consistente content vraagt tijd, discipline en ritme. Precies de dingen die onder druk komen te staan zodra het druk wordt.\n\nVeel mensen posten daarom in pieken. Eén week actief. Daarna weken stil. Niet omdat de motivatie ontbreekt, maar omdat content simpelweg geen prioriteit krijgt binnen de dagelijkse praktijk van ondernemen.\n\nPostPilot ontstond vanuit die frustratie.\n\nHet idee was simpel: wat als AI niet alleen helpt met schrijven, maar het volledige proces van contentplanning en publicatie ondersteunt? Niet nóg een schrijftool. Maar een systeem dat ondernemers helpt zichtbaar te blijven zonder dat het energie blijft kosten.",
     },
     businessModel: {
       title: "Business model",
       description:
-        "Post Pilot is een schaalbaar SaaS-platform met terugkerende abonnementen. Gebruikers betalen voor toegang tot AI-gestuurde contentgeneratie, planning en automatische publicatie via LinkedIn. In de toekomst wordt dit uitgebreid met andere platformen zoals X en Instagram. Door de combinatie van automatisering en content ontstaat een product met hoge schaalbaarheid en lage operationele kosten.",
+        "PostPilot is een schaalbaar SaaS-platform met terugkerende abonnementen. Gebruikers betalen voor toegang tot AI-gestuurde contentgeneratie, planning en automatische publicatie via LinkedIn. In de toekomst wordt dit uitgebreid met andere platformen zoals X en Instagram. Door de combinatie van automatisering en content ontstaat een product met hoge schaalbaarheid en lage operationele kosten.",
       points: [
         "Terugkerende abonnementen met hoge marges",
         "AI-credits voor zwaardere generatie en bulkacties",
@@ -185,14 +185,14 @@ export const ventureDetails: VentureDetail[] = [
     currentStatus: {
       title: "Waar we nu staan",
       description:
-        "Post Pilot is live en wordt actief doorontwikkeld. De basis van het platform staat: AI-content generatie, postplanning, automatische publicatie, LinkedIn-integratie en herbruikbare contentstructuren en formats. De eerste gebruikers gebruiken Post Pilot inmiddels actief om zichtbaarheid op LinkedIn consistenter vol te houden met minimale tijdsinvestering.",
+        "PostPilot is live en wordt actief doorontwikkeld. Versie 2.0 is volledig vernieuwd: sneller, scherper en beter afgestemd op hoe gebruikers echt schrijven. De eerste betalende gebruikers zijn actief op het platform en houden hun LinkedIn-zichtbaarheid consistent vol met minimale tijdsinvestering.",
       milestones: [
-        "Betere personalisatie van schrijfstijl",
-        "Slimmere contentplanning op basis van ritme en doelen",
-        "Multi-platform ondersteuning (X, Instagram, meer)",
-        "Teamfunctionaliteiten voor agencies en bedrijven",
-        "Analytics en performance-inzichten",
-        "Automatisering van complete contentseries",
+        "Live platform (v2.0)",
+        "AI-contentgeneratie in eigen schrijfstijl",
+        "LinkedIn-integratie en automatische publicatie",
+        "Postplanning en contentkalender",
+        "Herbruikbare contentformats en structuren",
+        "Eerste betalende gebruikers actief",
       ],
       extra:
         "De ambitie is helder: een content operating system bouwen voor ondernemers die zichtbaar willen blijven zonder afhankelijk te zijn van discipline of losse marketingmomenten.",
@@ -221,13 +221,14 @@ export const ventureDetails: VentureDetail[] = [
     category: "Marketing · Strategie · AI",
     tags: ["MARKETING", "AI", "DATA", "STRATEGIE", "NEUROMARKETING"],
     email: "hallo@toms-ambitie.nl",
-    status: "LIVE",
+    status: "BINNENKORT",
+    statusColor: "hsl(var(--orange))",
     identity: {
       accent: "#1B3A8A",
       accentInk: "#FFFFFF",
       vibe: "OPERATOR · STRATEGISCHE SLAGKRACHT",
-      proof: ["Actief sinds 2018", "Meerdere lopende trajecten", "Selectief klantenbestand"],
-      proofTagline: "Operator · meerdere bedrijven actief begeleid",
+      proof: ["Positionering en merkidentiteit uitgewerkt", "Eerste trajecten in voorbereiding", "Lanceert binnenkort"],
+      proofTagline: "Binnenkort live · positionering staat",
     },
     cta: { label: "Start gesprek", href: "mailto:hallo@toms-ambitie.nl" },
     secondaryCta: { label: "Bekijk andere ventures", href: "/ventures" },

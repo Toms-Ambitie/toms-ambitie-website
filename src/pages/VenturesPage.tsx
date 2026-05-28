@@ -74,7 +74,7 @@ const VENTURES: Venture[] = [
       { Icon: PiggyBank, value: 'besparen', label: 'zonder gedoe' },
       { Icon: Bell, value: 'controle', label: 'jij beslist' },
     ],
-    image: '/photos/pactly_venture_visual.webp',
+    image: '/photos/pactly-app-dashboard.webp',
   },
   {
     name: 'OAK Marketing',

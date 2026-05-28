@@ -1,6 +1,6 @@
 import postPilotLogo from "@/assets/postpilot-mark-primary.svg";
 import oakMarketingLogo from "@/assets/venture-logo-oak-marketing.webp";
-import pactlyLogo from "@/assets/pactly-beeldmerk.svg";
+import pactlyLogo from "@/assets/pactly-beeldmerk-v2.svg";
 import plugAndPowerLogo from "@/assets/venture-logo-plug-and-power.webp";
 import emmaBoektLogo from "@/assets/emma-boekt-logo.webp";
 
@@ -283,20 +283,20 @@ export const ventureDetails: VentureDetail[] = [
     slug: "pactly",
     name: "PACTLY",
     tagline:
-      "Iedereen heeft vaste lasten. Bijna niemand heeft er echt grip op. Pactly bouwt aan de regielaag voor alles wat maandelijks loopt.",
+      "Jouw contracten. Altijd in orde.",
     intro:
-      "Eén plek voor contracten, abonnementen, energie, telecom en verzekeringen. Pactly laat zien wie wat betaalt, waar geld weglekt en wanneer actie nodig is. En regelt nooit iets zonder akkoord.",
+      "Stop geld weggooien aan vergeten contracten. Pactly beheert al je contracten op één plek: energie, telecom, verzekeringen, abonnementen. Met slimme herinneringen, inzichten en bespaartips. En regelt nooit iets zonder akkoord.",
     logo: pactlyLogo,
-    category: "LegalTech · Fintech",
+    category: "Consumer Fintech · Contractbeheer",
     tags: ["APP", "FINTECH", "CONTRACTEN", "CONSUMER SAAS"],
     status: "IN ONTWIKKELING",
     statusColor: "hsl(var(--orange))",
     identity: {
-      accent: "#CC007E",
+      accent: "#4B519E",
       accentInk: "#FFFFFF",
-      vibe: "FINTECH · CONTROLE · OVERZICHT",
-      proof: ["Concept & merkstrategie afgerond", "Productrichting bepaald", "MVP in voorbereiding"],
-      proofTagline: "In ontwikkeling · merk en propositie staan",
+      vibe: "CONTRACTEN · OVERZICHT · CONTROLE",
+      proof: ["Merkstrategie en brandbook v3.0 afgerond", "Productrichting en flows bepaald", "MVP in voorbereiding"],
+      proofTagline: "In ontwikkeling · huisstijl en propositie volledig vernieuwd",
     },
     cta: { label: "Bouw mee aan Pactly", href: "/meebouwen" },
     secondaryCta: { label: "Investeer in Pactly", href: "/meebouwen" },

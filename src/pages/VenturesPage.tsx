@@ -66,9 +66,9 @@ const VENTURES: Venture[] = [
     status: 'In ontwikkeling',
     year: '2024',
     url: 'pactly.nl',
-    accent: '#CC007E',
+    accent: '#4B519E',
     accentInk: '#FFFFFF',
-    bg: '#1A0010',
+    bg: '#181A2B',
     metrics: [
       { Icon: FolderOpen, value: 'overzicht', label: 'vaste lasten' },
       { Icon: PiggyBank, value: 'besparen', label: 'zonder gedoe' },

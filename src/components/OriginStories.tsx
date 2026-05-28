@@ -6,7 +6,7 @@ const cards = [
     venture: "PACTLY",
     quote: "IK WILDE WETEN WAAR MIJN GELD STILLETJES WEGLEKTE.",
     desc: "Een bankapp laat zien wat er is afgeschreven. Een spreadsheet moet je zelf bijhouden. Een vergelijker helpt pas als je zelf gaat zoeken. Pactly brengt contracten, abonnementen en vaste lasten samen en laat op tijd zien waar je kunt besparen.",
-    accent: "#CC007E",
+    accent: "#4B519E",
     link: { label: "Bekijk Pactly →", href: "/ventures/pactly" },
   },
   {

@@ -1,0 +1,10 @@
+<svg viewBox="0 0 40 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pactly-hex-grad" x1="0" y1="0" x2="40" y2="46" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#9098C8"/>
+      <stop offset="100%" stop-color="#4B519E"/>
+    </linearGradient>
+  </defs>
+  <polygon points="20,2 37.3,11.5 37.3,34.5 20,44 2.7,34.5 2.7,11.5" fill="url(#pactly-hex-grad)"/>
+  <path d="M 14 35 V 11 Q 27 11 27 18.5 Q 27 26 14 26" stroke="white" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

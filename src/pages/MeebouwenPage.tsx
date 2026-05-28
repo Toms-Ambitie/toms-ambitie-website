@@ -75,10 +75,10 @@ const MeebouwenPage = () => {
             },
             {
               '@type': 'Question',
-              'name': 'Wat is een venture studio?',
+              'name': 'Wat is een venture club?',
               'acceptedAnswer': {
                 '@type': 'Answer',
-                'text': 'Een venture studio bouwt eigen bedrijven vanuit een vaste kern — in plaats van te werken voor klanten. Toms Ambitie valideert problemen intern, bouwt een MVP en maakt er een zelfstandige onderneming van als het werkt. Sneller dan een traditionele startup, met minder risico omdat we alles zelf testen.',
+                'text': 'Een venture club bouwt eigen bedrijven vanuit een vaste kern — in plaats van te werken voor klanten. Toms Ambitie valideert problemen intern, bouwt een MVP en maakt er een zelfstandige onderneming van als het werkt. Sneller dan een traditionele startup, met minder risico omdat we alles zelf testen.',
               },
             },
             {

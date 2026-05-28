@@ -51,8 +51,8 @@ const HoeWeBouwenPage = () => {
 
   useEffect(() => {
     applySEO({
-      title: 'Hoe We Bouwen — Venture Studio Werkwijze | Toms Ambitie',
-      description: 'Van frustratie naar werkend bedrijf in zes weken. Zo werkt onze venture studio: probleem valideren, intern bouwen, testen en schalen. Werkt het? Dan wordt het een zelfstandige venture.',
+      title: 'Hoe We Bouwen — Venture Club Werkwijze | Toms Ambitie',
+      description: 'Van frustratie naar werkend bedrijf in zes weken. Zo werkt onze venture club: probleem valideren, intern bouwen, testen en schalen. Werkt het? Dan wordt het een zelfstandige venture.',
       canonical: 'https://www.toms-ambitie.nl/werkwijze',
       jsonLd: {
         '@context': 'https://schema.org',

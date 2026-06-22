@@ -1,7 +1,7 @@
 import { Counter } from './Counter';
 
 const STATS = [
-  { n: 5, suf: '', l: 'Actieve ventures', m: 'Eigen ventures' },
+  { n: 3, suf: '', l: 'Actieve ventures', m: 'Eigen ventures' },
   { n: 17, suf: 'j', l: 'Bouwervaring', m: 'Sinds 2008' },
   { n: 6, suf: 'wk', l: 'Idee naar venture', m: 'Maximale tijd' },
   { n: 0, suf: '', l: 'Klantopdrachten', m: 'Alleen eigen ventures' },

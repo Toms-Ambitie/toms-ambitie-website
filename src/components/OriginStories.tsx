@@ -3,13 +3,6 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 
 const cards = [
   {
-    venture: "PACTLY",
-    quote: "IK WILDE WETEN WAAR MIJN GELD STILLETJES WEGLEKTE.",
-    desc: "Een bankapp laat zien wat er is afgeschreven. Een spreadsheet moet je zelf bijhouden. Een vergelijker helpt pas als je zelf gaat zoeken. Pactly brengt contracten, abonnementen en vaste lasten samen en laat op tijd zien waar je kunt besparen.",
-    accent: "#4B519E",
-    link: { label: "Bekijk Pactly →", href: "/ventures/pactly" },
-  },
-  {
     venture: "EMMABOEKT",
     quote: "IK STEL MIJN ADMINISTRATIE NIET UIT OMDAT IK LUI BEN.",
     desc: "Veel ondernemers gebruiken prima boekhoudsoftware. Maar de ervaring voelt vaak zwaarder dan nodig. Menu's. Schermen. Jargon. Workflow na workflow. Daardoor kost administratie niet alleen tijd, maar vooral mentale energie. EmmaBoekt legt een slimme assistent bovenop bestaande boekhoudsoftware. Geen nieuwe systemen om te leren, maar gewoon vertellen wat je wilt regelen. Minder weerstand. Meer rust.",
@@ -22,13 +15,6 @@ const cards = [
     desc: "Ik weet dat zichtbaarheid belangrijk is. Maar meerdere keren per week iets posten lukt gewoon niet consequent. Tussen werk, meetings en dagelijkse drukte verdwijnt LinkedIn telkens naar de achtergrond. Ideeën zijn er genoeg. Tijd, ritme en discipline niet. PostPilot helpt om zichtbaar te blijven zonder dat content een dagtaak wordt. Jij bepaalt de richting. AI helpt met de uitvoering.",
     accent: "#E8A640",
     link: { label: "Bekijk PostPilot →", href: "/ventures/post-pilot" },
-  },
-  {
-    venture: "OAK MARKETING",
-    quote: "ONZE MARKETING VOELT ALS LOSSE ACTIES ZONDER RICHTING.",
-    desc: "De website is verouderd. Campagnes draaien wel, maar zonder duidelijke strategie. Marketing voelt meer als losse acties dan als een groeimachine. Het team werkt hard, maar mist structuur, richting en data om betere keuzes te maken. OAK Marketing helpt bedrijven om marketing weer logisch, schaalbaar en meetbaar te maken, van strategie tot uitvoering.",
-    accent: "#1B3A8A",
-    link: { label: "Bekijk OAK Marketing →", href: "/ventures/oak-marketing" },
   },
   {
     venture: "PLUG AND POWER",

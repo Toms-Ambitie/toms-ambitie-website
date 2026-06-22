@@ -118,7 +118,7 @@ const PrivacyPage = () => {
 
             <LegalSection num={1} title="Wie wij zijn">
               <P>Toms Ambitie is een Nederlandse onderneming uit Zwolle die eigen ventures, platformen, software, AI toepassingen, e-commerce concepten en digitale producten ontwikkelt.</P>
-              <P>Onder Toms Ambitie kunnen handelsnamen en ventures vallen zoals Pactly, Plug and Power, EmmaBoekt, PostPilot, OAK Marketing en toekomstige platformen. Zolang een venture geen eigen rechtspersoon of KvK inschrijving heeft, valt deze juridisch onder Toms Ambitie.</P>
+              <P>Onder Toms Ambitie kunnen handelsnamen en ventures vallen zoals Plug and Power, EmmaBoekt, PostPilot, OAK Marketing en toekomstige platformen. Zolang een venture geen eigen rechtspersoon of KvK inschrijving heeft, valt deze juridisch onder Toms Ambitie.</P>
               <div style={{ marginTop: 24, padding: '20px 24px', background: 'var(--papier)', borderLeft: '3px solid var(--volt)' }}>
                 <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--inkt-80)', margin: 0 }}>
                   <strong style={{ color: 'var(--inkt)', fontWeight: 600 }}>Toms Ambitie</strong><br />

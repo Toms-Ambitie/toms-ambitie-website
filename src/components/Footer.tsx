@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 
 const VENTURES = [
   { name: 'PostPilot', slug: 'post-pilot', tag: 'Marketing AI', url: 'postpilotapp.nl', accent: '#E8A640' },
-  { name: 'Pactly', slug: 'pactly', tag: 'Legal SaaS', url: 'pactly.nl', accent: '#4B519E' },
-  { name: 'OAK Marketing', slug: 'oak-marketing', tag: 'Marketing bureau', url: 'oakmarketing.nl', accent: '#1B3A8A' },
   { name: 'Plug and Power', slug: 'plug-and-power', tag: 'Energy Tech', url: 'plugandpower.nl', accent: '#FFAA00' },
   { name: 'EmmaBoekt', slug: 'emmaboekt', tag: 'AI assistent', url: 'emmaboekt.nl', accent: '#9333EA' },
 ];
@@ -108,7 +106,7 @@ export const Footer = () => {
             className="footer-ventures"
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(5, 1fr)',
+              gridTemplateColumns: 'repeat(3, 1fr)',
               gap: 0,
               borderTop: '1px solid rgba(244,241,232,0.08)',
             }}

@@ -6,7 +6,7 @@ import { useReveal } from '@/hooks/useReveal';
 import { applySEO } from '@/lib/seo';
 import {
   Zap, Users, Globe, Sparkles, Eye, Linkedin,
-  FolderOpen, PiggyBank, Bell, Flag, TrendingUp,
+  Flag,
 } from 'lucide-react';
 
 /* ═══════════════════════════════════════════════════════════════
@@ -55,46 +55,6 @@ const VENTURES: Venture[] = [
       { Icon: Eye, value: 'Consistent', label: 'zichtbaar' },
     ],
     image: '/photos/postpilot-app-vandaag.webp',
-  },
-  {
-    name: 'Pactly',
-    slug: 'pactly',
-    tag: 'Consumer fintech',
-    statusLabel: 'IN ONTWIKKELING',
-    tagline: 'Grip op contracten en abonnementen.',
-    long: 'Pactly brengt al je contracten en abonnementen samen op één plek. Met slimme inzichten, tijdige herinneringen en bespaartips houd jij controle over je vaste lasten.',
-    status: 'In ontwikkeling',
-    year: '2024',
-    url: 'pactly.nl',
-    accent: '#4B519E',
-    accentInk: '#FFFFFF',
-    bg: '#181A2B',
-    metrics: [
-      { Icon: FolderOpen, value: 'overzicht', label: 'vaste lasten' },
-      { Icon: PiggyBank, value: 'besparen', label: 'zonder gedoe' },
-      { Icon: Bell, value: 'controle', label: 'jij beslist' },
-    ],
-    image: '/photos/pactly-app-dashboard.webp',
-  },
-  {
-    name: 'OAK Marketing',
-    slug: 'oak-marketing',
-    tag: 'Marketing bureau',
-    statusLabel: 'BINNENKORT',
-    tagline: 'Strategie. Branding. Groei.',
-    long: 'OAK Marketing is geen bureau, maar een operator in jouw bedrijf. We verbinden strategie, data en creatie om merken te laten groeien. Tijdelijk. Doelgericht. Meetbaar.',
-    status: 'Binnenkort',
-    year: '2023',
-    url: 'oakmarketing.nl',
-    accent: '#1B3A8A',
-    accentInk: '#FFFFFF',
-    bg: '#0A1228',
-    metrics: [
-      { Icon: Users, value: 'operator', label: 'tijdelijk in je bedrijf' },
-      { Icon: Sparkles, value: 'AI first', label: 'sneller bouwen' },
-      { Icon: TrendingUp, value: 'MKB', label: 'groei en structuur' },
-    ],
-    image: '/photos/oak_marketing_venture_visual.webp',
   },
   {
     name: 'Plug and Power',
@@ -172,7 +132,7 @@ const VentureSection = ({ v, index }: { v: Venture; index: number }) => {
         <div className="venture-header-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <span style={{ width: 8, height: 8, background: v.accent, flexShrink: 0 }} />
-            <span className="meta" style={{ color: faint }}>VENTURE 0{index + 1} / 05 · {v.tag}</span>
+            <span className="meta" style={{ color: faint }}>VENTURE 0{index + 1} / 03 · {v.tag}</span>
           </div>
           <Link
             to={`/ventures/${v.slug}`}
@@ -412,15 +372,15 @@ const VenturesPage = () => {
 
   useEffect(() => {
     applySEO({
-      title: 'Ventures — PostPilot, Pactly, OAK Marketing en meer | Toms Ambitie',
-      description: 'Vijf eigen ventures gebouwd vanuit echte problemen. PostPilot is live (SaaS). Pactly, Plug and Power, EmmaBoekt en OAK Marketing zijn in ontwikkeling. Interesse in investeren of meebouwen?',
+      title: 'Ventures — PostPilot, Plug and Power, EmmaBoekt | Toms Ambitie',
+      description: 'Drie eigen ventures gebouwd vanuit echte problemen. PostPilot is live (SaaS). Plug and Power en EmmaBoekt zijn in ontwikkeling. Interesse in investeren of meebouwen?',
       canonical: 'https://www.toms-ambitie.nl/ventures',
       jsonLd: {
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
         'name': 'Ventures van Toms Ambitie',
         'url': 'https://www.toms-ambitie.nl/ventures',
-        'description': 'Vijf eigen ventures gebouwd vanuit echte problemen — open voor investeerders, co-founders en specialisten.',
+        'description': 'Drie eigen ventures gebouwd vanuit echte problemen — open voor investeerders, co-founders en specialisten.',
         'isPartOf': { '@id': 'https://www.toms-ambitie.nl/#website' },
         'author': { '@id': 'https://www.toms-ambitie.nl/#tom-mulder' },
       },
@@ -446,7 +406,7 @@ const VenturesPage = () => {
               <span>Waar we nu<br />aan bouwen.</span>
             </h1>
             <p className="lead reveal" style={{ marginTop: 48, fontSize: 22, maxWidth: 640 }}>
-              Geen losse ideeën. Vijf ventures gebouwd vanuit echte frustratie, behoefte of marktkans. PostPilot is live. Pactly, Plug and Power, EmmaBoekt en OAK Marketing zijn in actieve ontwikkeling.
+              Geen losse ideeën. Drie ventures gebouwd vanuit echte frustratie, behoefte of marktkans. PostPilot is live. Plug and Power en EmmaBoekt zijn in actieve ontwikkeling.
             </p>
 
             {/* Quick-jump — anchors to section IDs */}
@@ -455,7 +415,7 @@ const VenturesPage = () => {
               style={{
                 marginTop: 80,
                 display: 'grid',
-                gridTemplateColumns: 'repeat(5, 1fr)',
+                gridTemplateColumns: 'repeat(3, 1fr)',
                 gap: 12,
               }}
             >

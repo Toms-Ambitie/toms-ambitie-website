@@ -3,10 +3,8 @@ import { useLocation } from "react-router-dom";
 import { gtmEvent } from "@/lib/gtm";
 
 const TRACKED_DOMAINS = [
-  "oakmarketing.nl",
   "postpilotapp.nl",
   "plugandpower.nl",
-  "pactly.nl",
 ];
 
 /**

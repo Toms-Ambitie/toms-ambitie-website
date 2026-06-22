@@ -14,11 +14,10 @@ import { useReveal } from '@/hooks/useReveal';
 import { applySEO } from '@/lib/seo';
 
 const TICKER_ITEMS = [
-  '4 actieve ventures',
+  '3 actieve ventures',
   'PostPilot · marketing AI',
-  'Pactly · legal SaaS',
-  'OAK Marketing · groei-MKB',
   'Plug and Power · energy tech',
+  'EmmaBoekt · AI assistent',
   'AI-first sinds 2023',
   'Zwolle, NL',
 ];
@@ -31,7 +30,7 @@ const Index = () => {
     applySEO({
       title: 'Toms Ambitie — Venture Club Zwolle | Eigen bedrijven bouwen',
       description:
-        'Venture studio in Zwolle die eigen bedrijven bouwt vanuit echte problemen. Tom Mulder zoekt co-founders, investeerders en specialisten. PostPilot, Pactly, OAK Marketing, Plug and Power, EmmaBoekt.',
+        'Venture club in Zwolle die eigen bedrijven bouwt vanuit echte problemen. Tom Mulder zoekt co-founders, investeerders en specialisten. PostPilot, Plug and Power, EmmaBoekt.',
       canonical: 'https://www.toms-ambitie.nl/',
       jsonLd: {
         '@context': 'https://schema.org',

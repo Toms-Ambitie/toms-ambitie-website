@@ -1,4 +1,8 @@
 {
+  "redirects": [
+    { "source": "/ventures/pactly", "destination": "/ventures", "permanent": true },
+    { "source": "/ventures/oak-marketing", "destination": "/ventures", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ],

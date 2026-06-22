@@ -14,30 +14,6 @@ const VENTURES = [
     dark: '#0E1014',
   },
   {
-    name: 'Pactly',
-    slug: 'pactly',
-    tag: 'Consumer fintech',
-    tagline: 'Jouw contracten. Altijd in orde.',
-    desc: 'Stop geld weggooien aan vergeten contracten. Al je contracten op één plek, met slimme herinneringen en bespaartips.',
-    status: 'In ontwikkeling',
-    year: '2024',
-    url: 'pactly.nl',
-    accent: '#4B519E',
-    dark: '#181A2B',
-  },
-  {
-    name: 'OAK Marketing',
-    slug: 'oak-marketing',
-    tag: 'Marketing bureau',
-    tagline: 'Marketing voor groei-MKB.',
-    desc: 'Hybride bureau dat AI inzet waar het kan, en mensen waar het moet.',
-    status: 'Binnenkort',
-    year: '2023',
-    url: 'oakmarketing.nl',
-    accent: '#1B3A8A',
-    dark: '#0A1228',
-  },
-  {
     name: 'Plug and Power',
     slug: 'plug-and-power',
     tag: 'Energy Tech',
@@ -99,7 +75,7 @@ export const VenturesGrid = () => {
             <span className="eyebrow"><span style={{ marginRight: 8 }}>01</span>De Ventures</span>
           </div>
           <h2 className="h2 reveal" style={{ marginTop: 24, maxWidth: 1100, marginInline: 'auto' }}>
-            Vijf eigen ventures.<br />
+            Drie eigen ventures.<br />
             <span style={{ color: 'var(--inkt-40)' }}>Allemaal vanuit echte frustratie ontstaan.</span>
           </h2>
         </div>
@@ -169,7 +145,7 @@ export const VenturesGrid = () => {
         {/* 3-up grid */}
         <div
           className="ventures-grid-3"
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}
         >
           {secondary.map((v) => (
             <Link

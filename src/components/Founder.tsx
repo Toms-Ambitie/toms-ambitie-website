@@ -19,8 +19,8 @@ const timeline = [
   },
   {
     year: "Nu",
-    title: "Vijf ventures · AI als motor",
-    desc: "PostPilot live. Pactly, Plug and Power, EmmaBoekt en OAK Marketing in opbouw. Het volgende idee zit al in de pijp.",
+    title: "Drie ventures · AI als motor",
+    desc: "PostPilot live. Plug and Power en EmmaBoekt in opbouw. Het volgende idee zit al in de pijp.",
     active: true,
   },
 ];

@@ -3,7 +3,5 @@
 export const ventureSlugs = [
   "emmaboekt",
   "post-pilot",
-  "oak-marketing",
-  "pactly",
   "plug-and-power",
 ] as const;

@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { useReveal } from '@/hooks/useReveal';
@@ -33,7 +32,7 @@ const MeebouwenPage = () => {
   useEffect(() => {
     applySEO({
       title: 'Meebouwen — Co-founder, Investeerder of Specialist worden | Toms Ambitie',
-      description: 'Wil je co-founder worden, investeren of als specialist meebouwen aan PostPilot, Pactly, Plug and Power of EmmaBoekt? Neem contact op met Tom Mulder van Toms Ambitie in Zwolle.',
+      description: 'Wil je co-founder worden, investeren of als specialist meebouwen aan PostPilot, Plug and Power of EmmaBoekt? Neem contact op met Tom Mulder van Toms Ambitie in Zwolle.',
       canonical: 'https://www.toms-ambitie.nl/meebouwen',
       jsonLd: [
         {
@@ -62,7 +61,7 @@ const MeebouwenPage = () => {
               'name': 'Zoekt Toms Ambitie co-founders?',
               'acceptedAnswer': {
                 '@type': 'Answer',
-                'text': 'Ja. Voor Pactly, Plug and Power en EmmaBoekt zoeken we actief co-founders met kennis van product, techniek, finance, growth, UX of domeinspecifieke expertise. PostPilot zoekt ook specialisten voor de volgende groeifase.',
+                'text': 'Ja. Voor Plug and Power en EmmaBoekt zoeken we actief co-founders met kennis van product, techniek, finance, growth, UX of domeinspecifieke expertise. PostPilot zoekt ook specialisten voor de volgende groeifase.',
               },
             },
             {
@@ -86,7 +85,7 @@ const MeebouwenPage = () => {
               'name': 'Welke ventures zijn beschikbaar om aan mee te bouwen?',
               'acceptedAnswer': {
                 '@type': 'Answer',
-                'text': 'Toms Ambitie heeft vijf ventures: PostPilot (live SaaS voor LinkedIn-contentautomatisering), Pactly (consumer fintech voor vaste lasten), OAK Marketing (marketingbureau, binnenkort live), Plug and Power (e-commerce platform voor energie) en EmmaBoekt (AI-assistent voor administratie). Alle ventures staan open voor de juiste mensen.',
+                'text': 'Toms Ambitie heeft drie ventures: PostPilot (live SaaS voor LinkedIn-contentautomatisering), Plug and Power (platform voor slimme energie-oplossingen) en EmmaBoekt (AI-assistent voor administratie). Alle ventures staan open voor de juiste mensen.',
               },
             },
             {
@@ -228,13 +227,6 @@ const MeebouwenPage = () => {
                     <li key={t} style={{ color: 'rgba(244,241,232,0.5)', textDecoration: 'line-through', textDecorationColor: 'var(--oranje)' }}>{t}</li>
                   ))}
                 </ul>
-                <p className="body-sm" style={{ marginTop: 24, color: 'rgba(244,241,232,0.7)' }}>
-                  Voor klantwerk: bekijk{' '}
-                  <Link to="/ventures#oak-marketing" style={{ color: 'var(--volt)', borderBottom: '1px solid var(--volt)' }}>
-                    OAK Marketing
-                  </Link>
-                  . Dat is waar we voor klanten werken.
-                </p>
               </div>
             </aside>
           </div>

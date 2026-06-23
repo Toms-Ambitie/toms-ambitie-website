@@ -1,8 +1,6 @@
 const klassiek = [
   'Business plan eerst, bouwen daarna',
-  'Externe ideeën van klanten / pitches',
-  'Teams van 8–15 mensen',
-  'Externe kapitaal vereist',
+  'Externe ideeën van klanten',
   'Pas live na 6–12 maanden',
   'Marketing als afterthought',
 ];
@@ -10,8 +8,6 @@ const klassiek = [
 const tomsAmbitie = [
   'Werkende oplossing eerst, business case daarna',
   'Eigen problemen, eigen ervaring',
-  'Vaste kern + top specialisten waar nodig',
-  'Geen extern kapitaal. Eigen middelen.',
   'Live binnen 6 weken',
   'Marketing als DNA',
 ];

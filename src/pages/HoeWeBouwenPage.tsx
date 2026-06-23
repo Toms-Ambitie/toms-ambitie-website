@@ -108,11 +108,12 @@ const HoeWeBouwenPage = () => {
 
         {/* ═══ 7 STAPPEN ═══════════════════════════════════════════ */}
         {STAPPEN.map((s, i) => {
-          const isDark = i % 2 === 1;
+          const isDark = i === STAPPEN.length - 1;
+          const surfaceClass = isDark ? 'surface-inkt' : i % 2 === 0 ? 'surface-wit' : 'surface-papier';
           return (
             <section
               key={s.n}
-              className={isDark ? 'surface-inkt' : 'surface-papier'}
+              className={surfaceClass}
               style={{ padding: '160px 0' }}
             >
               <div className="container-wide">

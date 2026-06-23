@@ -1,4 +1,7 @@
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 const STAPPEN = [
   { n: '01', title: 'Probleem identificeren' },
@@ -30,15 +33,16 @@ export const WerkwijzeTeaser = () => (
   <section className="surface-wit" style={{ padding: '160px 0' }}>
     <div className="container-wide">
 
-      <div
+      <motion.div
         className="werkwijze-two-col"
+        initial={{ opacity: 0, y: 28 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ duration: 0.7, ease }}
         style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 96, alignItems: 'flex-start', marginBottom: 80 }}
       >
         <div>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-            <span className="volt-dot" />
-            <span className="eyebrow"><span style={{ marginRight: 8 }}>03</span>De Werkwijze</span>
-          </div>
+          <span className="eyebrow"><span style={{ marginRight: 8, color: 'var(--inkt-40)' }}>03</span>De Werkwijze</span>
           <h2 className="h2" style={{ marginTop: 24 }}>
             Van probleem naar platform.<br />
             <span style={{ color: 'rgba(14,14,12,0.65)' }}>In weken. Niet in jaren.</span>
@@ -52,16 +56,19 @@ export const WerkwijzeTeaser = () => (
             Volledige werkwijze →
           </Link>
         </div>
-      </div>
+      </motion.div>
 
       <div
         className="werkwijze-phases"
         style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}
       >
         {PHASES.map((phase, i) => (
-          <div
+          <motion.div
             key={i}
-            className="reveal"
+            initial={{ opacity: 0, y: 36 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.65, delay: i * 0.1, ease }}
             style={{ background: 'var(--papier)', padding: 32, minHeight: 320, display: 'flex', flexDirection: 'column' }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
@@ -79,7 +86,7 @@ export const WerkwijzeTeaser = () => (
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         ))}
       </div>
 

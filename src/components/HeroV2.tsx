@@ -21,13 +21,6 @@ export const HeroV2 = () => (
       alignItems: 'center',
     }}
   >
-    {/* ── Mesh gradient ── */}
-    <div aria-hidden="true" style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none' }}>
-      <div className="hero-v2-blob hero-v2-blob-1" />
-      <div className="hero-v2-blob hero-v2-blob-2" />
-      <div className="hero-v2-blob hero-v2-blob-3" />
-    </div>
-
     {/* ── Content ── */}
     <div
       className="container-wide hero-v2-grid"

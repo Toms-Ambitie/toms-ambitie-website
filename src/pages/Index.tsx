@@ -4,7 +4,6 @@ import { HeroV2 } from '@/components/HeroV2';
 import { Ticker } from '@/components/Ticker';
 import { StatsBar } from '@/components/StatsBar';
 import { VenturesGrid } from '@/components/VenturesGrid';
-import { VsTraditional } from '@/components/VsTraditional';
 import { WerkwijzeTeaser } from '@/components/WerkwijzeTeaser';
 import { TeamTeaser } from '@/components/Team';
 import { MeedoenCTA } from '@/components/MeedoenCTA';
@@ -60,9 +59,6 @@ const Index = () => {
 
         {/* ═══ VENTURES ═══════════════════════════════════════════ */}
         <VenturesGrid />
-
-        {/* ═══ COMPARISON ═════════════════════════════════════════ */}
-        <VsTraditional />
 
         {/* ═══ HOW WE BUILD ═══════════════════════════════════════ */}
         <WerkwijzeTeaser />

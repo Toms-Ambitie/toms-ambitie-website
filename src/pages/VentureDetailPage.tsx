@@ -37,7 +37,7 @@ const CtaButton = ({
   const styleByVariant: React.CSSProperties =
     variant === "primary"
       ? { background: "#C8F000", color: "#0E0E0C", padding: "12px 24px", textDecoration: "none", fontWeight: 700 }
-      : { border: "1.5px solid rgba(255,255,255,0.4)", color: "#F4F1E8", padding: "12px 24px", textDecoration: "none", fontWeight: 700 };
+      : { border: "1.5px solid var(--inkt-20)", color: "var(--inkt-80)", padding: "12px 24px", textDecoration: "none", fontWeight: 700 };
 
   const content = (
     <>
@@ -162,9 +162,9 @@ const VentureDetailPage = () => {
       <Navbar />
 
       {/* HERO */}
-      <section className="page-hero pb-16 sm:pb-20" style={{ background: "#0E0E0C", borderTop: `5px solid ${accent}`, paddingTop: "calc(80px + 64px)" }}>
+      <section className="page-hero pb-16 sm:pb-20" style={{ background: "var(--wit-warm)", borderTop: `5px solid ${accent}`, paddingTop: "calc(80px + 64px)" }}>
         <div className="max-w-[1200px] mx-auto px-5 sm:px-10">
-          <Link to="/ventures" className="font-mono inline-flex items-center gap-2 mb-8 typo-sm typo-caption-dark min-h-[44px]" style={{ textDecoration: "none" }}>
+          <Link to="/ventures" className="font-mono inline-flex items-center gap-2 mb-8 typo-sm min-h-[44px]" style={{ textDecoration: "none", color: "var(--inkt-60)" }}>
             <ArrowLeft className="w-3.5 h-3.5" />
             Alle ventures
           </Link>
@@ -180,25 +180,25 @@ const VentureDetailPage = () => {
                       style={{ background: status.color }}
                     />
                     <span className="font-mono uppercase typo-label" style={{ color: status.color }}>{status.label}</span>
-                    <span className="font-mono uppercase typo-label" style={{ color: "rgba(255,255,255,0.35)" }}>·</span>
+                    <span className="font-mono uppercase typo-label" style={{ color: "var(--inkt-20)" }}>·</span>
                     <span className="font-mono uppercase typo-label" style={{ color: accent }}>{venture.identity.vibe}</span>
                   </div>
-                  <p className="font-mono uppercase typo-xs typo-caption-dark mt-1">{venture.category}</p>
+                  <p className="font-mono uppercase typo-xs mt-1" style={{ color: "var(--inkt-40)" }}>{venture.category}</p>
                 </div>
               </div>
 
-              <h1 className="font-display typo-heading-dark mb-4" style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", lineHeight: "var(--leading-tight)" }}>
+              <h1 className="font-display mb-4" style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", lineHeight: "var(--leading-tight)", color: "var(--inkt)" }}>
                 {venture.name}
               </h1>
 
               <div style={{ borderLeft: `3px solid ${accent}`, paddingLeft: "1rem" }}>
-                <p className="font-sans typo-body-dark" style={{ fontSize: 18, maxWidth: 620, lineHeight: "var(--leading-normal)" }}>
+                <p className="font-sans" style={{ fontSize: 18, maxWidth: 620, lineHeight: "var(--leading-normal)", color: "var(--inkt-80)" }}>
                   {venture.tagline}
                 </p>
               </div>
 
               {venture.intro && (
-                <p className="font-sans typo-body-dark mt-5" style={{ fontSize: 16, maxWidth: 620, lineHeight: "var(--leading-loose)", opacity: 0.85 }}>
+                <p className="font-sans mt-5" style={{ fontSize: 16, maxWidth: 620, lineHeight: "var(--leading-loose)", color: "var(--inkt-60)" }}>
                   {venture.intro}
                 </p>
               )}
@@ -209,7 +209,7 @@ const VentureDetailPage = () => {
                     <span
                       key={t}
                       className="font-mono uppercase typo-label"
-                      style={{ border: "1px solid rgba(255,255,255,0.25)", color: "#F4F1E8", padding: "6px 10px" }}
+                      style={{ border: "1px solid var(--inkt-15)", color: "var(--inkt-60)", padding: "6px 10px" }}
                     >
                       {t}
                     </span>
@@ -227,7 +227,7 @@ const VentureDetailPage = () => {
       </section>
 
       {/* PROOF / TRACTIE STRIP */}
-      <section style={{ background: "#111110", borderTop: `1px solid ${accent}`, borderBottom: `1px solid ${accent}` }}>
+      <section style={{ background: "var(--papier)", borderTop: `1px solid ${accent}33`, borderBottom: `1px solid ${accent}33` }}>
         <div className="max-w-[1200px] mx-auto px-5 sm:px-10 py-5 flex flex-wrap items-center gap-x-8 gap-y-3">
           <span className="font-mono uppercase typo-label" style={{ color: accent, letterSpacing: "0.18em" }}>
             Tractie ·
@@ -235,7 +235,8 @@ const VentureDetailPage = () => {
           {venture.identity.proof.map((p) => (
             <span
               key={p}
-              className="font-mono uppercase typo-xs typo-caption-dark inline-flex items-center gap-2"
+              className="font-mono uppercase typo-xs inline-flex items-center gap-2"
+              style={{ color: "var(--inkt-60)" }}
             >
               <span className="w-[6px] h-[6px]" style={{ background: accent, display: "inline-block" }} />
               {p}

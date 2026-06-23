@@ -4,30 +4,53 @@ import { Footer } from '@/components/Footer';
 import { useReveal } from '@/hooks/useReveal';
 import { applySEO } from '@/lib/seo';
 
-const TOPICS = ['Idee aanleveren', 'Bouw mee', 'Sparren', 'Pers', 'Iets anders'];
-const NOT_FOR = ['Klantopdrachten / uurwerk', 'Detachering', 'Investeringspitches', 'Recruiters'];
+const TOPICS: { label: string; value: string }[] = [
+  { label: 'Idee aanleveren', value: 'idee' },
+  { label: 'Bouw mee', value: 'meebouwen' },
+  { label: 'Investeren', value: 'investeren' },
+  { label: 'Specialist', value: 'specialist' },
+  { label: 'Iets anders', value: 'anders' },
+];
 
-const Field = ({ label, placeholder, type = 'text' }: { label: string; placeholder: string; type?: string }) => (
-  <div>
-    <label className="meta" style={{ display: 'block', marginBottom: 12 }}>{label}</label>
-    <input
-      type={type}
-      placeholder={placeholder}
-      style={{
-        width: '100%', padding: 14, border: '1px solid var(--inkt-20)', background: 'transparent',
-        fontFamily: 'var(--body)', fontSize: 16, outline: 'none',
-      }}
-      onFocus={(e) => (e.target as HTMLInputElement).style.borderColor = 'var(--inkt)'}
-      onBlur={(e) => (e.target as HTMLInputElement).style.borderColor = 'var(--inkt-20)'}
-    />
-  </div>
-);
+const NOT_FOR = ['Klantopdrachten / uurwerk', 'Detachering', 'Investeringspitches', 'Recruiters'];
 
 const MeebouwenPage = () => {
   const rootRef = useRef<HTMLDivElement>(null);
   useReveal(rootRef);
+
   const [submitted, setSubmitted] = useState(false);
-  const [topic, setTopic] = useState('Idee aanleveren');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [interest, setInterest] = useState('idee');
+  const [form, setForm] = useState({ name: '', email: '', linkedin: '', message: '' });
+
+  const set = (field: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setForm((f) => ({ ...f, [field]: e.target.value }));
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, interest }),
+      });
+      const data = await res.json();
+      if (!res.ok || data.error) throw new Error(data.error ?? 'Iets ging mis. Probeer het opnieuw.');
+      setSubmitted(true);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Iets ging mis. Probeer het opnieuw.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const inputStyle: React.CSSProperties = {
+    width: '100%', padding: 14, border: '1px solid var(--inkt-20)', background: 'transparent',
+    fontFamily: 'var(--body)', fontSize: 16, outline: 'none', color: 'var(--inkt)',
+  };
 
   useEffect(() => {
     applySEO({
@@ -69,31 +92,7 @@ const MeebouwenPage = () => {
               'name': 'Kan ik investeren in de ventures van Toms Ambitie?',
               'acceptedAnswer': {
                 '@type': 'Answer',
-                'text': 'Toms Ambitie staat open voor gesprekken met investeerders die strategische waarde toevoegen — kapitaal, kennis, netwerk of een combinatie daarvan. Neem contact op via het formulier op deze pagina.',
-              },
-            },
-            {
-              '@type': 'Question',
-              'name': 'Wat is een venture club?',
-              'acceptedAnswer': {
-                '@type': 'Answer',
-                'text': 'Een venture club bouwt eigen bedrijven vanuit een vaste kern — in plaats van te werken voor klanten. Toms Ambitie valideert problemen intern, bouwt een MVP en maakt er een zelfstandige onderneming van als het werkt. Sneller dan een traditionele startup, met minder risico omdat we alles zelf testen.',
-              },
-            },
-            {
-              '@type': 'Question',
-              'name': 'Welke ventures zijn beschikbaar om aan mee te bouwen?',
-              'acceptedAnswer': {
-                '@type': 'Answer',
-                'text': 'Toms Ambitie heeft drie ventures: PostPilot (live SaaS voor LinkedIn-contentautomatisering), Plug and Power (platform voor slimme energie-oplossingen) en EmmaStudio (AI-productfamilie voor ondernemers). Alle ventures staan open voor de juiste mensen.',
-              },
-            },
-            {
-              '@type': 'Question',
-              'name': 'Wat voor specialisten zoekt Toms Ambitie?',
-              'acceptedAnswer': {
-                '@type': 'Answer',
-                'text': 'Per venture verschilt dat. In het algemeen zijn we geinteresseerd in mensen met expertise op het gebied van product, technologie, growth marketing, finance, legal, UX/design, AI, energiemarkt of consumentenmarketing. Maar ook als jij iets anders toevoegt dat past — stuur een bericht.',
+                'text': 'Toms Ambitie staat open voor gesprekken met investeerders die strategische waarde toevoegen. Neem contact op via het formulier op deze pagina.',
               },
             },
           ],
@@ -110,15 +109,12 @@ const MeebouwenPage = () => {
         {/* ═══ HERO ════════════════════════════════════════════════ */}
         <section className="surface-wit page-hero" style={{ padding: '140px 0 80px' }}>
           <div className="container-wide">
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-              <span className="volt-dot" />
-              <span className="eyebrow"><span style={{ marginRight: 8 }}>05</span>Contact</span>
-            </div>
+            <span className="eyebrow"><span style={{ marginRight: 8, color: 'var(--inkt-40)' }}>05</span>Contact</span>
             <h1 className="clip-reveal display" style={{ fontSize: 'clamp(80px, 11vw, 168px)', lineHeight: 0.84, marginTop: 32, letterSpacing: '-0.02em' }}>
               <span>Doe mee.<br />Op jouw manier.</span>
             </h1>
             <p className="lead reveal" style={{ marginTop: 48, fontSize: 22, maxWidth: 640 }}>
-              Toms Ambitie bouwt ventures vanuit echte problemen, gedrag en schaalbare ideeën. Sommige mensen investeren. Anderen bouwen mee. Soms ontstaat daaruit een compleet nieuwe venture.
+              Toms Ambitie bouwt ventures vanuit echte problemen. Sommige mensen investeren. Anderen bouwen mee. Soms ontstaat daaruit een compleet nieuwe venture.
             </p>
           </div>
         </section>
@@ -140,57 +136,105 @@ const MeebouwenPage = () => {
                   <p className="body-lg" style={{ marginTop: 24 }}>Tom kijkt meestal binnen 24 uur naar nieuwe berichten. Vaak sneller. Check je inbox.</p>
                 </div>
               ) : (
-                <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}>
+                <form onSubmit={handleSubmit}>
                   <div className="meta" style={{ marginBottom: 32 }}>FORMULIER · ALLE VELDEN VERPLICHT</div>
 
-                  <div className="form-name-email-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 32 }}>
-                    <Field label="Naam" placeholder="Voor- en achternaam" />
-                    <Field label="E-mail" placeholder="naam@bedrijf.nl" type="email" />
+                  <div className="form-name-email-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 24 }}>
+                    <div>
+                      <label className="meta" style={{ display: 'block', marginBottom: 12 }}>Naam</label>
+                      <input
+                        required
+                        type="text"
+                        placeholder="Voor- en achternaam"
+                        value={form.name}
+                        onChange={set('name')}
+                        style={inputStyle}
+                        onFocus={(e) => (e.target.style.borderColor = 'var(--inkt)')}
+                        onBlur={(e) => (e.target.style.borderColor = 'var(--inkt-20)')}
+                      />
+                    </div>
+                    <div>
+                      <label className="meta" style={{ display: 'block', marginBottom: 12 }}>E-mail</label>
+                      <input
+                        required
+                        type="email"
+                        placeholder="naam@bedrijf.nl"
+                        value={form.email}
+                        onChange={set('email')}
+                        style={inputStyle}
+                        onFocus={(e) => (e.target.style.borderColor = 'var(--inkt)')}
+                        onBlur={(e) => (e.target.style.borderColor = 'var(--inkt-20)')}
+                      />
+                    </div>
                   </div>
-                  <div style={{ marginBottom: 32 }}>
-                    <Field label="Bedrijf · functie" placeholder="Optioneel" />
+
+                  <div style={{ marginBottom: 24 }}>
+                    <label className="meta" style={{ display: 'block', marginBottom: 12 }}>LinkedIn (optioneel)</label>
+                    <input
+                      type="url"
+                      placeholder="https://linkedin.com/in/..."
+                      value={form.linkedin}
+                      onChange={set('linkedin')}
+                      style={inputStyle}
+                      onFocus={(e) => (e.target.style.borderColor = 'var(--inkt)')}
+                      onBlur={(e) => (e.target.style.borderColor = 'var(--inkt-20)')}
+                    />
                   </div>
 
                   {/* Topic picker */}
-                  <div style={{ marginBottom: 32 }}>
+                  <div style={{ marginBottom: 24 }}>
                     <label className="meta" style={{ display: 'block', marginBottom: 12 }}>Waar gaat het over?</label>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                       {TOPICS.map((t) => (
                         <button
-                          key={t}
+                          key={t.value}
                           type="button"
-                          onClick={() => setTopic(t)}
+                          onClick={() => setInterest(t.value)}
                           style={{
                             padding: '10px 16px',
-                            background: topic === t ? 'var(--inkt)' : 'transparent',
-                            color: topic === t ? 'var(--wit-warm)' : 'var(--inkt-60)',
-                            border: `1px solid ${topic === t ? 'var(--inkt)' : 'var(--inkt-20)'}`,
+                            background: interest === t.value ? 'var(--inkt)' : 'transparent',
+                            color: interest === t.value ? 'var(--wit-warm)' : 'var(--inkt-60)',
+                            border: `1px solid ${interest === t.value ? 'var(--inkt)' : 'var(--inkt-20)'}`,
                             fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase',
+                            cursor: 'pointer',
                             transition: 'background .2s, color .2s',
                           }}
                         >
-                          {t}
+                          {t.label}
                         </button>
                       ))}
                     </div>
                   </div>
 
                   {/* Message */}
-                  <div style={{ marginBottom: 40 }}>
+                  <div style={{ marginBottom: 32 }}>
                     <label className="meta" style={{ display: 'block', marginBottom: 12 }}>Bericht</label>
                     <textarea
+                      required
                       placeholder="Vertel kort waar het over gaat."
                       rows={6}
-                      style={{
-                        width: '100%', padding: 16, border: '1px solid var(--inkt-20)', background: 'transparent',
-                        fontFamily: 'var(--body)', fontSize: 16, lineHeight: 1.5, resize: 'vertical', outline: 'none',
-                      }}
-                      onFocus={(e) => (e.target as HTMLTextAreaElement).style.borderColor = 'var(--inkt)'}
-                      onBlur={(e) => (e.target as HTMLTextAreaElement).style.borderColor = 'var(--inkt-20)'}
+                      value={form.message}
+                      onChange={set('message')}
+                      style={{ ...inputStyle, lineHeight: 1.5, resize: 'vertical' }}
+                      onFocus={(e) => (e.target.style.borderColor = 'var(--inkt)')}
+                      onBlur={(e) => (e.target.style.borderColor = 'var(--inkt-20)')}
                     />
                   </div>
 
-                  <button type="submit" className="btn btn-volt" style={{ minHeight: 48 }}>Verstuur bericht →</button>
+                  {error && (
+                    <p style={{ marginBottom: 16, color: 'var(--oranje)', fontFamily: 'var(--mono)', fontSize: 13 }}>
+                      {error}
+                    </p>
+                  )}
+
+                  <button
+                    type="submit"
+                    className="btn btn-volt"
+                    disabled={loading}
+                    style={{ minHeight: 48, opacity: loading ? 0.6 : 1 }}
+                  >
+                    {loading ? 'Verzenden...' : 'Verstuur bericht →'}
+                  </button>
                 </form>
               )}
             </div>
@@ -201,7 +245,7 @@ const MeebouwenPage = () => {
               <div style={{ display: 'grid', gap: 24 }}>
                 {[
                   { label: 'E-mail', value: 'hallo@toms-ambitie.nl', link: 'mailto:hallo@toms-ambitie.nl' },
-                  { label: 'LinkedIn', value: 'Tom Mulder', link: 'https://linkedin.com' },
+                  { label: 'LinkedIn', value: 'Tom Mulder', link: 'https://linkedin.com/in/tommulder' },
                   { label: 'Studio', value: 'Zwolle, Nederland' },
                 ].map(({ label, value, link }) => (
                   <div key={label} style={{ paddingBottom: 16, borderBottom: '1px solid var(--inkt-10)' }}>

@@ -1,4 +1,13 @@
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+
+const ease = [0.22, 1, 0.36, 1] as const;
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 32 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: '-60px' },
+  transition: { duration: 0.7, delay, ease },
+});
 
 const VENTURES = [
   {
@@ -70,21 +79,19 @@ export const VenturesGrid = () => {
       <div className="container-wide">
 
         {/* Section header */}
-        <div style={{ marginBottom: 80, textAlign: 'center' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-            <span className="volt-dot" />
-            <span className="eyebrow"><span style={{ marginRight: 8 }}>01</span>De Ventures</span>
-          </div>
-          <h2 className="h2 reveal" style={{ marginTop: 24, maxWidth: 1100, marginInline: 'auto' }}>
+        <motion.div {...fadeUp(0)} style={{ marginBottom: 80, textAlign: 'center' }}>
+          <span className="eyebrow"><span style={{ marginRight: 8, color: 'var(--inkt-40)' }}>01</span>De Ventures</span>
+          <h2 className="h2" style={{ marginTop: 24, maxWidth: 1100, marginInline: 'auto' }}>
             Drie eigen ventures.<br />
             <span style={{ color: 'var(--inkt-40)' }}>Allemaal vanuit echte frustratie ontstaan.</span>
           </h2>
-        </div>
+        </motion.div>
 
         {/* Featured: Post Pilot */}
+        <motion.div {...fadeUp(0.1)}>
         <Link
           to={`/ventures#${featured.slug}`}
-          className="reveal"
+          className=""
           style={{
             display: 'block',
             background: featured.dark,
@@ -142,17 +149,18 @@ export const VenturesGrid = () => {
             </div>
           </div>
         </Link>
+        </motion.div>
 
         {/* 3-up grid */}
         <div
           className="ventures-grid-3"
           style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}
         >
-          {secondary.map((v) => (
+          {secondary.map((v, idx) => (
+            <motion.div key={v.slug} {...fadeUp(0.15 + idx * 0.1)}>
             <Link
-              key={v.slug}
               to={`/ventures#${v.slug}`}
-              className="reveal"
+              className=""
               style={{
                 display: 'block',
                 background: 'var(--wit-warm)',
@@ -195,13 +203,14 @@ export const VenturesGrid = () => {
                 </div>
               </div>
             </Link>
+            </motion.div>
           ))}
         </div>
 
         {/* CTA link */}
-        <div style={{ textAlign: 'center', marginTop: 64 }}>
+        <motion.div {...fadeUp(0.3)} style={{ textAlign: 'center', marginTop: 64 }}>
           <Link to="/ventures" className="btn-link">Alle ventures bekijken →</Link>
-        </div>
+        </motion.div>
 
       </div>
     </section>

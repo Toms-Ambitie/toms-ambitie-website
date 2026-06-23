@@ -15,7 +15,7 @@ const MILESTONES = [
 ];
 
 const VALUES = [
-  { t: 'Oplossing eerst', d: 'We bouwen wat we zelf nodig hebben. De oplossing is altijd belangrijker dan de business case.' },
+  { t: 'Oplossing eerst', d: 'Elk venture begint met iets wat we zelf voelen. Geen spreadsheet als startpunt, geen denkbeeldige markt.' },
   { t: 'Altijd onderbouwd', d: 'Elk idee krijgt een plan. Nooit roekeloos. Maar ook nooit zo lang gepland dat het niet gebeurt.' },
   { t: 'AI als versneller', d: 'Niet als experiment, maar als werkwijze. Snelheid van een team van tien.' },
   { t: 'Samen bouwen', d: 'Het liefst met partners, maar ook solo als het moet. Geen ego.' },
@@ -116,7 +116,7 @@ const OverOnsPage = () => {
                 <span className="eyebrow"><span style={{ marginRight: 8 }}>01</span>Kernwaarden</span>
               </div>
               <h2 className="h2" style={{ marginTop: 24 }}>
-                Vijf principes.<br /><span style={{ color: 'var(--inkt-40)' }}>Eén werkwijze. Eén richting.</span>
+                Vijf principes.
               </h2>
             </div>
             <div className="values-grid-5" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 16 }}>

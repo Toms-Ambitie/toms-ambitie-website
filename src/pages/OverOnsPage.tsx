@@ -17,7 +17,7 @@ const MILESTONES = [
 const VALUES = [
   { t: 'Oplossing eerst', d: 'Elk venture begint met iets wat we zelf voelen. Geen spreadsheet als startpunt, geen denkbeeldige markt.' },
   { t: 'Altijd onderbouwd', d: 'Elk idee krijgt een plan. Nooit roekeloos. Maar ook nooit zo lang gepland dat het niet gebeurt.' },
-  { t: 'AI als versneller', d: 'Niet als experiment, maar als werkwijze. Snelheid van een team van tien.' },
+  { t: 'AI als versneller', d: 'Niet als experiment, maar als werkwijze. Validatie, demo, business case — AI werkt mee van stap één.' },
   { t: 'Samen bouwen', d: 'Het liefst met partners, maar ook solo als het moet. Geen ego.' },
   { t: 'Eerlijk', d: 'Over wat werkte. Maar vooral ook over wat niet werkte.' },
 ];

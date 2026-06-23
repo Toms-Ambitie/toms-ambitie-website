@@ -159,10 +159,7 @@ export const Footer = () => {
           {/* Brand */}
           <div>
             <Monogram />
-            <div className="display" style={{ fontSize: 40, marginTop: 28, color: 'var(--wit-warm)', lineHeight: 0.9 }}>
-              WE BOUWEN<br />WAT WE ZELF<br />MISSEN.
-            </div>
-            <p className="body-sm" style={{ marginTop: 16, color: 'rgba(244,241,232,0.5)', maxWidth: 280 }}>
+            <p className="body-sm" style={{ marginTop: 28, color: 'rgba(244,241,232,0.5)', maxWidth: 280 }}>
               Van interne tools tot schaalbare ventures. Altijd gebouwd vanuit echte frustratie.
             </p>
             <div style={{ width: 96, height: 4, marginTop: 24, background: 'var(--volt)' }} />

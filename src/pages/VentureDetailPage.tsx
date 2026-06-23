@@ -70,10 +70,6 @@ const CtaButton = ({
 const VENTURE_TITLES: Record<string, string> = {
   "post-pilot":
     "PostPilot — AI Content Platform voor LinkedIn | Toms Ambitie",
-  "pactly":
-    "Pactly — Grip op Vaste Lasten en Contracten | Toms Ambitie",
-  "oak-marketing":
-    "OAK Marketing — Hybride Marketingbureau voor Groei-MKB | Toms Ambitie",
   "plug-and-power":
     "Plug and Power — Plug-and-Play Energie-oplossingen | Toms Ambitie",
   "emmastudio":
@@ -84,10 +80,6 @@ const VENTURE_TITLES: Record<string, string> = {
 const VENTURE_DESCRIPTIONS: Record<string, string> = {
   "post-pilot":
     "PostPilot automatiseert LinkedIn-content met AI. Live SaaS-platform v2.0 met betalende gebruikers. Schrijft in jouw eigen toon. Toms Ambitie zoekt co-founders en growth-specialisten voor de volgende groeifase.",
-  "pactly":
-    "Pactly brengt contracten, abonnementen en vaste lasten samen op één plek. Consumer fintech in vroeg stadium vanuit Zwolle. Toms Ambitie zoekt investeerders en co-founders om Pactly groot te maken.",
-  "oak-marketing":
-    "OAK Marketing is het hybride marketingbureau van Toms Ambitie. AI waar het kan, mensen waar het moet. Actief en winstgevend. Interesse in samenwerking of partnership? Start een gesprek.",
   "plug-and-power":
     "Plug and Power bouwt hét e-commerce platform voor plug-and-play energie. In opbouw vanuit Zwolle. Toms Ambitie zoekt kapitaal, kennis en netwerk om dit energieventure te versnellen.",
   "emmastudio":

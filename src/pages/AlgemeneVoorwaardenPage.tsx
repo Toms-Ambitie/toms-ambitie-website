@@ -121,7 +121,6 @@ const AlgemeneVoorwaardenPage = () => {
                 'Plug and Power',
                 'EmmaStudio',
                 'PostPilot',
-                'OAK Marketing',
                 'toekomstige ventures en platformen',
               ]} />
               <p style={{ marginTop: 16, fontSize: 17, lineHeight: 1.75, color: 'var(--inkt-60)' }}>

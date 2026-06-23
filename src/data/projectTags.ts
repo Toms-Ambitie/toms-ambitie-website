@@ -6,10 +6,8 @@
 
 export const ProjectTags = {
   // Live ventures
-  oakMarketing: "OAK Marketing",
   postPilot: "PostPilot",
   plugAndPower: "Plug and Power",
-  pactly: "Pactly",
   emma: "EmmaStudio",
 
   // Past projects

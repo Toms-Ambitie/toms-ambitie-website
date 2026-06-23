@@ -251,7 +251,7 @@ const OverOnsPage = () => {
               <div className="reveal" style={{ position: 'relative', overflow: 'hidden' }}>
                 <img src="/photos/studio-collab.webp" alt="Studio collab"
                   loading="lazy" decoding="async"
-                  style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block', filter: 'grayscale(0.15)' }} />
+                  style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block' }} />
                 <div style={{ position: 'absolute', top: 16, left: 16, padding: '6px 12px', background: 'var(--wit-warm)' }}>
                   <span className="meta">FIG.02 · STRATEGIE</span>
                 </div>
@@ -259,7 +259,7 @@ const OverOnsPage = () => {
               <div className="reveal" style={{ position: 'relative', overflow: 'hidden' }}>
                 <img src="/photos/studio-pair.webp" alt="Studio pair"
                   loading="lazy" decoding="async"
-                  style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block', filter: 'grayscale(0.15)' }} />
+                  style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block' }} />
                 <div style={{ position: 'absolute', top: 16, left: 16, padding: '6px 12px', background: 'var(--wit-warm)' }}>
                   <span className="meta">FIG.03 · UITVOERING</span>
                 </div>

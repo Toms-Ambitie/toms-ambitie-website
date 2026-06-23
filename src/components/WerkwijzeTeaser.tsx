@@ -37,7 +37,7 @@ export const WerkwijzeTeaser = () => (
         <div>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
             <span className="volt-dot" />
-            <span className="eyebrow"><span style={{ marginRight: 8 }}>02</span>De Werkwijze</span>
+            <span className="eyebrow"><span style={{ marginRight: 8 }}>03</span>De Werkwijze</span>
           </div>
           <h2 className="h2" style={{ marginTop: 24 }}>
             Van probleem naar platform.<br />

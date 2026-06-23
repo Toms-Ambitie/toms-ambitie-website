@@ -54,9 +54,10 @@ const Tag = ({ children }: { children: React.ReactNode }) => (
   <span style={{
     display: 'inline-flex', alignItems: 'center', gap: 6,
     padding: '6px 12px',
-    background: 'var(--volt)', color: 'var(--inkt)',
+    background: 'rgba(244,241,232,0.12)', color: 'rgba(244,241,232,0.7)',
     fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700,
     letterSpacing: '0.14em', textTransform: 'uppercase',
+    border: '1px solid rgba(244,241,232,0.15)',
   }}>{children}</span>
 );
 

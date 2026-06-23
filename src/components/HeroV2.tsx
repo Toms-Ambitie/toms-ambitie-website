@@ -135,15 +135,6 @@ export const HeroV2 = () => (
             display: 'block',
           }}
         />
-        {/* Blend photo bottom into page */}
-        <div
-          aria-hidden="true"
-          style={{
-            position: 'absolute',
-            inset: '55% 0 0',
-            background: 'linear-gradient(to top, var(--wit-warm) 0%, transparent 100%)',
-          }}
-        />
         {/* Caption */}
         <div
           style={{

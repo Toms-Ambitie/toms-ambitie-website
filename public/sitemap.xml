@@ -51,31 +51,9 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.toms-ambitie.nl/ventures/oak-marketing</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.toms-ambitie.nl/ventures/pactly</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.toms-ambitie.nl/ventures/plug-and-power</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.toms-ambitie.nl/nieuws/pactly-het-probleem</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.toms-ambitie.nl/nieuws/pactly-we-bouwen-aan-iets-nieuws</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.toms-ambitie.nl/nieuws/post-pilot-eerste-100-klanten</loc>

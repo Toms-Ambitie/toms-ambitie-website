@@ -232,16 +232,6 @@ const MeebouwenPage = () => {
           </div>
         </section>
 
-        {/* ═══ MOTTO ═══════════════════════════════════════════════ */}
-        <section className="surface-inkt" style={{ padding: '160px 0', textAlign: 'center' }}>
-          <div className="container-narrow">
-            <div style={{ width: 48, height: 4, background: 'var(--volt)', margin: '0 auto 32px' }} />
-            <h2 className="clip-reveal display" style={{ fontSize: 'clamp(48px, 6vw, 88px)', lineHeight: 0.92, color: 'var(--wit-warm)' }}>
-              <span>"Als je het kunt bedenken,<br />kun je het ook doen."</span>
-            </h2>
-          </div>
-        </section>
-
       </main>
       <Footer />
     </div>

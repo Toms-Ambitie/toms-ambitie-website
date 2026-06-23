@@ -25,7 +25,7 @@ export const VsTraditional = () => (
           <span className="eyebrow" style={{ color: 'rgba(244,241,232,0.5)' }}><span style={{ marginRight: 8 }}>02</span>Positionering</span>
         </div>
         <h2 className="h2 reveal" style={{ marginTop: 24, color: 'var(--wit-warm)', maxWidth: 1100, marginInline: 'auto' }}>
-          Wij geloven meer in bouwen<br />dan in vergaderen.
+          Niet zoals de meeste<br />venture builders.
         </h2>
       </div>
 

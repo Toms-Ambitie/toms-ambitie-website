@@ -17,13 +17,6 @@ const STAPPEN = [
   { n: '07', title: 'Lanceren', meta: 'Echte gebruikers, echte data', body: 'Live. Echte gebruikers, echte feedback, echte data. Pas daarna beslissen we of we doorgaan, opschalen of stoppen. Niet eerder.', tool: 'Marketing-DNA + automatisering' },
 ];
 
-const WHAT_YOU_GET = [
-  ['Werkend platform', 'Eerste versie. Live. Testbaar door echte gebruikers.'],
-  ['Brand book', 'Visuele identiteit. Logo, kleuren, fonts, tone of voice.'],
-  ['Business case', 'Verdienmodel, marktgrootte, go-to-market. Onderbouwd met AI.'],
-  ['Werkwijze', '7 stappen om door te bouwen. Dezelfde aanpak op elk venture.'],
-];
-
 const TICKER_ITEMS = [
   'Week 1 · Probleem identificeren',
   'Week 1 · Valideren met AI',
@@ -175,57 +168,12 @@ const HoeWeBouwenPage = () => {
           );
         })}
 
-        {/* ═══ PRINCIPE ════════════════════════════════════════════ */}
-        <section className="surface-wit" style={{ padding: '180px 0' }}>
-          <div className="container-narrow" style={{ textAlign: 'center' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-              <span className="volt-dot" />
-              <span className="eyebrow"><span style={{ marginRight: 8 }}>P</span>Principe</span>
-            </div>
-            <h2 className="clip-reveal display" style={{ fontSize: 'clamp(48px, 6vw, 96px)', lineHeight: 0.95, marginTop: 32 }}>
-              <span>De oplossing staat altijd voorop.<br /><span style={{ color: 'var(--inkt-40)' }}>De business case volgt. Altijd.</span></span>
-            </h2>
-            <p className="lead" style={{ marginTop: 40, fontSize: 22 }}>
-              Als je begint met de business case, bouw je al snel voor de spreadsheet. Niet voor het probleem. Wij doen het andersom. Altijd. Een slechte oplossing met een goede business case is waardeloos. Een goede oplossing zonder business case is een kans.
-            </p>
-          </div>
-        </section>
-
-        {/* ═══ WAT KRIJGT EEN VENTURE ══════════════════════════════ */}
-        <section className="surface-papier" style={{ padding: '160px 0' }}>
-          <div className="container-wide">
-            <div style={{ textAlign: 'center', marginBottom: 80 }}>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-                <span className="volt-dot" />
-                <span className="eyebrow"><span style={{ marginRight: 8 }}>06</span>Wat krijgt een venture</span>
-              </div>
-              <h2 className="h2" style={{ marginTop: 24 }}>
-                Na zes weken heb je een platform.<br /><span style={{ color: 'var(--inkt-40)' }}>En alles om het te lanceren.</span>
-              </h2>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}
-              className="responsive-4-to-2">
-              {WHAT_YOU_GET.map(([t, d], i) => (
-                <div key={t} className="reveal" style={{ background: 'var(--wit-warm)', padding: 28, borderTop: '4px solid var(--volt)' }}>
-                  <div className="num" style={{ fontSize: 11, letterSpacing: '0.18em', color: 'var(--inkt-40)', marginBottom: 16 }}>0{i + 1} / 04</div>
-                  <h4 className="display" style={{ fontSize: 32, lineHeight: 0.95, marginBottom: 16 }}>{t}</h4>
-                  <p className="body-sm">{d}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* ═══ CTA ═════════════════════════════════════════════════ */}
-        <section className="surface-inkt" style={{ padding: '180px 0', textAlign: 'center' }}>
+        <section className="surface-wit" style={{ padding: '120px 0', textAlign: 'center' }}>
           <div className="container-narrow">
-            <div style={{ width: 48, height: 4, background: 'var(--volt)', margin: '0 auto 32px' }} />
-            <h2 className="clip-reveal display" style={{ fontSize: 'clamp(56px, 7vw, 104px)', lineHeight: 0.92, color: 'var(--wit-warm)' }}>
-              <span>Alles begint<br />met iets dat schuurt.</span>
-            </h2>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginTop: 48, flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: 16, flexWrap: 'wrap' }}>
               <Link to="/meebouwen" className="btn btn-volt">Start gesprek →</Link>
-              <Link to="/ventures" className="btn-ghost" style={{ color: 'var(--wit-warm)', borderColor: 'rgba(244,241,232,0.3)' }}>Bekijk ventures</Link>
+              <Link to="/ventures" className="btn-ghost">Bekijk ventures</Link>
             </div>
           </div>
         </section>

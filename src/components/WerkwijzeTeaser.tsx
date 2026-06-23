@@ -46,7 +46,7 @@ export const WerkwijzeTeaser = () => (
         </div>
         <div style={{ paddingTop: 24 }}>
           <p className="lead">
-            Van SaaS tot AI tools, van e-commerce tot interne tools. De oplossing staat altijd voorop. De business case volgt daarna. Altijd AI-assisted. Altijd vanuit eigen ervaring.
+            Van SaaS tot AI tools, van e-commerce tot interne tools. Altijd AI-assisted. Altijd vanuit eigen ervaring.
           </p>
           <Link to="/werkwijze" className="btn" style={{ marginTop: 32, display: 'inline-flex' }}>
             Volledige werkwijze →

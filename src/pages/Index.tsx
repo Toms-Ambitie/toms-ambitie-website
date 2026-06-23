@@ -6,7 +6,6 @@ import { StatsBar } from '@/components/StatsBar';
 import { VenturesGrid } from '@/components/VenturesGrid';
 import { VsTraditional } from '@/components/VsTraditional';
 import { WerkwijzeTeaser } from '@/components/WerkwijzeTeaser';
-import { Manifesto } from '@/components/Manifesto';
 import { TeamTeaser } from '@/components/Team';
 import { MeedoenCTA } from '@/components/MeedoenCTA';
 import { Footer } from '@/components/Footer';
@@ -67,9 +66,6 @@ const Index = () => {
 
         {/* ═══ HOW WE BUILD ═══════════════════════════════════════ */}
         <WerkwijzeTeaser />
-
-        {/* ═══ MANIFESTO PILLARS ══════════════════════════════════ */}
-        <Manifesto />
 
         {/* ═══ TEAM TEASER ════════════════════════════════════════ */}
         <TeamTeaser />

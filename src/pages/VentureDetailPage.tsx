@@ -6,6 +6,15 @@ import { applySEO } from "@/lib/seo";
 import { useEffect } from "react";
 import { getVentureBySlug, getVentureStatusMeta } from "@/data/ventures";
 import { ArrowUpRight, Mail, ArrowLeft } from "lucide-react";
+import { motion } from "framer-motion";
+
+const ease = [0.22, 1, 0.36, 1] as const;
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 28 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-60px" },
+  transition: { duration: 0.7, delay, ease },
+});
 
 const isExternalHref = (href: string) => /^https?:\/\//i.test(href) || href.startsWith("mailto:");
 
@@ -248,112 +257,104 @@ const VentureDetailPage = () => {
       {/* ORIGIN */}
       <section className="py-20 sm:py-28" style={{ background: "#F4F1E8" }}>
         <div className="max-w-[1200px] mx-auto px-5 sm:px-10">
-          <ScrollReveal>
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-20">
-              <div>
-                <p className="font-mono uppercase typo-label typo-caption mb-4">01 — Origineel probleem</p>
-                <h2 className="font-display typo-heading" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: "var(--leading-tight)" }}>
-                  {venture.origin.title.toUpperCase()}
-                </h2>
-                <div style={{ width: 48, height: 3, background: accent, marginTop: 16 }} />
-              </div>
-              <div>
-                {renderParagraphs(
-                  venture.origin.story,
-                  "font-sans typo-lg typo-body",
-                  { lineHeight: "var(--leading-loose)" },
-                )}
-              </div>
-            </div>
-          </ScrollReveal>
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-20">
+            <motion.div {...fadeUp(0)}>
+              <p className="font-mono uppercase typo-label typo-caption mb-4">01 — Origineel probleem</p>
+              <h2 className="font-display typo-heading" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: "var(--leading-tight)" }}>
+                {venture.origin.title.toUpperCase()}
+              </h2>
+              <div style={{ width: 48, height: 3, background: accent, marginTop: 16 }} />
+            </motion.div>
+            <motion.div {...fadeUp(0.12)}>
+              {renderParagraphs(
+                venture.origin.story,
+                "font-sans typo-lg typo-body",
+                { lineHeight: "var(--leading-loose)" },
+              )}
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* MODEL */}
       <section className="py-20 sm:py-28 bg-white">
         <div className="max-w-[1200px] mx-auto px-5 sm:px-10">
-          <ScrollReveal>
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-20">
-              <div>
-                <p className="font-mono uppercase typo-label typo-caption mb-4">02 — Model</p>
-                <h2 className="font-display typo-heading" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: "var(--leading-tight)" }}>
-                  {venture.businessModel.title.toUpperCase()}
-                </h2>
-                <div style={{ width: 48, height: 3, background: accent, marginTop: 16 }} />
-              </div>
-              <div>
-                {renderParagraphs(
-                  venture.businessModel.description,
-                  "font-sans typo-lg typo-body",
-                  { lineHeight: "var(--leading-loose)" },
-                )}
-                <ul className="mt-5" style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                  {venture.businessModel.points.map((point, i) => (
-                    <li key={i} className="font-sans flex items-start gap-3 typo-md typo-body min-h-[44px] py-2" style={{ borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
-                      <span style={{ color: accent, fontWeight: 700, fontSize: 16 }}>→</span>
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </ScrollReveal>
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-20">
+            <motion.div {...fadeUp(0)}>
+              <p className="font-mono uppercase typo-label typo-caption mb-4">02 — Model</p>
+              <h2 className="font-display typo-heading" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: "var(--leading-tight)" }}>
+                {venture.businessModel.title.toUpperCase()}
+              </h2>
+              <div style={{ width: 48, height: 3, background: accent, marginTop: 16 }} />
+            </motion.div>
+            <motion.div {...fadeUp(0.12)}>
+              {renderParagraphs(
+                venture.businessModel.description,
+                "font-sans typo-lg typo-body",
+                { lineHeight: "var(--leading-loose)" },
+              )}
+              <ul className="mt-5" style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                {venture.businessModel.points.map((point, i) => (
+                  <li key={i} className="font-sans flex items-start gap-3 typo-md typo-body min-h-[44px] py-2" style={{ borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+                    <span style={{ color: accent, fontWeight: 700, fontSize: 16 }}>→</span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* STATUS */}
       <section className="py-20 sm:py-28" style={{ background: "#0E0E0C" }}>
         <div className="max-w-[1200px] mx-auto px-5 sm:px-10">
-          <ScrollReveal>
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-20">
-              <div>
-                <p className="font-mono uppercase typo-label typo-muted-dark mb-4">03 — Status</p>
-                <h2 className="font-display typo-heading-dark" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: "var(--leading-tight)" }}>
-                  {venture.currentStatus.title.toUpperCase()}
-                </h2>
-                <div style={{ width: 48, height: 3, background: accent, marginTop: 16 }} />
-              </div>
-              <div>
-                {renderParagraphs(
-                  venture.currentStatus.description,
-                  "font-sans typo-lg typo-body-dark",
-                  { lineHeight: "var(--leading-loose)" },
-                )}
-                <ul className="mt-5" style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                  {venture.currentStatus.milestones.map((m, i) => (
-                    <li key={i} className="font-sans flex items-start gap-3 typo-md typo-body-dark min-h-[44px] py-2" style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-                      <span className="w-[6px] h-[6px] mt-2 flex-shrink-0" style={{ background: accent, display: "inline-block" }} />
-                      {m}
-                    </li>
-                  ))}
-                </ul>
-                {venture.currentStatus.extra && (
-                  <p className="font-sans typo-md typo-body-dark mt-6" style={{ lineHeight: "var(--leading-loose)" }}>
-                    {venture.currentStatus.extra}
-                  </p>
-                )}
-              </div>
-            </div>
-          </ScrollReveal>
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-20">
+            <motion.div {...fadeUp(0)}>
+              <p className="font-mono uppercase typo-label typo-muted-dark mb-4">03 — Status</p>
+              <h2 className="font-display typo-heading-dark" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: "var(--leading-tight)" }}>
+                {venture.currentStatus.title.toUpperCase()}
+              </h2>
+              <div style={{ width: 48, height: 3, background: accent, marginTop: 16 }} />
+            </motion.div>
+            <motion.div {...fadeUp(0.12)}>
+              {renderParagraphs(
+                venture.currentStatus.description,
+                "font-sans typo-lg typo-body-dark",
+                { lineHeight: "var(--leading-loose)" },
+              )}
+              <ul className="mt-5" style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                {venture.currentStatus.milestones.map((m, i) => (
+                  <li key={i} className="font-sans flex items-start gap-3 typo-md typo-body-dark min-h-[44px] py-2" style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+                    <span className="w-[6px] h-[6px] mt-2 flex-shrink-0" style={{ background: accent, display: "inline-block" }} />
+                    {m}
+                  </li>
+                ))}
+              </ul>
+              {venture.currentStatus.extra && (
+                <p className="font-sans typo-md typo-body-dark mt-6" style={{ lineHeight: "var(--leading-loose)" }}>
+                  {venture.currentStatus.extra}
+                </p>
+              )}
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* VISION. uses venture accent as background */}
       <section className="py-20 sm:py-28" style={{ background: accent, color: accentInk }}>
         <div className="max-w-[1200px] mx-auto px-5 sm:px-10">
-          <ScrollReveal>
-            <div style={{ maxWidth: 720 }}>
-              <p className="font-mono uppercase typo-label mb-4" style={{ color: accentInk, opacity: 0.7 }}>04 — Visie</p>
-              <h2 className="font-display mb-5" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: "var(--leading-tight)", color: accentInk }}>
-                {venture.vision.title.toUpperCase()}
-              </h2>
-              {renderParagraphs(
-                venture.vision.description,
-                "font-sans typo-lg",
-                { lineHeight: "var(--leading-loose)", color: accentInk },
-              )}
-            </div>
-          </ScrollReveal>
+          <motion.div {...fadeUp(0)} style={{ maxWidth: 720 }}>
+            <p className="font-mono uppercase typo-label mb-4" style={{ color: accentInk, opacity: 0.7 }}>04 — Visie</p>
+            <h2 className="font-display mb-5" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: "var(--leading-tight)", color: accentInk }}>
+              {venture.vision.title.toUpperCase()}
+            </h2>
+            {renderParagraphs(
+              venture.vision.description,
+              "font-sans typo-lg",
+              { lineHeight: "var(--leading-loose)", color: accentInk },
+            )}
+          </motion.div>
         </div>
       </section>
 

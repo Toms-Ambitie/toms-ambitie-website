@@ -138,7 +138,7 @@ export const VenturesGrid = () => {
             </div>
 
             {/* Right: screenshot */}
-            <div style={{ position: 'relative', overflow: 'hidden', background: 'var(--inkt)' }}>
+            <div className="img-zoom" style={{ position: 'relative', overflow: 'hidden', background: 'var(--inkt)' }}>
               <img
                 src="/photos/postpilot-app-vandaag.webp"
                 alt="PostPilot — AI content platform voor LinkedIn"

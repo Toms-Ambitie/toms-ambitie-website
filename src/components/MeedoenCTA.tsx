@@ -24,8 +24,7 @@ export const MeedoenCTA = () => (
         viewport={{ once: true }}
         style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}
       >
-        <span className="volt-dot" />
-        <span className="eyebrow" style={{ color: 'rgba(244,241,232,0.5)' }}><span style={{ marginRight: 8 }}>05</span>Bouw mee</span>
+        <span className="eyebrow" style={{ color: 'rgba(244,241,232,0.5)' }}><span style={{ marginRight: 8, color: 'rgba(200,240,0,0.5)' }}>05</span>Bouw mee</span>
       </motion.div>
 
       <motion.h2

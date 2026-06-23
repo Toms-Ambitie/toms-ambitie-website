@@ -452,6 +452,14 @@ ul { margin: 0; padding: 0; list-style: none; }
   background-size: 80px 80px;
 }
 
+/* ── Image zoom on hover ── */
+.img-zoom img {
+  transition: transform .7s cubic-bezier(.2,.7,.3,1);
+}
+.img-zoom:hover img {
+  transform: scale(1.05);
+}
+
 /* ═══════════════════════════════════════════════════════════════
    RESPONSIVE — MOBILE FIRST
    ═══════════════════════════════════════════════════════════════ */
@@ -597,6 +605,9 @@ body.menu-open { overflow: hidden; }
   .nav-logo span { font-size: 16px; }
   .nav-cta { padding: 8px 12px; font-size: 10px; letter-spacing: 0.12em; }
 
+  /* Hero V2: scroll-lijn verbergen op mobiel (te weinig ruimte) */
+  .hero-section [style*="position: absolute"][style*="width: 1px"] { display: none !important; }
+
   /* Hero V2: stack op mobiel — tekst boven, foto onder */
   .hero-v2-grid {
     grid-template-columns: 1fr !important;
@@ -643,8 +654,13 @@ body.menu-open { overflow: hidden; }
     min-height: auto !important;
     margin-top: 20px !important;
   }
+  /* Featured card: image div (2nd child) comes first on mobile */
+  .ventures-featured-inner > div:last-child {
+    order: -1;
+    min-height: 240px;
+  }
   .venture-image-col {
-    order: -1;           /* image always renders first visually */
+    order: -1;
     min-height: 260px !important;
   }
   .venture-text-col {

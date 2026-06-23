@@ -11,7 +11,7 @@ const MILESTONES = [
   { y: '2015–2023', t: 'Parallel bouwen', d: 'Verschillende bureaus en eerste eigen ventures naast elkaar.' },
   { y: '2023', t: 'AI-first', d: 'Definitieve omslag. AI niet als experiment, maar als werkwijze.' },
   { y: '2024', t: 'PostPilot', d: 'Nieuwe venture: marketing AI voor LinkedIn.' },
-  { y: 'Nu', t: '3 actieve ventures', d: 'PostPilot, Plug and Power, Emma. Volgende staat klaar.' },
+  { y: 'Nu', t: '3 actieve ventures', d: 'PostPilot, Plug and Power, EmmaStudio. Volgende staat klaar.' },
 ];
 
 const VALUES = [
@@ -48,7 +48,7 @@ const OverOnsPage = () => {
           'givenName': 'Tom',
           'familyName': 'Mulder',
           'jobTitle': 'Founder & Venture Builder',
-          'description': 'Ondernemer en venture builder uit Zwolle. Tom Mulder bouwt eigen bedrijven vanuit echte frustratie, met AI als versneller. Oprichter van Toms Ambitie, PostPilot, Plug and Power en Emma.',
+          'description': 'Ondernemer en venture builder uit Zwolle. Tom Mulder bouwt eigen bedrijven vanuit echte frustratie, met AI als versneller. Oprichter van Toms Ambitie, PostPilot, Plug and Power en EmmaStudio.',
           'url': 'https://www.toms-ambitie.nl/over-ons',
           'image': 'https://www.toms-ambitie.nl/photos/tom-founder-01.webp',
           'email': 'hallo@toms-ambitie.nl',

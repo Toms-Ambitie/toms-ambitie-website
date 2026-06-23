@@ -119,7 +119,7 @@ const AlgemeneVoorwaardenPage = () => {
               <P>Daaronder kunnen onder andere vallen:</P>
               <Bullets items={[
                 'Plug and Power',
-                'Emma',
+                'EmmaStudio',
                 'PostPilot',
                 'OAK Marketing',
                 'toekomstige ventures en platformen',
@@ -245,7 +245,7 @@ const AlgemeneVoorwaardenPage = () => {
             <LegalSection num={12} title="AI toepassingen">
               <P>Sommige ventures gebruiken AI voor content, analyse, automatisering, aanbevelingen of inzichten.</P>
               <P>AI output is ondersteunend en kan fouten bevatten. Toms Ambitie geeft via AI functionaliteiten geen juridisch, financieel, fiscaal, boekhoudkundig of bindend advies, tenzij dat expliciet schriftelijk is afgesproken.</P>
-              <P>Gebruikers blijven altijd zelf verantwoordelijk voor controle, interpretatie, publicatie en beslissingen. Dit is extra belangrijk bij platformen zoals Emma en PostPilot.</P>
+              <P>Gebruikers blijven altijd zelf verantwoordelijk voor controle, interpretatie, publicatie en beslissingen. Dit is extra belangrijk bij platformen zoals EmmaStudio en PostPilot.</P>
             </LegalSection>
 
             <LegalSection num={13} title="Geen garanties op resultaat">

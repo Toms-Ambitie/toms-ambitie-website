@@ -3,11 +3,11 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 
 const cards = [
   {
-    venture: "EMMA",
+    venture: "EMMASTUDIO",
     quote: "IK STEL MIJN ADMINISTRATIE NIET UIT OMDAT IK LUI BEN.",
-    desc: "Veel ondernemers gebruiken prima software. Maar de ervaring voelt zwaarder dan nodig. Schermen. Menu's. Jargon. Workflow na workflow. Emma begon als een slimme AI-laag bovenop bestaande boekhoudtools — en groeide uit tot een productfamilie. Acht modules die de saaie kanten van ondernemen overnemen. Per module. Jouw keuze.",
+    desc: "Veel ondernemers gebruiken prima software. Maar de ervaring voelt zwaarder dan nodig. Schermen. Menu's. Jargon. Workflow na workflow. EmmaStudio begon als een slimme AI-laag bovenop bestaande boekhoudtools — en groeide uit tot een productfamilie. Acht modules die de saaie kanten van ondernemen overnemen. Per module. Jouw keuze.",
     accent: "#0e3d37",
-    link: { label: "Bekijk Emma →", href: "/ventures/emmastudio" },
+    link: { label: "Bekijk EmmaStudio →", href: "/ventures/emmastudio" },
   },
   {
     venture: "POSTPILOT",

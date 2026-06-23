@@ -10,7 +10,7 @@ const FACTSHEET = [
   ['Opgericht', '2015 (na exit Aardbei Communicatie)'],
   ['Oprichter', 'Tom Mulder'],
   ['Locatie', 'Zwolle, Nederland'],
-  ['Actieve ventures', '3 — PostPilot · Plug and Power · Emma'],
+  ['Actieve ventures', '3 — PostPilot · Plug and Power · EmmaStudio'],
   ['Werkwijze', '7-stappen systeem van probleem naar platform in max 6 weken'],
   ['Werkwijze (kort)', 'Probleem-first · AI als versneller · oplossing voor business case'],
   ['AI-first sinds', '2023'],

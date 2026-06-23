@@ -83,10 +83,10 @@ export type VentureStatusMeta = {
 export const ventureDetails: VentureDetail[] = [
   {
     slug: "emmastudio",
-    name: "EMMA",
+    name: "EMMASTUDIO",
     tagline: "ONDERNEMEN MOET MAKKELIJKER VOELEN.",
     intro:
-      "Emma is een AI-productfamilie voor ondernemers.\n\nAcht losse modules. Van boekhouden tot content, van salarisverwerking tot marktanalyse. Elk stuk neemt een saaie kant van ondernemen over.\n\nBegonnen als een slimme AI-laag bovenop bestaande boekhoudtools. Gegroeid tot een platform dat de volledige bedrijfsvoering van zelfstandigen en kleine teams kan ondersteunen.",
+      "EmmaStudio is een AI-productfamilie voor ondernemers.\n\nAcht losse modules. Van boekhouden tot content, van salarisverwerking tot marktanalyse. Elk stuk neemt een saaie kant van ondernemen over.\n\nBegonnen als een slimme AI-laag bovenop bestaande boekhoudtools. Gegroeid tot een platform dat de volledige bedrijfsvoering van zelfstandigen en kleine teams kan ondersteunen.",
     logo: emmaLogo,
     category: "AI · SaaS · Productfamilie",
     tags: ["AI PRODUCTFAMILIE", "MODULAIR", "IN ONTWIKKELING"],
@@ -104,12 +104,12 @@ export const ventureDetails: VentureDetail[] = [
     origin: {
       title: "HET BEGON MET ADMINISTRATIE. EN GROEIDE VERDER.",
       story:
-        "De meeste ondernemers zijn geen boekhouder.\n\nToch voelt veel boekhoudsoftware nog steeds alsof je eerst een cursus moet volgen voordat je iets kunt regelen.\n\nFacturen boeken.\nOffertes maken.\nBTW aangifte controleren.\n\nTechnisch werkt het vaak prima.\n\nMaar de ervaring voelt onnodig zwaar.\n\nEn precies daardoor stellen veel ondernemers administratie uit. Niet omdat ze lui zijn, maar omdat de software meer energie vraagt dan nodig.\n\nEmma begon als een slimme AI-laag die dat oploste. En groeide door naar een volledige productfamilie.\n\n\"Ondernemen moet makkelijker voelen. Niet zwaarder.\"",
+        "De meeste ondernemers zijn geen boekhouder.\n\nToch voelt veel boekhoudsoftware nog steeds alsof je eerst een cursus moet volgen voordat je iets kunt regelen.\n\nFacturen boeken.\nOffertes maken.\nBTW aangifte controleren.\n\nTechnisch werkt het vaak prima.\n\nMaar de ervaring voelt onnodig zwaar.\n\nEn precies daardoor stellen veel ondernemers administratie uit. Niet omdat ze lui zijn, maar omdat de software meer energie vraagt dan nodig.\n\nEmmaStudio begon als een slimme AI-laag die dat oploste. En groeide door naar een volledige productfamilie.\n\n\"Ondernemen moet makkelijker voelen. Niet zwaarder.\"",
     },
     businessModel: {
       title: "PER MODULE. GEEN PAKKET DAT JE NIET GEBRUIKT.",
       description:
-        "Emma vervangt geen software.\n\nHet maakt het grotendeels onzichtbaar.\n\nAcht modules. Elk los af te nemen. Elk gericht op een specifieke saaie kant van ondernemen.\n\nVan boekhouden tot content, van personeelsplanning tot marktanalyse.\n\nJe kiest wat je nodig hebt. Emma regelt de rest.",
+        "EmmaStudio vervangt geen software.\n\nHet maakt het grotendeels onzichtbaar.\n\nAcht modules. Elk los af te nemen. Elk gericht op een specifieke saaie kant van ondernemen.\n\nVan boekhouden tot content, van personeelsplanning tot marktanalyse.\n\nJe kiest wat je nodig hebt. EmmaStudio regelt de rest.",
       points: [
         "Modulair per behoefte",
         "Geen onnodige functies",
@@ -120,7 +120,7 @@ export const ventureDetails: VentureDetail[] = [
     currentStatus: {
       title: "BEWIJS IN PRODUCTIE. NIET IN EEN PITCH DECK.",
       description:
-        "Vrijwel iedere ondernemer gebruikt administratiesoftware.\n\nMaar bijna niemand wordt enthousiast van de ervaring.\n\nDe markt focust al jaren op functionaliteit, regelgeving en koppelingen. Terwijl gebruiksgemak bijzaak blijft.\n\nEmma draait dat om.\n\nNiet meer functies.\nMinder mentale weerstand.\n\nWant zodra ondernemen makkelijker voelt, gaan mensen het ook beter bijhouden.",
+        "Vrijwel iedere ondernemer gebruikt administratiesoftware.\n\nMaar bijna niemand wordt enthousiast van de ervaring.\n\nDe markt focust al jaren op functionaliteit, regelgeving en koppelingen. Terwijl gebruiksgemak bijzaak blijft.\n\nEmmaStudio draait dat om.\n\nNiet meer functies.\nMinder mentale weerstand.\n\nWant zodra ondernemen makkelijker voelt, gaan mensen het ook beter bijhouden.",
       milestones: [
         "Concept en merkstrategie afgerond",
         "Eerste module in actieve ontwikkeling",
@@ -129,18 +129,18 @@ export const ventureDetails: VentureDetail[] = [
         "Co-founder gezocht voor productrol",
       ],
       extra:
-        "Emma begon niet met een businessplan. Het begon met een simpele observatie: waarom voelt moderne AI vaak slimmer en prettiger dan de software die ondernemers dagelijks gebruiken?\n\nDat is precies hoe ventures binnen Toms Ambitie ontstaan. Eerst het probleem zelf voelen. Daarna intern bouwen. En als het werkt, een venture bouwen.",
+        "EmmaStudio begon niet met een businessplan. Het begon met een simpele observatie: waarom voelt moderne AI vaak slimmer en prettiger dan de software die ondernemers dagelijks gebruiken?\n\nDat is precies hoe ventures binnen Toms Ambitie ontstaan. Eerst het probleem zelf voelen. Daarna intern bouwen. En als het werkt, een venture bouwen.",
     },
     vision: {
       title: "DE SLIMME LAAG VOOR ELKE ZELFSTANDIGE ONDERNEMER.",
       description:
-        "De ambitie achter Emma gaat verder dan boekhouden.\n\nOndernemers verdrinken dagelijks in systemen, schermen en losse tools.\n\nEmma wordt de slimme laag tussen ondernemer en al die complexiteit.\n\nAcht modules. Niet gebouwd als losse tools. Maar als één natuurlijke ervaring voor ondernemers die gewoon willen ondernemen.",
+        "De ambitie achter EmmaStudio gaat verder dan boekhouden.\n\nOndernemers verdrinken dagelijks in systemen, schermen en losse tools.\n\nEmmaStudio wordt de slimme laag tussen ondernemer en al die complexiteit.\n\nAcht modules. Niet gebouwd als losse tools. Maar als één natuurlijke ervaring voor ondernemers die gewoon willen ondernemen.",
     },
     ctaBlock: {
       title: "ONDERNEMERS WILLEN ONDERNEMEN.",
       description:
-        "Niet verdwalen in software.\n\nEmma maakt ondernemen niet alleen slimmer, maar vooral rustiger, eenvoudiger en menselijker.",
-      primary: { label: "Bouw mee aan Emma", href: "/meebouwen" },
+        "Niet verdwalen in software.\n\nEmmaStudio maakt ondernemen niet alleen slimmer, maar vooral rustiger, eenvoudiger en menselijker.",
+      primary: { label: "Bouw mee aan EmmaStudio", href: "/meebouwen" },
       secondary: { label: "Bekijk andere ventures", href: "/ventures" },
     },
   },

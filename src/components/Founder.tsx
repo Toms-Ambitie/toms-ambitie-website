@@ -20,7 +20,7 @@ const timeline = [
   {
     year: "Nu",
     title: "Drie ventures · AI als motor",
-    desc: "PostPilot live. Plug and Power en Emma in opbouw. Het volgende idee zit al in de pijp.",
+    desc: "PostPilot live. Plug and Power en EmmaStudio in opbouw. Het volgende idee zit al in de pijp.",
     active: true,
   },
 ];

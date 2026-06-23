@@ -26,7 +26,7 @@ const VENTURES = [
     dark: '#1A1408',
   },
   {
-    name: 'Emma',
+    name: 'EmmaStudio',
     slug: 'emmastudio',
     tag: 'AI productfamilie',
     tagline: 'De saaie kanten van ondernemen. Overgenomen door AI.',

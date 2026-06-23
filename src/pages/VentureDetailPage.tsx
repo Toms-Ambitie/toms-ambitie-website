@@ -77,7 +77,7 @@ const VENTURE_TITLES: Record<string, string> = {
   "plug-and-power":
     "Plug and Power — Plug-and-Play Energie-oplossingen | Toms Ambitie",
   "emmastudio":
-    "Emma — AI-productfamilie voor Ondernemers | Toms Ambitie",
+    "EmmaStudio — AI-productfamilie voor Ondernemers | Toms Ambitie",
 };
 
 /* Per-venture meta descriptions — action-oriented, mention opportunity */
@@ -91,7 +91,7 @@ const VENTURE_DESCRIPTIONS: Record<string, string> = {
   "plug-and-power":
     "Plug and Power bouwt hét e-commerce platform voor plug-and-play energie. In opbouw vanuit Zwolle. Toms Ambitie zoekt kapitaal, kennis en netwerk om dit energieventure te versnellen.",
   "emmastudio":
-    "Emma is een AI-productfamilie voor ondernemers. Acht losse modules van boekhouden tot content. In ontwikkeling. Toms Ambitie zoekt co-founders en early adopters.",
+    "EmmaStudio is een AI-productfamilie voor ondernemers. Acht losse modules van boekhouden tot content. In ontwikkeling. Toms Ambitie zoekt co-founders en early adopters.",
 };
 
 const VentureDetailPage = () => {

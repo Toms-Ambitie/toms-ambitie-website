@@ -10,7 +10,7 @@ export const ProjectTags = {
   postPilot: "PostPilot",
   plugAndPower: "Plug and Power",
   pactly: "Pactly",
-  emma: "Emma",
+  emma: "EmmaStudio",
 
   // Past projects
   aardbeiCommunicatie: "Aardbei Communicatie",

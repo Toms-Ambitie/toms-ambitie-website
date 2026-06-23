@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const VENTURES = [
   { name: 'PostPilot', slug: 'post-pilot', tag: 'Marketing AI', url: 'postpilotapp.nl', accent: '#E8A640' },
   { name: 'Plug and Power', slug: 'plug-and-power', tag: 'Energy Tech', url: 'plugandpower.nl', accent: '#FFAA00' },
-  { name: 'Emma', slug: 'emmastudio', tag: 'AI productfamilie', url: 'emmastudio.nl', accent: '#0e3d37' },
+  { name: 'EmmaStudio', slug: 'emmastudio', tag: 'AI productfamilie', url: 'emmastudio.nl', accent: '#0e3d37' },
 ];
 
 const NAV_LINKS = [

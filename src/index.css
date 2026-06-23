@@ -468,6 +468,54 @@ body.menu-open { overflow: hidden; }
 /* ── Hero homepage: starts at y=0, covers behind fixed navbar ── */
 .hero-section { padding: 0 !important; margin-top: 0 !important; }
 
+/* ── Hero V2 — licht canvas met mesh gradient ── */
+.hero-v2-blob {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero-v2-blob-1 {
+  width: clamp(420px, 52vw, 760px);
+  height: clamp(420px, 52vw, 760px);
+  background: radial-gradient(circle at center, rgba(200,240,0,0.20) 0%, transparent 65%);
+  filter: blur(72px);
+  top: -18%;
+  right: -6%;
+  animation: heroBlob1 14s ease-in-out infinite;
+}
+.hero-v2-blob-2 {
+  width: clamp(220px, 28vw, 420px);
+  height: clamp(220px, 28vw, 420px);
+  background: radial-gradient(circle at center, rgba(255,74,0,0.08) 0%, transparent 65%);
+  filter: blur(60px);
+  top: 32%;
+  right: 28%;
+  animation: heroBlob2 19s ease-in-out infinite;
+}
+.hero-v2-blob-3 {
+  width: clamp(280px, 36vw, 560px);
+  height: clamp(280px, 36vw, 560px);
+  background: radial-gradient(circle at center, rgba(200,240,0,0.09) 0%, transparent 65%);
+  filter: blur(80px);
+  bottom: -12%;
+  right: 12%;
+  animation: heroBlob3 22s ease-in-out infinite;
+}
+@keyframes heroBlob1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(-44px, 52px) scale(1.08); }
+  66%       { transform: translate(32px, -28px) scale(0.94); }
+}
+@keyframes heroBlob2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40%       { transform: translate(64px, 44px) scale(1.12); }
+  75%       { transform: translate(-28px, 22px) scale(0.91); }
+}
+@keyframes heroBlob3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(-48px, -36px) scale(1.16); }
+}
+
 /* ── Hero founder image — responsive gradient + crop ── */
 /* Mobile: gradient goes top-down (text full-width), crop shows face */
 @media (max-width: 768px) {
@@ -522,6 +570,9 @@ body.menu-open { overflow: hidden; }
   /* 4-col → 2-col grids */
   .responsive-4-to-2 { grid-template-columns: 1fr 1fr !important; }
 
+  /* Hero V2: foto compact op tablet */
+  .hero-v2-grid { gap: 40px !important; }
+
   /* Werkwijze steps */
   .werkwijze-step-grid { gap: 48px !important; }
 
@@ -545,6 +596,16 @@ body.menu-open { overflow: hidden; }
   .nav-links { display: none; }
   .nav-logo span { font-size: 16px; }
   .nav-cta { padding: 8px 12px; font-size: 10px; letter-spacing: 0.12em; }
+
+  /* Hero V2: stack op mobiel — tekst boven, foto onder */
+  .hero-v2-grid {
+    grid-template-columns: 1fr !important;
+    padding-top: 96px !important;
+    padding-bottom: 60px !important;
+  }
+  /* Foto op mobiel minder hoog */
+  .hero-v2-grid > motion\:div:last-child,
+  .hero-v2-grid > div:last-child { aspect-ratio: 4 / 3 !important; }
 
   /* Compact section padding op mobiel — expliciet hero uitgesloten */
   section:not(.hero-section) { padding-top: 56px !important; padding-bottom: 56px !important; }

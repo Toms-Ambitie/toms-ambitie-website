@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Navbar } from '@/components/Navbar';
-import { Hero } from '@/components/Hero';
+import { HeroV2 } from '@/components/HeroV2';
 import { Ticker } from '@/components/Ticker';
 import { StatsBar } from '@/components/StatsBar';
 import { VenturesGrid } from '@/components/VenturesGrid';
@@ -50,7 +50,7 @@ const Index = () => {
       <Navbar />
       <main id="main-content">
         {/* ═══ HERO ═══════════════════════════════════════════════ */}
-        <Hero />
+        <HeroV2 />
 
         {/* ═══ TICKER (in-flow, between hero and stats) ════════════ */}
         <Ticker items={TICKER_ITEMS} />

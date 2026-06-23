@@ -78,22 +78,22 @@ const VENTURES: Venture[] = [
     image: '/photos/plug_and_power_venture_visual.webp',
   },
   {
-    name: 'EmmaBoekt',
-    slug: 'emmaboekt',
-    tag: 'AI assistent',
+    name: 'Emma',
+    slug: 'emmastudio',
+    tag: 'AI productfamilie',
     statusLabel: 'IN ONTWIKKELING',
-    tagline: 'Boekhouden via AI. Eenvoud voor ondernemers.',
-    long: 'EmmaBoekt maakt boekhouden simpel. Stel je vraag. Upload je bon. Krijg direct antwoord. Zo houd jij tijd over voor wat echt telt.',
+    tagline: 'De saaie kanten van ondernemen. Overgenomen door AI.',
+    long: 'Emma is een AI-productfamilie voor ondernemers. Acht losse modules. Van boekhouden tot content, van personeel tot marktanalyse.',
     status: 'In ontwikkeling',
     year: '2025',
-    url: 'emmaboekt.nl',
-    externalUrl: 'emmaboekt.nl',
-    accent: '#7C3AED',
-    accentInk: '#FFFFFF',
-    bg: '#EDE9FF',
+    url: 'emmastudio.nl',
+    externalUrl: 'emmastudio.nl',
+    accent: '#0e3d37',
+    accentInk: '#fbf4ea',
+    bg: '#E8F2EE',
     isLight: true,
     metrics: [
-      { Icon: Sparkles, value: 'AI first', label: 'boekhouden' },
+      { Icon: Sparkles, value: '8', label: 'modules' },
       { Icon: Users, value: 'ZZP + MKB', label: 'doelgroep' },
       { Icon: Flag, value: 'NL', label: 'startmarkt' },
     ],
@@ -372,8 +372,8 @@ const VenturesPage = () => {
 
   useEffect(() => {
     applySEO({
-      title: 'Ventures — PostPilot, Plug and Power, EmmaBoekt | Toms Ambitie',
-      description: 'Drie eigen ventures gebouwd vanuit echte problemen. PostPilot is live (SaaS). Plug and Power en EmmaBoekt zijn in ontwikkeling. Interesse in investeren of meebouwen?',
+      title: 'Ventures — PostPilot, Plug and Power, Emma | Toms Ambitie',
+      description: 'Drie eigen ventures gebouwd vanuit echte problemen. PostPilot is live (SaaS). Plug and Power en Emma zijn in ontwikkeling. Interesse in investeren of meebouwen?',
       canonical: 'https://www.toms-ambitie.nl/ventures',
       jsonLd: {
         '@context': 'https://schema.org',
@@ -406,7 +406,7 @@ const VenturesPage = () => {
               <span>Waar we nu<br />aan bouwen.</span>
             </h1>
             <p className="lead reveal" style={{ marginTop: 48, fontSize: 22, maxWidth: 640 }}>
-              Geen losse ideeën. Drie ventures gebouwd vanuit echte frustratie, behoefte of marktkans. PostPilot is live. Plug and Power en EmmaBoekt zijn in actieve ontwikkeling.
+              Geen losse ideeën. Drie ventures gebouwd vanuit echte frustratie, behoefte of marktkans. PostPilot is live. Plug and Power en Emma zijn in actieve ontwikkeling.
             </p>
 
             {/* Quick-jump — anchors to section IDs */}

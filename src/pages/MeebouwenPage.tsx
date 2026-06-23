@@ -32,7 +32,7 @@ const MeebouwenPage = () => {
   useEffect(() => {
     applySEO({
       title: 'Meebouwen — Co-founder, Investeerder of Specialist worden | Toms Ambitie',
-      description: 'Wil je co-founder worden, investeren of als specialist meebouwen aan PostPilot, Plug and Power of EmmaBoekt? Neem contact op met Tom Mulder van Toms Ambitie in Zwolle.',
+      description: 'Wil je co-founder worden, investeren of als specialist meebouwen aan PostPilot, Plug and Power of Emma? Neem contact op met Tom Mulder van Toms Ambitie in Zwolle.',
       canonical: 'https://www.toms-ambitie.nl/meebouwen',
       jsonLd: [
         {
@@ -61,7 +61,7 @@ const MeebouwenPage = () => {
               'name': 'Zoekt Toms Ambitie co-founders?',
               'acceptedAnswer': {
                 '@type': 'Answer',
-                'text': 'Ja. Voor Plug and Power en EmmaBoekt zoeken we actief co-founders met kennis van product, techniek, finance, growth, UX of domeinspecifieke expertise. PostPilot zoekt ook specialisten voor de volgende groeifase.',
+                'text': 'Ja. Voor Plug and Power en Emma zoeken we actief co-founders met kennis van product, techniek, finance, growth, UX of domeinspecifieke expertise. PostPilot zoekt ook specialisten voor de volgende groeifase.',
               },
             },
             {
@@ -85,7 +85,7 @@ const MeebouwenPage = () => {
               'name': 'Welke ventures zijn beschikbaar om aan mee te bouwen?',
               'acceptedAnswer': {
                 '@type': 'Answer',
-                'text': 'Toms Ambitie heeft drie ventures: PostPilot (live SaaS voor LinkedIn-contentautomatisering), Plug and Power (platform voor slimme energie-oplossingen) en EmmaBoekt (AI-assistent voor administratie). Alle ventures staan open voor de juiste mensen.',
+                'text': 'Toms Ambitie heeft drie ventures: PostPilot (live SaaS voor LinkedIn-contentautomatisering), Plug and Power (platform voor slimme energie-oplossingen) en Emma (AI-productfamilie voor ondernemers). Alle ventures staan open voor de juiste mensen.',
               },
             },
             {

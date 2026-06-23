@@ -2,7 +2,7 @@ import postPilotLogo from "@/assets/postpilot-mark-primary.svg";
 import oakMarketingLogo from "@/assets/venture-logo-oak-marketing.webp";
 import pactlyLogo from "@/assets/pactly-beeldmerk-v2.webp";
 import plugAndPowerLogo from "@/assets/venture-logo-plug-and-power.webp";
-import emmaBoektLogo from "@/assets/emma-boekt-logo.webp";
+import emmaLogo from "@/assets/emma-logo.webp";
 
 export interface VentureIdentity {
   /** Accent hex used on hero border, bullets, vision section, etc. */
@@ -82,65 +82,65 @@ export type VentureStatusMeta = {
 
 export const ventureDetails: VentureDetail[] = [
   {
-    slug: "emmaboekt",
-    name: "EMMABOEKT",
-    tagline: "ADMINISTRATIE ZOU GEEN ENERGIE MOETEN KOSTEN.",
+    slug: "emmastudio",
+    name: "EMMA",
+    tagline: "ONDERNEMEN MOET MAKKELIJKER VOELEN.",
     intro:
-      "De meeste boekhoudsoftware werkt technisch prima.\n\nMaar veel ondernemers voelen weerstand zodra ze hun administratie moeten openen. Niet omdat ze administratie haten. Maar omdat de ervaring vaak ingewikkelder voelt dan nodig.\n\nEmmaBoekt legt een slimme assistent bovenop bestaande boekhoudsoftware zodat administratie eindelijk voelt zoals moderne software hoort te voelen.",
-    logo: emmaBoektLogo,
-    category: "AI · Administratie · Automatisering",
-    tags: ["SLIMME ASSISTENT", "AUTOMATISERING", "IN ONTWIKKELING"],
+      "Emma is een AI-productfamilie voor ondernemers.\n\nAcht losse modules. Van boekhouden tot content, van salarisverwerking tot marktanalyse. Elk stuk neemt een saaie kant van ondernemen over.\n\nBegonnen als een slimme AI-laag bovenop bestaande boekhoudtools. Gegroeid tot een platform dat de volledige bedrijfsvoering van zelfstandigen en kleine teams kan ondersteunen.",
+    logo: emmaLogo,
+    category: "AI · SaaS · Productfamilie",
+    tags: ["AI PRODUCTFAMILIE", "MODULAIR", "IN ONTWIKKELING"],
     status: "IN ONTWIKKELING",
     statusColor: "hsl(var(--orange))",
     identity: {
-      accent: "#9333EA",
-      accentInk: "#FFFFFF",
-      vibe: "AI ASSISTENT · MINDER GEDOE · MEER RUST",
-      proof: ["Concept & merkstrategie afgerond", "MVP in voorbereiding", "Eerste testen gestart"],
-      proofTagline: "In ontwikkeling · concept staat, MVP in voorbereiding",
+      accent: "#0e3d37",
+      accentInk: "#fbf4ea",
+      vibe: "AI PRODUCTFAMILIE · MODULAIR · VOOR ONDERNEMERS",
+      proof: ["Concept en merkstrategie afgerond", "Eerste module in ontwikkeling", "Bewijs in productie bij pilot-klant"],
+      proofTagline: "In ontwikkeling · eerste module actief bij pilot-klant",
     },
     cta: { label: "Bouw mee", href: "/meebouwen" },
     secondaryCta: { label: "Bekijk andere ventures", href: "/ventures" },
     origin: {
-      title: "DE SOFTWARE WAS NIET HET PROBLEEM. DE ERVARING WEL.",
+      title: "HET BEGON MET ADMINISTRATIE. EN GROEIDE VERDER.",
       story:
-        "De meeste ondernemers zijn geen boekhouder.\n\nToch voelt veel boekhoudsoftware nog steeds alsof je eerst een cursus moet volgen voordat je iets kunt regelen.\n\nFacturen boeken.\nOffertes maken.\nBTW aangifte controleren.\n\nTechnisch werkt het vaak prima.\n\nMaar de ervaring voelt onnodig zwaar.\n\nEn precies daardoor stellen veel ondernemers administratie uit. Niet omdat ze lui zijn, maar omdat de software vaak meer energie vraagt dan nodig.\n\nEmmaBoekt ontstond vanuit die frustratie.\n\n\"Administratie moet rust geven. Geen weerstand.\"",
+        "De meeste ondernemers zijn geen boekhouder.\n\nToch voelt veel boekhoudsoftware nog steeds alsof je eerst een cursus moet volgen voordat je iets kunt regelen.\n\nFacturen boeken.\nOffertes maken.\nBTW aangifte controleren.\n\nTechnisch werkt het vaak prima.\n\nMaar de ervaring voelt onnodig zwaar.\n\nEn precies daardoor stellen veel ondernemers administratie uit. Niet omdat ze lui zijn, maar omdat de software meer energie vraagt dan nodig.\n\nEmma begon als een slimme AI-laag die dat oploste. En groeide door naar een volledige productfamilie.\n\n\"Ondernemen moet makkelijker voelen. Niet zwaarder.\"",
     },
     businessModel: {
-      title: "MINDER SOFTWARE. MEER GEWOON REGELEN.",
+      title: "PER MODULE. GEEN PAKKET DAT JE NIET GEBRUIKT.",
       description:
-        "EmmaBoekt vervangt boekhoudsoftware niet.\n\nHet maakt het grotendeels onzichtbaar.\n\nIn plaats van menu's, schermen en instellingen praat je gewoon met Emma alsof je een collega een opdracht geeft.\n\n\"Boek deze factuur.\"\n\"Maak een offerte voor klant X.\"\n\"Hoeveel BTW moet ik reserveren?\"\n\nEmma regelt de rest.\n\nDaardoor voelt EmmaBoekt minder als software en meer als een slimme assistent die administratie uit handen neemt.",
+        "Emma vervangt geen software.\n\nHet maakt het grotendeels onzichtbaar.\n\nAcht modules. Elk los af te nemen. Elk gericht op een specifieke saaie kant van ondernemen.\n\nVan boekhouden tot content, van personeelsplanning tot marktanalyse.\n\nJe kiest wat je nodig hebt. Emma regelt de rest.",
       points: [
-        "Natuurlijk werken",
-        "Minder frictie",
-        "Geen leercurve",
-        "Slimmere workflows",
+        "Modulair per behoefte",
+        "Geen onnodige functies",
+        "AI-laag op je bestaande werkwijze",
+        "Schaalbaar per module",
       ],
     },
     currentStatus: {
-      title: "DE MARKT IS GROOT. DE FRUSTRATIE OOK.",
+      title: "BEWIJS IN PRODUCTIE. NIET IN EEN PITCH DECK.",
       description:
-        "Vrijwel iedere ondernemer gebruikt administratiesoftware.\n\nMaar bijna niemand wordt enthousiast van de ervaring.\n\nDe markt focust al jaren op functionaliteit, regelgeving en koppelingen. Terwijl gebruiksgemak vaak bijzaak blijft.\n\nEmmaBoekt draait dat om.\n\nNiet nog meer functies.\nMaar minder mentale weerstand.\n\nWant zodra administratie makkelijker voelt, gaan ondernemers het ook beter bijhouden.",
+        "Vrijwel iedere ondernemer gebruikt administratiesoftware.\n\nMaar bijna niemand wordt enthousiast van de ervaring.\n\nDe markt focust al jaren op functionaliteit, regelgeving en koppelingen. Terwijl gebruiksgemak bijzaak blijft.\n\nEmma draait dat om.\n\nNiet meer functies.\nMinder mentale weerstand.\n\nWant zodra ondernemen makkelijker voelt, gaan mensen het ook beter bijhouden.",
       milestones: [
-        "Concept en positionering uitgewerkt",
-        "Merkidentiteit vastgesteld",
-        "Productrichting bepaald",
-        "MVP in voorbereiding",
-        "Eerste gebruikerstests op de roadmap",
+        "Concept en merkstrategie afgerond",
+        "Eerste module in actieve ontwikkeling",
+        "Bewijs in productie bij pilot-klant",
+        "Roadmap voor volgende modules bepaald",
+        "Co-founder gezocht voor productrol",
       ],
       extra:
-        "EmmaBoekt begon niet met een businessplan. Het begon met een simpele observatie: waarom voelt moderne AI vaak slimmer en prettiger dan moderne boekhoudsoftware?\n\nDat is precies hoe veel ventures binnen Toms Ambitie ontstaan. Eerst voelen we het probleem zelf. Daarna bouwen we een interne oplossing. En pas als het werkt, ontstaat er een venture.",
+        "Emma begon niet met een businessplan. Het begon met een simpele observatie: waarom voelt moderne AI vaak slimmer en prettiger dan de software die ondernemers dagelijks gebruiken?\n\nDat is precies hoe ventures binnen Toms Ambitie ontstaan. Eerst het probleem zelf voelen. Daarna intern bouwen. En als het werkt, een venture bouwen.",
     },
     vision: {
-      title: "MEER DAN ALLEEN BOEKHOUDEN.",
+      title: "DE SLIMME LAAG VOOR ELKE ZELFSTANDIGE ONDERNEMER.",
       description:
-        "De ambitie achter EmmaBoekt gaat verder dan administratie alleen.\n\nOndernemers verdrinken dagelijks in systemen, schermen en losse tools.\n\nEmmaBoekt moet uiteindelijk de slimme laag worden tussen ondernemer en al die complexiteit.\n\nDenk aan offertes, contracten, salarissen, automatisering, AI assistentie en slimme workflows.\n\nNiet gebouwd als losse tools.\nMaar als één natuurlijke ervaring voor ondernemers.",
+        "De ambitie achter Emma gaat verder dan boekhouden.\n\nOndernemers verdrinken dagelijks in systemen, schermen en losse tools.\n\nEmma wordt de slimme laag tussen ondernemer en al die complexiteit.\n\nAcht modules. Niet gebouwd als losse tools. Maar als één natuurlijke ervaring voor ondernemers die gewoon willen ondernemen.",
     },
     ctaBlock: {
       title: "ONDERNEMERS WILLEN ONDERNEMEN.",
       description:
-        "Niet verdwalen in software.\n\nEmmaBoekt maakt administratie niet alleen slimmer, maar vooral rustiger, eenvoudiger en menselijker.",
-      primary: { label: "Bouw mee aan EmmaBoekt", href: "/meebouwen" },
+        "Niet verdwalen in software.\n\nEmma maakt ondernemen niet alleen slimmer, maar vooral rustiger, eenvoudiger en menselijker.",
+      primary: { label: "Bouw mee aan Emma", href: "/meebouwen" },
       secondary: { label: "Bekijk andere ventures", href: "/ventures" },
     },
   },

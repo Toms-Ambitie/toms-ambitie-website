@@ -76,8 +76,8 @@ const VENTURE_TITLES: Record<string, string> = {
     "OAK Marketing — Hybride Marketingbureau voor Groei-MKB | Toms Ambitie",
   "plug-and-power":
     "Plug and Power — Plug-and-Play Energie-oplossingen | Toms Ambitie",
-  "emmaboekt":
-    "EmmaBoekt — AI-assistent voor Administratie | Toms Ambitie",
+  "emmastudio":
+    "Emma — AI-productfamilie voor Ondernemers | Toms Ambitie",
 };
 
 /* Per-venture meta descriptions — action-oriented, mention opportunity */
@@ -90,8 +90,8 @@ const VENTURE_DESCRIPTIONS: Record<string, string> = {
     "OAK Marketing is het hybride marketingbureau van Toms Ambitie. AI waar het kan, mensen waar het moet. Actief en winstgevend. Interesse in samenwerking of partnership? Start een gesprek.",
   "plug-and-power":
     "Plug and Power bouwt hét e-commerce platform voor plug-and-play energie. In opbouw vanuit Zwolle. Toms Ambitie zoekt kapitaal, kennis en netwerk om dit energieventure te versnellen.",
-  "emmaboekt":
-    "EmmaBoekt maakt administratie menselijker via AI-assistentie. In ontwikkeling voor ZZP en MKB. Toms Ambitie zoekt co-founders en early adopters voor dit AI-platform.",
+  "emmastudio":
+    "Emma is een AI-productfamilie voor ondernemers. Acht losse modules van boekhouden tot content. In ontwikkeling. Toms Ambitie zoekt co-founders en early adopters.",
 };
 
 const VentureDetailPage = () => {

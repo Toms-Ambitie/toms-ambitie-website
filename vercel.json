@@ -1,7 +1,9 @@
 {
   "redirects": [
     { "source": "/ventures/pactly", "destination": "/ventures", "permanent": true },
-    { "source": "/ventures/oak-marketing", "destination": "/ventures", "permanent": true }
+    { "source": "/ventures/oak-marketing", "destination": "/ventures", "permanent": true },
+    { "source": "/ventures/emmaboekt", "destination": "/ventures/emmastudio", "permanent": true },
+    { "source": "/ventures/emma-boekt", "destination": "/ventures/emmastudio", "permanent": true }
   ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }

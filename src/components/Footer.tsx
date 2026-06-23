@@ -97,53 +97,6 @@ export const Footer = () => {
           </div>
         </div>
 
-        {/* Sub-brand row */}
-        <div style={{ paddingBottom: 64, borderTop: '1px solid rgba(244,241,232,0.08)', borderBottom: '1px solid rgba(244,241,232,0.08)' }}>
-          <div className="meta" style={{ paddingTop: 32, marginBottom: 32, color: 'rgba(244,241,232,0.5)' }}>
-            OUR VENTURES
-          </div>
-          <div
-            className="footer-ventures"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: 0,
-              borderTop: '1px solid rgba(244,241,232,0.08)',
-            }}
-          >
-            {VENTURES.map((v) => (
-              <Link
-                key={v.name}
-                to={`/ventures#${v.slug}`}
-                style={{
-                  padding: '28px 24px',
-                  borderRight: '1px solid rgba(244,241,232,0.08)',
-                  borderBottom: '1px solid rgba(244,241,232,0.08)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  gap: 24,
-                  minHeight: 160,
-                  position: 'relative',
-                  transition: 'background .25s',
-                  textDecoration: 'none',
-                }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.03)'; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = 'transparent'; }}
-              >
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-                  <span style={{ width: 8, height: 8, background: v.accent }} />
-                  <span className="meta" style={{ color: 'rgba(244,241,232,0.5)' }}>{v.tag}</span>
-                </span>
-                <div>
-                  <div className="display" style={{ fontSize: 32, lineHeight: 0.95, color: 'var(--wit-warm)' }}>{v.name}</div>
-                  <div className="meta" style={{ marginTop: 8, color: 'rgba(244,241,232,0.55)' }}>{v.url} →</div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-
         {/* Footer nav grid */}
         <div
           style={{

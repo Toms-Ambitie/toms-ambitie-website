@@ -4,6 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Google Consent Mode v2 — defaults DENIED; CookieYes updates these after user choice -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        ad_storage:          'denied',
+        analytics_storage:   'denied',
+        ad_user_data:        'denied',
+        ad_personalization:  'denied',
+        wait_for_update:     500
+      });
+    </script>
+
+    <!-- CookieYes — banner + consent updates; no defer/async so defaults are honored before GTM loads -->
+    <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/f4024a558855dfe12c2f704c450fcf9c/script.js"></script>
+
     <!-- Google Tag Manager — deferred to keep it off the critical path (loads after window load + idle) -->
     <script>
       (function(w,d,s,l,i){

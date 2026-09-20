@@ -10,8 +10,9 @@ const MILESTONES = [
   { y: '2015', t: 'Exit + start TA', d: 'Aardbei verkocht. Het startschot voor Toms Ambitie.' },
   { y: '2015-2023', t: 'Parallel bouwen', d: 'Verschillende bureaus en eerste eigen ventures naast elkaar.' },
   { y: '2023', t: 'AI-first', d: 'Definitieve omslag. AI niet als experiment, maar als werkwijze.' },
-  { y: '2024', t: 'PostPilot', d: 'Nieuwe venture: marketing AI voor LinkedIn.' },
-  { y: 'Nu', t: '2 actieve ventures', d: 'PostPilot en EmmaStudio. Allebei live. Volgende staat klaar.' },
+  { y: '2024', t: 'PostPilot', d: 'Nieuwe venture: marketing AI voor LinkedIn. Live in hetzelfde jaar.' },
+  { y: '2025', t: 'EmmaStudio', d: 'AI-productfamilie voor ondernemers. Eerste modules live. Eerste betalende klant.' },
+  { y: '2026', t: 'Twee ventures live', d: 'PostPilot v2.0 met spraak. EmmaStudio vijf modules. Allebei in productie.' },
 ];
 
 const VALUES = [

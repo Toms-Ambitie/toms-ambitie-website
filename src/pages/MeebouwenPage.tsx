@@ -12,7 +12,7 @@ const TOPICS: { label: string; value: string }[] = [
   { label: 'Iets anders', value: 'anders' },
 ];
 
-const NOT_FOR = ['Klantopdrachten / uurwerk', 'Detachering', 'Investeringspitches', 'Recruiters'];
+const NOT_FOR = ['Klantopdrachten en uurwerk', 'Detachering', 'Investeringspitches', 'Recruiters'];
 
 const MeebouwenPage = () => {
   const rootRef = useRef<HTMLDivElement>(null);

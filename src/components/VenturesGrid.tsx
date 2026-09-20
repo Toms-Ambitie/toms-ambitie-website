@@ -23,18 +23,6 @@ const VENTURES = [
     dark: '#0E1014',
   },
   {
-    name: 'Plug and Power',
-    slug: 'plug-and-power',
-    tag: 'Energy Tech',
-    tagline: 'Plug erin. Power eruit.',
-    desc: 'Slim opladen voor MKB en thuis. Stekker erin, klaar.',
-    status: 'In ontwikkeling',
-    year: '2024',
-    url: 'plugandpower.nl',
-    accent: '#FFAA00',
-    dark: '#1A1408',
-  },
-  {
     name: 'EmmaStudio',
     slug: 'emmastudio',
     tag: 'AI productfamilie',

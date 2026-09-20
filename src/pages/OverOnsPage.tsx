@@ -11,7 +11,7 @@ const MILESTONES = [
   { y: '2015-2023', t: 'Parallel bouwen', d: 'Verschillende bureaus en eerste eigen ventures naast elkaar.' },
   { y: '2023', t: 'AI-first', d: 'Definitieve omslag. AI niet als experiment, maar als werkwijze.' },
   { y: '2024', t: 'PostPilot', d: 'Nieuwe venture: marketing AI voor LinkedIn.' },
-  { y: 'Nu', t: '3 actieve ventures', d: 'PostPilot, Plug and Power, EmmaStudio. Volgende staat klaar.' },
+  { y: 'Nu', t: '2 actieve ventures', d: 'PostPilot en EmmaStudio. Allebei live. Volgende staat klaar.' },
 ];
 
 const VALUES = [

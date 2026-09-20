@@ -108,6 +108,7 @@ const VentureDetailPage = () => {
         title,
         description,
         canonical: url,
+        noindex: venture.slug === 'plug-and-power',
         jsonLd: [
           {
             "@context": "https://schema.org",
@@ -169,6 +170,15 @@ const VentureDetailPage = () => {
   return (
     <main className="min-h-screen">
       <Navbar />
+
+      {/* ARCHIVED NOTICE */}
+      {status.label === 'GESTOPT' && (
+        <div style={{ background: 'var(--inkt)', borderBottom: '2px solid var(--inkt-20)', padding: '14px 0', textAlign: 'center' }}>
+          <span className="meta" style={{ color: 'rgba(244,241,232,0.5)', letterSpacing: '0.14em' }}>
+            ARCHIEF · Dit venture is gestopt. De informatie op deze pagina is historische referentie.
+          </span>
+        </div>
+      )}
 
       {/* HERO */}
       <section className="page-hero pb-16 sm:pb-20" style={{ background: "var(--wit-warm)", borderTop: `5px solid ${accent}`, paddingTop: "calc(80px + 64px)" }}>

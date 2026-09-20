@@ -214,21 +214,20 @@ export const ventureDetails: VentureDetail[] = [
     tagline:
       "Iedereen wil onafhankelijker worden van energie. Maar niemand zit te wachten op technisch gedoe en verkooppraatjes.",
     intro:
-      "Plug and Power maakt plug-and-play energie toegankelijk: stekkerbatterijen, mobiele power en slimme energie zonder installateur. Onafhankelijke selectie, eerlijk advies, e-commerce als motor.",
+      "Plug and Power is gestopt. De marktvalidatie en positionering zijn afgerond, maar het venture is in 2026 besloten niet verder te bouwen. Deze pagina is historische referentie.",
     logo: plugAndPowerLogo,
     category: "Energie · E-commerce · Power",
-    tags: ["ENERGIE", "E-COMMERCE", "THUISBATTERIJEN", "PLUG & PLAY", "MOBIELE POWER"],
-    status: "IN ONTWIKKELING",
-    statusColor: "hsl(var(--orange))",
+    tags: ["GESTOPT", "ENERGIE", "E-COMMERCE", "ARCHIEF 2026"],
+    status: "GESTOPT",
+    statusColor: "var(--inkt-40)",
     identity: {
       accent: "#FFAA00",
       accentInk: "#0E0E0C",
-      vibe: "ENERGIE · ONAFHANKELIJKHEID · MOBIEL",
-      proof: ["Positionering & marktvalidatie afgerond", "Leveranciersnetwerk in opbouw", "E-commerce in ontwikkeling"],
-      proofTagline: "In ontwikkeling · marktvalidatie afgerond, opbouw fase",
+      vibe: "GESTOPT · 2026 · ARCHIEF",
+      proof: ["Marktvalidatie afgerond", "Positionering bepaald", "Beslissing: niet verder bouwen"],
+      proofTagline: "Gestopt in 2026",
     },
-    cta: { label: "Bouw mee aan Plug and Power", href: "/meebouwen" },
-    secondaryCta: { label: "Bekijk concept", href: "https://plugandpower.nl", external: true },
+    cta: { label: "Bekijk actieve ventures", href: "/ventures" },
     origin: {
       title: "Het originele probleem",
       story:

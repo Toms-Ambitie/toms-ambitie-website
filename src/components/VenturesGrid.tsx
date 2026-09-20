@@ -13,11 +13,11 @@ const VENTURES = [
   {
     name: 'PostPilot',
     slug: 'post-pilot',
-    tag: 'Marketing AI',
-    tagline: 'AI doet je content.',
-    desc: 'AI-gestuurde LinkedIn content. Van idee naar post in seconden. Schrijft in jouw eigen toon.',
+    tag: 'LinkedIn AI',
+    tagline: 'Spreek het in. PostPilot schrijft.',
+    desc: 'Nederlandstalige LinkedIn-posts uit je eigen stem. Dertig seconden inspreken, klaar om te publiceren.',
     status: 'Live',
-    year: '2024',
+    statusText: 'Live',
     url: 'postpilotapp.nl',
     accent: '#E8A640',
     dark: '#0E1014',
@@ -25,11 +25,11 @@ const VENTURES = [
   {
     name: 'EmmaStudio',
     slug: 'emmastudio',
-    tag: 'AI productfamilie',
-    tagline: 'De saaie kanten van ondernemen. Overgenomen door AI.',
-    desc: 'Vijf modules live. Van boekhouden tot salarisadministratie. Per module af te nemen. Geen pakket dat je niet gebruikt.',
+    tag: 'SaaS voor ondernemers',
+    tagline: 'Je omzet en je kosten zien elkaar nooit.',
+    desc: 'Acht modules voor ondernemers met personeel. Vijf draaien er live, waaronder boekhouden, loon en concurrentiemonitoring.',
     status: 'Live',
-    year: '2025',
+    statusText: 'Live · 5 van 8 modules',
     url: 'emmastudio.nl',
     accent: '#0e3d37',
     dark: '#0a1f1c',
@@ -118,7 +118,7 @@ export const VenturesGrid = () => {
                 </p>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 48, paddingTop: 24, borderTop: '1px solid rgba(244,241,232,0.15)' }}>
-                <LiveDot isLive={featured.status === 'Live'}>{featured.status} · {featured.year}</LiveDot>
+                <LiveDot isLive={featured.status === 'Live'}>{featured.statusText ?? featured.status}</LiveDot>
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: 12, fontFamily: 'var(--mono)', fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', color: featured.accent }}>
                   Bekijk {featured.url} <span style={{ width: 24, height: 1, background: featured.accent, display: 'inline-block' }} /> →
                 </span>
@@ -176,7 +176,7 @@ export const VenturesGrid = () => {
               <div style={{ padding: 32, display: 'flex', flexDirection: 'column', height: '100%' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                   <span className="meta">{v.tag}</span>
-                  <LiveDot isLive={v.status === 'Live'}>{v.status === 'Live' ? 'Live' : 'In ontwikkeling'}</LiveDot>
+                  <LiveDot isLive={v.status === 'Live'}>{v.statusText ?? (v.status === 'Live' ? 'Live' : 'In ontwikkeling')}</LiveDot>
                 </div>
                 <div className="display" style={{ fontSize: 48, lineHeight: 0.92, marginTop: 32, marginBottom: 12 }}>
                   {v.name}

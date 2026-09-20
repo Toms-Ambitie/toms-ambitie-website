@@ -75,24 +75,22 @@ const CtaButton = ({
   );
 };
 
-/* Per-venture SEO titles — keyword-rich, investor/co-founder angle */
+/* Per-venture SEO titles */
 const VENTURE_TITLES: Record<string, string> = {
   "post-pilot":
-    "PostPilot · AI Content Platform voor LinkedIn | Toms Ambitie",
+    "PostPilot · Nederlandstalige LinkedIn-AI met spraakinvoer | Toms Ambitie",
   "plug-and-power":
     "Plug and Power · Archief | Toms Ambitie",
   "emmastudio":
-    "EmmaStudio · AI-productfamilie voor Ondernemers | Toms Ambitie",
+    "EmmaStudio · SaaS voor ondernemers met personeel | Toms Ambitie",
 };
 
-/* Per-venture meta descriptions — action-oriented, mention opportunity */
+/* Per-venture meta descriptions */
 const VENTURE_DESCRIPTIONS: Record<string, string> = {
   "post-pilot":
-    "PostPilot automatiseert LinkedIn-content met AI. Live SaaS-platform v2.0 met betalende gebruikers. Schrijft in jouw eigen toon. Toms Ambitie zoekt co-founders en growth-specialisten voor de volgende groeifase.",
-  "plug-and-power":
-    "Plug and Power bouwt hét e-commerce platform voor plug-and-play energie. In opbouw vanuit Zwolle. Toms Ambitie zoekt kapitaal, kennis en netwerk om dit energieventure te versnellen.",
+    "Spreek dertig seconden in en PostPilot maakt er een LinkedIn-post van in jouw toon. Officiële LinkedIn-koppeling, vanaf nul euro. Een venture van Toms Ambitie uit Zwolle.",
   "emmastudio":
-    "EmmaStudio is een AI-productfamilie voor ondernemers. Acht losse modules van boekhouden tot content. In ontwikkeling. Toms Ambitie zoekt co-founders en early adopters.",
+    "EmmaStudio brengt omzet en kosten op dezelfde dag bij elkaar. Acht modules, vijf live, met een klant dagelijks in productie. Een venture van Toms Ambitie uit Zwolle.",
 };
 
 const VentureDetailPage = () => {
@@ -166,6 +164,9 @@ const VentureDetailPage = () => {
   const status = getVentureStatusMeta(venture.slug);
   const accent = venture.identity.accent;
   const accentInk = venture.identity.accentInk;
+  const hasOnderscheid = !!venture.onderscheid;
+  const statusNum = hasOnderscheid ? "04" : "03";
+  const visieNum = hasOnderscheid ? "05" : "04";
 
   return (
     <main className="min-h-screen">
@@ -316,12 +317,44 @@ const VentureDetailPage = () => {
         </div>
       </section>
 
+      {/* ONDERSCHEID — only shown when venture has this section */}
+      {venture.onderscheid && (
+        <section className="py-20 sm:py-28" style={{ background: "#F4F1E8" }}>
+          <div className="max-w-[1200px] mx-auto px-5 sm:px-10">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-20">
+              <motion.div {...fadeUp(0)}>
+                <p className="font-mono uppercase typo-label typo-caption mb-4">03 — Onderscheid</p>
+                <h2 className="font-display typo-heading" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: "var(--leading-tight)" }}>
+                  {venture.onderscheid.title.toUpperCase()}
+                </h2>
+                <div style={{ width: 48, height: 3, background: accent, marginTop: 16 }} />
+              </motion.div>
+              <motion.div {...fadeUp(0.12)}>
+                {renderParagraphs(
+                  venture.onderscheid.description,
+                  "font-sans typo-lg typo-body",
+                  { lineHeight: "var(--leading-loose)" },
+                )}
+                <ul className="mt-5" style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                  {venture.onderscheid.points.map((point, i) => (
+                    <li key={i} className="font-sans flex items-start gap-3 typo-md typo-body min-h-[44px] py-2" style={{ borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+                      <span style={{ color: accent, fontWeight: 700, fontSize: 16 }}>→</span>
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* STATUS */}
       <section className="py-20 sm:py-28" style={{ background: "#0E0E0C" }}>
         <div className="max-w-[1200px] mx-auto px-5 sm:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-20">
             <motion.div {...fadeUp(0)}>
-              <p className="font-mono uppercase typo-label typo-muted-dark mb-4">03 — Status</p>
+              <p className="font-mono uppercase typo-label typo-muted-dark mb-4">{statusNum} — Status</p>
               <h2 className="font-display typo-heading-dark" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: "var(--leading-tight)" }}>
                 {venture.currentStatus.title.toUpperCase()}
               </h2>
@@ -355,7 +388,7 @@ const VentureDetailPage = () => {
       <section className="py-20 sm:py-28" style={{ background: accent, color: accentInk }}>
         <div className="max-w-[1200px] mx-auto px-5 sm:px-10">
           <motion.div {...fadeUp(0)} style={{ maxWidth: 720 }}>
-            <p className="font-mono uppercase typo-label mb-4" style={{ color: accentInk, opacity: 0.7 }}>04 — Visie</p>
+            <p className="font-mono uppercase typo-label mb-4" style={{ color: accentInk, opacity: 0.7 }}>{visieNum} — Visie</p>
             <h2 className="font-display mb-5" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: "var(--leading-tight)", color: accentInk }}>
               {venture.vision.title.toUpperCase()}
             </h2>

@@ -52,6 +52,12 @@ export interface VentureDetail {
     title: string;
     description: string;
   };
+  /** Optional ONDERSCHEID section shown between MODEL and STATUS. */
+  onderscheid?: {
+    title: string;
+    description: string;
+    points: string[];
+  };
   cta: {
     label: string;
     href: string;
@@ -82,72 +88,69 @@ export const ventureDetails: VentureDetail[] = [
   {
     slug: "emmastudio",
     name: "EMMASTUDIO",
-    tagline: "ONDERNEMEN MOET MAKKELIJKER VOELEN.",
+    tagline: "JE OMZET EN JE KOSTEN ZIEN ELKAAR NOOIT.",
     intro:
-      "EmmaStudio is een AI-productfamilie voor ondernemers. Acht losse modules. Van boekhouden tot personeelsplanning. Elk stuk neemt een saaie kant van ondernemen over.\n\n5 van de 8 modules zijn live. Eén tenant draait dagelijks in productie.",
+      "Bij een kapsalon staat de omzet in de afsprakensoftware en staan de kosten in het boekhoudpakket. Bij een installatiebedrijf staat de verkoop in de projectsoftware en de inkoop in de boekhouding. Die twee komen pas samen als de boekhouder een kwartaal later iets terugkoppelt. EmmaStudio leest beide kanten uit en voegt ze wel samen, per dag, per transactie. Acht modules, elk los af te nemen. Vijf daarvan draaien nu in productie.",
     logo: emmaLogo,
-    category: "AI · SaaS · Productfamilie",
-    tags: ["LIVE", "5 MODULES LIVE", "MKB", "AI PRODUCTFAMILIE"],
+    category: "SaaS · Modulair · Nederland",
+    tags: ["SAAS", "MODULAIR", "VIJF MODULES LIVE"],
     url: "https://emmastudio.nl",
     status: "LIVE",
     identity: {
       accent: "#0e3d37",
       accentInk: "#fbf4ea",
-      vibe: "AI PRODUCTFAMILIE · MODULAIR · LIVE",
+      vibe: "SAAS · MODULAIR · VOOR ONDERNEMERS MET PERSONEEL",
       proof: [
-        "5 modules live in productie",
-        "1 tenant dagelijks actief (kapsalon Heeten)",
-        "CAO-rekenkern voor 6 branches",
+        "Vijf van acht modules live en verkoopbaar",
+        "Eerste tenant dagelijks in productie",
+        "Prijzen en branchepakketten vastgesteld",
       ],
-      proofTagline: "Live · 5 modules in productie · dagelijkse gebruik bewezen",
+      proofTagline: "Vijf modules live · eerste tenant dagelijks actief · branchepakketten vastgesteld",
     },
     cta: { label: "Bouw mee aan EmmaStudio", href: "/meebouwen" },
     secondaryCta: { label: "Bekijk platform", href: "https://emmastudio.nl", external: true },
     origin: {
-      title: "HET BEGON MET ADMINISTRATIE. EN GROEIDE VERDER.",
+      title: "HET BEGON IN EEN KAPSALON.",
       story:
-        "De meeste ondernemers zijn geen boekhouder.\n\nToch voelt veel boekhoudsoftware nog steeds alsof je eerst een cursus moet volgen voordat je iets kunt regelen.\n\nFacturen boeken. Offertes maken. BTW aangifte controleren.\n\nTechnisch werkt het vaak prima.\n\nMaar de ervaring voelt onnodig zwaar.\n\nEn precies daardoor stellen veel ondernemers administratie uit. Niet omdat ze lui zijn, maar omdat de software meer energie vraagt dan nodig.\n\nEmmaStudio begon als een slimme AI-laag die dat oploste. En groeide door naar een volledige productfamilie.\n\n\"Ondernemen moet makkelijker voelen. Niet zwaarder.\"",
+        "Een salon met twee medewerkers draait op drie systemen die niets van elkaar weten. De afsprakensoftware weet wat er binnenkomt. Het boekhoudpakket weet wat eruit gaat. De loonadministratie staat bij een derde partij. De ondernemer weet pas hoe de maand liep als iemand anders dat een kwartaal later uitrekent. Dat is geen softwareprobleem. Het is een tijdprobleem. Want elke beslissing die je neemt op cijfers van drie maanden geleden, neem je te laat. EmmaStudio is gebouwd in die salon, voor die salon, en daarna losgemaakt van die ene salon.\n\n\"Je hoeft niet te weten hoe het werkt. Je moet weten wat je moet doen.\"",
     },
     businessModel: {
-      title: "PER MODULE. GEEN PAKKET DAT JE NIET GEBRUIKT.",
+      title: "ACHT MODULES. JE BETAALT ALLEEN VOOR WAT JE AANZET.",
       description:
-        "EmmaStudio vervangt geen software.\n\nHet maakt het grotendeels onzichtbaar.\n\nAcht modules. Elk los af te nemen. Elk gericht op een specifieke saaie kant van ondernemen.\n\nJe kiest wat je nodig hebt. EmmaStudio regelt de rest.",
+        "EmmaStudio vervangt je boekhoudpakket niet. Het zorgt dat je er nog maar één keer per kwartaal in hoeft. Elke module lost één concreet ding op. Je zet aan wat je nodig hebt en laat de rest uit.",
       points: [
-        "EmmaBoekt: boekhouden en facturen via eBoekhouden.nl (€9/maand)",
-        "EmmaWaakt: AI-financieel inzicht en signalering (€9/maand)",
-        "EmmaLoont: loonadministratie met CAO-rekenkern voor 6 branches (€19/maand)",
-        "EmmaVindt: zoeken en vinden voor ondernemers (€9/maand)",
-        "EmmaZiet: marktanalyse en inzichten (€9/maand)",
-        "Branchepakketten voor specifieke sectoren",
-        "3 modules nog in ontwikkeling",
+        "Nu live",
+        "EmmaBoekt, boekhouden zonder je boekhoudsoftware aan te raken. €9 per maand",
+        "EmmaWaakt, omzet en kosten naast elkaar, elke dag. €9 per maand",
+        "EmmaLoont, loon en contracten voor zes cao-branches. €19 per maand",
+        "EmmaVindt, personeel vinden in je eigen regio. €9 per maand",
+        "EmmaZiet, weten wat de concurrent in de buurt doet. €9 per maand",
+        "Op de roadmap: EmmaCoacht €9, EmmaSchrijft €19, EmmaPromoot €19",
+        "Als branchepakket: Emma voor Salons €49,50, Emma voor Horeca €41,40, Emma voor Installateurs €49,50",
+        "Alle prijzen per maand, exclusief btw. Pakketprijs ligt tien procent onder de som van de losse modules",
       ],
     },
     currentStatus: {
-      title: "LIVE IN PRODUCTIE. NIET IN EEN PITCH DECK.",
+      title: "BEWIJS IN PRODUCTIE. NIET IN EEN PITCH DECK.",
       description:
-        "5 van de 8 modules draaien live.\n\nEén tenant gebruikt het platform dagelijks: een kapsalon in Heeten.\n\nDe CAO-rekenkern ondersteunt zes branches. De modules zijn beschikbaar via een branchepakket of los per module.\n\nDagelijks gebruik. Bewijs in productie.",
+        "EmmaStudio draait dagelijks bij een kapsalon in Heeten. Geen pilot, geen proefopstelling. Een ondernemer die er haar werk mee doet. Dat is het verschil tussen een demo die het doet en een product dat het houdt. De cao-rekenkern achter EmmaLoont dekt zes branches: kappers, horeca, motorvoertuigen en tweewielers, technisch installatiebedrijf, huisartsenzorg en schilders. Elke branche is met de hand nagerekend op de gepubliceerde cao-bronnen voordat hij live ging. Wat we niet claimen: EmmaStudio doet geen loonaangifte bij de Belastingdienst. Dat blijft bij de ondernemer of zijn boekhouder.",
       milestones: [
-        "EmmaBoekt live: boekhouden via eBoekhouden.nl voor €9/maand",
-        "EmmaWaakt live: AI-financieel inzicht en signalering voor €9/maand",
-        "EmmaLoont live: loonadministratie met CAO-rekenkern voor €19/maand",
-        "EmmaVindt live: zoeken en vinden voor €9/maand",
-        "EmmaZiet live: marktanalyse voor €9/maand",
-        "1 tenant dagelijks actief in productie (kapsalon Heeten)",
-        "CAO-rekenkern ondersteunt 6 branches",
-        "3 modules nog in ontwikkeling",
+        "Vijf van acht modules live en verkoopbaar",
+        "Cao-rekenkern voor zes branches nagerekend op bron",
+        "Eerste tenant dagelijks in productie",
+        "Aanmelden en afrekenen werkt",
+        "Commerciële partner gezocht voor groei en verkoop",
       ],
-      extra:
-        "EmmaStudio begon niet met een businessplan. Het begon met een simpele observatie: waarom voelt moderne AI vaak slimmer en prettiger dan de software die ondernemers dagelijks gebruiken?\n\nDat is precies hoe ventures binnen Toms Ambitie ontstaan. Eerst het probleem zelf voelen. Daarna intern bouwen. En als het werkt, een venture bouwen.",
     },
     vision: {
-      title: "DE SLIMME LAAG VOOR ELKE ZELFSTANDIGE ONDERNEMER.",
+      title: "VAN ÉÉN SALON NAAR EEN BRANCHE. DAN NAAR DE VOLGENDE.",
       description:
-        "De ambitie achter EmmaStudio gaat verder dan boekhouden.\n\nOndernemers verdrinken dagelijks in systemen, schermen en losse tools.\n\nEmmaStudio wordt de slimme laag tussen ondernemer en al die complexiteit.\n\nAcht modules. Niet gebouwd als losse tools. Maar als één natuurlijke ervaring voor ondernemers die gewoon willen ondernemen.",
+        "Elke branche heeft dezelfde breuk op een andere plek. Bij kappers zit die tussen afsprakensoftware en boekhouding. Bij horeca tussen kassa en boekhouding. Bij installateurs tussen projectsoftware en inkoop. De rekenkern eronder is hetzelfde. Alleen de adapter verschilt. Daarom is elke nieuwe branche sneller dan de vorige, en wordt elke nieuwe module goedkoper om te bouwen dan de vorige.\n\nDE BOEKHOUDER KIJKT TERUG. EMMASTUDIO KIJKT MEE. Niet meer functies dan de rest. Wel de enige die omzet en kosten op dezelfde dag naast elkaar zet.",
     },
     ctaBlock: {
       title: "ONDERNEMERS WILLEN ONDERNEMEN.",
       description:
-        "Niet verdwalen in software.\n\nEmmaStudio maakt ondernemen niet alleen slimmer, maar vooral rustiger, eenvoudiger en menselijker.\n\nWe zoeken co-founders voor de productrol en early adopters voor de modules die nog in ontwikkeling zijn.",
+        "Niet verdwalen in software.\n\nEmmaStudio maakt ondernemen niet alleen slimmer, maar vooral rustiger, eenvoudiger en menselijker.",
       primary: { label: "Bouw mee aan EmmaStudio", href: "/meebouwen" },
       secondary: { label: "Bekijk andere ventures", href: "/ventures" },
     },
@@ -156,24 +159,24 @@ export const ventureDetails: VentureDetail[] = [
     slug: "post-pilot",
     name: "POSTPILOT",
     tagline:
-      "Zichtbaar zijn op LinkedIn kost meer tijd dan de meeste ondernemers hebben. PostPilot lost dat op.",
+      "De meeste ondernemers weten dat ze zichtbaar moeten zijn. Maar zodra het druk wordt, verdwijnen ze van LinkedIn.",
     intro:
-      "PostPilot is live. Versie 2.0. Spraak als hoofdroute: inspreken, toon kiezen, post klaar in ongeveer 30 seconden. Tekst als alternatief: vier kernwoorden, twintig seconden.\n\nOfficieel verbonden met LinkedIn OAuth. Vier schrijftonen. Contentkalender ingebouwd.\n\nNul betalende klanten op dit moment. Het platform werkt. De conversie van gratis naar betaald staat centraal in de volgende fase.",
+      "PostPilot draait dat om. Je spreekt in wat je denkt, ongeveer dertig seconden, en je krijgt een LinkedIn-post terug in je eigen toon. Of je typt vier steekwoorden. Publiceren gaat via de officiële LinkedIn-koppeling, dus zonder wachtwoorden te delen. Versie 2.0 is live.",
     logo: postPilotLogo,
     category: "SaaS · Contentautomatisering",
-    tags: ["LIVE V2.0", "LINKEDIN OAUTH", "SPRAAK", "AI CONTENT"],
+    tags: ["SPRAAK", "NEDERLANDS", "LINKEDIN OAUTH", "VANAF €0"],
     url: "https://www.postpilotapp.nl",
     status: "LIVE",
     identity: {
       accent: "#E8A640",
       accentInk: "#0E1014",
-      vibe: "CONTENT OPERATING SYSTEM · LINKEDIN · SPRAAK",
+      vibe: "SAAS · NEDERLANDSTALIG · LINKEDIN",
       proof: [
-        "Live v2.0 · spraak als hoofdroute (~30 sec)",
-        "Officiële LinkedIn OAuth-koppeling",
-        "Nul betalende klanten · focus op eerste conversie",
+        "Live platform v2.0 met spraakinvoer",
+        "Officiële LinkedIn-koppeling goedgekeurd",
+        "Founder Deal open, honderd plekken",
       ],
-      proofTagline: "Live · geen betalende klanten · conversie is de volgende stap",
+      proofTagline: "Live v2.0 met spraakinvoer · LinkedIn-koppeling goedgekeurd · Founder Deal open",
     },
     cta: { label: "Bouw mee aan PostPilot", href: "/meebouwen" },
     secondaryCta: { label: "Bekijk platform", href: "https://www.postpilotapp.nl", external: true },
@@ -192,13 +195,12 @@ export const ventureDetails: VentureDetail[] = [
         "Premium: €9,95 per maand, 100 posts + spraak + kalender",
         "Founder Deal: €199 eenmalig, max 100 plekken (lifetime)",
         "Jaarbetaling: 15% korting op maandtarieven",
-        "Co-founder Christiaan van Dijk verantwoordelijk voor product en groei",
       ],
     },
     currentStatus: {
-      title: "LIVE. GEEN BETALENDE KLANTEN NOG.",
+      title: "WAAR WE NU STAAN.",
       description:
-        "PostPilot v2.0 draait. De spraakroute werkt: inspreken, toon kiezen, LinkedIn-post klaar.\n\nDe officiële LinkedIn OAuth-koppeling is actief. Vier schrijftonen beschikbaar. Contentkalender ingebouwd.\n\nNul betalende klanten op dit moment. Het platform is bewezen. De volgende stap is het binnenhalen van de eerste betalende gebruiker.",
+        "PostPilot is live en wordt doorontwikkeld door Tom Mulder en co-founder Christiaan van Dijk. Versie 2.0 draait op spraak als hoofdroute. De officiële LinkedIn-koppeling is actief. Vier schrijftonen: reflectief, direct, verhalend en analytisch. Tom schrijft het merendeel van zijn eigen LinkedIn-posts met het product. Dat is de snelste manier om te merken wat er nog niet goed genoeg is.\n\nHet platform staat. De eerste betalende klant is de volgende mijlpaal. We schrijven dat liever zo op dan dat we er een getal bij verzinnen.",
       milestones: [
         "V2.0 live · spraak als hoofdroute",
         "Officiële LinkedIn OAuth-koppeling actief",
@@ -206,15 +208,23 @@ export const ventureDetails: VentureDetail[] = [
         "Contentkalender en planningsfunctie live",
         "Vier abonnementen beschikbaar (Gratis t/m Founder Deal)",
         "Co-founder Christiaan van Dijk aan boord",
-        "Nul betalende klanten · eerste conversie is de volgende mijlpaal",
       ],
-      extra:
-        "De technische fundering staat. De vraag is nu: hoe zetten we gratis gebruikers om naar betalend? Dat is waar de energie naartoe gaat.",
     },
     vision: {
       title: "ZICHTBAARHEID VOORSPELBAAR MAKEN.",
       description:
         "De behoefte aan consistente zichtbaarheid groeit. Tegelijkertijd neemt de tijdsdruk op ondernemers en professionals toe. PostPilot speelt precies in dat spanningsveld.\n\nWaar traditionele contenttools losse hulpmiddelen zijn, wil PostPilot uitgroeien tot het content operating system voor ondernemers: van idee tot publicatie, zonder dat het een klus wordt.\n\nHet doel is niet meer content produceren. Het doel is zichtbaarheid structureel makkelijker maken.",
+    },
+    onderscheid: {
+      title: "WAAROM DIT GEEN TAPLIO-KLOON IS.",
+      description:
+        "LinkedIn heeft in 2025 hard opgetreden tegen tools die via browserextensies en cookies bij je account komen. Wie zo'n tool gebruikt, riskeert zijn eigen account.\n\nPostPilot gebruikt uitsluitend de officiële LinkedIn OAuth-koppeling. Dezelfde techniek als waarmee je inlogt bij andere LinkedIn-apps. Geen wachtwoord delen, geen scraping. Je verbreekt de koppeling wanneer je wil.\n\nDaarnaast is PostPilot Nederlandstalig gebouwd, niet vertaald. De spraakherkenning kan tegen halve zinnen, dialect en hardop nadenken. Dat merk je pas als je het in het Nederlands probeert, met een halve gedachte en een uh ertussen.",
+      points: [
+        "Officiële LinkedIn-koppeling, goedgekeurd",
+        "Nederlands als eerste taal, niet als vertaling",
+        "Spraak als hoofdroute, tekst als alternatief",
+        "Prijs begint op nul",
+      ],
     },
     ctaBlock: {
       title: "BOUW MEE AAN POSTPILOT",
@@ -230,9 +240,9 @@ export const ventureDetails: VentureDetail[] = [
     tagline:
       "Iedereen wil onafhankelijker worden van energie. Maar niemand zit te wachten op technisch gedoe en verkooppraatjes.",
     intro:
-      "Plug and Power is gestopt. De marktvalidatie en positionering zijn afgerond, maar het venture is in 2026 besloten niet verder te bouwen. Deze pagina is historische referentie.",
+      "Plug and Power is in 2026 gestopt. Deze pagina blijft staan omdat we ook laten zien wat niet doorging.",
     logo: plugAndPowerLogo,
-    category: "Energie · E-commerce · Power",
+    category: "Energy tech · Archief",
     tags: ["GESTOPT", "ENERGIE", "E-COMMERCE", "ARCHIEF 2026"],
     status: "GESTOPT",
     statusColor: "var(--inkt-40)",
@@ -240,7 +250,7 @@ export const ventureDetails: VentureDetail[] = [
       accent: "#FFAA00",
       accentInk: "#0E0E0C",
       vibe: "GESTOPT · 2026 · ARCHIEF",
-      proof: ["Marktvalidatie afgerond", "Positionering bepaald", "Beslissing: niet verder bouwen"],
+      proof: ["In 2026 stopgezet"],
       proofTagline: "Gestopt in 2026",
     },
     cta: { label: "Bekijk actieve ventures", href: "/ventures" },
@@ -301,7 +311,7 @@ export const getVentureStatusMeta = (slug: string): VentureStatusMeta => {
   return {
     label,
     color,
-    isLive: label === "LIVE",
+    isLive: label.startsWith("LIVE"),
   };
 };
 

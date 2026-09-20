@@ -4,7 +4,7 @@ import { Counter } from './Counter';
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const STATS = [
-  { n: 2, suf: '', l: 'Actieve ventures', m: 'Eigen ventures' },
+  { n: 2, suf: '', l: 'Actieve ventures', m: 'Beide live' },
   { n: new Date().getFullYear() - 2008, suf: 'j', l: 'Bouwervaring', m: 'Sinds 2008' },
   { n: 6, suf: 'wk', l: 'Idee naar venture', m: 'Maximale tijd' },
   { n: 0, suf: '', l: 'Klantopdrachten', m: 'Alleen eigen ventures' },

@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const VENTURES = [
-  { name: 'PostPilot', slug: 'post-pilot', tag: 'Marketing AI', url: 'postpilotapp.nl', accent: '#E8A640' },
-  { name: 'EmmaStudio', slug: 'emmastudio', tag: 'AI productfamilie', url: 'emmastudio.nl', accent: '#0e3d37' },
+  { name: 'PostPilot', slug: 'post-pilot', tag: 'LinkedIn AI', url: 'postpilotapp.nl', accent: '#E8A640' },
+  { name: 'EmmaStudio', slug: 'emmastudio', tag: 'SaaS voor ondernemers', url: 'emmastudio.nl', accent: '#0e3d37' },
 ];
 
 const NAV_LINKS = [
@@ -181,7 +181,10 @@ export const Footer = () => {
           flexWrap: 'wrap',
           gap: 16,
         }}>
-          <div>© {new Date().getFullYear()} Toms Ambitie · KVK 70590907 · Zwolle, Nederland</div>
+          <div>
+            <div>© {new Date().getFullYear()} TOMS AMBITIE · EEN VENTURE CLUB UIT ZWOLLE</div>
+            <div>KVK 70590907 · ZWOLLE, NEDERLAND</div>
+          </div>
           <div style={{ display: 'flex', gap: 24 }}>
             <Link to="/privacy" style={{ color: 'rgba(244,241,232,0.55)', textDecoration: 'none' }}>Privacy</Link>
             <Link to="/voorwaarden" style={{ color: 'rgba(244,241,232,0.55)', textDecoration: 'none' }}>Voorwaarden</Link>

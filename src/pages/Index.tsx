@@ -13,8 +13,8 @@ import { applySEO } from '@/lib/seo';
 
 const TICKER_ITEMS = [
   '2 actieve ventures, allebei live',
-  'PostPilot · marketing AI',
-  'EmmaStudio · AI productfamilie',
+  'PostPilot · LinkedIn AI',
+  'EmmaStudio · SaaS voor ondernemers',
   'AI-first sinds 2023',
   'Zwolle, NL',
 ];

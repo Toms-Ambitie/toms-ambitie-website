@@ -12,9 +12,8 @@ import { useReveal } from '@/hooks/useReveal';
 import { applySEO } from '@/lib/seo';
 
 const TICKER_ITEMS = [
-  '3 actieve ventures',
+  '2 actieve ventures, allebei live',
   'PostPilot · marketing AI',
-  'Plug and Power · energy tech',
   'EmmaStudio · AI productfamilie',
   'AI-first sinds 2023',
   'Zwolle, NL',
@@ -28,7 +27,7 @@ const Index = () => {
     applySEO({
       title: 'Toms Ambitie — Venture Club Zwolle | Eigen bedrijven bouwen',
       description:
-        'Venture club in Zwolle die eigen bedrijven bouwt vanuit echte problemen. Tom Mulder zoekt co-founders, investeerders en specialisten. PostPilot, Plug and Power, EmmaStudio.',
+        'Venture club in Zwolle die eigen bedrijven bouwt vanuit echte problemen. Tom Mulder zoekt co-founders, investeerders en specialisten. PostPilot en EmmaStudio zijn live.',
       canonical: 'https://www.toms-ambitie.nl/',
       jsonLd: {
         '@context': 'https://schema.org',

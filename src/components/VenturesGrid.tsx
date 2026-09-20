@@ -27,8 +27,8 @@ const VENTURES = [
     slug: 'emmastudio',
     tag: 'AI productfamilie',
     tagline: 'De saaie kanten van ondernemen. Overgenomen door AI.',
-    desc: 'Acht losse modules voor ondernemers. Van boekhouden tot content. Per module af te nemen. Geen pakket dat je niet gebruikt.',
-    status: 'In ontwikkeling',
+    desc: 'Vijf modules live. Van boekhouden tot salarisadministratie. Per module af te nemen. Geen pakket dat je niet gebruikt.',
+    status: 'Live',
     year: '2025',
     url: 'emmastudio.nl',
     accent: '#0e3d37',
@@ -70,8 +70,8 @@ export const VenturesGrid = () => {
         <motion.div {...fadeUp(0)} style={{ marginBottom: 80, textAlign: 'center' }}>
           <span className="eyebrow"><span style={{ marginRight: 8, color: 'var(--inkt-40)' }}>01</span>De Ventures</span>
           <h2 className="h2" style={{ marginTop: 24, maxWidth: 1100, marginInline: 'auto' }}>
-            Drie eigen ventures.<br />
-            <span style={{ color: 'var(--inkt-40)' }}>Allemaal vanuit echte frustratie ontstaan.</span>
+            Twee actieve ventures.<br />
+            <span style={{ color: 'var(--inkt-40)' }}>Allebei gebouwd vanuit echte frustratie.</span>
           </h2>
         </motion.div>
 

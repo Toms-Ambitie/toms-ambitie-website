@@ -5,7 +5,7 @@ import { Footer } from '@/components/Footer';
 import { useReveal } from '@/hooks/useReveal';
 import { applySEO } from '@/lib/seo';
 import {
-  Zap, Users, Globe, Sparkles, Eye, Linkedin,
+  Zap, Users, Sparkles, Eye, Linkedin,
   Flag,
 } from 'lucide-react';
 
@@ -57,34 +57,13 @@ const VENTURES: Venture[] = [
     image: '/photos/postpilot-app-vandaag.webp',
   },
   {
-    name: 'Plug and Power',
-    slug: 'plug-and-power',
-    tag: 'Energy Tech',
-    statusLabel: 'IN ONTWIKKELING',
-    tagline: 'Draagbare energie voor elke situatie.',
-    long: 'Plug and Power levert slimme, betrouwbare en draagbare energie-oplossingen. Voor thuis, onderweg, op de camping of als back-up. Kracht wanneer jij het nodig hebt.',
-    status: 'In ontwikkeling',
-    year: '2024',
-    url: 'plugandpower.nl',
-    externalUrl: 'plugandpower.nl',
-    accent: '#FFAA00',
-    accentInk: '#0E0E0C',
-    bg: '#1A1408',
-    metrics: [
-      { Icon: Users, value: 'MKB + B2C', label: 'markt' },
-      { Icon: Zap, value: 'slim', label: 'advies' },
-      { Icon: Globe, value: 'NL', label: 'startmarkt' },
-    ],
-    image: '/photos/plug_and_power_venture_visual.webp',
-  },
-  {
     name: 'EmmaStudio',
     slug: 'emmastudio',
     tag: 'AI productfamilie',
-    statusLabel: 'IN ONTWIKKELING',
+    statusLabel: 'LIVE',
     tagline: 'De saaie kanten van ondernemen. Overgenomen door AI.',
-    long: 'EmmaStudio is een AI-productfamilie voor ondernemers. Acht losse modules. Van boekhouden tot content, van personeel tot marktanalyse.',
-    status: 'In ontwikkeling',
+    long: 'EmmaStudio is een AI-productfamilie voor ondernemers. Vijf modules live. Van boekhouden tot salarisadministratie, van factuurherkenning tot personeelssignalen.',
+    status: 'Live',
     year: '2025',
     url: 'emmastudio.nl',
     externalUrl: 'emmastudio.nl',
@@ -93,7 +72,7 @@ const VENTURES: Venture[] = [
     bg: '#E8F2EE',
     isLight: true,
     metrics: [
-      { Icon: Sparkles, value: '8', label: 'modules' },
+      { Icon: Sparkles, value: '5', label: 'modules live' },
       { Icon: Users, value: 'ZZP + MKB', label: 'doelgroep' },
       { Icon: Flag, value: 'NL', label: 'startmarkt' },
     ],
@@ -132,7 +111,7 @@ const VentureSection = ({ v, index }: { v: Venture; index: number }) => {
         <div className="venture-header-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <span style={{ width: 8, height: 8, background: v.accent, flexShrink: 0 }} />
-            <span className="meta" style={{ color: faint }}>VENTURE 0{index + 1} / 03 · {v.tag}</span>
+            <span className="meta" style={{ color: faint }}>VENTURE 0{index + 1} / 02 · {v.tag}</span>
           </div>
           <Link
             to={`/ventures/${v.slug}`}
@@ -372,15 +351,15 @@ const VenturesPage = () => {
 
   useEffect(() => {
     applySEO({
-      title: 'Ventures — PostPilot, Plug and Power, EmmaStudio | Toms Ambitie',
-      description: 'Drie eigen ventures gebouwd vanuit echte problemen. PostPilot is live (SaaS). Plug and Power en EmmaStudio zijn in ontwikkeling. Interesse in investeren of meebouwen?',
+      title: 'Ventures — PostPilot en EmmaStudio | Toms Ambitie',
+      description: 'Twee eigen ventures, allebei live. PostPilot: AI content voor LinkedIn. EmmaStudio: AI productfamilie voor ondernemers. Interesse in investeren of meebouwen?',
       canonical: 'https://www.toms-ambitie.nl/ventures',
       jsonLd: {
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
         'name': 'Ventures van Toms Ambitie',
         'url': 'https://www.toms-ambitie.nl/ventures',
-        'description': 'Drie eigen ventures gebouwd vanuit echte problemen — open voor investeerders, co-founders en specialisten.',
+        'description': 'Twee eigen ventures, allebei live, gebouwd vanuit echte problemen. Open voor investeerders, co-founders en specialisten.',
         'isPartOf': { '@id': 'https://www.toms-ambitie.nl/#website' },
         'author': { '@id': 'https://www.toms-ambitie.nl/#tom-mulder' },
       },
@@ -406,7 +385,7 @@ const VenturesPage = () => {
               <span>Waar we nu<br />aan bouwen.</span>
             </h1>
             <p className="lead reveal" style={{ marginTop: 48, fontSize: 22, maxWidth: 640 }}>
-              Geen losse ideeën. Drie ventures gebouwd vanuit echte frustratie, behoefte of marktkans. PostPilot is live. Plug and Power en EmmaStudio zijn in actieve ontwikkeling.
+              Geen losse ideeën. Twee ventures gebouwd vanuit echte frustratie en marktkans. PostPilot is live. EmmaStudio is live.
             </p>
 
             {/* Quick-jump — anchors to section IDs */}
@@ -415,7 +394,7 @@ const VenturesPage = () => {
               style={{
                 marginTop: 80,
                 display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
+                gridTemplateColumns: 'repeat(2, 1fr)',
                 gap: 12,
               }}
             >

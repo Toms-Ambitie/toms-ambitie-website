@@ -77,6 +77,7 @@ const NewsArticle = () => {
       title: `${post.title} — Toms Ambitie`,
       description: post.lead,
       canonical: `https://www.toms-ambitie.nl/nieuws/${post.slug}`,
+      noindex: post.noindex,
     });
   }, [post]);
 

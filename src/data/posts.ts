@@ -15,41 +15,47 @@ export interface Post {
   read: string;
   featured?: boolean;
   cover?: string;        // only set when a truly unique image is available
+  noindex?: boolean;     // true = noindex + verborgen in nieuwsoverzicht
   lead: string;
   body: Block[];
 }
 
 export const POSTS: Post[] = [
   {
-    slug: 'post-pilot-eerste-100-klanten',
-    title: 'PostPilot bereikt eerste 100 klanten',
-    date: '18 april 2026',
+    slug: 'postpilot-v2-spraak',
+    title: 'PostPilot v2.0: spraak als hoofdroute',
+    date: '20 september 2026',
     cat: 'Venture',
     statusLabel: 'Venture update',
     venture: 'PostPilot',
-    read: '2 min',
+    featured: true,
+    read: '3 min',
     cover: '/photos/postpilot-app-vandaag.webp',
-    lead: 'Een belangrijke validatiemijlpaal: PostPilot heeft de honderdste betalende klant verwelkomd en bewijst daarmee product-market fit in de niche.',
+    lead: 'PostPilot v2.0 is live. Spraak is de hoofdroute. In dertig seconden een post, in jouw eigen toon. Geen betalende klanten nog. Wel een product dat klaar is.',
     body: [
-      { t: 'p', c: 'Sinds de stille launch eind vorig jaar groeit PostPilot gestaag. Deze week verwelkomden we de honderdste betalende klant, een mijlpaal die binnen het Toms Ambitie-model staat voor "gevalideerd".' },
-      { t: 'p', c: 'De focus lag de afgelopen maanden op retentie, onboarding en het verder uitbouwen van de AI-kern. Dat heeft geleid tot Versie 2.0, die inmiddels live is. Een volledig vernieuwd platform: sneller, scherper en beter afgestemd op hoe gebruikers echt schrijven.' },
-      { t: 'quote', c: '"Snel valideren, durven bijsturen, niets afdwingen."' },
-      { t: 'p', c: 'Voor wie nieuwsgierig is naar de aanpak: het hele traject werd gebouwd op de leercurves van eerdere ventures. Snel valideren, durven bijsturen, niets afdwingen.' },
+      { t: 'p', c: 'PostPilot versie 2.0 draait. Samen met co-founder Christiaan van Dijk hebben we de afgelopen maanden het platform volledig herbouwd rondom spraak.' },
+      { t: 'h2', c: 'Hoe het nu werkt' },
+      { t: 'p', c: 'Spraak is de hoofdroute. Je spreekt dertig seconden in. AI maakt er een LinkedIn-post van in jouw toon. Toon kiezen kan: zakelijk, persoonlijk, inspirerend of direct. Klaar om te plannen en te publiceren via officieel LinkedIn OAuth.' },
+      { t: 'p', c: 'Wil je liever typen? Geef vier steekwoorden. Twintig seconden. Zelfde resultaat.' },
+      { t: 'quote', c: '"Het idee is altijd hetzelfde gebleven. De uitvoering is veel beter geworden."' },
+      { t: 'h2', c: 'Eerlijk over de stand van zaken' },
+      { t: 'p', c: 'Nul betalende klanten. Dat is de eerlijke stand van zaken. Het product is live, de techniek werkt, de eerste gebruikers testen. Maar van product-market fit hebben we nog geen bewijs. Dat komt als het komt.' },
     ],
   },
   {
-    slug: 'plug-and-power-pilot-zwolle',
-    title: 'Plug and Power start pilot in Zwolle',
-    date: '29 maart 2026',
-    cat: 'Venture',
-    statusLabel: 'Venture update',
+    slug: 'waarom-we-met-plug-and-power-zijn-gestopt',
+    title: 'Waarom we met Plug and Power zijn gestopt',
+    date: '1 september 2026',
+    cat: 'Lessen',
+    statusLabel: 'Beslissing',
     venture: 'Plug and Power',
-    read: '2 min',
-    lead: 'Eerste pilot loopt in eigen stad. Drie locaties, één doel: bewijzen dat het concept ook buiten papier werkt.',
+    noindex: true,
+    read: '4 min',
+    lead: 'Plug and Power is gestopt. Niet gefailleerd, niet verkocht. Bewust gestopt. Hier is waarom.',
     body: [
-      { t: 'p', c: 'Plug and Power is uit de tekentafelfase. Op drie locaties in Zwolle draait nu een gesloten pilot waarin we het concept op echte gebruikers loslaten.' },
-      { t: 'p', c: 'Doel van deze fase: meten, niet schalen. We willen weten waar het schuurt voordat we de volgende stap zetten.' },
-      { t: 'p', c: 'Resultaten worden in Q3 intern geëvalueerd. Bij groen licht volgt uitbreiding naar twee andere steden.' },
+      { t: 'p', c: '[TOM VULT AAN]' },
+      { t: 'quote', c: '"Stoppen is ook een beslissing. En soms de juiste."' },
+      { t: 'p', c: 'De lessen van Plug and Power nemen we mee. De aanpak verandert niet.' },
     ],
   },
   {

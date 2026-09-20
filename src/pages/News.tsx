@@ -229,13 +229,14 @@ const News = () => {
   useReveal(rootRef);
   const [cat, setCat] = useState('Alles');
 
+  const LISTED = POSTS.filter((p) => !p.noindex);
   const filtered = (() => {
     switch (cat) {
-      case 'Ventures': return POSTS.filter((p) => p.cat === 'Venture');
-      case 'Origin stories': return POSTS.filter((p) => p.statusLabel === 'Origin story');
-      case 'Updates': return POSTS.filter((p) => p.statusLabel === 'Venture update');
-      case 'Lessen': return POSTS.filter((p) => p.cat === 'Lessen');
-      default: return POSTS;
+      case 'Ventures': return LISTED.filter((p) => p.cat === 'Venture');
+      case 'Origin stories': return LISTED.filter((p) => p.statusLabel === 'Origin story');
+      case 'Updates': return LISTED.filter((p) => p.statusLabel === 'Venture update');
+      case 'Lessen': return LISTED.filter((p) => p.cat === 'Lessen');
+      default: return LISTED;
     }
   })();
 

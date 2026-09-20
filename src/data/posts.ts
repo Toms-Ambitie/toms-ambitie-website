@@ -59,7 +59,7 @@ export const POSTS: Post[] = [
     cat: 'Venture',
     statusLabel: 'Achter de schermen',
     read: '1 min',
-    lead: 'Een vierde venture wordt momenteel verkend. Nog geen naam, geen pagina — wel een sterk vermoeden dat het ergens heen gaat.',
+    lead: 'Een vierde venture wordt momenteel verkend. Nog geen naam, geen pagina, wel een sterk vermoeden dat het ergens heen gaat.',
     body: [
       { t: 'p', c: 'Achter de schermen loopt een verkenning voor een vierde venture. Het idee zit op het snijvlak van automatisering en MKB-dienstverlening.' },
       { t: 'p', c: 'Volgens het Toms Ambitie-ritme krijgt dit project pas een naam en een plek op de site zodra de eerste validatie rond is. Tot die tijd: hoofd omlaag, gesprekken voeren, aannames testen.' },
@@ -279,11 +279,11 @@ export const POSTS: Post[] = [
     statusLabel: 'Origin story',
     venture: 'DesignerShirts',
     read: '2 min',
-    lead: 'Funny shirts waren ineens een ding. Maar je kon ze nergens zelf samenstellen. Dat vonden wij vreemd — en zo ontstond DesignerShirts.',
+    lead: 'Funny shirts waren ineens een ding. Maar je kon ze nergens zelf samenstellen. Dat vonden wij vreemd. Zo ontstond DesignerShirts.',
     body: [
       { t: 'p', c: 'Rond 2010 waren funny shirts ineens een ding. Maar eigenlijk kon je ze maar op een paar plekken kopen. Vaak bij winkels zoals CoolCat. Gewoon fysiek in de winkel en altijd precies zoals zij hadden bedacht.' },
       { t: 'p', c: 'Dat vonden wij vreemd. Want tegelijkertijd zagen we iets anders gebeuren: steeds meer mensen wilden online dingen personaliseren. Dus ontstond het idee: wat als mensen zelf hun kleding kunnen samenstellen?' },
-      { t: 'p', c: 'Samen met REF Drukkerij — tegenwoordig REFLEX Bedrijfskleding — begonnen we DesignerShirts. En eerlijk? In het begin voelde het vooral als één groot creatief experiment. We konden ineens al onze flauwe woordgrappen, ideeën en hersenspinsels ergens kwijt.' },
+      { t: 'p', c: 'Samen met REF Drukkerij (tegenwoordig REFLEX Bedrijfskleding) begonnen we DesignerShirts. En eerlijk? In het begin voelde het vooral als één groot creatief experiment. We konden ineens al onze flauwe woordgrappen, ideeën en hersenspinsels ergens kwijt.' },
       { t: 'quote', c: 'DesignerShirts werd onze eigen digitale speeltuin.' },
       { t: 'p', c: 'Omdat we websites en webshops bouwden voor klanten, konden we hier alles testen: UX, online marketing, conversie, productpagina\'s, advertenties, checkoutflows, SEO en klantgedrag. En dat maakte het project misschien nog waardevoller dan de omzet zelf.' },
     ],

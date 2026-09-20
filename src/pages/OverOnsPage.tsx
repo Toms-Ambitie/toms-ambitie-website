@@ -8,7 +8,7 @@ import { applySEO } from '@/lib/seo';
 const MILESTONES = [
   { y: '2008', t: 'Aardbei Communicatie', d: 'Opgericht in Nijverdal door Tom Mulder met partners. Eerste bureau.' },
   { y: '2015', t: 'Exit + start TA', d: 'Aardbei verkocht. Het startschot voor Toms Ambitie.' },
-  { y: '2015–2023', t: 'Parallel bouwen', d: 'Verschillende bureaus en eerste eigen ventures naast elkaar.' },
+  { y: '2015-2023', t: 'Parallel bouwen', d: 'Verschillende bureaus en eerste eigen ventures naast elkaar.' },
   { y: '2023', t: 'AI-first', d: 'Definitieve omslag. AI niet als experiment, maar als werkwijze.' },
   { y: '2024', t: 'PostPilot', d: 'Nieuwe venture: marketing AI voor LinkedIn.' },
   { y: 'Nu', t: '3 actieve ventures', d: 'PostPilot, Plug and Power, EmmaStudio. Volgende staat klaar.' },
@@ -17,7 +17,7 @@ const MILESTONES = [
 const VALUES = [
   { t: 'Oplossing eerst', d: 'Elk venture begint met iets wat we zelf voelen. Geen spreadsheet als startpunt, geen denkbeeldige markt.' },
   { t: 'Altijd onderbouwd', d: 'Elk idee krijgt een plan. Nooit roekeloos. Maar ook nooit zo lang gepland dat het niet gebeurt.' },
-  { t: 'AI als versneller', d: 'Niet als experiment, maar als werkwijze. Validatie, demo, business case — AI werkt mee van stap één.' },
+  { t: 'AI als versneller', d: 'Niet als experiment, maar als werkwijze. Validatie, demo, business case: AI werkt mee van stap één.' },
   { t: 'Samen bouwen', d: 'Het liefst met partners, maar ook solo als het moet. Geen ego.' },
   { t: 'Eerlijk', d: 'Over wat werkte. Maar vooral ook over wat niet werkte.' },
 ];
@@ -98,7 +98,7 @@ const OverOnsPage = () => {
               />
               <div style={{ position: 'absolute', bottom: 20, left: 20, padding: '10px 16px', background: 'var(--wit-warm)', display: 'flex', alignItems: 'center', gap: 10 }}>
                 <span style={{ width: 7, height: 7, background: 'var(--volt)' }} />
-                <span className="meta">STUDIO ZWOLLE · 2025</span>
+                <span className="meta">STUDIO ZWOLLE · 2026</span>
               </div>
               <div style={{ position: 'absolute', top: 20, right: 20, padding: '10px 16px', background: 'rgba(14,14,12,0.7)', backdropFilter: 'blur(10px)', color: 'var(--wit-warm)' }}>
                 <span className="meta" style={{ color: 'var(--wit-warm)' }}>FIG.01 · DE WERKVLOER</span>

@@ -13,7 +13,7 @@ const timeline = [
     desc: "Exit gaf de ruimte om te stoppen met klantwerk en te beginnen met eigen bedrijven bouwen.",
   },
   {
-    year: "2015 – nu",
+    year: "2015 - nu",
     title: "Van bouwer naar bouwclub",
     desc: "Meerdere ventures gestart, sommige verkocht, sommige bewust gestopt. De kern + schil ontstond.",
   },

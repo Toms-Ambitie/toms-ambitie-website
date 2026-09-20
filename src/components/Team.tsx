@@ -31,7 +31,7 @@ export const TeamTeaser = () => (
           display: 'flex', alignItems: 'center', gap: 10,
         }}>
           <span style={{ width: 6, height: 6, background: 'var(--volt)' }} />
-          <span className="meta">STUDIO ZWOLLE · 2025</span>
+          <span className="meta">STUDIO ZWOLLE · 2026</span>
         </div>
       </motion.div>
 

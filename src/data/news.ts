@@ -345,7 +345,7 @@ export const news: NewsItem[] = [
     tag: ProjectTags.designerShirts,
     title: "Waarom we in 2010 begonnen met een webshop voor funny shirts",
     excerpt:
-      "Funny shirts waren ineens een ding. Maar je kon ze nergens zelf samenstellen. Dat vonden wij vreemd — en zo ontstond DesignerShirts.",
+      "Funny shirts waren ineens een ding. Maar je kon ze nergens zelf samenstellen. Dat vonden wij vreemd. Zo ontstond DesignerShirts.",
     body: [
       "Rond 2010 waren funny shirts ineens een ding.",
       "Maar eigenlijk kon je ze maar op een paar plekken kopen. Vaak bij winkels zoals CoolCat. Gewoon fysiek in de winkel en altijd precies zoals zij hadden bedacht.",
@@ -354,7 +354,7 @@ export const news: NewsItem[] = [
       "Dus ontstond het idee: wat als mensen zelf hun kleding kunnen samenstellen?",
       "Niet alleen kiezen uit één standaard shirt, maar zelf bepalen welk kledingstuk, welke kleur, welke maat en welke opdruk.",
       "Eigenlijk heel logisch.",
-      "Samen met REF Drukkerij — tegenwoordig REFLEX Bedrijfskleding — begonnen we DesignerShirts.",
+      "Samen met REF Drukkerij (tegenwoordig REFLEX Bedrijfskleding) begonnen we DesignerShirts.",
       "En eerlijk? In het begin voelde het vooral als één groot creatief experiment.",
       "We konden ineens al onze flauwe woordgrappen, ideeën en hersenspinsels ergens kwijt. Alles wat normaal in notitieboekjes bleef hangen, kon nu ineens op shirts gedrukt worden.",
       "Maar ondertussen gebeurde er nog iets veel interessanters.",

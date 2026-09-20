@@ -182,11 +182,10 @@ export const Footer = () => {
           flexWrap: 'wrap',
           gap: 16,
         }}>
-          <div>© 2025 Toms Ambitie · Een venture club uit Zwolle</div>
+          <div>© {new Date().getFullYear()} Toms Ambitie · KVK 70590907 · Zwolle, Nederland</div>
           <div style={{ display: 'flex', gap: 24 }}>
             <Link to="/privacy" style={{ color: 'rgba(244,241,232,0.55)', textDecoration: 'none' }}>Privacy</Link>
             <Link to="/voorwaarden" style={{ color: 'rgba(244,241,232,0.55)', textDecoration: 'none' }}>Voorwaarden</Link>
-            <span>v3.0 · Definitief</span>
           </div>
         </div>
 

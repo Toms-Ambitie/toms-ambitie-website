@@ -46,7 +46,7 @@ export const MeedoenCTA = () => (
         viewport={{ once: true }}
         style={{ maxWidth: 560, marginInline: 'auto', marginTop: 40, fontSize: 22, color: 'rgba(244,241,232,0.65)' }}
       >
-        We zoeken geen klanten — wel partners en ondernemers die mee willen bouwen aan ventures vanuit echte ervaring.
+        We zoeken geen klanten. Wel partners en ondernemers die mee willen bouwen aan ventures vanuit echte ervaring.
       </motion.p>
 
       <motion.div

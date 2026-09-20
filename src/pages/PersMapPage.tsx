@@ -10,7 +10,7 @@ const FACTSHEET = [
   ['Opgericht', '2015 (na exit Aardbei Communicatie)'],
   ['Oprichter', 'Tom Mulder'],
   ['Locatie', 'Zwolle, Nederland'],
-  ['Actieve ventures', '3 — PostPilot · Plug and Power · EmmaStudio'],
+  ['Actieve ventures', '2: PostPilot · EmmaStudio'],
   ['Werkwijze', '7-stappen systeem van probleem naar platform in max 6 weken'],
   ['Werkwijze (kort)', 'Probleem-first · AI als versneller · oplossing voor business case'],
   ['AI-first sinds', '2023'],
@@ -124,7 +124,7 @@ const PersMapPage = () => {
               <div className="meta" style={{ marginBottom: 8 }}>GEBRUIKSREGELS</div>
               <ul style={{ display: 'grid', gap: 6, fontSize: 14, color: 'var(--inkt-80)', listStyle: 'none', padding: 0 }}>
                 <li>✓ Gebruik op effen achtergronden, minimale vrije ruimte = hoogte volt-balk rondom</li>
-                <li>✓ Wit op donker, zwart op licht, zwart op volt — volt-balk altijd volt</li>
+                <li>✓ Wit op donker, zwart op licht, zwart op volt. Volt-balk altijd volt.</li>
                 <li>✗ Niet vervormen, roteren, schaduwen, andere kleuren geven of volt-balk weglaten</li>
               </ul>
             </div>

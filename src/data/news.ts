@@ -36,34 +36,6 @@ export type NewsItem = {
 // Volgorde: nieuwste bovenaan.
 export const news: NewsItem[] = [
   {
-    slug: "post-pilot-eerste-100-klanten",
-    date: "2026-04-18",
-    category: "Venture update",
-    tag: ProjectTags.postPilot,
-    title: "PostPilot bereikt eerste 100 klanten",
-    excerpt:
-      "Een belangrijke validatiemijlpaal: PostPilot heeft de honderdste betalende klant verwelkomd en bewijst daarmee product-market fit in de niche.",
-    body: [
-      "Sinds de stille launch eind vorig jaar groeit PostPilot gestaag. Deze week verwelkomden we de honderdste betalende klant, een mijlpaal die binnen het Toms Ambitie-model staat voor 'gevalideerd'.",
-      "De focus lag de afgelopen maanden op retentie, onboarding en het verder uitbouwen van de AI-kern. Dat heeft geleid tot Versie 2.0, die inmiddels live is. Een volledig vernieuwd platform: sneller, scherper en beter afgestemd op hoe gebruikers echt schrijven.",
-      "Voor wie nieuwsgierig is naar de aanpak: het hele traject werd gebouwd op de leercurves van eerdere ventures. Snel valideren, durven bijsturen, niets afdwingen.",
-    ],
-  },
-  {
-    slug: "plug-and-power-pilot-zwolle",
-    date: "2026-03-29",
-    category: "Venture update",
-    tag: ProjectTags.plugAndPower,
-    title: "Plug and Power start pilot in Zwolle",
-    excerpt:
-      "Eerste pilot loopt in eigen stad. Drie locaties, één doel: bewijzen dat het concept ook buiten papier werkt.",
-    body: [
-      "Plug and Power is uit de tekentafelfase. Op drie locaties in Zwolle draait nu een gesloten pilot waarin we het concept op echte gebruikers loslaten.",
-      "Doel van deze fase: meten, niet schalen. We willen weten waar het schuurt voordat we de volgende stap zetten.",
-      "Resultaten worden in Q3 intern geëvalueerd. Bij groen licht volgt uitbreiding naar twee andere steden.",
-    ],
-  },
-  {
     slug: "nieuw-project-in-onderzoek",
     date: "2026-02-11",
     category: "Nieuw project",

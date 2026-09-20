@@ -415,7 +415,7 @@ const VentureDetailPage = () => {
           )}
           <div className="flex flex-col sm:flex-row gap-4">
             <CtaButton cta={venture.ctaBlock?.primary ?? venture.cta} variant="primary" />
-            {venture.ctaBlock?.secondary ? (
+            {!venture.noSecondaryCta && (venture.ctaBlock?.secondary ? (
               <CtaButton cta={venture.ctaBlock.secondary} variant="secondary" />
             ) : venture.secondaryCta ? (
               <CtaButton cta={venture.secondaryCta} variant="secondary" />
@@ -427,7 +427,7 @@ const VentureDetailPage = () => {
               >
                 Instappen in dit project
               </Link>
-            )}
+            ))}
           </div>
         </div>
       </section>

@@ -72,10 +72,12 @@ export interface VentureDetail {
   /** Optional override for the bottom CTA block. */
   ctaBlock?: {
     title: string;
-    description: string;
+    description?: string;
     primary: { label: string; href: string; external?: boolean };
     secondary?: { label: string; href: string; external?: boolean };
   };
+  /** When true, hides the secondary CTA including the default "Instappen" fallback. */
+  noSecondaryCta?: boolean;
 }
 
 export type VentureStatusMeta = {
@@ -229,7 +231,7 @@ export const ventureDetails: VentureDetail[] = [
     ctaBlock: {
       title: "BOUW MEE AAN POSTPILOT",
       description:
-        "PostPilot is gebouwd vanuit een probleem dat miljoenen professionals herkennen. Het platform staat. Nu zoeken we mensen die willen helpen bij de eerste commerciële stap: van live naar eerste betalende klant.\n\nSpecialisten in growth, conversie of LinkedIn-marketing zijn welkom. Investeerders ook.",
+        "PostPilot is gebouwd vanuit een probleem dat miljoenen professionals herkennen. Het platform staat en groeit. Specialisten in growth, conversie of LinkedIn-marketing zijn welkom. Investeerders ook.",
       primary: { label: "Ik wil meebouwen", href: "/meebouwen" },
       secondary: { label: "Bekijk het platform", href: "https://www.postpilotapp.nl", external: true },
     },
@@ -262,7 +264,7 @@ export const ventureDetails: VentureDetail[] = [
     businessModel: {
       title: "Wat Plug and Power bouwt",
       description:
-        "Plug and Power bouwt aan een modern e-commerceplatform rondom plug-and-play energie. De focus ligt op producten die eenvoudig te gebruiken zijn, direct waarde toevoegen, schaalbaar zijn en geen ingewikkelde installatie vereisen. Het platform combineert onafhankelijke productselectie, eerlijke advisering, e-commerce, content en slimme tools om consumenten te helpen kiezen. De omzet komt uit productverkoop, accessoires, toekomstige abonnements- en serviceconcepten, partnerships met leveranciers en aanvullende energie-oplossingen. Doordat veel producten plug-and-play zijn, verschuift het speelveld van traditionele installatie naar moderne e-commerce.",
+        "Dit was het model dat we voor ogen hadden.\n\nPlug and Power bouwt aan een modern e-commerceplatform rondom plug-and-play energie. De focus ligt op producten die eenvoudig te gebruiken zijn, direct waarde toevoegen, schaalbaar zijn en geen ingewikkelde installatie vereisen. Het platform combineert onafhankelijke productselectie, eerlijke advisering, e-commerce, content en slimme tools om consumenten te helpen kiezen. De omzet komt uit productverkoop, accessoires, toekomstige abonnements- en serviceconcepten, partnerships met leveranciers en aanvullende energie-oplossingen. Doordat veel producten plug-and-play zijn, verschuift het speelveld van traditionele installatie naar moderne e-commerce.",
       points: [
         "Stekkerbatterijen voor thuis",
         "Mobiele power stations en energie-opslag voor onderweg",
@@ -274,32 +276,25 @@ export const ventureDetails: VentureDetail[] = [
       ],
     },
     currentStatus: {
-      title: "Waar we nu staan",
+      title: "WAAROM HET GESTOPT IS",
       description:
-        "Plug and Power bevindt zich in de opbouwfase. De eerste positionering, marktvalidatie en productstrategie staan. Tegelijkertijd wordt actief gewerkt aan assortiment, leveranciers, e-commerce infrastructuur, content, adviesstructuren en AI-ondersteunde keuzehulpen.",
+        "Plug and Power is in 2026 gestopt. Het idee stond en de positionering stond, maar het is nooit een lopend bedrijf geworden.\n\nDeze pagina blijft staan omdat we ook laten zien wat niet doorging.",
       milestones: [
-        "Positionering en marktvalidatie afgerond",
-        "Productstrategie en assortimentsrichting bepaald",
-        "Leveranciersnetwerk in opbouw",
-        "E-commerce infrastructuur in ontwikkeling",
-        "Content- en adviesstructuren worden uitgewerkt",
-        "AI-ondersteunde keuzehulpen op de roadmap",
+        "In 2026 stopgezet",
+        "Geen klanten, geen omzet, geen lopende verplichtingen",
+        "Pagina blijft staan als archief",
       ],
-      extra:
-        "De ambitie is niet om \"nog een webshop\" te worden. De ambitie is om hét platform te bouwen voor plug-and-play energie-oplossingen in Europa.",
     },
     vision: {
-      title: "De toekomst",
+      title: "WAT ERVAN BLIJFT",
       description:
-        "Steeds meer mensen willen energie-oplossingen die slimmer, flexibeler, mobieler en onafhankelijker zijn.\n\nPlug and Power wil vooroplopen in die beweging. Niet alleen met stekkerbatterijen, maar met een compleet ecosysteem rondom plug-and-play power. Voor thuis. Voor onderweg. Voor vakantie. Voor werk op locatie.\n\nHet doel is simpel: mensen altijd en overal toegang geven tot slimme energie, zonder onnodige complexiteit of hoge installatiekosten.",
+        "Twee actieve ventures, allebei software, allebei gebouwd vanuit een probleem dat we zelf hadden.",
     },
     ctaBlock: {
-      title: "BOUW MEE AAN PLUG AND POWER",
-      description:
-        "Plug and Power staat aan het begin van een markt die de komende jaren explosief gaat groeien. We zoeken mensen die willen meebouwen. strategisch, operationeel, financieel of commercieel. Of je nu investeerder, specialist of ondernemer bent: als je gelooft in de toekomst van plug-and-play energie, willen we graag praten.",
-      primary: { label: "Ik wil meebouwen", href: "/meebouwen" },
-      secondary: { label: "Ik wil investeren", href: "/meebouwen" },
+      title: "DIT VENTURE IS GESTOPT",
+      primary: { label: "Bekijk actieve ventures", href: "/ventures" },
     },
+    noSecondaryCta: true,
   },
 ];
 

@@ -131,7 +131,7 @@ const past: Project[] = [
     story: [
       "DesignerShirts liep voor de muziek uit. Custom apparel online, voordat de meeste mensen een webshop in hun bookmarks hadden.",
       "Alles in eigen hand: site, productie, verzending, klantenservice. Krappe marges, zware operatie.",
-      "Geen klapper. Wel het fundament onder elke webshop die de club daarna bouwde. Plug and Power voorop.",
+      "Geen klapper. Wel het fundament onder elke webshop die de club daarna bouwde.",
     ],
     highlights: [
       { label: "Categorie", value: "E-commerce" },

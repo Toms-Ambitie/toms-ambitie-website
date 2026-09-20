@@ -11,7 +11,7 @@ const NotFound = () => {
 
   useEffect(() => {
     applySEO({
-      title: "Pagina niet gevonden (404) — Toms Ambitie",
+      title: "Pagina niet gevonden (404) · Toms Ambitie",
       description:
         "Deze pagina bestaat niet of is verplaatst. Bekijk onze ventures of ga terug naar de homepage van Toms Ambitie.",
       canonical: "https://www.toms-ambitie.nl/404",

@@ -54,7 +54,7 @@ const MeebouwenPage = () => {
 
   useEffect(() => {
     applySEO({
-      title: 'Meebouwen — Co-founder, Investeerder of Specialist worden | Toms Ambitie',
+      title: 'Meebouwen · Co-founder, Investeerder of Specialist worden | Toms Ambitie',
       description: 'Wil je co-founder worden, investeren of als specialist meebouwen aan PostPilot, Plug and Power of EmmaStudio? Neem contact op met Tom Mulder van Toms Ambitie in Zwolle.',
       canonical: 'https://www.toms-ambitie.nl/meebouwen',
       jsonLd: [

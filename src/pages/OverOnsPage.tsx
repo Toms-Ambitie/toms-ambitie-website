@@ -30,7 +30,7 @@ const OverOnsPage = () => {
 
   useEffect(() => {
     applySEO({
-      title: 'Over Toms Ambitie — Tom Mulder, Venture Builder uit Zwolle',
+      title: 'Over Toms Ambitie · Tom Mulder, Venture Builder uit Zwolle',
       description: 'Tom Mulder bouwt eigen bedrijven vanuit echte frustratie. Geen bureau, geen fonds. Een vaste kern met specialisten die meebouwen. Open voor co-founders, investeerders en partners die geloven in het model.',
       canonical: 'https://www.toms-ambitie.nl/over-ons',
       jsonLd: [
@@ -50,7 +50,7 @@ const OverOnsPage = () => {
           'givenName': 'Tom',
           'familyName': 'Mulder',
           'jobTitle': 'Founder & Venture Builder',
-          'description': 'Ondernemer en venture builder uit Zwolle. Tom Mulder bouwt eigen bedrijven vanuit echte frustratie, met AI als versneller. Oprichter van Toms Ambitie, PostPilot, Plug and Power en EmmaStudio.',
+          'description': 'Ondernemer en venture builder uit Zwolle. Tom Mulder bouwt eigen bedrijven vanuit echte frustratie, met AI als versneller. Oprichter van Toms Ambitie, PostPilot en EmmaStudio.',
           'url': 'https://www.toms-ambitie.nl/over-ons',
           'image': 'https://www.toms-ambitie.nl/photos/tom-founder-01.webp',
           'email': 'hallo@toms-ambitie.nl',

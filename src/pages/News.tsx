@@ -245,7 +245,7 @@ const News = () => {
 
   useEffect(() => {
     applySEO({
-      title: 'Nieuws — Toms Ambitie',
+      title: 'Nieuws · Toms Ambitie',
       description: 'Geen persberichten. Wel een kijkje in wat we bouwen, testen, lanceren en soms ook weer loslaten.',
       canonical: 'https://www.toms-ambitie.nl/nieuws',
     });

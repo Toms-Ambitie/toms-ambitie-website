@@ -40,7 +40,7 @@ const PersMapPage = () => {
 
   useEffect(() => {
     applySEO({
-      title: 'Persmap — Toms Ambitie',
+      title: 'Persmap · Toms Ambitie',
       description: 'Pers- en mediakit van Toms Ambitie. Logo\'s, foto\'s, factsheet en contact voor journalisten.',
       canonical: 'https://www.toms-ambitie.nl/persmap',
     });

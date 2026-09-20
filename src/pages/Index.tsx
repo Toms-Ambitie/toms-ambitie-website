@@ -25,7 +25,7 @@ const Index = () => {
 
   useEffect(() => {
     applySEO({
-      title: 'Toms Ambitie — Venture Club Zwolle | Eigen bedrijven bouwen',
+      title: 'Toms Ambitie · Venture Club Zwolle | Eigen bedrijven bouwen',
       description:
         'Venture club in Zwolle die eigen bedrijven bouwt vanuit echte problemen. Tom Mulder zoekt co-founders, investeerders en specialisten. PostPilot en EmmaStudio zijn live.',
       canonical: 'https://www.toms-ambitie.nl/',

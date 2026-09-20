@@ -78,11 +78,11 @@ const CtaButton = ({
 /* Per-venture SEO titles — keyword-rich, investor/co-founder angle */
 const VENTURE_TITLES: Record<string, string> = {
   "post-pilot":
-    "PostPilot — AI Content Platform voor LinkedIn | Toms Ambitie",
+    "PostPilot · AI Content Platform voor LinkedIn | Toms Ambitie",
   "plug-and-power":
-    "Plug and Power — Plug-and-Play Energie-oplossingen | Toms Ambitie",
+    "Plug and Power · Archief | Toms Ambitie",
   "emmastudio":
-    "EmmaStudio — AI-productfamilie voor Ondernemers | Toms Ambitie",
+    "EmmaStudio · AI-productfamilie voor Ondernemers | Toms Ambitie",
 };
 
 /* Per-venture meta descriptions — action-oriented, mention opportunity */
@@ -102,7 +102,7 @@ const VentureDetailPage = () => {
   useEffect(() => {
     if (venture) {
       const url = `https://www.toms-ambitie.nl/ventures/${venture.slug}`;
-      const title = VENTURE_TITLES[venture.slug] ?? `${venture.name} — Toms Ambitie`;
+      const title = VENTURE_TITLES[venture.slug] ?? `${venture.name} · Toms Ambitie`;
       const description = VENTURE_DESCRIPTIONS[venture.slug] ?? venture.tagline;
       applySEO({
         title,

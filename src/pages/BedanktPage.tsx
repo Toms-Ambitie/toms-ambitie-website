@@ -7,7 +7,7 @@ import { applySEO } from "@/lib/seo";
 const BedanktPage = () => {
   useEffect(() => {
     applySEO({
-      title: "Bedankt — Toms Ambitie",
+      title: "Bedankt · Toms Ambitie",
       description: "Je bericht is verzonden. We nemen zo snel mogelijk contact met je op.",
       canonical: "https://www.toms-ambitie.nl/bedankt",
       noindex: true,

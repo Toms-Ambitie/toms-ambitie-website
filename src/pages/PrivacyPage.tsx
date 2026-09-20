@@ -82,7 +82,7 @@ const P = ({ children }: { children: React.ReactNode }) => (
 const PrivacyPage = () => {
   useEffect(() => {
     applySEO({
-      title: 'Privacyverklaring — Toms Ambitie',
+      title: 'Privacyverklaring · Toms Ambitie',
       description: 'Duidelijk over data, formulieren, analytics en platformen. Toms Ambitie verwerkt persoonsgegevens alleen wanneer dat nodig is.',
       canonical: 'https://www.toms-ambitie.nl/privacy',
     });

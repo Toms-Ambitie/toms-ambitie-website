@@ -25,6 +25,7 @@ const VALUES = [
 const OverOnsPage = () => {
   const rootRef = useRef<HTMLDivElement>(null);
   useReveal(rootRef);
+  const bouwjaren = new Date().getFullYear() - 2008;
 
   useEffect(() => {
     applySEO({
@@ -159,7 +160,7 @@ const OverOnsPage = () => {
                   <span className="eyebrow"><span style={{ marginRight: 8 }}>02</span>De Founder</span>
                 </div>
                 <h2 className="h2" style={{ marginTop: 24 }}>
-                  17 jaar bouwen.<br /><span style={{ color: 'var(--inkt-40)' }}>Eén constante: doen.</span>
+                  {bouwjaren} jaar bouwen.<br /><span style={{ color: 'var(--inkt-40)' }}>Eén constante: doen.</span>
                 </h2>
                 <p className="lead" style={{ marginTop: 32, fontSize: 22 }}>
                   "Elke dag nieuwe ideeën. En dan ook echt bouwen."
@@ -206,7 +207,7 @@ const OverOnsPage = () => {
                   <span className="eyebrow"><span style={{ marginRight: 8 }}>03</span>Tijdlijn</span>
                 </div>
                 <h2 className="h2" style={{ marginTop: 24 }}>
-                  17 jaar.<br /><span style={{ color: 'var(--inkt-40)' }}>Van bureau tot venture club.</span>
+                  {bouwjaren} jaar.<br /><span style={{ color: 'var(--inkt-40)' }}>Van bureau tot venture club.</span>
                 </h2>
               </div>
 

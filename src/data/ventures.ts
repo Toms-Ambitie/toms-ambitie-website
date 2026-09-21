@@ -291,7 +291,7 @@ export const ventureDetails: VentureDetail[] = [
         "Twee actieve ventures, allebei software, allebei gebouwd vanuit een probleem dat we zelf hadden.",
     },
     ctaBlock: {
-      title: "DIT VENTURE IS GESTOPT",
+      title: "DEZE VENTURE IS GESTOPT",
       primary: { label: "Bekijk actieve ventures", href: "/ventures" },
     },
     noSecondaryCta: true,

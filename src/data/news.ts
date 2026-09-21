@@ -41,7 +41,7 @@ export const news: NewsItem[] = [
     category: "Nieuw project",
     title: "Nieuw project in stille onderzoeksfase",
     excerpt:
-      "Een vierde venture wordt momenteel verkend. Nog geen naam, geen pagina. wel een sterk vermoeden dat het ergens heen gaat.",
+      "Een derde venture wordt momenteel verkend. Nog geen naam, geen pagina. wel een sterk vermoeden dat het ergens heen gaat.",
     body: [
       "Achter de schermen loopt een verkenning voor een vierde venture. Het idee zit op het snijvlak van automatisering en MKB-dienstverlening.",
       "Volgens het Toms Ambitie-ritme krijgt dit project pas een naam en een plek op de site zodra de eerste validatie rond is. Tot die tijd: hoofd omlaag, gesprekken voeren, aannames testen.",

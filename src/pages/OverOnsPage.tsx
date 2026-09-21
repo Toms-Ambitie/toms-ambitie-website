@@ -8,16 +8,17 @@ import { applySEO } from '@/lib/seo';
 const MILESTONES = [
   { y: '2008', t: 'Aardbei Communicatie', d: 'Opgericht in Nijverdal door Tom Mulder met partners. Eerste bureau.' },
   { y: '2015', t: 'Exit + start TA', d: 'Aardbei verkocht. Het startschot voor Toms Ambitie.' },
-  { y: '2015–2023', t: 'Parallel bouwen', d: 'Verschillende bureaus en eerste eigen ventures naast elkaar.' },
+  { y: '2015-2023', t: 'Parallel bouwen', d: 'Verschillende bureaus en eerste eigen ventures naast elkaar.' },
   { y: '2023', t: 'AI-first', d: 'Definitieve omslag. AI niet als experiment, maar als werkwijze.' },
-  { y: '2024', t: 'PostPilot', d: 'Nieuwe venture: marketing AI voor LinkedIn.' },
-  { y: 'Nu', t: '3 actieve ventures', d: 'PostPilot, Plug and Power, EmmaStudio. Volgende staat klaar.' },
+  { y: '2024', t: 'PostPilot', d: 'Nieuwe venture: Nederlandstalige AI voor LinkedIn.' },
+  { y: '2025', t: 'EmmaStudio', d: 'Begonnen als interne tool voor één kapsalon. Losgemaakt tot een platform voor ondernemers met personeel.' },
+  { y: '2026', t: 'Twee ventures live, één gestopt', d: 'PostPilot v2.0 met spraakinvoer. EmmaStudio live met vijf modules en een klant in dagelijkse productie. Plug and Power stopgezet.' },
 ];
 
 const VALUES = [
   { t: 'Oplossing eerst', d: 'Elk venture begint met iets wat we zelf voelen. Geen spreadsheet als startpunt, geen denkbeeldige markt.' },
   { t: 'Altijd onderbouwd', d: 'Elk idee krijgt een plan. Nooit roekeloos. Maar ook nooit zo lang gepland dat het niet gebeurt.' },
-  { t: 'AI als versneller', d: 'Niet als experiment, maar als werkwijze. Validatie, demo, business case — AI werkt mee van stap één.' },
+  { t: 'AI als versneller', d: 'Niet als experiment, maar als werkwijze. Validatie, demo, business case: AI werkt mee van stap één.' },
   { t: 'Samen bouwen', d: 'Het liefst met partners, maar ook solo als het moet. Geen ego.' },
   { t: 'Eerlijk', d: 'Over wat werkte. Maar vooral ook over wat niet werkte.' },
 ];
@@ -25,10 +26,11 @@ const VALUES = [
 const OverOnsPage = () => {
   const rootRef = useRef<HTMLDivElement>(null);
   useReveal(rootRef);
+  const bouwjaren = new Date().getFullYear() - 2008;
 
   useEffect(() => {
     applySEO({
-      title: 'Over Toms Ambitie — Tom Mulder, Venture Builder uit Zwolle',
+      title: 'Over Toms Ambitie · Tom Mulder, Venture Builder uit Zwolle',
       description: 'Tom Mulder bouwt eigen bedrijven vanuit echte frustratie. Geen bureau, geen fonds. Een vaste kern met specialisten die meebouwen. Open voor co-founders, investeerders en partners die geloven in het model.',
       canonical: 'https://www.toms-ambitie.nl/over-ons',
       jsonLd: [
@@ -48,7 +50,7 @@ const OverOnsPage = () => {
           'givenName': 'Tom',
           'familyName': 'Mulder',
           'jobTitle': 'Founder & Venture Builder',
-          'description': 'Ondernemer en venture builder uit Zwolle. Tom Mulder bouwt eigen bedrijven vanuit echte frustratie, met AI als versneller. Oprichter van Toms Ambitie, PostPilot, Plug and Power en EmmaStudio.',
+          'description': 'Ondernemer en venture builder uit Zwolle. Tom Mulder bouwt eigen bedrijven vanuit echte frustratie, met AI als versneller. Oprichter van Toms Ambitie, PostPilot en EmmaStudio.',
           'url': 'https://www.toms-ambitie.nl/over-ons',
           'image': 'https://www.toms-ambitie.nl/photos/tom-founder-01.webp',
           'email': 'hallo@toms-ambitie.nl',
@@ -98,7 +100,7 @@ const OverOnsPage = () => {
               />
               <div style={{ position: 'absolute', bottom: 20, left: 20, padding: '10px 16px', background: 'var(--wit-warm)', display: 'flex', alignItems: 'center', gap: 10 }}>
                 <span style={{ width: 7, height: 7, background: 'var(--volt)' }} />
-                <span className="meta">STUDIO ZWOLLE · 2025</span>
+                <span className="meta">STUDIO ZWOLLE · 2026</span>
               </div>
               <div style={{ position: 'absolute', top: 20, right: 20, padding: '10px 16px', background: 'rgba(14,14,12,0.7)', backdropFilter: 'blur(10px)', color: 'var(--wit-warm)' }}>
                 <span className="meta" style={{ color: 'var(--wit-warm)' }}>FIG.01 · DE WERKVLOER</span>
@@ -159,7 +161,7 @@ const OverOnsPage = () => {
                   <span className="eyebrow"><span style={{ marginRight: 8 }}>02</span>De Founder</span>
                 </div>
                 <h2 className="h2" style={{ marginTop: 24 }}>
-                  17 jaar bouwen.<br /><span style={{ color: 'var(--inkt-40)' }}>Eén constante: doen.</span>
+                  {bouwjaren} jaar bouwen.<br /><span style={{ color: 'var(--inkt-40)' }}>Eén constante: doen.</span>
                 </h2>
                 <p className="lead" style={{ marginTop: 32, fontSize: 22 }}>
                   "Elke dag nieuwe ideeën. En dan ook echt bouwen."
@@ -206,7 +208,7 @@ const OverOnsPage = () => {
                   <span className="eyebrow"><span style={{ marginRight: 8 }}>03</span>Tijdlijn</span>
                 </div>
                 <h2 className="h2" style={{ marginTop: 24 }}>
-                  17 jaar.<br /><span style={{ color: 'var(--inkt-40)' }}>Van bureau tot venture club.</span>
+                  {bouwjaren} jaar.<br /><span style={{ color: 'var(--inkt-40)' }}>Van bureau tot venture club.</span>
                 </h2>
               </div>
 

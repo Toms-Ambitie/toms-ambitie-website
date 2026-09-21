@@ -12,7 +12,7 @@ const TOPICS: { label: string; value: string }[] = [
   { label: 'Iets anders', value: 'anders' },
 ];
 
-const NOT_FOR = ['Klantopdrachten / uurwerk', 'Detachering', 'Investeringspitches', 'Recruiters'];
+const NOT_FOR = ['Klantopdrachten en uurwerk', 'Detachering', 'Investeringspitches', 'Recruiters'];
 
 const MeebouwenPage = () => {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -54,8 +54,8 @@ const MeebouwenPage = () => {
 
   useEffect(() => {
     applySEO({
-      title: 'Meebouwen — Co-founder, Investeerder of Specialist worden | Toms Ambitie',
-      description: 'Wil je co-founder worden, investeren of als specialist meebouwen aan PostPilot, Plug and Power of EmmaStudio? Neem contact op met Tom Mulder van Toms Ambitie in Zwolle.',
+      title: 'Meebouwen · Co-founder, Investeerder of Specialist worden | Toms Ambitie',
+      description: 'Wil je co-founder worden, investeren of als specialist meebouwen aan PostPilot of EmmaStudio? Neem contact op met Tom Mulder van Toms Ambitie in Zwolle.',
       canonical: 'https://www.toms-ambitie.nl/meebouwen',
       jsonLd: [
         {
@@ -84,7 +84,7 @@ const MeebouwenPage = () => {
               'name': 'Zoekt Toms Ambitie co-founders?',
               'acceptedAnswer': {
                 '@type': 'Answer',
-                'text': 'Ja. Voor Plug and Power en EmmaStudio zoeken we actief co-founders met kennis van product, techniek, finance, growth, UX of domeinspecifieke expertise. PostPilot zoekt ook specialisten voor de volgende groeifase.',
+                'text': 'Ja. Voor EmmaStudio zoeken we actief co-founders met kennis van product, techniek, finance, growth, UX of domeinspecifieke expertise. PostPilot zoekt ook specialisten voor de volgende groeifase.',
               },
             },
             {

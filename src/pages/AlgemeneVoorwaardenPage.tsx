@@ -80,7 +80,7 @@ const P = ({ children }: { children: React.ReactNode }) => (
 const AlgemeneVoorwaardenPage = () => {
   useEffect(() => {
     applySEO({
-      title: 'Algemene Voorwaarden — Toms Ambitie',
+      title: 'Algemene Voorwaarden · Toms Ambitie',
       description: 'Duidelijke afspraken voor ventures, platformen, software, diensten en samenwerkingen van Toms Ambitie.',
       canonical: 'https://www.toms-ambitie.nl/voorwaarden',
     });

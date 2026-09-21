@@ -104,7 +104,7 @@ export const HeroV2 = () => {
               letterSpacing: '-0.005em',
             }}
           >
-            Van frustratie naar platform. Drie ventures in eigen eigendom. Open voor de mensen die willen meebouwen.
+            Van frustratie naar platform. Twee ventures in eigen eigendom, allebei live. Open voor de mensen die willen meebouwen.
           </motion.p>
 
           <motion.div

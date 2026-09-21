@@ -36,40 +36,12 @@ export type NewsItem = {
 // Volgorde: nieuwste bovenaan.
 export const news: NewsItem[] = [
   {
-    slug: "post-pilot-eerste-100-klanten",
-    date: "2026-04-18",
-    category: "Venture update",
-    tag: ProjectTags.postPilot,
-    title: "PostPilot bereikt eerste 100 klanten",
-    excerpt:
-      "Een belangrijke validatiemijlpaal: PostPilot heeft de honderdste betalende klant verwelkomd en bewijst daarmee product-market fit in de niche.",
-    body: [
-      "Sinds de stille launch eind vorig jaar groeit PostPilot gestaag. Deze week verwelkomden we de honderdste betalende klant, een mijlpaal die binnen het Toms Ambitie-model staat voor 'gevalideerd'.",
-      "De focus lag de afgelopen maanden op retentie, onboarding en het verder uitbouwen van de AI-kern. Dat heeft geleid tot Versie 2.0, die inmiddels live is. Een volledig vernieuwd platform: sneller, scherper en beter afgestemd op hoe gebruikers echt schrijven.",
-      "Voor wie nieuwsgierig is naar de aanpak: het hele traject werd gebouwd op de leercurves van eerdere ventures. Snel valideren, durven bijsturen, niets afdwingen.",
-    ],
-  },
-  {
-    slug: "plug-and-power-pilot-zwolle",
-    date: "2026-03-29",
-    category: "Venture update",
-    tag: ProjectTags.plugAndPower,
-    title: "Plug and Power start pilot in Zwolle",
-    excerpt:
-      "Eerste pilot loopt in eigen stad. Drie locaties, één doel: bewijzen dat het concept ook buiten papier werkt.",
-    body: [
-      "Plug and Power is uit de tekentafelfase. Op drie locaties in Zwolle draait nu een gesloten pilot waarin we het concept op echte gebruikers loslaten.",
-      "Doel van deze fase: meten, niet schalen. We willen weten waar het schuurt voordat we de volgende stap zetten.",
-      "Resultaten worden in Q3 intern geëvalueerd. Bij groen licht volgt uitbreiding naar twee andere steden.",
-    ],
-  },
-  {
     slug: "nieuw-project-in-onderzoek",
     date: "2026-02-11",
     category: "Nieuw project",
     title: "Nieuw project in stille onderzoeksfase",
     excerpt:
-      "Een vierde venture wordt momenteel verkend. Nog geen naam, geen pagina. wel een sterk vermoeden dat het ergens heen gaat.",
+      "Een derde venture wordt momenteel verkend. Nog geen naam, geen pagina. wel een sterk vermoeden dat het ergens heen gaat.",
     body: [
       "Achter de schermen loopt een verkenning voor een vierde venture. Het idee zit op het snijvlak van automatisering en MKB-dienstverlening.",
       "Volgens het Toms Ambitie-ritme krijgt dit project pas een naam en een plek op de site zodra de eerste validatie rond is. Tot die tijd: hoofd omlaag, gesprekken voeren, aannames testen.",
@@ -345,7 +317,7 @@ export const news: NewsItem[] = [
     tag: ProjectTags.designerShirts,
     title: "Waarom we in 2010 begonnen met een webshop voor funny shirts",
     excerpt:
-      "Funny shirts waren ineens een ding. Maar je kon ze nergens zelf samenstellen. Dat vonden wij vreemd — en zo ontstond DesignerShirts.",
+      "Funny shirts waren ineens een ding. Maar je kon ze nergens zelf samenstellen. Dat vonden wij vreemd. Zo ontstond DesignerShirts.",
     body: [
       "Rond 2010 waren funny shirts ineens een ding.",
       "Maar eigenlijk kon je ze maar op een paar plekken kopen. Vaak bij winkels zoals CoolCat. Gewoon fysiek in de winkel en altijd precies zoals zij hadden bedacht.",
@@ -354,7 +326,7 @@ export const news: NewsItem[] = [
       "Dus ontstond het idee: wat als mensen zelf hun kleding kunnen samenstellen?",
       "Niet alleen kiezen uit één standaard shirt, maar zelf bepalen welk kledingstuk, welke kleur, welke maat en welke opdruk.",
       "Eigenlijk heel logisch.",
-      "Samen met REF Drukkerij — tegenwoordig REFLEX Bedrijfskleding — begonnen we DesignerShirts.",
+      "Samen met REF Drukkerij (tegenwoordig REFLEX Bedrijfskleding) begonnen we DesignerShirts.",
       "En eerlijk? In het begin voelde het vooral als één groot creatief experiment.",
       "We konden ineens al onze flauwe woordgrappen, ideeën en hersenspinsels ergens kwijt. Alles wat normaal in notitieboekjes bleef hangen, kon nu ineens op shirts gedrukt worden.",
       "Maar ondertussen gebeurde er nog iets veel interessanters.",

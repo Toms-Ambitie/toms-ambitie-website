@@ -3,7 +3,9 @@
     { "source": "/ventures/pactly", "destination": "/ventures", "permanent": true },
     { "source": "/ventures/oak-marketing", "destination": "/ventures", "permanent": true },
     { "source": "/ventures/emmaboekt", "destination": "/ventures/emmastudio", "permanent": true },
-    { "source": "/ventures/emma-boekt", "destination": "/ventures/emmastudio", "permanent": true }
+    { "source": "/ventures/emma-boekt", "destination": "/ventures/emmastudio", "permanent": true },
+    { "source": "/nieuws/post-pilot-eerste-100-klanten", "destination": "/nieuws/postpilot-v2-spraak", "permanent": true },
+    { "source": "/nieuws/plug-and-power-pilot-zwolle", "destination": "/ventures/plug-and-power", "permanent": true }
   ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }

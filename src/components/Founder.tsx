@@ -13,14 +13,14 @@ const timeline = [
     desc: "Exit gaf de ruimte om te stoppen met klantwerk en te beginnen met eigen bedrijven bouwen.",
   },
   {
-    year: "2015 – nu",
+    year: "2015 - nu",
     title: "Van bouwer naar bouwclub",
     desc: "Meerdere ventures gestart, sommige verkocht, sommige bewust gestopt. De kern + schil ontstond.",
   },
   {
     year: "Nu",
-    title: "Drie ventures · AI als motor",
-    desc: "PostPilot live. Plug and Power en EmmaStudio in opbouw. Het volgende idee zit al in de pijp.",
+    title: "Twee ventures · AI als motor",
+    desc: "PostPilot live met spraakinvoer. EmmaStudio live bij zijn eerste klant.",
     active: true,
   },
 ];

@@ -33,7 +33,7 @@ export const ProblemCTA = () => {
             }}
           >
             We bouwen niet voor klanten. We bouwen voor onszelf. Maar als jij een probleem hebt dat
-            wij herkennen — praten we graag.
+            wij herkennen, praten we graag.
           </p>
 
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>

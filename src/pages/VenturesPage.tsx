@@ -5,7 +5,7 @@ import { Footer } from '@/components/Footer';
 import { useReveal } from '@/hooks/useReveal';
 import { applySEO } from '@/lib/seo';
 import {
-  Zap, Users, Globe, Sparkles, Eye, Linkedin,
+  Zap, Users, Sparkles, Eye, Linkedin,
   Flag,
 } from 'lucide-react';
 
@@ -38,10 +38,10 @@ const VENTURES: Venture[] = [
   {
     name: 'PostPilot',
     slug: 'post-pilot',
-    tag: 'Marketing AI',
+    tag: 'LinkedIn AI',
     statusLabel: 'LIVE',
     tagline: 'Van idee naar LinkedIn-post in seconden.',
-    long: 'PostPilot schrijft in jouw eigen toon. Jij geeft een idee of een trigger, AI maakt er een post van die klinkt alsof jij hem zelf hebt geschreven. Plannen en publiceren gaat automatisch.',
+    long: 'Je spreekt dertig seconden in wat je denkt. PostPilot maakt er een LinkedIn-post van in jouw toon. Publiceren gaat via de officiële LinkedIn-koppeling, dus zonder je wachtwoord af te geven.',
     status: 'Live',
     year: '2024',
     url: 'postpilotapp.nl',
@@ -50,41 +50,20 @@ const VENTURES: Venture[] = [
     accentInk: '#0E1014',
     bg: '#0E1014',
     metrics: [
-      { Icon: Zap, value: 'AI content engine', label: 'automatisering' },
-      { Icon: Linkedin, value: 'LinkedIn', label: 'eerste kanaal' },
-      { Icon: Eye, value: 'Consistent', label: 'zichtbaar' },
+      { Icon: Zap, value: 'Spraak', label: 'hoofdroute' },
+      { Icon: Flag, value: 'Nederlands', label: 'eerste taal' },
+      { Icon: Linkedin, value: 'Officieel', label: 'LinkedIn-koppeling' },
     ],
     image: '/photos/postpilot-app-vandaag.webp',
   },
   {
-    name: 'Plug and Power',
-    slug: 'plug-and-power',
-    tag: 'Energy Tech',
-    statusLabel: 'IN ONTWIKKELING',
-    tagline: 'Draagbare energie voor elke situatie.',
-    long: 'Plug and Power levert slimme, betrouwbare en draagbare energie-oplossingen. Voor thuis, onderweg, op de camping of als back-up. Kracht wanneer jij het nodig hebt.',
-    status: 'In ontwikkeling',
-    year: '2024',
-    url: 'plugandpower.nl',
-    externalUrl: 'plugandpower.nl',
-    accent: '#FFAA00',
-    accentInk: '#0E0E0C',
-    bg: '#1A1408',
-    metrics: [
-      { Icon: Users, value: 'MKB + B2C', label: 'markt' },
-      { Icon: Zap, value: 'slim', label: 'advies' },
-      { Icon: Globe, value: 'NL', label: 'startmarkt' },
-    ],
-    image: '/photos/plug_and_power_venture_visual.webp',
-  },
-  {
     name: 'EmmaStudio',
     slug: 'emmastudio',
-    tag: 'AI productfamilie',
-    statusLabel: 'IN ONTWIKKELING',
-    tagline: 'De saaie kanten van ondernemen. Overgenomen door AI.',
-    long: 'EmmaStudio is een AI-productfamilie voor ondernemers. Acht losse modules. Van boekhouden tot content, van personeel tot marktanalyse.',
-    status: 'In ontwikkeling',
+    tag: 'SaaS voor ondernemers',
+    statusLabel: 'LIVE · 5 VAN 8 MODULES',
+    tagline: 'Je omzet en je kosten zien elkaar nooit.',
+    long: 'EmmaStudio brengt omzet en kosten voor het eerst op dezelfde dag bij elkaar. Acht modules, elk los af te nemen. Vijf draaien live, met een klant dagelijks in productie.',
+    status: 'Live',
     year: '2025',
     url: 'emmastudio.nl',
     externalUrl: 'emmastudio.nl',
@@ -93,8 +72,8 @@ const VENTURES: Venture[] = [
     bg: '#E8F2EE',
     isLight: true,
     metrics: [
-      { Icon: Sparkles, value: '8', label: 'modules' },
-      { Icon: Users, value: 'ZZP + MKB', label: 'doelgroep' },
+      { Icon: Sparkles, value: '5 van 8', label: 'live' },
+      { Icon: Users, value: 'MKB', label: 'met personeel' },
       { Icon: Flag, value: 'NL', label: 'startmarkt' },
     ],
     image: '/photos/emmaboekt_venture_visual.webp',
@@ -132,7 +111,7 @@ const VentureSection = ({ v, index }: { v: Venture; index: number }) => {
         <div className="venture-header-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <span style={{ width: 8, height: 8, background: v.accent, flexShrink: 0 }} />
-            <span className="meta" style={{ color: faint }}>VENTURE 0{index + 1} / 03 · {v.tag}</span>
+            <span className="meta" style={{ color: faint }}>VENTURE 0{index + 1} / 02 · {v.tag}</span>
           </div>
           <Link
             to={`/ventures/${v.slug}`}
@@ -372,15 +351,15 @@ const VenturesPage = () => {
 
   useEffect(() => {
     applySEO({
-      title: 'Ventures — PostPilot, Plug and Power, EmmaStudio | Toms Ambitie',
-      description: 'Drie eigen ventures gebouwd vanuit echte problemen. PostPilot is live (SaaS). Plug and Power en EmmaStudio zijn in ontwikkeling. Interesse in investeren of meebouwen?',
+      title: 'Ventures · PostPilot en EmmaStudio | Toms Ambitie',
+      description: 'Twee eigen ventures, allebei live. PostPilot: LinkedIn AI met spraakinvoer. EmmaStudio: SaaS voor ondernemers met personeel. Interesse in investeren of meebouwen?',
       canonical: 'https://www.toms-ambitie.nl/ventures',
       jsonLd: {
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
         'name': 'Ventures van Toms Ambitie',
         'url': 'https://www.toms-ambitie.nl/ventures',
-        'description': 'Drie eigen ventures gebouwd vanuit echte problemen — open voor investeerders, co-founders en specialisten.',
+        'description': 'Twee eigen ventures, allebei live, gebouwd vanuit echte problemen. Open voor investeerders, co-founders en specialisten.',
         'isPartOf': { '@id': 'https://www.toms-ambitie.nl/#website' },
         'author': { '@id': 'https://www.toms-ambitie.nl/#tom-mulder' },
       },
@@ -406,7 +385,7 @@ const VenturesPage = () => {
               <span>Waar we nu<br />aan bouwen.</span>
             </h1>
             <p className="lead reveal" style={{ marginTop: 48, fontSize: 22, maxWidth: 640 }}>
-              Geen losse ideeën. Drie ventures gebouwd vanuit echte frustratie, behoefte of marktkans. PostPilot is live. Plug and Power en EmmaStudio zijn in actieve ontwikkeling.
+              Geen losse ideeën. Twee ventures gebouwd vanuit echte frustratie, behoefte of marktkans. PostPilot is live met spraakinvoer. EmmaStudio draait live bij zijn eerste klant. Een derde venture, Plug and Power, is in 2026 gestopt.
             </p>
 
             {/* Quick-jump — anchors to section IDs */}
@@ -415,7 +394,7 @@ const VenturesPage = () => {
               style={{
                 marginTop: 80,
                 display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
+                gridTemplateColumns: 'repeat(2, 1fr)',
                 gap: 12,
               }}
             >
@@ -470,6 +449,36 @@ const VenturesPage = () => {
         {VENTURES.map((v, i) => (
           <VentureSection key={v.slug} v={v} index={i} />
         ))}
+
+        {/* ═══ GESTOPT · PLUG AND POWER ═══════════════════════════ */}
+        <section style={{ padding: '80px 0', borderTop: '1px solid var(--inkt-10)' }}>
+          <div className="container-wide">
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, alignItems: 'center', justifyContent: 'space-between' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center' }}>
+                <span className="meta" style={{ color: 'var(--inkt-40)', letterSpacing: '0.12em' }}>GESTOPT</span>
+                <span className="meta" style={{ color: 'var(--inkt-20)' }}>·</span>
+                <span className="meta" style={{ letterSpacing: '0.08em' }}>PLUG AND POWER</span>
+                <span className="meta" style={{ color: 'var(--inkt-20)' }}>·</span>
+                <span className="meta" style={{ color: 'var(--inkt-40)', letterSpacing: '0.08em' }}>ENERGY TECH</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 24, flexWrap: 'wrap' }}>
+                <p style={{ fontFamily: 'var(--sans)', fontSize: 14, color: 'var(--inkt-60)', maxWidth: 400, margin: 0 }}>
+                  In 2026 gestopt. We laten ook zien wat niet doorging.
+                </p>
+                <a
+                  href="/ventures/plug-and-power"
+                  style={{
+                    fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase',
+                    color: 'var(--inkt)', textDecoration: 'none', borderBottom: '1px solid var(--inkt-20)',
+                    paddingBottom: 2, whiteSpace: 'nowrap',
+                  }}
+                >
+                  Bekijk het archief →
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* ═══ SUB-BRANDING ════════════════════════════════════════ */}
         <section className="surface-wit" style={{ padding: '160px 0' }}>

@@ -16,13 +16,6 @@ const cards = [
     accent: "#E8A640",
     link: { label: "Bekijk PostPilot →", href: "/ventures/post-pilot" },
   },
-  {
-    venture: "PLUG AND POWER",
-    quote: "IK WIL GEWOON EEN SLIMME THUISBATTERIJ. ZONDER GEDOE.",
-    desc: "Iedereen heeft het over thuisbatterijen. Maar zodra je je erin verdiept, zie je door de merken, installateurs en technische verhalen het overzicht niet meer. De ene partij verkoopt installatiewerk. De andere alleen zijn eigen merk. Plug and Power helpt consumenten bij het kiezen van slimme plug-and-play energieoplossingen, zonder ingewikkeld installatieproces of verkooppraatjes.",
-    accent: "#FFAA00",
-    link: { label: "Bekijk Plug and Power →", href: "/ventures/plug-and-power" },
-  },
 ];
 
 export const OriginStories = () => {

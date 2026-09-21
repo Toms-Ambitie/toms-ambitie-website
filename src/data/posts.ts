@@ -15,41 +15,34 @@ export interface Post {
   read: string;
   featured?: boolean;
   cover?: string;        // only set when a truly unique image is available
+  noindex?: boolean;     // true = noindex + verborgen in nieuwsoverzicht
   lead: string;
   body: Block[];
 }
 
 export const POSTS: Post[] = [
   {
-    slug: 'post-pilot-eerste-100-klanten',
-    title: 'PostPilot bereikt eerste 100 klanten',
-    date: '18 april 2026',
+    slug: 'postpilot-v2-spraak',
+    title: 'Waarom we PostPilot opnieuw hebben opgebouwd rond spraak',
+    date: '20 september 2026',
     cat: 'Venture',
     statusLabel: 'Venture update',
     venture: 'PostPilot',
-    read: '2 min',
+    featured: true,
+    read: '3 min',
     cover: '/photos/postpilot-app-vandaag.webp',
-    lead: 'Een belangrijke validatiemijlpaal: PostPilot heeft de honderdste betalende klant verwelkomd en bewijst daarmee product-market fit in de niche.',
+    lead: 'De eerste versie van PostPilot was een betere schrijftool. De tweede versie haalt het lege scherm weg. Dat verschil bleek groter dan we dachten.',
     body: [
-      { t: 'p', c: 'Sinds de stille launch eind vorig jaar groeit PostPilot gestaag. Deze week verwelkomden we de honderdste betalende klant, een mijlpaal die binnen het Toms Ambitie-model staat voor "gevalideerd".' },
-      { t: 'p', c: 'De focus lag de afgelopen maanden op retentie, onboarding en het verder uitbouwen van de AI-kern. Dat heeft geleid tot Versie 2.0, die inmiddels live is. Een volledig vernieuwd platform: sneller, scherper en beter afgestemd op hoe gebruikers echt schrijven.' },
-      { t: 'quote', c: '"Snel valideren, durven bijsturen, niets afdwingen."' },
-      { t: 'p', c: 'Voor wie nieuwsgierig is naar de aanpak: het hele traject werd gebouwd op de leercurves van eerdere ventures. Snel valideren, durven bijsturen, niets afdwingen.' },
-    ],
-  },
-  {
-    slug: 'plug-and-power-pilot-zwolle',
-    title: 'Plug and Power start pilot in Zwolle',
-    date: '29 maart 2026',
-    cat: 'Venture',
-    statusLabel: 'Venture update',
-    venture: 'Plug and Power',
-    read: '2 min',
-    lead: 'Eerste pilot loopt in eigen stad. Drie locaties, één doel: bewijzen dat het concept ook buiten papier werkt.',
-    body: [
-      { t: 'p', c: 'Plug and Power is uit de tekentafelfase. Op drie locaties in Zwolle draait nu een gesloten pilot waarin we het concept op echte gebruikers loslaten.' },
-      { t: 'p', c: 'Doel van deze fase: meten, niet schalen. We willen weten waar het schuurt voordat we de volgende stap zetten.' },
-      { t: 'p', c: 'Resultaten worden in Q3 intern geëvalueerd. Bij groen licht volgt uitbreiding naar twee andere steden.' },
+      { t: 'p', c: 'PostPilot begon als een schrijftool. Meer opties, betere structuren, scherpere aanwijzingen. Het werkte, en toch bleef er iets knagen.' },
+      { t: 'p', c: 'De mensen die we spraken hadden geen schrijfprobleem. Ze hadden een startprobleem. Vraag iemand wat hij die ochtend heeft meegemaakt en je krijgt binnen dertig seconden een verhaal. Zet diezelfde persoon voor een leeg tekstvak en er gebeurt niets.' },
+      { t: 'p', c: 'Dus hebben we het lege scherm weggehaald.' },
+      { t: 'p', c: 'In versie 2.0 spreek je in wat je denkt. Ongeveer dertig seconden. Halve zinnen mogen, dialect mag, hardop nadenken mag. PostPilot maakt er een LinkedIn-post van in jouw toon, in een van vier schrijftonen: reflectief, direct, verhalend of analytisch. Wil je liever typen, dan zijn vier steekwoorden genoeg.' },
+      { t: 'p', c: 'Dat klinkt als een functie. Het is een andere manier van werken.' },
+      { t: 'p', c: 'Technisch vroeg het om Nederlandse spraakherkenning die tegen onafgemaakte zinnen kan. Een vertaalde Engelse oplossing redt dat niet. Je merkt het verschil pas als je het echt in het Nederlands probeert, met een halve gedachte en een uh ertussen.' },
+      { t: 'quote', c: 'DE DREMPEL ZIT NIET IN HET SCHRIJVEN. DE DREMPEL ZIT IN HET BEGINNEN.' },
+      { t: 'p', c: 'Publiceren gaat via de officiële LinkedIn-koppeling. Geen wachtwoord delen, geen browserextensie, geen scraping. LinkedIn heeft in 2025 hard opgetreden tegen tools die dat wel doen. Wie zo\'n tool gebruikt, riskeert zijn eigen account. Dat is geen theoretisch risico en het is precies de reden dat we vanaf dag één de officiële route hebben genomen, ook al kostte die meer tijd.' },
+      { t: 'p', c: 'Waar we nu staan: het platform is live, de koppeling is goedgekeurd, de Founder Deal staat open voor de eerste honderd. Wat er nog niet staat, is de eerste betalende klant. Dat is de volgende mijlpaal en we vinden het eerlijker om dat zo op te schrijven dan om er een getal bij te verzinnen.' },
+      { t: 'p', c: 'Volgende stap op de roadmap: een carrousel-generator. Carrousels halen op LinkedIn structureel meer bereik dan tekstposts, en het is precies het formaat dat de meeste mensen niet maken omdat het te veel werk is.' },
     ],
   },
   {
@@ -59,7 +52,7 @@ export const POSTS: Post[] = [
     cat: 'Venture',
     statusLabel: 'Achter de schermen',
     read: '1 min',
-    lead: 'Een vierde venture wordt momenteel verkend. Nog geen naam, geen pagina — wel een sterk vermoeden dat het ergens heen gaat.',
+    lead: 'Een vierde venture wordt momenteel verkend. Nog geen naam, geen pagina, wel een sterk vermoeden dat het ergens heen gaat.',
     body: [
       { t: 'p', c: 'Achter de schermen loopt een verkenning voor een vierde venture. Het idee zit op het snijvlak van automatisering en MKB-dienstverlening.' },
       { t: 'p', c: 'Volgens het Toms Ambitie-ritme krijgt dit project pas een naam en een plek op de site zodra de eerste validatie rond is. Tot die tijd: hoofd omlaag, gesprekken voeren, aannames testen.' },
@@ -279,11 +272,11 @@ export const POSTS: Post[] = [
     statusLabel: 'Origin story',
     venture: 'DesignerShirts',
     read: '2 min',
-    lead: 'Funny shirts waren ineens een ding. Maar je kon ze nergens zelf samenstellen. Dat vonden wij vreemd — en zo ontstond DesignerShirts.',
+    lead: 'Funny shirts waren ineens een ding. Maar je kon ze nergens zelf samenstellen. Dat vonden wij vreemd. Zo ontstond DesignerShirts.',
     body: [
       { t: 'p', c: 'Rond 2010 waren funny shirts ineens een ding. Maar eigenlijk kon je ze maar op een paar plekken kopen. Vaak bij winkels zoals CoolCat. Gewoon fysiek in de winkel en altijd precies zoals zij hadden bedacht.' },
       { t: 'p', c: 'Dat vonden wij vreemd. Want tegelijkertijd zagen we iets anders gebeuren: steeds meer mensen wilden online dingen personaliseren. Dus ontstond het idee: wat als mensen zelf hun kleding kunnen samenstellen?' },
-      { t: 'p', c: 'Samen met REF Drukkerij — tegenwoordig REFLEX Bedrijfskleding — begonnen we DesignerShirts. En eerlijk? In het begin voelde het vooral als één groot creatief experiment. We konden ineens al onze flauwe woordgrappen, ideeën en hersenspinsels ergens kwijt.' },
+      { t: 'p', c: 'Samen met REF Drukkerij (tegenwoordig REFLEX Bedrijfskleding) begonnen we DesignerShirts. En eerlijk? In het begin voelde het vooral als één groot creatief experiment. We konden ineens al onze flauwe woordgrappen, ideeën en hersenspinsels ergens kwijt.' },
       { t: 'quote', c: 'DesignerShirts werd onze eigen digitale speeltuin.' },
       { t: 'p', c: 'Omdat we websites en webshops bouwden voor klanten, konden we hier alles testen: UX, online marketing, conversie, productpagina\'s, advertenties, checkoutflows, SEO en klantgedrag. En dat maakte het project misschien nog waardevoller dan de omzet zelf.' },
     ],

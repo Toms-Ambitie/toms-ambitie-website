@@ -78,19 +78,21 @@ const CtaButton = ({
 /* Per-venture SEO titles */
 const VENTURE_TITLES: Record<string, string> = {
   "post-pilot":
-    "PostPilot · Nederlandstalige LinkedIn-AI met spraakinvoer | Toms Ambitie",
+    "PostPilot · LinkedIn-tool · een venture van Toms Ambitie",
   "plug-and-power":
-    "Plug and Power · Archief | Toms Ambitie",
+    "Plug and Power · venture van Toms Ambitie",
   "emmastudio":
-    "EmmaStudio · SaaS voor ondernemers met personeel | Toms Ambitie",
+    "EmmaStudio · software voor ondernemers · Toms Ambitie",
 };
 
 /* Per-venture meta descriptions */
 const VENTURE_DESCRIPTIONS: Record<string, string> = {
   "post-pilot":
-    "Spreek dertig seconden in en PostPilot maakt er een LinkedIn-post van in jouw toon. Officiële LinkedIn-koppeling, vanaf nul euro. Een venture van Toms Ambitie uit Zwolle.",
+    "PostPilot maakt van een ingesproken gedachte een LinkedIn-post in jouw toon. Nederlandstalig, gebouwd door Toms Ambitie in Zwolle. Lees het verhaal.",
+  "plug-and-power":
+    "Plug and Power is een venture van Toms Ambitie uit Zwolle. Lees waar het idee vandaan komt, wat de stand van zaken is en wat we ervan hebben geleerd.",
   "emmastudio":
-    "EmmaStudio brengt omzet en kosten op dezelfde dag bij elkaar. Acht modules, vijf live, met een klant dagelijks in productie. Een venture van Toms Ambitie uit Zwolle.",
+    "EmmaStudio is de softwareventure van Toms Ambitie: boekhouden, loon, personeel en marketing in één platform. Ontstaan in een kapsalon in Heeten.",
 };
 
 const VentureDetailPage = () => {

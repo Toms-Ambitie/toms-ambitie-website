@@ -30,8 +30,8 @@ const OverOnsPage = () => {
 
   useEffect(() => {
     applySEO({
-      title: 'Over Toms Ambitie · Tom Mulder, Venture Builder uit Zwolle',
-      description: 'Tom Mulder bouwt eigen bedrijven vanuit echte frustratie. Geen bureau, geen fonds. Een vaste kern met specialisten die meebouwen. Open voor co-founders, investeerders en partners die geloven in het model.',
+      title: 'Over Toms Ambitie en Tom Mulder · Zwolle',
+      description: 'Wie is Tom Mulder en waarom bestaat Toms Ambitie? Van reclamebureau naar venture club: het verhaal, de mensen en de manier van werken achter de ventures.',
       canonical: 'https://www.toms-ambitie.nl/over-ons',
       jsonLd: [
         {

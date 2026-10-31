@@ -351,8 +351,8 @@ const VenturesPage = () => {
 
   useEffect(() => {
     applySEO({
-      title: 'Ventures · PostPilot en EmmaStudio | Toms Ambitie',
-      description: 'Twee eigen ventures, allebei live. PostPilot: LinkedIn AI met spraakinvoer. EmmaStudio: SaaS voor ondernemers met personeel. Interesse in investeren of meebouwen?',
+      title: 'Onze ventures · de bedrijven van Toms Ambitie',
+      description: 'Een overzicht van alle ventures van Toms Ambitie: wat er live staat, wat er is verkocht en wat er is gestopt. Inclusief wat elk traject ons heeft geleerd.',
       canonical: 'https://www.toms-ambitie.nl/ventures',
       jsonLd: {
         '@context': 'https://schema.org',
@@ -382,7 +382,7 @@ const VenturesPage = () => {
               className="clip-reveal display"
               style={{ fontSize: 'clamp(80px, 11vw, 168px)', lineHeight: 0.84, marginTop: 32, letterSpacing: '-0.02em' }}
             >
-              <span>Waar we nu<br />aan bouwen.</span>
+              <span>De ventures van Toms Ambitie</span>
             </h1>
             <p className="lead reveal" style={{ marginTop: 48, fontSize: 22, maxWidth: 640 }}>
               Geen losse ideeën. Twee ventures gebouwd vanuit echte frustratie, behoefte of marktkans. PostPilot is live met spraakinvoer. EmmaStudio draait live bij zijn eerste klant. Een derde venture, Plug and Power, is in 2026 gestopt.

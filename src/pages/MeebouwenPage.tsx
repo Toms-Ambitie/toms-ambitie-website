@@ -54,8 +54,8 @@ const MeebouwenPage = () => {
 
   useEffect(() => {
     applySEO({
-      title: 'Meebouwen · Co-founder, Investeerder of Specialist worden | Toms Ambitie',
-      description: 'Wil je co-founder worden, investeren of als specialist meebouwen aan PostPilot of EmmaStudio? Neem contact op met Tom Mulder van Toms Ambitie in Zwolle.',
+      title: 'Meebouwen aan een venture · co-founders en specialisten',
+      description: 'Meebouwen aan een venture van Toms Ambitie? We zoeken co-founders, investeerders en specialisten die niet alleen adviseren maar meedoen. Zo werkt het.',
       canonical: 'https://www.toms-ambitie.nl/meebouwen',
       jsonLd: [
         {
@@ -111,7 +111,7 @@ const MeebouwenPage = () => {
           <div className="container-wide">
             <span className="eyebrow"><span style={{ marginRight: 8, color: 'var(--inkt-40)' }}>05</span>Contact</span>
             <h1 className="clip-reveal display" style={{ fontSize: 'clamp(80px, 11vw, 168px)', lineHeight: 0.84, marginTop: 32, letterSpacing: '-0.02em' }}>
-              <span>Doe mee.<br />Op jouw manier.</span>
+              <span>Meebouwen aan een venture</span>
             </h1>
             <p className="lead reveal" style={{ marginTop: 48, fontSize: 22, maxWidth: 640 }}>
               Toms Ambitie bouwt ventures vanuit echte problemen. Sommige mensen investeren. Anderen bouwen mee. Soms ontstaat daaruit een compleet nieuwe venture.

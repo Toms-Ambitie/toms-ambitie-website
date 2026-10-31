@@ -135,7 +135,7 @@ const NewsArticle = () => {
             {/* Footer link */}
             <p style={{ marginTop: 64, paddingTop: 32, borderTop: '1px solid var(--inkt-20)', color: 'var(--inkt-60)' }}>
               Meer lezen over hoe we bouwen?{' '}
-              <Link to="/werkwijze" style={{ borderBottom: '1px solid var(--inkt)', color: 'var(--inkt)' }}>
+              <Link to="/hoe-we-bouwen" style={{ borderBottom: '1px solid var(--inkt)', color: 'var(--inkt)' }}>
                 Bekijk de werkwijze →
               </Link>
             </p>

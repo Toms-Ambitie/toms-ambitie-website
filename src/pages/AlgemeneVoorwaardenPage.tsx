@@ -80,8 +80,8 @@ const P = ({ children }: { children: React.ReactNode }) => (
 const AlgemeneVoorwaardenPage = () => {
   useEffect(() => {
     applySEO({
-      title: 'Algemene Voorwaarden · Toms Ambitie',
-      description: 'Duidelijke afspraken voor ventures, platformen, software, diensten en samenwerkingen van Toms Ambitie.',
+      title: 'Algemene voorwaarden · Toms Ambitie',
+      description: 'De algemene voorwaarden van Toms Ambitie voor samenwerking, deelname aan een venture en gebruik van deze website.',
       canonical: 'https://www.toms-ambitie.nl/voorwaarden',
     });
   }, []);
@@ -99,7 +99,7 @@ const AlgemeneVoorwaardenPage = () => {
               <span className="eyebrow" style={{ color: 'rgba(244,241,232,0.5)' }}>Juridisch</span>
             </div>
             <h1 className="display" style={{ fontSize: 'clamp(56px, 8vw, 130px)', lineHeight: 0.84, marginTop: 24, letterSpacing: '-0.02em', color: 'var(--wit-warm)' }}>
-              Algemene<br />voorwaarden.
+              Algemene<br />voorwaarden
             </h1>
             <p style={{ marginTop: 40, fontSize: 22, lineHeight: 1.55, maxWidth: 560, color: 'rgba(244,241,232,0.7)', fontFamily: 'var(--body)' }}>
               Duidelijke afspraken voor ventures, platformen, software, diensten en samenwerkingen.

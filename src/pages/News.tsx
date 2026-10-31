@@ -245,8 +245,8 @@ const News = () => {
 
   useEffect(() => {
     applySEO({
-      title: 'Nieuws · Toms Ambitie',
-      description: 'Geen persberichten. Wel een kijkje in wat we bouwen, testen, lanceren en soms ook weer loslaten.',
+      title: 'Nieuws en lessen · Toms Ambitie',
+      description: 'Eerlijke verhalen over bouwen, verkopen en stoppen. Wat werkte bij LED IBC, Entranz, PartyBlender en Designershirts, en wat juist niet. Zonder mooipraat.',
       canonical: 'https://www.toms-ambitie.nl/nieuws',
     });
   }, []);

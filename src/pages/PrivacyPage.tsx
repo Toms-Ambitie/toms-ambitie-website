@@ -83,7 +83,7 @@ const PrivacyPage = () => {
   useEffect(() => {
     applySEO({
       title: 'Privacyverklaring · Toms Ambitie',
-      description: 'Duidelijk over data, formulieren, analytics en platformen. Toms Ambitie verwerkt persoonsgegevens alleen wanneer dat nodig is.',
+      description: 'Hoe Toms Ambitie omgaat met je persoonsgegevens: wat we verwerken, waarom, hoe lang we het bewaren en welke rechten je hebt onder de AVG.',
       canonical: 'https://www.toms-ambitie.nl/privacy',
     });
   }, []);
@@ -101,7 +101,7 @@ const PrivacyPage = () => {
               <span className="eyebrow" style={{ color: 'rgba(244,241,232,0.5)' }}>Juridisch</span>
             </div>
             <h1 className="display" style={{ fontSize: 'clamp(80px, 11vw, 168px)', lineHeight: 0.84, marginTop: 24, letterSpacing: '-0.02em', color: 'var(--wit-warm)' }}>
-              Privacy.
+              Privacyverklaring
             </h1>
             <p style={{ marginTop: 40, fontSize: 22, lineHeight: 1.55, maxWidth: 560, color: 'rgba(244,241,232,0.7)', fontFamily: 'var(--body)' }}>
               Duidelijk over data, formulieren, analytics en platformen.

@@ -4,6 +4,8 @@ export default {
   darkMode: ["class"],
   content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
   prefix: "",
+  // "ring" is the marker circle in styles/site.css, not Tailwind's focus ring utility
+  blocklist: ["ring"],
   theme: {
     container: {
       center: true,

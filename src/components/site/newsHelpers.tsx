@@ -26,13 +26,13 @@ export function keepTogether(text: string): ReactNode {
 }
 
 /** Heading text with the marker on the given word only; without a word, no marker. */
-export function headline(text: string, word?: string, onInk = false): ReactNode {
+export function headline(text: string, word?: string): ReactNode {
   const i = word ? text.lastIndexOf(word) : -1;
   if (!word || i < 0) return keepTogether(text);
   return (
     <>
       {keepTogether(text.slice(0, i))}
-      <span className="hl" style={onInk ? { color: "var(--inkt)" } : undefined}>
+      <span className="hl">
         {keepTogether(word)}
       </span>
       {keepTogether(text.slice(i + word.length))}

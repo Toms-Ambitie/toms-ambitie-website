@@ -37,9 +37,5 @@ export function Cta({ eyebrow, title, text, children, peek }: CtaProps) {
   );
 }
 
-/** One highlighted word in a heading on ink (text stays ink on the marker). */
-export const HlInk = ({ children }: { children: ReactNode }) => (
-  <span className="hl" style={{ color: "var(--inkt)" }}>
-    {children}
-  </span>
-);
+/** One highlighted word in a heading on ink. Paper-coloured until the marker is drawn, then ink (see site.css). */
+export const HlInk = ({ children }: { children: ReactNode }) => <span className="hl">{children}</span>;

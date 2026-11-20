@@ -19,7 +19,7 @@ const renderBlock = (b: Block, i: number) => {
     case "quote":
       return (
         <blockquote key={i} className="art-q rv">
-          <p className="d">{headline(b.c, b.hl, true)}</p>
+          <p className="d">{headline(b.c, b.hl)}</p>
         </blockquote>
       );
     case "ul":

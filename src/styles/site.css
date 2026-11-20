@@ -420,9 +420,11 @@ a.feat .txt-l{display:inline-block;margin-top:14px;color:var(--balpen-licht)}
 @media (min-width:1100px){.art-q{margin-inline:-110px}}
 
 /* ===== aanvullingen voor de echte site ===== */
-/* blue panel stays 4:5; the sticker fits inside it instead of stretching the panel */
-.tompanel{min-height:0}
-.tompanel .stk{width:auto;max-width:92%;max-height:97%}
+/* blue panel stays 4:5 (height = 125cqw). The sticker may rise at most 12% of the panel
+   height above it (15cqw, minus the 8px the scroll drift can lift it), and the panel reserves
+   that same room above itself (15% of its width) so Tom never covers content higher up. */
+.tompanel{min-height:0;container-type:inline-size;margin-top:15%}
+.tompanel .stk{width:auto;max-width:92%;max-height:calc(140cqw - 8px)}
 /* on phones the 18px gutter is narrower than the circle's overhang: keep the ink inside the margin */
 @media (max-width:760px){.row .ring{inset:-50% -4%;width:108%}}
 .skip{position:absolute;left:var(--gut);top:-80px;z-index:120;background:var(--markeerstift);color:var(--inkt);padding:12px 18px;border-radius:var(--radius-pil);font-weight:700;text-decoration:none}
@@ -479,3 +481,9 @@ button.btn:disabled{opacity:.6;cursor:wait;transform:none}
 /* H1 that holds the label and the big design line */
 .phead h1.ph-h1{font-size:inherit;line-height:inherit;margin:0;font-weight:inherit}
 .ph-h1>.d{display:block;font-size:clamp(46px,8.4vw,136px);line-height:.9;margin-top:22px}
+/* marked word on dark surfaces: paper until the marker sweeps in, then ink.
+   Without script or with reduced motion it is ink on yellow straight away. */
+:is(.film,.on-ink,.cta,.feat,.state,.art-q,.step.end) .hl{color:var(--inkt);transition:color .3s .2s}
+.js :is(.film,.on-ink,.cta,.feat,.state,.art-q,.step.end) .hl:not(.in){color:var(--papier)}
+@media (prefers-reduced-motion:reduce){.js :is(.film,.on-ink,.cta,.feat,.state,.art-q,.step.end) .hl:not(.in){color:var(--inkt)}}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}

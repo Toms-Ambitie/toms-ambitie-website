@@ -27,7 +27,7 @@ const MeebouwenPage = () => {
     } catch {
       /* storage blocked */
     }
-    return { name: "", email: "", linkedin: "", interest: "idee", message: probleem ? `Mijn probleem is: ${probleem}` : "" };
+    return { name: "", email: "", linkedin: "", website: "", interest: "idee", message: probleem ? `Mijn probleem is: ${probleem}` : "" };
   });
   const [status, setStatus] = useState<Status>({ kind: "idle", text: "" });
 
@@ -148,6 +148,10 @@ const MeebouwenPage = () => {
                   ))}
                 </div>
               </fieldset>
+              <div className="hp" aria-hidden="true">
+                <label htmlFor="f-web">Laat dit veld leeg</label>
+                <input id="f-web" name="website" type="text" tabIndex={-1} autoComplete="off" value={form.website} onChange={set("website")} />
+              </div>
               <div>
                 <label htmlFor="f-b">Bericht</label>
                 <textarea id="f-b" name="bericht" required maxLength={5000} placeholder="mijn probleem is…" value={form.message} onChange={set("message")} />

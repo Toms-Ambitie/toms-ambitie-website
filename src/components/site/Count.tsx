@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { reducedMotion } from "./motion";
 
-/** A figure tile number (<b>) that counts up from 0 when it comes into view. */
+/** A figure tile number (<b>). Shows the real figure; once it comes into view it counts up from 0. */
 export function Count({ to, className = "d" }: { to: number; className?: string }) {
   const ref = useRef<HTMLElement>(null);
   const [n, setN] = useState(to);
@@ -9,7 +9,6 @@ export function Count({ to, className = "d" }: { to: number; className?: string 
   useEffect(() => {
     const el = ref.current;
     if (!el || reducedMotion()) return;
-    setN(0);
     let raf = 0;
     const io = new IntersectionObserver(
       ([en]) => {

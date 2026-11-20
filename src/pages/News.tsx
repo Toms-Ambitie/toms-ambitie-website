@@ -60,7 +60,7 @@ const News = () => {
                   Uitgelicht · {catLabel(featured.statusLabel)}
                   {featured.venture ? ` · ${featured.venture}` : ""}
                 </p>
-                <h2 className="d">{headline(featured.title, featured.hl, true)}</h2>
+                <h2 className="d">{headline(featured.title, featured.hl)}</h2>
                 <p className="sub">{featured.lead}</p>
                 <p className="meta">
                   {featured.date} · {featured.read} lezen

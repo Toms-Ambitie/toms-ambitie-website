@@ -3,5 +3,4 @@
 export const ventureSlugs = [
   "emmastudio",
   "postpilot",
-  "plug-and-power",
 ] as const;

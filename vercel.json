@@ -28,7 +28,7 @@
     },
     {
       "source": "/nieuws/plug-and-power-pilot-zwolle",
-      "destination": "/ventures/plug-and-power",
+      "destination": "/ventures",
       "permanent": true
     },
     {
@@ -39,6 +39,11 @@
     {
       "source": "/ventures/post-pilot",
       "destination": "/ventures/postpilot",
+      "permanent": true
+    },
+    {
+      "source": "/ventures/plug-and-power",
+      "destination": "/ventures",
       "permanent": true
     }
   ],

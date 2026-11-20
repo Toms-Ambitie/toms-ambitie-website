@@ -17,6 +17,7 @@ export function SiteFooter() {
             <Link to="/over-ons">Over ons</Link>
             <Link to="/nieuws">Nieuws</Link>
             <Link to="/meebouwen">Bouw mee</Link>
+            <Link to="/persmap">Persmap</Link>
           </nav>
           <nav aria-label="Ventures">
             <b>Ventures</b>

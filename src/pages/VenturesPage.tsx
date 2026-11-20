@@ -1,544 +1,227 @@
-import { useEffect, useRef, type ElementType } from 'react';
-import { Link } from 'react-router-dom';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
-import { useReveal } from '@/hooks/useReveal';
-import { applySEO } from '@/lib/seo';
-import {
-  Zap, Users, Sparkles, Eye, Linkedin,
-  Flag,
-} from 'lucide-react';
+import { useEffect, useRef } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { applySEO } from "@/lib/seo";
+import { SiteLayout } from "@/components/site/SiteLayout";
+import { PageHead } from "@/components/site/PageHead";
+import { Compare } from "@/components/site/Compare";
+import { Cta, HlInk } from "@/components/site/Cta";
 
-/* ═══════════════════════════════════════════════════════════════
-   DATA
-═══════════════════════════════════════════════════════════════ */
-
-type Metric = { Icon: ElementType; value: string; label: string };
-
-type Venture = {
-  name: string;
-  slug: string;
-  tag: string;
-  statusLabel: string;
-  tagline: string;
-  long: string;
-  status: 'Live' | 'In ontwikkeling';
-  year: string;
-  url: string;
-  externalUrl?: string;
-  accent: string;
-  accentInk: string;
-  bg: string;
-  isLight?: boolean;
-  metrics: Metric[];
-  image: string;
+/** Old in-page anchors now have their own venture pages. */
+const OLD_ANCHORS: Record<string, string> = {
+  "#post-pilot": "/ventures/postpilot",
+  "#postpilot": "/ventures/postpilot",
+  "#emmastudio": "/ventures/emmastudio",
 };
-
-const VENTURES: Venture[] = [
-  {
-    name: 'PostPilot',
-    slug: 'post-pilot',
-    tag: 'LinkedIn AI',
-    statusLabel: 'LIVE',
-    tagline: 'Van idee naar LinkedIn-post in seconden.',
-    long: 'Je spreekt dertig seconden in wat je denkt. PostPilot maakt er een LinkedIn-post van in jouw toon. Publiceren gaat via de officiële LinkedIn-koppeling, dus zonder je wachtwoord af te geven.',
-    status: 'Live',
-    year: '2024',
-    url: 'postpilotapp.nl',
-    externalUrl: 'postpilotapp.nl',
-    accent: '#E8A640',
-    accentInk: '#0E1014',
-    bg: '#0E1014',
-    metrics: [
-      { Icon: Zap, value: 'Spraak', label: 'hoofdroute' },
-      { Icon: Flag, value: 'Nederlands', label: 'eerste taal' },
-      { Icon: Linkedin, value: 'Officieel', label: 'LinkedIn-koppeling' },
-    ],
-    image: '/photos/postpilot-app-vandaag.webp',
-  },
-  {
-    name: 'EmmaStudio',
-    slug: 'emmastudio',
-    tag: 'SaaS voor ondernemers',
-    statusLabel: 'LIVE · 5 VAN 8 MODULES',
-    tagline: 'Je omzet en je kosten zien elkaar nooit.',
-    long: 'EmmaStudio brengt omzet en kosten voor het eerst op dezelfde dag bij elkaar. Acht modules, elk los af te nemen. Vijf draaien live, met een klant dagelijks in productie.',
-    status: 'Live',
-    year: '2025',
-    url: 'emmastudio.nl',
-    externalUrl: 'emmastudio.nl',
-    accent: '#0e3d37',
-    accentInk: '#fbf4ea',
-    bg: '#E8F2EE',
-    isLight: true,
-    metrics: [
-      { Icon: Sparkles, value: '5 van 8', label: 'live' },
-      { Icon: Users, value: 'MKB', label: 'met personeel' },
-      { Icon: Flag, value: 'NL', label: 'startmarkt' },
-    ],
-    image: '/photos/emmaboekt_venture_visual.webp',
-  },
-];
-
-/* ═══════════════════════════════════════════════════════════════
-   VENTURE SECTION — uniform layout matching reference visuals
-   Text LEFT · Image RIGHT (fills full height)
-═══════════════════════════════════════════════════════════════ */
-
-const VentureSection = ({ v, index }: { v: Venture; index: number }) => {
-  const light = v.isLight ?? false;
-  const onBg = light ? 'var(--inkt)' : 'var(--wit-warm)';
-  const muted = light ? 'rgba(14,14,12,0.65)' : 'rgba(244,241,232,0.7)';
-  const faint = light ? 'rgba(14,14,12,0.4)' : 'rgba(244,241,232,0.4)';
-  const divider = light ? 'rgba(14,14,12,0.1)' : 'rgba(244,241,232,0.1)';
-
-  return (
-    <section
-      id={v.slug}
-      style={{
-        background: v.bg,
-        color: onBg,
-        position: 'relative',
-        borderTop: `1px solid ${light ? 'rgba(14,14,12,0.06)' : 'rgba(244,241,232,0.06)'}`,
-        scrollMarginTop: 64,
-      }}
-    >
-      {/* Accent bar */}
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: v.accent }} />
-
-      {/* Header row — stays within container-wide bounds */}
-      <div className="container-wide" style={{ paddingTop: 52, paddingBottom: 0 }}>
-        <div className="venture-header-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <span style={{ width: 8, height: 8, background: v.accent, flexShrink: 0 }} />
-            <span className="meta" style={{ color: faint }}>VENTURE 0{index + 1} / 02 · {v.tag}</span>
-          </div>
-          <Link
-            to={`/ventures/${v.slug}`}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 8,
-              fontFamily: 'var(--mono)',
-              fontSize: 11,
-              fontWeight: 700,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: v.accent,
-              textDecoration: 'none',
-              border: `1.5px solid ${v.accent}`,
-              padding: '9px 18px',
-              minHeight: 38,
-              transition: 'background .2s, color .2s',
-            }}
-            onMouseEnter={(e) => {
-              const el = e.currentTarget as HTMLAnchorElement;
-              el.style.background = v.accent;
-              el.style.color = v.accentInk;
-            }}
-            onMouseLeave={(e) => {
-              const el = e.currentTarget as HTMLAnchorElement;
-              el.style.background = 'transparent';
-              el.style.color = v.accent;
-            }}
-          >
-            BEKIJK VENTURE →
-          </Link>
-        </div>
-      </div>
-
-      {/* Main grid — 42 / 58 split, max 1440px, image fills right column */}
-      <div
-        className="ventures-featured-inner"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1.4fr',
-          minHeight: 540,
-          marginTop: 40,
-          maxWidth: 1440,
-          marginLeft: 'auto',
-          marginRight: 'auto',
-        }}
-      >
-        {/* ── Left: text content ── */}
-        <div
-          className="venture-text-col"
-          style={{
-            paddingLeft: 32,
-            paddingRight: 48,
-            paddingBottom: 80,
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'flex-start',
-          }}
-        >
-          {/* Status badge */}
-          <div
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 7,
-              border: `1px solid ${v.accent}`,
-              padding: '4px 10px 4px 8px',
-              marginBottom: 24,
-              alignSelf: 'flex-start',
-            }}
-          >
-            <span style={{
-              width: 5, height: 5, flexShrink: 0,
-              background: v.status === 'Live' ? v.accent : 'var(--oranje)',
-              boxShadow: v.status === 'Live'
-                ? `0 0 0 3px ${v.accent}28`
-                : '0 0 0 3px rgba(255,74,0,0.18)',
-            }} />
-            <span
-              style={{
-                fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.16em',
-                textTransform: 'uppercase', color: v.accent,
-              }}
-            >
-              {v.statusLabel}
-            </span>
-          </div>
-
-          {/* Venture name */}
-          <div
-            className="display"
-            style={{
-              fontSize: 'clamp(56px, 9vw, 128px)',
-              lineHeight: 0.9,
-              letterSpacing: '-0.02em',
-              marginBottom: 18,
-              color: onBg,
-            }}
-          >
-            {v.name}
-          </div>
-
-          {/* Tagline — accent color, display font, uppercase */}
-          <div
-            className="display"
-            style={{
-              fontSize: 'clamp(18px, 2vw, 28px)',
-              lineHeight: 1.1,
-              color: v.accent,
-              marginBottom: 28,
-              textTransform: 'uppercase',
-              letterSpacing: '0.01em',
-            }}
-          >
-            {v.tagline}
-          </div>
-
-          {/* Body copy */}
-          <p
-            style={{
-              fontFamily: 'var(--body)',
-              fontSize: 15,
-              lineHeight: 1.75,
-              color: muted,
-              marginBottom: 0,
-              maxWidth: 420,
-            }}
-          >
-            {v.long}
-          </p>
-
-          {/* Metrics — icon + value + label, 3 columns */}
-          <div
-            className="venture-metrics-grid"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: 0,
-              paddingTop: 28,
-              borderTop: `1px solid ${divider}`,
-              marginTop: 'auto',
-              paddingBottom: 0,
-            }}
-          >
-            {v.metrics.map(({ Icon, value, label }, mi) => (
-              <div
-                key={label}
-                style={{
-                  paddingLeft: mi > 0 ? 16 : 0,
-                  borderLeft: mi > 0 ? `1px solid ${divider}` : 'none',
-                }}
-              >
-                <Icon
-                  size={14}
-                  color={v.accent}
-                  style={{ display: 'block', marginBottom: 8 }}
-                />
-                <div
-                  className="meta"
-                  style={{
-                    color: onBg,
-                    fontSize: 10,
-                    letterSpacing: '0.13em',
-                    textTransform: 'uppercase',
-                    marginBottom: 2,
-                  }}
-                >
-                  {value}
-                </div>
-                <div
-                  className="meta"
-                  style={{
-                    color: faint,
-                    fontSize: 9,
-                    letterSpacing: '0.13em',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  {label}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* External URL — optional, below metrics */}
-          {v.externalUrl && (
-            <div style={{ marginTop: 20 }}>
-              <a
-                href={`https://${v.externalUrl}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.14em',
-                  textTransform: 'uppercase', color: faint, textDecoration: 'none',
-                  transition: 'color .2s',
-                }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = v.accent; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = faint; }}
-              >
-                {v.externalUrl} ↗
-              </a>
-            </div>
-          )}
-        </div>
-
-        {/* ── Right: image fills full column height ── */}
-        <div className="venture-image-col" style={{ position: 'relative', overflow: 'hidden', minHeight: 420 }}>
-          <img
-            src={v.image}
-            alt={v.name}
-            loading="lazy"
-            decoding="async"
-            style={{
-              position: 'absolute',
-              inset: 0,
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center top',
-              display: 'block',
-            }}
-          />
-        </div>
-      </div>
-    </section>
-  );
-};
-
-/* ═══════════════════════════════════════════════════════════════
-   PAGE
-═══════════════════════════════════════════════════════════════ */
 
 const VenturesPage = () => {
   const rootRef = useRef<HTMLDivElement>(null);
-  useReveal(rootRef);
+  const { hash } = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const to = OLD_ANCHORS[hash.toLowerCase()];
+    if (to) navigate(to, { replace: true });
+  }, [hash, navigate]);
 
   useEffect(() => {
     applySEO({
-      title: 'Onze ventures · de bedrijven van Toms Ambitie',
-      description: 'Een overzicht van alle ventures van Toms Ambitie: wat er live staat, wat er is verkocht en wat er is gestopt. Inclusief wat elk traject ons heeft geleerd.',
-      canonical: 'https://www.toms-ambitie.nl/ventures',
+      title: "Onze ventures · de bedrijven van Toms Ambitie",
+      description:
+        "Een overzicht van alle ventures van Toms Ambitie: wat er live staat, wat er is verkocht en wat er is gestopt. Inclusief wat elk traject ons heeft geleerd.",
+      canonical: "https://www.toms-ambitie.nl/ventures",
       jsonLd: {
-        '@context': 'https://schema.org',
-        '@type': 'CollectionPage',
-        'name': 'Ventures van Toms Ambitie',
-        'url': 'https://www.toms-ambitie.nl/ventures',
-        'description': 'Twee eigen ventures, allebei live, gebouwd vanuit echte problemen. Open voor investeerders, co-founders en specialisten.',
-        'isPartOf': { '@id': 'https://www.toms-ambitie.nl/#website' },
-        'author': { '@id': 'https://www.toms-ambitie.nl/#tom-mulder' },
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        name: "Ventures van Toms Ambitie",
+        url: "https://www.toms-ambitie.nl/ventures",
+        description: "Twee eigen ventures, allebei live, gebouwd vanuit echte problemen. Open voor investeerders, co-founders en specialisten.",
+        isPartOf: { "@id": "https://www.toms-ambitie.nl/#website" },
+        author: { "@id": "https://www.toms-ambitie.nl/#tom-mulder" },
       },
     });
   }, []);
 
   return (
-    <div ref={rootRef} style={{ background: 'var(--wit-warm)' }}>
-      <Navbar />
-      <main id="main-content">
+    <SiteLayout>
+      <div ref={rootRef}>
+        <PageHead
+          wide
+          eyebrow="De ventures"
+          title={
+            <>
+              Waar we nu aan <span className="hl">bouwen.</span>
+            </>
+          }
+          hand="twee live, één gestopt"
+          lead="Geen losse ideeën. Twee ventures gebouwd vanuit echte frustratie, behoefte of marktkans."
+        />
 
-        {/* ═══ HERO ════════════════════════════════════════════════ */}
-        <section className="surface-wit page-hero" style={{ padding: '140px 0 100px' }}>
-          <div className="container-wide">
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-              <span className="volt-dot" />
-              <span className="eyebrow"><span style={{ marginRight: 8 }}>02</span>De Ventures</span>
-            </div>
-            <h1
-              className="clip-reveal display"
-              style={{ fontSize: 'clamp(80px, 11vw, 168px)', lineHeight: 0.84, marginTop: 32, letterSpacing: '-0.02em' }}
-            >
-              <span>De ventures van Toms Ambitie</span>
-            </h1>
-            <p className="lead reveal" style={{ marginTop: 48, fontSize: 22, maxWidth: 640 }}>
-              Geen losse ideeën. Twee ventures gebouwd vanuit echte frustratie, behoefte of marktkans. PostPilot is live met spraakinvoer. EmmaStudio draait live bij zijn eerste klant. Een derde venture, Plug and Power, is in 2026 gestopt.
-            </p>
-
-            {/* Quick-jump — anchors to section IDs */}
-            <div
-              className="reveal ventures-jump-grid"
-              style={{
-                marginTop: 80,
-                display: 'grid',
-                gridTemplateColumns: 'repeat(2, 1fr)',
-                gap: 12,
-              }}
-            >
-              {VENTURES.map((v, i) => (
-                <a
-                  key={v.slug}
-                  href={`#${v.slug}`}
-                  style={{
-                    display: 'block',
-                    padding: '20px 20px 16px',
-                    border: '1px solid var(--inkt-10)',
-                    background: 'var(--wit-warm)',
-                    transition: 'border-color .25s, background .25s',
-                    textDecoration: 'none',
-                    color: 'var(--inkt)',
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLAnchorElement).style.borderColor = v.accent;
-                    (e.currentTarget as HTMLAnchorElement).style.background = 'var(--papier)';
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLAnchorElement).style.borderColor = 'var(--inkt-10)';
-                    (e.currentTarget as HTMLAnchorElement).style.background = 'var(--wit-warm)';
-                  }}
-                >
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-                    <span style={{ width: 8, height: 8, background: v.accent, flexShrink: 0 }} />
-                    <span className="meta" style={{ color: 'var(--inkt-40)' }}>0{i + 1}</span>
-                  </div>
-                  <div className="display" style={{ fontSize: 22, lineHeight: 0.95, marginBottom: 4 }}>{v.name}</div>
-                  <div className="meta" style={{ fontSize: 9, marginBottom: 10 }}>{v.tag}</div>
-                  <div
-                    style={{
-                      display: 'inline-flex', alignItems: 'center', gap: 5,
-                      fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.14em',
-                      textTransform: 'uppercase', color: 'var(--inkt-40)',
-                    }}
-                  >
-                    <span style={{
-                      width: 5, height: 5,
-                      background: v.status === 'Live' ? 'var(--volt)' : 'var(--oranje)',
-                    }} />
-                    {v.status}
-                  </div>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ VENTURE SECTIONS ════════════════════════════════════ */}
-        {VENTURES.map((v, i) => (
-          <VentureSection key={v.slug} v={v} index={i} />
-        ))}
-
-        {/* ═══ GESTOPT · PLUG AND POWER ═══════════════════════════ */}
-        <section style={{ padding: '80px 0', borderTop: '1px solid var(--inkt-10)' }}>
-          <div className="container-wide">
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, alignItems: 'center', justifyContent: 'space-between' }}>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center' }}>
-                <span className="meta" style={{ color: 'var(--inkt-40)', letterSpacing: '0.12em' }}>GESTOPT</span>
-                <span className="meta" style={{ color: 'var(--inkt-20)' }}>·</span>
-                <span className="meta" style={{ letterSpacing: '0.08em' }}>PLUG AND POWER</span>
-                <span className="meta" style={{ color: 'var(--inkt-20)' }}>·</span>
-                <span className="meta" style={{ color: 'var(--inkt-40)', letterSpacing: '0.08em' }}>ENERGY TECH</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 24, flexWrap: 'wrap' }}>
-                <p style={{ fontFamily: 'var(--sans)', fontSize: 14, color: 'var(--inkt-60)', maxWidth: 400, margin: 0 }}>
-                  In 2026 gestopt. We laten ook zien wat niet doorging.
+        <section className="sec" style={{ paddingTop: 0 }}>
+          <div className="wrap">
+            <article className="case rv">
+              <Compare
+                sketch="pp"
+                label="Schuif tussen krabbel en product, PostPilot"
+                img={{
+                  src: "/ta/postpilot-1200.webp",
+                  srcSet: "/ta/postpilot-700.webp 700w, /ta/postpilot-1200.webp 1200w",
+                  alt: "De PostPilot-app: waar wil je vandaag zichtbaar over zijn?",
+                }}
+              />
+              <div className="case-t">
+                <span className="live">Venture 01 · LinkedIn AI · Live</span>
+                <h2 className="d">PostPilot</h2>
+                <p className="tl">Van idee naar LinkedIn-post in seconden.</p>
+                <p>
+                  Je spreekt dertig seconden in wat je denkt. PostPilot maakt er een LinkedIn-post van in jouw toon. Publiceren gaat via de officiële
+                  LinkedIn-koppeling, dus zonder je wachtwoord af te geven.
                 </p>
-                <a
-                  href="/ventures/plug-and-power"
-                  style={{
-                    fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase',
-                    color: 'var(--inkt)', textDecoration: 'none', borderBottom: '1px solid var(--inkt-20)',
-                    paddingBottom: 2, whiteSpace: 'nowrap',
-                  }}
-                >
-                  Bekijk het archief →
-                </a>
+                <div className="facts">
+                  <div className="fact">
+                    <b>Spraak</b>
+                    <span>Hoofdroute</span>
+                  </div>
+                  <div className="fact">
+                    <b>Jouw toon</b>
+                    <span>Vier presets</span>
+                  </div>
+                  <div className="fact">
+                    <b>Officieel</b>
+                    <span>LinkedIn-koppeling</span>
+                  </div>
+                </div>
+                <div className="acts" style={{ marginTop: 4 }}>
+                  <Link className="btn" to="/ventures/postpilot">
+                    Lees het verhaal <i>→</i>
+                  </Link>
+                  <a className="txt-l" href="https://postpilotapp.nl">
+                    postpilotapp.nl →
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article className="case rv">
+              <Compare
+                sketch="em"
+                label="Schuif tussen krabbel en product, EmmaStudio"
+                img={{
+                  src: "/ta/emma-1200.webp",
+                  srcSet: "/ta/emma-700.webp 700w, /ta/emma-1200.webp 1200w",
+                  alt: "Homepage van EmmaStudio",
+                }}
+              />
+              <div className="case-t">
+                <span className="live">Venture 02 · SaaS voor ondernemers · Live</span>
+                <h2 className="d">EmmaStudio</h2>
+                <p className="tl">Je omzet en je kosten zien elkaar nooit.</p>
+                <p>
+                  EmmaStudio brengt omzet en kosten voor het eerst op dezelfde dag bij elkaar. Acht modules, elk los af te nemen. Vijf draaien live,
+                  dagelijks in gebruik bij kapsalon Blondes Incognito in Heeten.
+                </p>
+                <div className="facts">
+                  <div className="fact">
+                    <b>5 van 8</b>
+                    <span>Modules live</span>
+                  </div>
+                  <div className="fact">
+                    <b>Salons</b>
+                    <span>Eerste branche</span>
+                  </div>
+                  <div className="fact">
+                    <b>14 dagen</b>
+                    <span>Gratis proberen</span>
+                  </div>
+                </div>
+                <div className="acts" style={{ marginTop: 4 }}>
+                  <Link className="btn" to="/ventures/emmastudio">
+                    Lees het verhaal <i>→</i>
+                  </Link>
+                  <a className="txt-l" href="https://emmastudio.nl">
+                    emmastudio.nl →
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <div className="stopt on-ink rv">
+              <div className="row">
+                <span className="nm d">
+                  <s>Plug and Power</s>
+                </span>
+                <div>
+                  <span className="st">Gestopt · 2025–2026 · Energy tech</span>
+                  <p className="ls">We laten ook zien wat niet doorging.</p>
+                  <Link className="txt-l" to="/nieuws">
+                    lees wat we leerden →
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ═══ SUB-BRANDING ════════════════════════════════════════ */}
-        <section className="surface-wit" style={{ padding: '160px 0' }}>
-          <div className="container-narrow" style={{ textAlign: 'center' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-              <span className="volt-dot" />
-              <span className="eyebrow"><span style={{ marginRight: 8 }}>P</span>Sub-branding</span>
+        <section className="sec how">
+          <div className="wrap">
+            <div className="sec-head rv">
+              <div>
+                <p className="eyebrow">Eigen merk</p>
+                <h2 className="d" style={{ marginTop: 16 }}>
+                  Elke venture staat op eigen <span className="hl">benen.</span>
+                </h2>
+              </div>
+              <p>
+                Eigen naam, eigen logo, eigen website. De link met Toms Ambitie is subtiel maar altijd aanwezig: dezelfde werkwijze, dezelfde drive,
+                dezelfde standaard.
+              </p>
             </div>
-            <h2
-              className="display"
-              style={{ fontSize: 'clamp(48px, 6vw, 88px)', lineHeight: 0.95, marginTop: 32 }}
-            >
-              Elk venture staat op eigen benen.<br />
-              <span style={{ color: 'var(--inkt-40)' }}>Toms Ambitie is de motor.</span>
-            </h2>
-            <p className="lead" style={{ marginTop: 32, fontSize: 20 }}>
-              Eigen naam, eigen logo, eigen website. De link met Toms Ambitie is subtiel maar altijd aanwezig: dezelfde werkwijze, dezelfde drive, dezelfde standaard.
-            </p>
-            <div className="subbranding-grid" style={{ marginTop: 64, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
-              {[
-                ['Eigen identiteit', 'Logo, kleuren, fonts. Eigen visuele taal. Eigen verhaal.'],
-                ['Eigen website', 'Eigen domein. Eigen platform. Eigen go-to-market.'],
-                ['TA als fundament', 'Dezelfde werkwijze en principes. Gebouwd om te groeien.'],
-              ].map(([t, d], idx) => (
-                <div key={t} className="reveal" style={{ background: 'var(--papier)', padding: 28, textAlign: 'left' }}>
-                  <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.18em', color: 'var(--inkt-40)', marginBottom: 16 }}>0{idx + 1}</div>
-                  <h4 className="display" style={{ fontSize: 28, lineHeight: 0.95, marginBottom: 12 }}>{t}</h4>
-                  <p className="body-sm">{d}</p>
-                </div>
-              ))}
+            <div className="cards">
+              <div className="card pap rv">
+                <span className="n d">01</span>
+                <h3 className="d">Eigen identiteit</h3>
+                <p>Logo, kleuren, lettertypen. Eigen beeldtaal. Eigen verhaal.</p>
+              </div>
+              <div className="card pap rv">
+                <span className="n d">02</span>
+                <h3 className="d">Eigen website</h3>
+                <p>Eigen domein. Eigen platform. Eigen weg naar de markt.</p>
+              </div>
+              <div className="card pap rv">
+                <span className="n d">03</span>
+                <h3 className="d">Toms Ambitie als motor</h3>
+                <p>Dezelfde werkwijze en principes. Gebouwd om te groeien.</p>
+              </div>
             </div>
-          </div>
-        </section>
-
-        {/* ═══ CTA ═════════════════════════════════════════════════ */}
-        <section className="surface-papier" style={{ padding: '180px 0', textAlign: 'center' }}>
-          <div className="container-narrow">
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-              <span className="volt-dot" />
-              <span className="eyebrow"><span style={{ marginRight: 8 }}>06</span>Wat volgt</span>
-            </div>
-            <h2
-              className="clip-reveal display"
-              style={{ fontSize: 'clamp(56px, 7vw, 104px)', lineHeight: 0.92, marginTop: 32 }}
-            >
-              <span>Het doel is niet<br />één succesvol bedrijf.</span>
-            </h2>
-            <p className="lead" style={{ marginTop: 32, fontSize: 22 }}>
-              Het doel is een omgeving bouwen waarin ventures sneller ontstaan, getest worden en kunnen groeien. Heb je een probleem dat een bedrijf verdient? Begin daar.
-            </p>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginTop: 48, flexWrap: 'wrap' }}>
-              <Link to="/meebouwen" className="btn btn-volt">Start gesprek →</Link>
-              <Link to="/werkwijze" className="btn-ghost">De werkwijze</Link>
+            <div className="endo rv">
+              <span className="hand">zo staat het onder elke venture-site ↓</span>
+              <div className="endo-b">
+                <img src="/ta/beeldmerk.svg" alt="" width={30} height={30} />
+                <span>een Toms Ambitie venture</span>
+              </div>
             </div>
           </div>
         </section>
 
-      </main>
-      <Footer />
-    </div>
+        <Cta
+          eyebrow="Wat volgt"
+          title={
+            <>
+              Het doel is niet één succesvol <HlInk>bedrijf.</HlInk>
+            </>
+          }
+          text="Het doel is een omgeving bouwen waarin ventures sneller ontstaan, getest worden en kunnen groeien. Heb je een probleem dat een bedrijf verdient? Begin daar."
+        >
+          <div className="acts">
+            <Link className="btn inv" to="/meebouwen">
+              Start gesprek <i>→</i>
+            </Link>
+            <Link className="txt-l" to="/werkwijze">
+              bekijk de werkwijze →
+            </Link>
+          </div>
+        </Cta>
+      </div>
+    </SiteLayout>
   );
 };
 

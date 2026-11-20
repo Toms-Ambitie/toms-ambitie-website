@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { useScrollFrame } from "./motion";
 
 /** Motto on ballpoint blue: words light up one by one while scrolling. */
-export function Motto({ text, note }: { text: string; note: string }) {
+export function Motto({ text, note, flush }: { text: string; note: string; flush?: boolean }) {
   const ref = useRef<HTMLParagraphElement>(null);
   const words = text.split(" ");
   const [lit, setLit] = useState(words.length);
@@ -17,7 +17,7 @@ export function Motto({ text, note }: { text: string; note: string }) {
   });
 
   return (
-    <section className="motto">
+    <section className="motto" style={flush ? { marginTop: 0 } : undefined}>
       <div className="wrap">
         <p className="d" ref={ref}>
           <span className="sr-only">{text}</span>

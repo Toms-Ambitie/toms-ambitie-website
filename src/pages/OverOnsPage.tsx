@@ -1,312 +1,225 @@
-import { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
-import { useReveal } from '@/hooks/useReveal';
-import { applySEO } from '@/lib/seo';
-
-const MILESTONES = [
-  { y: '2008', t: 'Aardbei Communicatie', d: 'Opgericht in Nijverdal door Tom Mulder met partners. Eerste bureau.' },
-  { y: '2015', t: 'Exit + start TA', d: 'Aardbei verkocht. Het startschot voor Toms Ambitie.' },
-  { y: '2015-2023', t: 'Parallel bouwen', d: 'Verschillende bureaus en eerste eigen ventures naast elkaar.' },
-  { y: '2023', t: 'AI-first', d: 'Definitieve omslag. AI niet als experiment, maar als werkwijze.' },
-  { y: '2024', t: 'PostPilot', d: 'Nieuwe venture: Nederlandstalige AI voor LinkedIn.' },
-  { y: '2025', t: 'EmmaStudio', d: 'Begonnen als interne tool voor één kapsalon. Losgemaakt tot een platform voor ondernemers met personeel.' },
-  { y: '2026', t: 'Twee ventures live, één gestopt', d: 'PostPilot v2.0 met spraakinvoer. EmmaStudio live met vijf modules en een klant in dagelijkse productie. Plug and Power stopgezet.' },
-];
+import { useEffect, useRef, type ReactNode } from "react";
+import { Link } from "react-router-dom";
+import { applySEO } from "@/lib/seo";
+import { SiteLayout } from "@/components/site/SiteLayout";
+import { PageHead } from "@/components/site/PageHead";
+import { TomPanel } from "@/components/site/TomPanel";
+import { Ring } from "@/components/site/Ring";
+import { Motto } from "@/components/site/Motto";
+import { Cta, HlInk } from "@/components/site/Cta";
 
 const VALUES = [
-  { t: 'Oplossing eerst', d: 'Elk venture begint met iets wat we zelf voelen. Geen spreadsheet als startpunt, geen denkbeeldige markt.' },
-  { t: 'Altijd onderbouwd', d: 'Elk idee krijgt een plan. Nooit roekeloos. Maar ook nooit zo lang gepland dat het niet gebeurt.' },
-  { t: 'AI als versneller', d: 'Niet als experiment, maar als werkwijze. Validatie, demo, business case: AI werkt mee van stap één.' },
-  { t: 'Samen bouwen', d: 'Het liefst met partners, maar ook solo als het moet. Geen ego.' },
-  { t: 'Eerlijk', d: 'Over wat werkte. Maar vooral ook over wat niet werkte.' },
+  { n: "01", t: "Oplossing eerst", d: "Elk venture begint met iets wat we zelf voelen. Geen spreadsheet als startpunt, geen denkbeeldige markt." },
+  { n: "02", t: "Altijd onderbouwd", d: "Elk idee krijgt een plan. Nooit roekeloos. Maar ook nooit zo lang gepland dat het niet gebeurt." },
+  { n: "03", t: "AI als versneller", d: "Niet als experiment, maar als werkwijze. Validatie, demo, business case: AI werkt mee van stap één." },
+  { n: "04", t: "Samen bouwen", d: "Het liefst met partners, maar ook solo als het moet. Geen ego." },
+  { n: "05", t: "Eerlijk", d: "Over wat werkte. Maar vooral ook over wat niet werkte.", z: true },
+];
+
+const TIMELINE: { y: string; t: ReactNode; d: string; now?: boolean }[] = [
+  { y: "2008", t: "Notabilis", d: "Toms eerste bedrijf, opgericht met Bart Pronk. Marcel Ooink op den Dijk werkte vanaf de start mee en werd in 2009 partner." },
+  { y: "2010–14", t: <span className="xs">DesignerShirts</span>, d: "Gestopt. Niet extreem winstgevend, maar het gaf energie." },
+  { y: "2012", t: "Aardbei Communicatie", d: "Tom en Marcel kopen Bart uit en gaan samen verder onder een nieuwe naam." },
+  { y: "2012–15", t: <span className="xs">PartyBlender</span>, d: "Gestopt. Een goed idee zonder de middelen om het echt groot te maken." },
+  { y: "2015", t: "Aardbei verkocht", d: "Tom en Marcel verkopen het bureau aan Brandon Ziel. Het is daarna nog een paar keer verkocht en gaat al jaren verder als Cherry Marketing. Voor Tom het startschot voor Toms Ambitie." },
+  { y: "2017–23", t: <span className="sold">LED-IBC</span>, d: "Verkocht aan onze Belgische partner Woodpeckers." },
+  { y: "2019–22", t: "Entranz", d: "Uitgestapt." },
+  { y: "2025", t: "AI-first", d: "Definitieve omslag. AI niet als experiment, maar als werkwijze." },
+  { y: "2025–26", t: <span className="xs">Plug and Power</span>, d: "Gestopt. Met Ernst Meerholz en Nick Neppelenbroek." },
+  { y: "2026", t: "PostPilot", d: "Van gesproken gedachte naar LinkedIn-post. Versie 2.0 met spraakinvoer.", now: true },
+  { y: "2026", t: "EmmaStudio", d: "Acht modules voor ondernemers. Vijf live. Ontwikkeld bij Blondes Incognito in Heeten.", now: true },
 ];
 
 const OverOnsPage = () => {
   const rootRef = useRef<HTMLDivElement>(null);
-  useReveal(rootRef);
-  const bouwjaren = new Date().getFullYear() - 2008;
 
   useEffect(() => {
     applySEO({
-      title: 'Over Toms Ambitie en Tom Mulder · Zwolle',
-      description: 'Wie is Tom Mulder en waarom bestaat Toms Ambitie? Van reclamebureau naar venture club: het verhaal, de mensen en de manier van werken achter de ventures.',
-      canonical: 'https://www.toms-ambitie.nl/over-ons',
+      title: "Over Toms Ambitie en Tom Mulder · Zwolle",
+      description:
+        "Wie is Tom Mulder en waarom bestaat Toms Ambitie? Van reclamebureau naar venture club: het verhaal, de mensen en de manier van werken achter de ventures.",
+      canonical: "https://www.toms-ambitie.nl/over-ons",
       jsonLd: [
         {
-          '@context': 'https://schema.org',
-          '@type': 'AboutPage',
-          'name': 'Over Toms Ambitie — Tom Mulder',
-          'url': 'https://www.toms-ambitie.nl/over-ons',
-          'isPartOf': { '@id': 'https://www.toms-ambitie.nl/#website' },
-          'about': { '@id': 'https://www.toms-ambitie.nl/#tom-mulder' },
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          name: "Over Toms Ambitie — Tom Mulder",
+          url: "https://www.toms-ambitie.nl/over-ons",
+          isPartOf: { "@id": "https://www.toms-ambitie.nl/#website" },
+          about: { "@id": "https://www.toms-ambitie.nl/#tom-mulder" },
         },
         {
-          '@context': 'https://schema.org',
-          '@type': 'Person',
-          '@id': 'https://www.toms-ambitie.nl/#tom-mulder',
-          'name': 'Tom Mulder',
-          'givenName': 'Tom',
-          'familyName': 'Mulder',
-          'jobTitle': 'Founder & Venture Builder',
-          'description': 'Ondernemer en venture builder uit Zwolle. Tom Mulder bouwt eigen bedrijven vanuit echte frustratie, met AI als versneller. Oprichter van Toms Ambitie, PostPilot en EmmaStudio.',
-          'url': 'https://www.toms-ambitie.nl/over-ons',
-          'image': 'https://www.toms-ambitie.nl/photos/tom-founder-01.webp',
-          'email': 'hallo@toms-ambitie.nl',
-          'worksFor': { '@id': 'https://www.toms-ambitie.nl/#organization' },
-          'address': {
-            '@type': 'PostalAddress',
-            'addressLocality': 'Zwolle',
-            'addressRegion': 'Overijssel',
-            'addressCountry': 'NL',
-          },
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "@id": "https://www.toms-ambitie.nl/#tom-mulder",
+          name: "Tom Mulder",
+          givenName: "Tom",
+          familyName: "Mulder",
+          jobTitle: "Founder & Venture Builder",
+          description:
+            "Ondernemer en venture builder uit Zwolle. Tom Mulder bouwt eigen bedrijven vanuit echte frustratie, met AI als versneller. Oprichter van Toms Ambitie, PostPilot en EmmaStudio.",
+          url: "https://www.toms-ambitie.nl/over-ons",
+          image: "https://www.toms-ambitie.nl/photos/tom-founder-01.webp",
+          email: "hallo@toms-ambitie.nl",
+          worksFor: { "@id": "https://www.toms-ambitie.nl/#organization" },
+          address: { "@type": "PostalAddress", addressLocality: "Zwolle", addressRegion: "Overijssel", addressCountry: "NL" },
         },
       ],
     });
   }, []);
 
   return (
-    <div ref={rootRef} style={{ background: 'var(--wit-warm)' }}>
-      <Navbar />
-      <main id="main-content">
+    <SiteLayout>
+      <div ref={rootRef}>
+        <PageHead
+          wide
+          eyebrow="Over ons"
+          title={
+            <>
+              Een venture club. Een vaste <span className="hl">kern.</span>
+            </>
+          }
+          hand="geen bureau, wel bouwers"
+          lead="Toms Ambitie is geen agency, geen consultancy, geen fonds. Een actief systeem dat eigen bedrijven bouwt. Vanuit een vaste kern, aangevuld met specialisten waar nodig."
+        />
 
-        {/* ═══ HERO ════════════════════════════════════════════════ */}
-        <section className="surface-wit page-hero" style={{ padding: '140px 0 100px' }}>
-          <div className="container-wide">
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-              <span className="volt-dot" />
-              <span className="eyebrow"><span style={{ marginRight: 8 }}>03</span>Over ons</span>
+        <section className="sec" style={{ paddingTop: 0 }}>
+          <div className="wrap">
+            <div className="sec-head rv">
+              <div>
+                <p className="eyebrow">01 · Kernwaarden</p>
+                <h2 className="d" style={{ marginTop: 16 }}>
+                  Vijf principes.
+                </h2>
+              </div>
+              <p className="hand" style={{ fontSize: "clamp(34px,3.6vw,50px)", transform: "rotate(-2deg)" }}>
+                de vijfde is de belangrijkste →
+              </p>
             </div>
-            <h1 className="clip-reveal display" style={{ fontSize: 'clamp(80px, 11vw, 168px)', lineHeight: 0.84, marginTop: 32, letterSpacing: '-0.02em' }}>
-              <span>Een venture club.<br />Een vaste kern.</span>
-            </h1>
-            <p className="lead reveal" style={{ marginTop: 48, fontSize: 22, maxWidth: 720 }}>
-              Toms Ambitie is geen agency, geen consultancy, geen fonds. Een actief systeem dat eigen bedrijven bouwt. Vanuit een vaste kern, aangevuld met specialisten waar nodig.
-            </p>
-          </div>
-        </section>
+            <div className="cards c5">
+              {VALUES.map((v) => (
+                <div key={v.n} className={`card${v.z ? " z" : ""} rv`}>
+                  <span className="n d">{v.n}</span>
+                  <h3 className="d">{v.t}</h3>
+                  <p>{v.d}</p>
+                </div>
+              ))}
+            </div>
 
-        {/* ═══ STUDIO PANORAMA ═════════════════════════════════════ */}
-        <section className="surface-wit" style={{ paddingBottom: 100 }}>
-          <div className="container-wide">
-            <div className="reveal" style={{ position: 'relative', overflow: 'hidden', background: 'var(--inkt)' }}>
-              <img
-                src="/photos/studio-team-bw.webp"
-                alt="Studio Zwolle"
-                loading="lazy"
-                decoding="async"
-                style={{ width: '100%', aspectRatio: '21/9', objectFit: 'cover', display: 'block' }}
+            <div className="founder">
+              <TomPanel
+                className="rv"
+                note="Tom Mulder · founder"
+                img={{
+                  src: "/ta/tom-staand-wit-600.webp",
+                  srcSet: "/ta/tom-staand-wit-560.webp 560w, /ta/tom-staand-wit-600.webp 600w",
+                  width: 599,
+                  height: 1100,
+                }}
               />
-              <div style={{ position: 'absolute', bottom: 20, left: 20, padding: '10px 16px', background: 'var(--wit-warm)', display: 'flex', alignItems: 'center', gap: 10 }}>
-                <span style={{ width: 7, height: 7, background: 'var(--volt)' }} />
-                <span className="meta">STUDIO ZWOLLE · 2026</span>
+              <div className="rv">
+                <p className="eyebrow">02 · De founder</p>
+                <h2 className="d" style={{ marginTop: 16 }}>
+                  18 jaar bouwen. Eén constante: <span className="hl">doen.</span>
+                </h2>
+                <blockquote>“Elke dag nieuwe ideeën. En dan ook echt bouwen.”</blockquote>
+                <p>
+                  Tom begon in 2008 met Notabilis, dat later Aardbei Communicatie werd. Verkocht het bureau in 2015. Sindsdien bouwt hij eigen
+                  ventures, met dezelfde discipline en AI als versneller.
+                </p>
+                <p>Ideeën worden pas interessant zodra iemand ze gebruikt. Niet eindeloos brainstormen. Niet vergaderen. Gewoon bouwen.</p>
+                <a className="txt-l" href="mailto:hallo@toms-ambitie.nl">
+                  hallo@toms-ambitie.nl →
+                </a>
               </div>
-              <div style={{ position: 'absolute', top: 20, right: 20, padding: '10px 16px', background: 'rgba(14,14,12,0.7)', backdropFilter: 'blur(10px)', color: 'var(--wit-warm)' }}>
-                <span className="meta" style={{ color: 'var(--wit-warm)' }}>FIG.01 · DE WERKVLOER</span>
-              </div>
+            </div>
+
+            <div className="anek rv">
+              <p className="eyebrow">Nooit gebouwd</p>
+              <p className="d">
+                Toiletborstels verhuren.{" "}
+                <span className="rw">
+                  Serieus.
+                  <Ring />
+                </span>
+              </p>
+              <p className="sub">
+                toiletborstelhuren.nl was ooit een hersenspinsel van Tom. Er is nooit iets mee gedaan. Niet elke krabbel wordt een bedrijf.
+              </p>
             </div>
           </div>
         </section>
 
-        {/* ═══ VALUES — 5-col ══════════════════════════════════════ */}
-        <section className="surface-papier" style={{ padding: '160px 0' }}>
-          <div className="container-wide">
-            <div style={{ marginBottom: 80, textAlign: 'center' }}>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-                <span className="volt-dot" />
-                <span className="eyebrow"><span style={{ marginRight: 8 }}>01</span>Kernwaarden</span>
+        <section className="sec how">
+          <div className="wrap">
+            <div className="sec-head rv">
+              <div>
+                <p className="eyebrow">03 · Tijdlijn</p>
+                <h2 className="d" style={{ marginTop: 16 }}>
+                  18 jaar.
+                </h2>
               </div>
-              <h2 className="h2" style={{ marginTop: 24 }}>
-                Vijf principes.
-              </h2>
+              <p className="hand" style={{ fontSize: "clamp(34px,3.6vw,50px)", transform: "rotate(-2deg)" }}>
+                het kladblok, op volgorde
+              </p>
             </div>
-            <div className="values-grid-5" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 16 }}>
-              {VALUES.map((p, i) => (
-                <div key={p.t} className="reveal" style={{ background: 'var(--wit-warm)', padding: 28, borderTop: '3px solid var(--volt)', minHeight: 260 }}>
-                  <div className="num" style={{ fontSize: 11, letterSpacing: '0.18em', color: 'var(--inkt-40)', marginBottom: 16 }}>0{i + 1} / 05</div>
-                  <h4 className="display" style={{ fontSize: 28, lineHeight: 0.95, marginBottom: 12 }}>{p.t}</h4>
-                  <p className="body-sm">{p.d}</p>
+            <div className="tl">
+              {TIMELINE.map((r, i) => (
+                <div key={i} className={`tl-r${r.now ? " now" : ""} rv`}>
+                  <span className="y d">{r.y}</span>
+                  <h3 className="d">{r.t}</h3>
+                  <p>{r.d}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ═══ FOUNDER SPOTLIGHT ═══════════════════════════════════ */}
-        <section className="surface-wit" style={{ padding: '160px 0' }}>
-          <div className="container-wide">
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 96, alignItems: 'center' }}
-              className="hero-two-col">
-              {/* Photo */}
-              <div className="reveal" style={{ position: 'relative', overflow: 'hidden', background: 'var(--inkt)' }}>
-                <img
-                  src="/photos/tom-portrait-dark.webp"
-                  alt="Tom Mulder"
-                  loading="lazy"
-                  decoding="async"
-                  style={{ width: '100%', aspectRatio: '4/5', objectFit: 'cover', display: 'block' }}
-                />
-                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: 24, background: 'linear-gradient(to top, rgba(14,14,12,0.85), transparent)' }}>
-                  <div style={{ width: 32, height: 3, background: 'var(--volt)', marginBottom: 8 }} />
-                  <div className="display" style={{ fontSize: 36, lineHeight: 1, color: 'var(--wit-warm)' }}>Tom Mulder</div>
-                  <div className="meta" style={{ color: 'rgba(244,241,232,0.7)', marginTop: 4 }}>FOUNDER · TOMS AMBITIE</div>
-                </div>
-              </div>
-
-              {/* Text */}
+        <section className="sec">
+          <div className="wrap">
+            <div className="sec-head rv" style={{ marginBottom: 0 }}>
               <div>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-                  <span className="volt-dot" />
-                  <span className="eyebrow"><span style={{ marginRight: 8 }}>02</span>De Founder</span>
-                </div>
-                <h2 className="h2" style={{ marginTop: 24 }}>
-                  {bouwjaren} jaar bouwen.<br /><span style={{ color: 'var(--inkt-40)' }}>Eén constante: doen.</span>
-                </h2>
-                <p className="lead" style={{ marginTop: 32, fontSize: 22 }}>
-                  "Elke dag nieuwe ideeën. En dan ook echt bouwen."
-                </p>
-                <p className="body-lg" style={{ marginTop: 24, color: 'var(--inkt-80)' }}>
-                  Tom richtte in 2008 Aardbei Communicatie op. Verkocht het bureau in 2015. Sindsdien bouwt hij eigen ventures, met dezelfde discipline en AI als versneller.
-                </p>
-                <p className="body-lg" style={{ marginTop: 16, color: 'var(--inkt-80)' }}>
-                  Ideeën worden pas interessant zodra iemand ze gebruikt. Niet eindeloos brainstormen. Niet vergaderen. Gewoon bouwen.
-                </p>
-                <div style={{ marginTop: 40, display: 'flex', gap: 32, flexWrap: 'wrap' }}>
-                  <a href="mailto:hallo@toms-ambitie.nl" className="btn-link">hallo@toms-ambitie.nl →</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ ANEKDOTE ════════════════════════════════════════════ */}
-        <section className="surface-inkt" style={{ padding: '120px 0', textAlign: 'center' }}>
-          <div className="container-narrow">
-            <div className="meta" style={{ color: 'rgba(244,241,232,0.5)', marginBottom: 24, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16 }}>
-              <span style={{ width: 32, height: 3, background: 'var(--volt)', display: 'inline-block' }} />
-              ANEKDOTE · 1996
-            </div>
-            <h2 className="clip-reveal display" style={{ fontSize: 'clamp(48px, 6vw, 88px)', lineHeight: 0.95, color: 'var(--wit-warm)' }}>
-              <span>"We hebben toiletborstels<br />verhuurd. Serieus."</span>
-            </h2>
-            <p className="lead" style={{ marginTop: 32, color: 'rgba(244,241,232,0.7)', maxWidth: 640, marginInline: 'auto' }}>
-              Een van Tom's eerste ondernemingen, vóór Aardbei, vóór Toms Ambitie. Het was gek. Het werkte een beetje. En het leerde één les: ondernemen is doen, niet praten.
-            </p>
-          </div>
-        </section>
-
-        {/* ═══ TIMELINE ════════════════════════════════════════════ */}
-        <section className="surface-papier" style={{ padding: '160px 0' }}>
-          <div className="container-wide">
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 96, alignItems: 'flex-start' }}
-              className="hero-two-col">
-              {/* Sticky left */}
-              <div style={{ position: 'sticky', top: 100 }}>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-                  <span className="volt-dot" />
-                  <span className="eyebrow"><span style={{ marginRight: 8 }}>03</span>Tijdlijn</span>
-                </div>
-                <h2 className="h2" style={{ marginTop: 24 }}>
-                  {bouwjaren} jaar.<br /><span style={{ color: 'var(--inkt-40)' }}>Van bureau tot venture club.</span>
+                <p className="eyebrow">04 · Het team</p>
+                <h2 className="d" style={{ marginTop: 16, fontSize: "clamp(26px,5vw,72px)" }}>
+                  Vaste kern. Plus <span className="hl">specialisten.</span>
                 </h2>
               </div>
-
-              {/* Timeline items */}
               <div>
-                {MILESTONES.map((m) => (
-                  <div key={m.y} className="reveal timeline-item" style={{ display: 'grid', gridTemplateColumns: '200px 1fr', gap: 32, padding: '32px 0', borderTop: '1px solid var(--inkt-20)' }}>
-                    <div className="display timeline-year" style={{ fontSize: 40, lineHeight: 0.95 }}>{m.y}</div>
-                    <div>
-                      <h4 className="h4" style={{ marginBottom: 8 }}>{m.t}</h4>
-                      <p className="body" style={{ maxWidth: 480 }}>{m.d}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ TEAM GRID ═══════════════════════════════════════════ */}
-        <section className="surface-wit" style={{ padding: '160px 0' }}>
-          <div className="container-wide">
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 64, alignItems: 'flex-start', marginBottom: 64 }}
-              className="hero-two-col">
-              <div>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-                  <span className="volt-dot" />
-                  <span className="eyebrow"><span style={{ marginRight: 8 }}>04</span>Het Team</span>
-                </div>
-                <h2 className="h2" style={{ marginTop: 24 }}>
-                  Vaste kern.<br /><span style={{ color: 'var(--inkt-40)' }}>Plus top-specialisten.</span>
-                </h2>
-              </div>
-              <div style={{ paddingTop: 24 }}>
-                <p className="lead">
-                  We werken met builders, developers, marketeers, designers en operators. Soms fulltime. Soms tijdelijk. Maar altijd mensen die sneller willen bouwen dan traditionele bedrijven bewegen.
+                <p>
+                  We werken met builders, developers, marketeers, designers en operators. Soms fulltime. Soms tijdelijk. Maar altijd mensen die
+                  sneller willen bouwen dan traditionele bedrijven bewegen.
                 </p>
+                <p style={{ marginTop: 14 }}>Developer, designer, marketeer of specialist? Dan praten we graag.</p>
+                <Link className="txt-l" to="/meebouwen" style={{ display: "inline-block", marginTop: 10 }}>
+                  praat met ons →
+                </Link>
               </div>
-            </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24 }}>
-              <div className="reveal" style={{ position: 'relative', overflow: 'hidden' }}>
-                <img src="/photos/studio-collab.webp" alt="Studio collab"
-                  loading="lazy" decoding="async"
-                  style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block' }} />
-                <div style={{ position: 'absolute', top: 16, left: 16, padding: '6px 12px', background: 'var(--wit-warm)' }}>
-                  <span className="meta">FIG.02 · STRATEGIE</span>
-                </div>
-              </div>
-              <div className="reveal" style={{ position: 'relative', overflow: 'hidden' }}>
-                <img src="/photos/studio-pair.webp" alt="Studio pair"
-                  loading="lazy" decoding="async"
-                  style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block' }} />
-                <div style={{ position: 'absolute', top: 16, left: 16, padding: '6px 12px', background: 'var(--wit-warm)' }}>
-                  <span className="meta">FIG.03 · UITVOERING</span>
-                </div>
-              </div>
-            </div>
-
-            <p className="body-lg" style={{ marginTop: 48, maxWidth: 720, color: 'var(--inkt-80)' }}>
-              Developer, designer, marketeer of specialist? Als je sneller wilt bouwen dan traditionele bedrijven bewegen,{' '}
-              <Link to="/meebouwen" style={{ borderBottom: '1px solid var(--inkt)', color: 'var(--inkt)' }}>praten we graag</Link>.
-            </p>
-          </div>
-        </section>
-
-        {/* ═══ MOTTO ═══════════════════════════════════════════════ */}
-        <section className="surface-inkt" style={{ padding: '180px 0', textAlign: 'center', position: 'relative' }}>
-          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: 'var(--volt)' }} />
-          <div className="container-narrow">
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-              <span className="volt-dot" />
-              <span className="eyebrow" style={{ color: 'rgba(244,241,232,0.6)' }}><span style={{ marginRight: 8 }}>M</span>Motto</span>
-            </div>
-            <h2 className="clip-reveal display" style={{ fontSize: 'clamp(56px, 7vw, 120px)', lineHeight: 0.92, color: 'var(--wit-warm)', marginTop: 32 }}>
-              <span>"Als je het kunt bedenken,<br />kun je het ook doen."</span>
-            </h2>
-            <p className="meta" style={{ marginTop: 40, color: 'var(--volt)' }}>WAT NIET KAN IS NOG NOOIT GEBEURD</p>
-          </div>
-        </section>
-
-        {/* ═══ CTA ═════════════════════════════════════════════════ */}
-        <section className="surface-papier" style={{ padding: '180px 0', textAlign: 'center' }}>
-          <div className="container-narrow">
-            <h2 className="h2">Bouw mee.</h2>
-            <p className="lead" style={{ marginTop: 24 }}>
-              Partner, ondernemer, specialist. Wij zoeken altijd mensen om mee te bouwen.
-            </p>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginTop: 40, flexWrap: 'wrap' }}>
-              <Link to="/meebouwen" className="btn btn-volt">Start gesprek →</Link>
-              <Link to="/ventures" className="btn-ghost">Bekijk ventures</Link>
             </div>
           </div>
         </section>
 
-      </main>
-      <Footer />
-    </div>
+        <Motto text="Als je het kunt bedenken, kun je het ook doen." note="Wat niet kan is nog nooit gebeurd." flush />
+
+        <Cta
+          eyebrow="Bouw mee"
+          title={
+            <>
+              Wij zoeken altijd mensen om mee te <HlInk>bouwen.</HlInk>
+            </>
+          }
+          text="Partner, ondernemer, specialist."
+        >
+          <div className="acts">
+            <Link className="btn inv" to="/meebouwen">
+              Start gesprek <i>→</i>
+            </Link>
+            <Link className="txt-l" to="/ventures">
+              bekijk ventures →
+            </Link>
+          </div>
+        </Cta>
+      </div>
+    </SiteLayout>
   );
 };
 

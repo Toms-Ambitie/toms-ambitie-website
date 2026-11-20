@@ -147,6 +147,7 @@ function sitemapPlugin(): Plugin {
         { path: "/over-ons", priority: "0.8", changefreq: "monthly" },
         { path: "/meebouwen", priority: "0.8", changefreq: "monthly" },
         { path: "/nieuws", priority: "0.8", changefreq: "weekly" },
+        { path: "/persmap", priority: "0.4", changefreq: "yearly" },
         { path: "/privacy", priority: "0.3", changefreq: "yearly" },
         { path: "/voorwaarden", priority: "0.3", changefreq: "yearly" },
       ];

@@ -13,25 +13,44 @@ const interestLabels: Record<string, string> = {
   anders: "Iets anders",
 };
 
+const escapeHtml = (v: string) =>
+  v.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+
+const clean = (v: unknown, max: number) => (typeof v === "string" ? v.trim().slice(0, max) : "");
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { name, email, interest, message, linkedin } = req.body ?? {};
+  const body = req.body ?? {};
+  const rawName = clean(body.name, 120);
+  const rawEmail = clean(body.email, 200);
+  const rawMessage = clean(body.message, 5000);
+  const interest = clean(body.interest, 40);
+  let rawLinkedin = clean(body.linkedin, 300);
 
-  if (!name || !email || !interest || !message) {
-    return res.status(400).json({ error: "Verplichte velden ontbreken" });
+  if (!rawName || !rawEmail || !interest || !rawMessage) {
+    return res.status(400).json({ error: "Vul je naam, e-mail en bericht in" });
   }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(rawEmail)) {
+    return res.status(400).json({ error: "Dit e-mailadres lijkt niet te kloppen" });
+  }
+  if (rawLinkedin && !/^https?:\/\//i.test(rawLinkedin)) rawLinkedin = `https://${rawLinkedin}`;
 
-  const interestLabel = interestLabels[interest] ?? interest;
+  // everything the visitor typed is escaped before it goes into the HTML mail
+  const name = escapeHtml(rawName);
+  const email = escapeHtml(rawEmail);
+  const message = escapeHtml(rawMessage);
+  const linkedin = escapeHtml(rawLinkedin);
+  const interestLabel = escapeHtml(interestLabels[interest] ?? interest);
 
   try {
     await resend.emails.send({
       from: "Toms Ambitie <noreply@toms-ambitie.nl>",
       to: "hallo@toms-ambitie.nl",
-      replyTo: email,
-      subject: `Nieuwe aanmelding: ${interestLabel} — ${name}`,
+      replyTo: rawEmail,
+      subject: `Nieuwe aanmelding: ${interestLabels[interest] ?? interest} — ${rawName.replace(/[\r\n]+/g, " ")}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #0E0E0C;">
           <div style="background: #0E0E0C; padding: 28px 32px;">

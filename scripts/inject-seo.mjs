@@ -38,10 +38,6 @@ const ROUTES = {
     title: 'EmmaStudio · software voor ondernemers · Toms Ambitie',
     description: 'EmmaStudio is de softwareventure van Toms Ambitie: boekhouden, loon, personeel en marketing in één platform. Ontstaan in een kapsalon in Heeten.',
   },
-  '/ventures/plug-and-power': {
-    title: 'Plug and Power · venture van Toms Ambitie',
-    description: 'Plug and Power is een venture van Toms Ambitie uit Zwolle. Lees waar het idee vandaan komt, wat de stand van zaken is en wat we ervan hebben geleerd.',
-  },
   '/nieuws': {
     title: 'Nieuws en lessen · Toms Ambitie',
     description: 'Eerlijke verhalen over bouwen, verkopen en stoppen. Wat werkte bij LED IBC, Entranz, PartyBlender en Designershirts, en wat juist niet. Zonder mooipraat.',
@@ -49,6 +45,10 @@ const ROUTES = {
   '/privacy': {
     title: 'Privacyverklaring · Toms Ambitie',
     description: 'Hoe Toms Ambitie omgaat met je persoonsgegevens: wat we verwerken, waarom, hoe lang we het bewaren en welke rechten je hebt onder de AVG.',
+  },
+  '/persmap': {
+    title: 'Persmap · Toms Ambitie',
+    description: "Pers- en mediakit van Toms Ambitie. Logo's, foto's, factsheet en contact voor journalisten.",
   },
   '/voorwaarden': {
     title: 'Algemene voorwaarden · Toms Ambitie',
@@ -110,6 +110,13 @@ for (const [path, { title, description }] of Object.entries(ROUTES)) {
       /<link rel="canonical" href="[^"]*"/,
       `<link rel="canonical" href="${canonical}"`
     )
+    // share cards (Open Graph / Twitter) per page
+    .replace(/<meta property="og:title" content="[^"]*"/, `<meta property="og:title" content="${escapeAttr(title)}"`)
+    .replace(/<meta property="og:description" content="[^"]*"/, `<meta property="og:description" content="${escapeAttr(description)}"`)
+    .replace(/<meta property="og:url" content="[^"]*"/, `<meta property="og:url" content="${canonical}"`)
+    .replace(/<meta property="og:type" content="[^"]*"/, `<meta property="og:type" content="${path.startsWith('/nieuws/') ? 'article' : 'website'}"`)
+    .replace(/<meta name="twitter:title" content="[^"]*"/, `<meta name="twitter:title" content="${escapeAttr(title)}"`)
+    .replace(/<meta name="twitter:description" content="[^"]*"/, `<meta name="twitter:description" content="${escapeAttr(description)}"`)
     // the film still is only the first image on the homepage
     .replace(/ *<link rel="preload" as="image" href="\/ta\/hero-[\s\S]*?\/>\n/, '');
 

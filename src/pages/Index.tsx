@@ -11,11 +11,9 @@ import { TomPanel } from "@/components/site/TomPanel";
 import { Motto } from "@/components/site/Motto";
 import { Cta, HlInk } from "@/components/site/Cta";
 import { AskForm } from "@/components/site/AskForm";
-import { useSiteMotion } from "@/components/site/motion";
 
 const Index = () => {
   const rootRef = useRef<HTMLDivElement>(null);
-  useSiteMotion(rootRef);
 
   useEffect(() => {
     applySEO({

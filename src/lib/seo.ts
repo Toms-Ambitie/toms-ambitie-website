@@ -67,11 +67,21 @@ const setRouteRobots = (noindex: boolean) => {
   }
 };
 
+const DEFAULT_IMAGE = {
+  url: "https://www.toms-ambitie.nl/og-image.png",
+  type: "image/png",
+  width: "1200",
+  height: "630",
+  alt: "Toms Ambitie: we bouwen wat we zelf missen. Tom Mulder, venture club Zwolle.",
+};
+
+const removeMeta = (selector: string) => document.head.querySelector(selector)?.remove();
+
 export const applySEO = ({
   title,
   description,
   canonical,
-  image = "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/585bf762-f8d3-4e38-8975-8ee9016cf9ef",
+  image = DEFAULT_IMAGE.url,
   type = "website",
   jsonLd,
   noindex = false,
@@ -85,6 +95,17 @@ export const applySEO = ({
   upsertMeta('meta[property="og:description"]', "property", "og:description", description);
   upsertMeta('meta[property="og:type"]', "property", "og:type", type);
   upsertMeta('meta[property="og:image"]', "property", "og:image", image);
+  if (image === DEFAULT_IMAGE.url) {
+    upsertMeta('meta[property="og:image:type"]', "property", "og:image:type", DEFAULT_IMAGE.type);
+    upsertMeta('meta[property="og:image:width"]', "property", "og:image:width", DEFAULT_IMAGE.width);
+    upsertMeta('meta[property="og:image:height"]', "property", "og:image:height", DEFAULT_IMAGE.height);
+    upsertMeta('meta[property="og:image:alt"]', "property", "og:image:alt", DEFAULT_IMAGE.alt);
+    upsertMeta('meta[name="twitter:image:alt"]', "name", "twitter:image:alt", DEFAULT_IMAGE.alt);
+  } else {
+    // a page's own image has other dimensions; don't advertise the default's
+    ["og:image:type", "og:image:width", "og:image:height", "og:image:alt"].forEach((p) => removeMeta(`meta[property="${p}"]`));
+    removeMeta('meta[name="twitter:image:alt"]');
+  }
   if (canonical) {
     upsertMeta('meta[property="og:url"]', "property", "og:url", canonical);
   }

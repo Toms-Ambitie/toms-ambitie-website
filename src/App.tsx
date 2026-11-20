@@ -15,7 +15,8 @@ import Index from "./pages/Index.tsx";
 const PrivacyPage = lazy(() => import("./pages/PrivacyPage.tsx"));
 const AlgemeneVoorwaardenPage = lazy(() => import("./pages/AlgemeneVoorwaardenPage.tsx"));
 const VenturesPage = lazy(() => import("./pages/VenturesPage.tsx"));
-const VentureDetailPage = lazy(() => import("./pages/VentureDetailPage.tsx"));
+const PostPilotPage = lazy(() => import("./pages/PostPilotPage.tsx"));
+const EmmaStudioPage = lazy(() => import("./pages/EmmaStudioPage.tsx"));
 const HoeWeBouwenPage = lazy(() => import("./pages/HoeWeBouwenPage.tsx"));
 const OverOnsPage = lazy(() => import("./pages/OverOnsPage.tsx"));
 const MeebouwenPage = lazy(() => import("./pages/MeebouwenPage.tsx"));
@@ -47,9 +48,12 @@ const AppRoutes = () => {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/ventures" element={<VenturesPage />} />
-            <Route path="/ventures/:slug" element={<VentureDetailPage />} />
+            <Route path="/ventures/postpilot" element={<PostPilotPage />} />
+            <Route path="/ventures/emmastudio" element={<EmmaStudioPage />} />
+            <Route path="/ventures/:slug" element={<Navigate to="/ventures" replace />} />
             <Route path="/werkwijze" element={<HoeWeBouwenPage />} />
-            <Route path="/hoe-we-bouwen" element={<HoeWeBouwenPage />} />
+            <Route path="/hoe-we-bouwen" element={<Navigate to="/werkwijze" replace />} />
+            <Route path="/ventures/post-pilot" element={<Navigate to="/ventures/postpilot" replace />} />
             <Route path="/over-ons" element={<OverOnsPage />} />
             <Route path="/meebouwen" element={<MeebouwenPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />

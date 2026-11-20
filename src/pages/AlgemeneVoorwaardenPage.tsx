@@ -1,118 +1,61 @@
 import { useEffect } from 'react';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
+import { SiteLayout } from '@/components/site/SiteLayout';
 import { applySEO } from '@/lib/seo';
 
 /* ── Sub-components ── */
 
 const Bullets = ({ items }: { items: string[] }) => (
-  <ul style={{ listStyle: 'none', padding: 0, margin: '12px 0 0', display: 'grid', gap: 8 }}>
+  <ul className="art-ul">
     {items.map((item) => (
-      <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
-        <span style={{ width: 6, height: 6, background: 'var(--volt)', flexShrink: 0, marginTop: '0.5em' }} />
-        <span style={{ fontSize: 17, lineHeight: 1.6, color: 'var(--inkt-80)' }}>{item}</span>
-      </li>
+      <li key={item}>{item}</li>
     ))}
   </ul>
 );
 
-const MailLink = ({ address }: { address: string }) => (
-  <a
-    href={`mailto:${address}`}
-    style={{ color: 'var(--inkt)', borderBottom: '1px solid var(--inkt-30)', textDecoration: 'none', transition: 'border-color .2s' }}
-    onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderBottomColor = 'var(--inkt)'; }}
-    onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderBottomColor = 'var(--inkt-30)'; }}
-  >
-    {address}
-  </a>
-);
+const MailLink = ({ address }: { address: string }) => <a href={`mailto:${address}`}>{address}</a>;
 
 const WebLink = ({ url }: { url: string }) => (
-  <a
-    href={`https://${url}`}
-    target="_blank"
-    rel="noopener noreferrer"
-    style={{ color: 'var(--inkt)', borderBottom: '1px solid var(--inkt-30)', textDecoration: 'none', transition: 'border-color .2s' }}
-    onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderBottomColor = 'var(--inkt)'; }}
-    onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderBottomColor = 'var(--inkt-30)'; }}
-  >
+  <a href={`https://${url}`} target="_blank" rel="noopener noreferrer">
     {url}
   </a>
 );
 
-interface LegalSectionProps {
-  num: number;
-  title: string;
-  children: React.ReactNode;
-}
-
-const LegalSection = ({ num, title, children }: LegalSectionProps) => (
-  <div
-    className="legal-section"
-    style={{
-      display: 'grid',
-      gridTemplateColumns: '260px 1fr',
-      gap: '48px',
-      padding: '56px 0',
-      borderTop: '1px solid var(--inkt-10)',
-    }}
-  >
-    <div>
-      <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', color: 'var(--inkt-30)', marginBottom: 12, textTransform: 'uppercase' }}>
-        {String(num).padStart(2, '0')}
-      </div>
-      <h2 className="display" style={{ fontSize: 'clamp(22px, 2vw, 30px)', lineHeight: 0.95, color: 'var(--inkt)' }}>
-        {title}
-      </h2>
-    </div>
-    <div style={{ fontSize: 17, lineHeight: 1.75, color: 'var(--inkt-80)' }}>
-      {children}
-    </div>
-  </div>
+const LegalSection = ({ num, title, children }: { num: number; title: string; children: React.ReactNode }) => (
+  <section className="legal">
+    <h2 className="d art-h2">
+      <span className="legal-n">{String(num).padStart(2, "0")}</span>
+      {title}
+    </h2>
+    {children}
+  </section>
 );
 
-const P = ({ children }: { children: React.ReactNode }) => (
-  <p style={{ marginBottom: 16, fontSize: 17, lineHeight: 1.75, color: 'var(--inkt-80)' }}>{children}</p>
-);
+const P = ({ children }: { children: React.ReactNode; style?: React.CSSProperties }) => <p>{children}</p>;
 
 /* ── Page ── */
 
 const AlgemeneVoorwaardenPage = () => {
   useEffect(() => {
     applySEO({
-      title: 'Algemene Voorwaarden · Toms Ambitie',
-      description: 'Duidelijke afspraken voor ventures, platformen, software, diensten en samenwerkingen van Toms Ambitie.',
+      title: 'Algemene voorwaarden · Toms Ambitie',
+      description: 'De algemene voorwaarden van Toms Ambitie voor samenwerking, deelname aan een venture en gebruik van deze website.',
       canonical: 'https://www.toms-ambitie.nl/voorwaarden',
     });
   }, []);
 
   return (
-    <div style={{ background: 'var(--wit-warm)' }}>
-      <Navbar />
-      <main id="main-content">
-
-        {/* ═══ HERO ════════════════════════════════════════════════ */}
-        <section style={{ background: 'var(--inkt)', padding: '140px 0 100px' }}>
-          <div className="container-wide">
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-              <span className="volt-dot" />
-              <span className="eyebrow" style={{ color: 'rgba(244,241,232,0.5)' }}>Juridisch</span>
-            </div>
-            <h1 className="display" style={{ fontSize: 'clamp(56px, 8vw, 130px)', lineHeight: 0.84, marginTop: 24, letterSpacing: '-0.02em', color: 'var(--wit-warm)' }}>
-              Algemene<br />voorwaarden.
-            </h1>
-            <p style={{ marginTop: 40, fontSize: 22, lineHeight: 1.55, maxWidth: 560, color: 'rgba(244,241,232,0.7)', fontFamily: 'var(--body)' }}>
-              Duidelijke afspraken voor ventures, platformen, software, diensten en samenwerkingen.
-            </p>
-            <p style={{ marginTop: 20, fontSize: 18, lineHeight: 1.65, maxWidth: 560, color: 'rgba(244,241,232,0.5)', fontFamily: 'var(--body)' }}>
-              Toms Ambitie bouwt eigen ventures, digitale producten, AI toepassingen, platformen en samenwerkingen. Deze voorwaarden gelden voor Toms Ambitie en alle ventures, handelsnamen en platformen die daaronder vallen zolang zij geen eigen rechtspersoon hebben. Geen juridische rookgordijnen. Wel duidelijke afspraken.
-            </p>
+    <SiteLayout>
+      <article>
+        <header className="phead art-h">
+          <div className="wrap">
+            <p className="eyebrow">Juridisch</p>
+            <h1 className="d">Algemene <span className="hl">voorwaarden</span></h1>
+            <p className="lead">Duidelijke afspraken voor ventures, platformen, software, diensten en samenwerkingen.</p>
           </div>
-        </section>
+        </header>
 
-        {/* ═══ CONTENT ═════════════════════════════════════════════ */}
-        <section style={{ background: 'var(--wit-warm)', padding: '0 0 160px' }}>
-          <div className="container-wide">
+        <div className="wrap art">
+            <p>Toms Ambitie bouwt eigen ventures, digitale producten, AI toepassingen, platformen en samenwerkingen. Deze voorwaarden gelden voor Toms Ambitie en alle ventures, handelsnamen en platformen die daaronder vallen zolang zij geen eigen rechtspersoon hebben. Geen juridische rookgordijnen. Wel duidelijke afspraken.</p>
 
             <LegalSection num={1} title="Definities">
               <P>In deze voorwaarden bedoelen we met Toms Ambitie: Toms Ambitie en alle handelsnamen, ventures, platformen, softwareproducten, AI toepassingen, e-commerce concepten en diensten die daaronder vallen.</P>
@@ -123,10 +66,10 @@ const AlgemeneVoorwaardenPage = () => {
                 'PostPilot',
                 'toekomstige ventures en platformen',
               ]} />
-              <p style={{ marginTop: 16, fontSize: 17, lineHeight: 1.75, color: 'var(--inkt-60)' }}>
+              <p>
                 Zolang een venture geen eigen rechtspersoon of KvK inschrijving heeft, is Toms Ambitie de contractspartij.
               </p>
-              <p style={{ marginTop: 12, fontSize: 17, lineHeight: 1.75, color: 'var(--inkt-80)' }}>
+              <p>
                 Met gebruiker, klant of opdrachtgever bedoelen we iedere persoon of organisatie die gebruikmaakt van een website, platform, dienst, product, abonnement of samenwerking van Toms Ambitie.
               </p>
             </LegalSection>
@@ -149,7 +92,7 @@ const AlgemeneVoorwaardenPage = () => {
                 'digitale producten',
                 'toekomstige ventures',
               ]} />
-              <p style={{ marginTop: 16, fontSize: 17, lineHeight: 1.75, color: 'var(--inkt-60)' }}>
+              <p>
                 Afwijkingen gelden alleen wanneer deze schriftelijk zijn bevestigd. Wanneer een venture later een eigen rechtspersoon krijgt, kunnen daarvoor nieuwe voorwaarden gaan gelden.
               </p>
             </LegalSection>
@@ -170,7 +113,7 @@ const AlgemeneVoorwaardenPage = () => {
                 'controle van ingevoerde gegevens',
                 'beslissingen op basis van output of inzichten',
               ]} />
-              <p style={{ marginTop: 16, fontSize: 17, lineHeight: 1.75, color: 'var(--inkt-60)' }}>
+              <p>
                 Toms Ambitie mag accounts tijdelijk beperken of beëindigen bij misbruik, fraude, wanbetaling, overtreding van voorwaarden of gedrag dat schade kan veroorzaken.
               </p>
             </LegalSection>
@@ -188,7 +131,7 @@ const AlgemeneVoorwaardenPage = () => {
                 'expliciet akkoord geeft op directe levering',
                 'erkent dat het herroepingsrecht vervalt zodra de levering is gestart of volledig is uitgevoerd',
               ]} />
-              <p style={{ marginTop: 16, fontSize: 17, lineHeight: 1.75, color: 'var(--inkt-60)' }}>
+              <p>
                 Wanneer dit van toepassing is, vragen wij hiervoor duidelijk toestemming tijdens aankoop, registratie of onboarding. Voor zakelijke klanten geldt het herroepingsrecht voor consumenten niet.
               </p>
             </LegalSection>
@@ -209,7 +152,7 @@ const AlgemeneVoorwaardenPage = () => {
                 'een betaling wordt gedaan',
                 'of werkzaamheden feitelijk starten',
               ]} />
-              <p style={{ marginTop: 16, fontSize: 17, lineHeight: 1.75, color: 'var(--inkt-60)' }}>
+              <p>
                 Toms Ambitie werkt bewust selectief en mag aanvragen of samenwerkingen weigeren.
               </p>
             </LegalSection>
@@ -224,7 +167,7 @@ const AlgemeneVoorwaardenPage = () => {
                 'extra kosten in rekening brengen',
                 'de samenwerking beëindigen',
               ]} />
-              <p style={{ marginTop: 16, fontSize: 17, lineHeight: 1.75, color: 'var(--inkt-60)' }}>
+              <p>
                 Voor online betalingen kan gebruik worden gemaakt van Stripe of vergelijkbare betaalproviders.
               </p>
             </LegalSection>
@@ -288,7 +231,7 @@ const AlgemeneVoorwaardenPage = () => {
                 'storingen bij externe diensten',
                 'verlies door verkeerd gebruik van platformen',
               ]} />
-              <p style={{ marginTop: 16, fontSize: 17, lineHeight: 1.75, color: 'var(--inkt-60)' }}>
+              <p>
                 Voor zover wettelijk toegestaan, is de aansprakelijkheid beperkt tot het bedrag dat voor de betreffende dienst is betaald in de drie maanden voorafgaand aan de schade. Voor consumenten geldt deze beperking alleen voor zover de wet dat toestaat.
               </p>
             </LegalSection>
@@ -326,9 +269,9 @@ const AlgemeneVoorwaardenPage = () => {
             </LegalSection>
 
             <LegalSection num={24} title="Contact">
-              <div style={{ padding: '20px 24px', background: 'var(--papier)', borderLeft: '3px solid var(--volt)' }}>
-                <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--inkt-80)', margin: 0 }}>
-                  <strong style={{ color: 'var(--inkt)', fontWeight: 600 }}>Toms Ambitie</strong><br />
+              <div className="side-b legal-box">
+                <p>
+                  <strong>Toms Ambitie</strong><br />
                   Zwolle, Nederland<br />
                   <MailLink address="hallo@toms-ambitie.nl" /><br />
                   <WebLink url="www.toms-ambitie.nl" />
@@ -336,19 +279,10 @@ const AlgemeneVoorwaardenPage = () => {
               </div>
             </LegalSection>
 
-            {/* Footer meta */}
-            <div style={{ paddingTop: 48, borderTop: '1px solid var(--inkt-10)', marginTop: 24 }}>
-              <span style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--inkt-30)' }}>
-                Laatste update: mei 2026
-              </span>
-            </div>
-
-          </div>
-        </section>
-
-      </main>
-      <Footer />
-    </div>
+            <p className="legal-meta">Laatste update: mei 2026</p>
+        </div>
+      </article>
+    </SiteLayout>
   );
 };
 

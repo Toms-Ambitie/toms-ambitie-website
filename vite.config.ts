@@ -10,16 +10,36 @@ import { componentTagger } from "lovable-tagger";
  * Keep this list in sync with the initial viewport (nav + hero).
  */
 const CRITICAL_SELECTORS = [
-  /^(\*|html|body|#root)/,
-  /^nav\b/,
-  /^\.(font-display|font-mono|font-body)/,
-  /^\.(bg-hero|bg-ink|bg-volt|bg-paper)/,
-  /^\.(text-paper|text-volt|text-ink)/,
-  /^(h1|h2|h3|h4)\b/,
-  /^\.container\b/,
-  /^\.min-h-screen/,
-  /^:root/,
+  /^(\*|html|body|#root|:root|:focus-visible)/,
+  /^\.js\b/,
+  /^#(intro|ink)\b/,
+  /^\.(wrap|d|eyebrow|hand|hl|btn|ring|skip|nav|nav-in|mbtn|mmenu|hero|film|film-in|phead|phead-g)\b/,
+  /^(img|a)\b/,
 ];
+
+/** Splits CSS into top-level blocks, keeping @media blocks whole. */
+function topLevelBlocks(css: string): string[] {
+  const out: string[] = [];
+  let depth = 0;
+  let start = 0;
+  for (let i = 0; i < css.length; i++) {
+    const c = css[i];
+    if (c === "{") depth++;
+    else if (c === "}") {
+      depth--;
+      if (depth === 0) {
+        out.push(css.slice(start, i + 1).trim());
+        start = i + 1;
+      }
+    }
+  }
+  return out;
+}
+
+function isCriticalRule(rule: string): boolean {
+  const selector = rule.slice(0, rule.indexOf("{")).trim();
+  return selector.split(",").some((part) => CRITICAL_SELECTORS.some((re) => re.test(part.trim())));
+}
 
 function criticalCssPlugin(): Plugin {
   let extractedCriticalCss = "";
@@ -39,29 +59,15 @@ function criticalCssPlugin(): Plugin {
       if (!allCss) return;
 
       const criticalRules: string[] = [];
-
-      // Extract :root custom properties
-      const rootMatches = allCss.match(/:root\s*\{[^}]+\}/g);
-      if (rootMatches) criticalRules.push(...rootMatches);
-
-      // Simple regex-based CSS rule extraction
-      const ruleRegex = /([^{}]+)\{([^{}]*)\}/g;
-      let match: RegExpExecArray | null;
-
-      while ((match = ruleRegex.exec(allCss)) !== null) {
-        const selector = match[1].trim();
-        if (selector.startsWith("@font-face")) {
-          criticalRules.push(match[0]);
-          continue;
-        }
-        if (selector.startsWith("@")) continue;
-
-        const parts = selector.split(",").map((s) => s.trim());
-        const isCritical = parts.some((part) =>
-          CRITICAL_SELECTORS.some((re) => re.test(part))
-        );
-        if (isCritical) {
-          criticalRules.push(match[0]);
+      for (const block of topLevelBlocks(allCss)) {
+        if (block.startsWith("@font-face")) {
+          criticalRules.push(block);
+        } else if (block.startsWith("@media")) {
+          const head = block.slice(0, block.indexOf("{"));
+          const inner = topLevelBlocks(block.slice(block.indexOf("{") + 1, -1)).filter(isCriticalRule);
+          if (inner.length) criticalRules.push(`${head}{${inner.join("")}}`);
+        } else if (!block.startsWith("@") && isCriticalRule(block)) {
+          criticalRules.push(block);
         }
       }
 
@@ -137,10 +143,11 @@ function sitemapPlugin(): Plugin {
       const staticPages: Array<{ path: string; priority: string; changefreq: string }> = [
         { path: "/", priority: "1.0", changefreq: "weekly" },
         { path: "/ventures", priority: "0.9", changefreq: "weekly" },
-        { path: "/hoe-we-bouwen", priority: "0.8", changefreq: "monthly" },
+        { path: "/werkwijze", priority: "0.8", changefreq: "monthly" },
         { path: "/over-ons", priority: "0.8", changefreq: "monthly" },
         { path: "/meebouwen", priority: "0.8", changefreq: "monthly" },
         { path: "/nieuws", priority: "0.8", changefreq: "weekly" },
+        { path: "/persmap", priority: "0.4", changefreq: "yearly" },
         { path: "/privacy", priority: "0.3", changefreq: "yearly" },
         { path: "/voorwaarden", priority: "0.3", changefreq: "yearly" },
       ];

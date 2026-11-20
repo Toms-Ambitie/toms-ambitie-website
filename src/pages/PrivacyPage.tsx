@@ -1,81 +1,36 @@
 import { useEffect } from 'react';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
+import { SiteLayout } from '@/components/site/SiteLayout';
 import { applySEO } from '@/lib/seo';
 
 /* ── Sub-components ── */
 
 const Bullets = ({ items }: { items: string[] }) => (
-  <ul style={{ listStyle: 'none', padding: 0, margin: '12px 0 0', display: 'grid', gap: 8 }}>
+  <ul className="art-ul">
     {items.map((item) => (
-      <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
-        <span style={{ width: 6, height: 6, background: 'var(--volt)', flexShrink: 0, marginTop: '0.5em' }} />
-        <span style={{ fontSize: 17, lineHeight: 1.6, color: 'var(--inkt-80)' }}>{item}</span>
-      </li>
+      <li key={item}>{item}</li>
     ))}
   </ul>
 );
 
-const MailLink = ({ address }: { address: string }) => (
-  <a
-    href={`mailto:${address}`}
-    style={{ color: 'var(--inkt)', borderBottom: '1px solid var(--inkt-30)', textDecoration: 'none', transition: 'border-color .2s' }}
-    onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderBottomColor = 'var(--inkt)'; }}
-    onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderBottomColor = 'var(--inkt-30)'; }}
-  >
-    {address}
-  </a>
-);
+const MailLink = ({ address }: { address: string }) => <a href={`mailto:${address}`}>{address}</a>;
 
 const WebLink = ({ url }: { url: string }) => (
-  <a
-    href={`https://${url}`}
-    target="_blank"
-    rel="noopener noreferrer"
-    style={{ color: 'var(--inkt)', borderBottom: '1px solid var(--inkt-30)', textDecoration: 'none', transition: 'border-color .2s' }}
-    onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderBottomColor = 'var(--inkt)'; }}
-    onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderBottomColor = 'var(--inkt-30)'; }}
-  >
+  <a href={`https://${url}`} target="_blank" rel="noopener noreferrer">
     {url}
   </a>
 );
 
-interface LegalSectionProps {
-  num: number;
-  title: string;
-  children: React.ReactNode;
-}
-
-const LegalSection = ({ num, title, children }: LegalSectionProps) => (
-  <div
-    className="legal-section"
-    style={{
-      display: 'grid',
-      gridTemplateColumns: '260px 1fr',
-      gap: '48px',
-      padding: '56px 0',
-      borderTop: '1px solid var(--inkt-10)',
-    }}
-  >
-    {/* Left: number + title */}
-    <div>
-      <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', color: 'var(--inkt-30)', marginBottom: 12, textTransform: 'uppercase' }}>
-        {String(num).padStart(2, '0')}
-      </div>
-      <h2 className="display" style={{ fontSize: 'clamp(22px, 2vw, 30px)', lineHeight: 0.95, color: 'var(--inkt)' }}>
-        {title}
-      </h2>
-    </div>
-    {/* Right: content */}
-    <div style={{ fontSize: 17, lineHeight: 1.75, color: 'var(--inkt-80)' }}>
-      {children}
-    </div>
-  </div>
+const LegalSection = ({ num, title, children }: { num: number; title: string; children: React.ReactNode }) => (
+  <section className="legal">
+    <h2 className="d art-h2">
+      <span className="legal-n">{String(num).padStart(2, "0")}</span>
+      {title}
+    </h2>
+    {children}
+  </section>
 );
 
-const P = ({ children }: { children: React.ReactNode }) => (
-  <p style={{ marginBottom: 16, fontSize: 17, lineHeight: 1.75, color: 'var(--inkt-80)' }}>{children}</p>
-);
+const P = ({ children }: { children: React.ReactNode; style?: React.CSSProperties }) => <p>{children}</p>;
 
 /* ── Page ── */
 
@@ -83,45 +38,31 @@ const PrivacyPage = () => {
   useEffect(() => {
     applySEO({
       title: 'Privacyverklaring · Toms Ambitie',
-      description: 'Duidelijk over data, formulieren, analytics en platformen. Toms Ambitie verwerkt persoonsgegevens alleen wanneer dat nodig is.',
+      description: 'Hoe Toms Ambitie omgaat met je persoonsgegevens: wat we verwerken, waarom, hoe lang we het bewaren en welke rechten je hebt onder de AVG.',
       canonical: 'https://www.toms-ambitie.nl/privacy',
     });
   }, []);
 
   return (
-    <div style={{ background: 'var(--wit-warm)' }}>
-      <Navbar />
-      <main id="main-content">
-
-        {/* ═══ HERO ════════════════════════════════════════════════ */}
-        <section style={{ background: 'var(--inkt)', padding: '140px 0 100px' }}>
-          <div className="container-wide">
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-              <span className="volt-dot" />
-              <span className="eyebrow" style={{ color: 'rgba(244,241,232,0.5)' }}>Juridisch</span>
-            </div>
-            <h1 className="display" style={{ fontSize: 'clamp(80px, 11vw, 168px)', lineHeight: 0.84, marginTop: 24, letterSpacing: '-0.02em', color: 'var(--wit-warm)' }}>
-              Privacy.
-            </h1>
-            <p style={{ marginTop: 40, fontSize: 22, lineHeight: 1.55, maxWidth: 560, color: 'rgba(244,241,232,0.7)', fontFamily: 'var(--body)' }}>
-              Duidelijk over data, formulieren, analytics en platformen.
-            </p>
-            <p style={{ marginTop: 20, fontSize: 18, lineHeight: 1.65, maxWidth: 560, color: 'rgba(244,241,232,0.5)', fontFamily: 'var(--body)' }}>
-              Toms Ambitie bouwt ventures, platformen en digitale producten. Daarbij verwerken we soms persoonsgegevens. Niet om gegevens te verkopen, maar om onze websites, platformen, communicatie en diensten goed te laten werken. We verzamelen alleen wat nodig is. En we gaan daar zorgvuldig mee om.
-            </p>
+    <SiteLayout>
+      <article>
+        <header className="phead art-h">
+          <div className="wrap">
+            <p className="eyebrow">Juridisch</p>
+            <h1 className="d"><span className="hl">Privacyverklaring</span></h1>
+            <p className="lead">Duidelijk over data, formulieren, analytics en platformen.</p>
           </div>
-        </section>
+        </header>
 
-        {/* ═══ CONTENT ═════════════════════════════════════════════ */}
-        <section style={{ background: 'var(--wit-warm)', padding: '0 0 160px' }}>
-          <div className="container-wide">
+        <div className="wrap art">
+            <p>Toms Ambitie bouwt ventures, platformen en digitale producten. Daarbij verwerken we soms persoonsgegevens. Niet om gegevens te verkopen, maar om onze websites, platformen, communicatie en diensten goed te laten werken. We verzamelen alleen wat nodig is. En we gaan daar zorgvuldig mee om.</p>
 
             <LegalSection num={1} title="Wie wij zijn">
               <P>Toms Ambitie is een Nederlandse onderneming uit Zwolle die eigen ventures, platformen, software, AI toepassingen, e-commerce concepten en digitale producten ontwikkelt.</P>
               <P>Onder Toms Ambitie kunnen handelsnamen en ventures vallen zoals Plug and Power, EmmaStudio, PostPilot en toekomstige platformen. Zolang een venture geen eigen rechtspersoon of KvK inschrijving heeft, valt deze juridisch onder Toms Ambitie.</P>
-              <div style={{ marginTop: 24, padding: '20px 24px', background: 'var(--papier)', borderLeft: '3px solid var(--volt)' }}>
-                <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--inkt-80)', margin: 0 }}>
-                  <strong style={{ color: 'var(--inkt)', fontWeight: 600 }}>Toms Ambitie</strong><br />
+              <div className="side-b legal-box">
+                <p>
+                  <strong>Toms Ambitie</strong><br />
                   Zwolle, Nederland<br />
                   <MailLink address="hallo@toms-ambitie.nl" /><br />
                   <WebLink url="www.toms-ambitie.nl" />
@@ -142,7 +83,7 @@ const PrivacyPage = () => {
                 'een betaling doet',
                 'onze websites of platformen gebruikt',
               ]} />
-              <P style={{ marginTop: 20 }}>Het kan gaan om:</P>
+              <P>Het kan gaan om:</P>
               <Bullets items={[
                 'naam',
                 'e-mailadres',
@@ -160,7 +101,7 @@ const PrivacyPage = () => {
                 'technische logging',
                 'analytics gegevens',
               ]} />
-              <p style={{ marginTop: 20, fontSize: 17, lineHeight: 1.75, color: 'var(--inkt-60)' }}>
+              <p>
                 Wij verzamelen niet meer gegevens dan nodig is voor het doel waarvoor ze worden verwerkt.
               </p>
             </LegalSection>
@@ -183,7 +124,7 @@ const PrivacyPage = () => {
                 'ontwikkeling van ventures',
                 'versturen van updates of nieuws wanneer iemand zich daarvoor aanmeldt',
               ]} />
-              <p style={{ marginTop: 20, fontSize: 17, lineHeight: 1.75, color: 'var(--inkt)', fontWeight: 600 }}>
+              <p>
                 Wij verkopen persoonsgegevens nooit aan derden.
               </p>
             </LegalSection>
@@ -197,7 +138,7 @@ const PrivacyPage = () => {
                 'wettelijke verplichting',
                 'gerechtvaardigd belang',
               ]} />
-              <p style={{ marginTop: 16, fontSize: 17, lineHeight: 1.75, color: 'var(--inkt-60)' }}>
+              <p>
                 Gerechtvaardigd belang kan bijvoorbeeld gaan over websiteanalyse, beveiliging, communicatie, fraudepreventie of verbetering van onze platformen.
               </p>
             </LegalSection>
@@ -220,10 +161,10 @@ const PrivacyPage = () => {
                 'Google Tag Manager voor tracking en meetpunten',
                 'Claude Code voor ontwikkeling van software en platformen',
               ]} />
-              <p style={{ marginTop: 16, fontSize: 17, lineHeight: 1.75, color: 'var(--inkt-60)' }}>
+              <p>
                 Deze partijen kunnen persoonsgegevens verwerken wanneer dat nodig is voor het functioneren van onze websites, platformen en diensten. Waar nodig sluiten wij verwerkersovereenkomsten of accepteren wij de verwerkersvoorwaarden van deze partijen.
               </p>
-              <p style={{ marginTop: 12, fontSize: 17, lineHeight: 1.75, color: 'var(--inkt-60)' }}>
+              <p>
                 Claude Code wordt gebruikt voor de ontwikkeling van code, structuur en platformen. Niet als opslaglocatie voor persoonsgegevens van gebruikers.
               </p>
             </LegalSection>
@@ -246,7 +187,7 @@ const PrivacyPage = () => {
                 'foutmeldingen',
                 'gebruikersstromen',
               ]} />
-              <p style={{ marginTop: 16, fontSize: 17, lineHeight: 1.75, color: 'var(--inkt-60)' }}>
+              <p>
                 Wij gebruiken onder andere Google Analytics en Google Tag Manager. Waar wettelijk vereist vragen wij toestemming voor cookies en tracking.
               </p>
             </LegalSection>
@@ -260,10 +201,10 @@ const PrivacyPage = () => {
                 'performance cookies',
                 'marketing cookies wanneer die actief worden ingezet',
               ]} />
-              <p style={{ marginTop: 16, fontSize: 17, lineHeight: 1.75, color: 'var(--inkt-60)' }}>
+              <p>
                 Functionele cookies zijn nodig om de website of het platform goed te laten werken. Analytische cookies helpen ons om het gebruik te begrijpen en te verbeteren. Marketing cookies worden alleen gebruikt wanneer wij marketing of retargeting inzetten en wanneer daarvoor toestemming is gegeven als dat wettelijk vereist is.
               </p>
-              <p style={{ marginTop: 12, fontSize: 17, lineHeight: 1.75, color: 'var(--inkt-60)' }}>
+              <p>
                 Bezoekers kunnen cookies verwijderen of blokkeren via hun browserinstellingen.
               </p>
             </LegalSection>
@@ -283,7 +224,7 @@ const PrivacyPage = () => {
                 'analytics gegevens worden bewaard volgens de instellingen van de gebruikte tools',
                 'formuliergegevens worden bewaard zolang opvolging redelijkerwijs nodig is',
               ]} />
-              <p style={{ marginTop: 16, fontSize: 17, lineHeight: 1.75, color: 'var(--inkt-60)' }}>
+              <p>
                 Wanneer gegevens niet meer nodig zijn, verwijderen of anonimiseren wij ze.
               </p>
             </LegalSection>
@@ -305,7 +246,7 @@ const PrivacyPage = () => {
                 'juridische verplichtingen',
                 'uitvoering van onze diensten',
               ]} />
-              <p style={{ marginTop: 16, fontSize: 17, lineHeight: 1.75, color: 'var(--inkt)', fontWeight: 600 }}>
+              <p>
                 Wij verkopen persoonsgegevens niet.
               </p>
             </LegalSection>
@@ -321,10 +262,10 @@ const PrivacyPage = () => {
                 'gegevens over te laten dragen',
                 'toestemming in te trekken',
               ]} />
-              <p style={{ marginTop: 20, fontSize: 17, lineHeight: 1.75, color: 'var(--inkt-80)' }}>
+              <p>
                 Verzoeken kunnen worden gestuurd naar: <MailLink address="hallo@toms-ambitie.nl" />
               </p>
-              <p style={{ marginTop: 8, fontSize: 17, lineHeight: 1.75, color: 'var(--inkt-60)' }}>
+              <p>
                 Wij reageren zo snel mogelijk en uiterlijk binnen de wettelijke termijn.
               </p>
             </LegalSection>
@@ -339,19 +280,10 @@ const PrivacyPage = () => {
               <P>De meest actuele versie staat altijd op deze pagina.</P>
             </LegalSection>
 
-            {/* Footer meta */}
-            <div style={{ paddingTop: 48, borderTop: '1px solid var(--inkt-10)', marginTop: 24 }}>
-              <span style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--inkt-30)' }}>
-                Laatste update: mei 2026
-              </span>
-            </div>
-
-          </div>
-        </section>
-
-      </main>
-      <Footer />
-    </div>
+            <p className="legal-meta">Laatste update: mei 2026</p>
+        </div>
+      </article>
+    </SiteLayout>
   );
 };
 

@@ -1,217 +1,199 @@
-import { useEffect, useRef } from 'react';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
-import { useReveal } from '@/hooks/useReveal';
-import { applySEO } from '@/lib/seo';
+import { useEffect, useRef } from "react";
+import { applySEO } from "@/lib/seo";
+import { SiteLayout } from "@/components/site/SiteLayout";
+import { PageHead } from "@/components/site/PageHead";
+import { Cta, HlInk } from "@/components/site/Cta";
 
 const FACTSHEET = [
-  ['Bedrijfsnaam', 'Toms Ambitie'],
-  ['Type', 'Venture club · venture builder'],
-  ['Opgericht', '2015 (na exit Aardbei Communicatie)'],
-  ['Oprichter', 'Tom Mulder'],
-  ['Locatie', 'Zwolle, Nederland'],
-  ['Actieve ventures', '2: PostPilot · EmmaStudio'],
-  ['Werkwijze', '7-stappen systeem van probleem naar platform in max 6 weken'],
-  ['Werkwijze (kort)', 'Probleem-first · AI als versneller · oplossing voor business case'],
-  ['AI-first sinds', '2023'],
-  ['Website', 'toms-ambitie.nl'],
-  ['Contact', 'hallo@toms-ambitie.nl'],
+  ["Bedrijfsnaam", "Toms Ambitie"],
+  ["Type", "Venture club · venture builder"],
+  ["Opgericht", "2015 (na exit Aardbei Communicatie)"],
+  ["Oprichter", "Tom Mulder"],
+  ["Locatie", "Zwolle, Nederland"],
+  ["Actieve ventures", "2: PostPilot · EmmaStudio"],
+  ["Werkwijze", "7-stappen systeem van probleem naar platform in max 6 weken"],
+  ["Werkwijze (kort)", "Probleem-first · AI als versneller · oplossing voor business case"],
+  ["AI-first sinds", "2025"],
+  ["Website", "toms-ambitie.nl"],
+  ["Contact", "hallo@toms-ambitie.nl"],
 ];
 
-const LOGOS = [
-  { label: 'Logo · donker op licht', file: '/logo-dark.svg', bg: 'var(--papier)' },
-  { label: 'Logo · licht op donker', file: '/logo-white.svg', bg: 'var(--inkt)' },
-  { label: 'Monogram · donker', file: '/monogram-dark.svg', bg: 'var(--papier)' },
-  { label: 'Monogram · licht', file: '/monogram-white.svg', bg: 'var(--inkt)' },
+type Download = { label: string; file: string; format: string; preview: string; bg: "papier" | "inkt" | "balpen" };
+
+const LOGOS: Download[] = [
+  { label: "Logo · kleur", file: "toms-ambitie-logo-kleur.svg", format: "SVG", preview: "toms-ambitie-logo-kleur.svg", bg: "papier" },
+  { label: "Logo · negatief", file: "toms-ambitie-logo-negatief.svg", format: "SVG", preview: "toms-ambitie-logo-negatief.svg", bg: "inkt" },
+  { label: "Logo · zwart", file: "toms-ambitie-logo-zwart.svg", format: "SVG", preview: "toms-ambitie-logo-zwart.svg", bg: "papier" },
+  { label: "Logo · wit", file: "toms-ambitie-logo-wit.svg", format: "SVG", preview: "toms-ambitie-logo-wit.svg", bg: "inkt" },
+  { label: "Beeldmerk · kleur", file: "toms-ambitie-beeldmerk-kleur.svg", format: "SVG", preview: "toms-ambitie-beeldmerk-kleur.svg", bg: "papier" },
+  { label: "Beeldmerk · negatief", file: "toms-ambitie-beeldmerk-negatief.svg", format: "SVG", preview: "toms-ambitie-beeldmerk-negatief.svg", bg: "inkt" },
+  { label: "Beeldmerk · zwart", file: "toms-ambitie-beeldmerk-zwart.svg", format: "SVG", preview: "toms-ambitie-beeldmerk-zwart.svg", bg: "papier" },
+  { label: "Beeldmerk · wit", file: "toms-ambitie-beeldmerk-wit.svg", format: "SVG", preview: "toms-ambitie-beeldmerk-wit.svg", bg: "inkt" },
+  { label: "Blok · inkt", file: "toms-ambitie-blok-inkt.svg", format: "SVG", preview: "toms-ambitie-blok-inkt.svg", bg: "papier" },
+  { label: "Blok · papier", file: "toms-ambitie-blok-papier.svg", format: "SVG", preview: "toms-ambitie-blok-papier.svg", bg: "inkt" },
+];
+
+const STICKERS: Download[] = [
+  { label: "Tom Mulder · staand, jasje", file: "tom-staand-jasje-sticker.png", format: "PNG", preview: "/ta/tom-staand-jasje-560.webp", bg: "balpen" },
+  { label: "Tom Mulder · staand, lachend", file: "tom-staand-lachend-sticker.png", format: "PNG", preview: "/ta/tom-staand-lachend-420.webp", bg: "balpen" },
+  { label: "Tom Mulder · staand, wit", file: "tom-staand-wit-sticker.png", format: "PNG", preview: "/ta/tom-staand-wit-560.webp", bg: "balpen" },
+  { label: "Tom Mulder · zittend", file: "tom-zittend-sticker.png", format: "PNG", preview: "/ta/tom-zittend-560.webp", bg: "balpen" },
+  { label: "Tom Mulder · portret", file: "tom-portret-sticker.png", format: "PNG", preview: "/ta/tom-portret-560.webp", bg: "balpen" },
 ];
 
 const PHOTOS = [
-  { src: '/photos/tom-portrait-dark.webp', label: 'Tom Mulder · portret donker', credit: 'Wonderwood Fotografie' },
-  { src: '/photos/tom-portrait-light.webp', label: 'Tom Mulder · portret licht', credit: 'Wonderwood Fotografie' },
-  { src: '/photos/tom-casual.webp', label: 'Tom Mulder · casual', credit: 'Wonderwood Fotografie' },
-  { src: '/photos/studio-team-bw.webp', label: 'Studio · team', credit: 'Wonderwood Fotografie' },
-  { src: '/photos/studio-collab.webp', label: 'Studio · collab', credit: 'Wonderwood Fotografie' },
-  { src: '/photos/studio-pair.webp', label: 'Studio · pair', credit: 'Wonderwood Fotografie' },
+  { src: "/photos/tom-portrait-dark.webp", label: "Tom Mulder · portret donker", credit: "Wonderwood Fotografie" },
+  { src: "/photos/tom-portrait-light.webp", label: "Tom Mulder · portret licht", credit: "Wonderwood Fotografie" },
 ];
+
+const DownloadCard = ({ d }: { d: Download }) => {
+  const href = `/persmap/${d.file}`;
+  const preview = d.preview.startsWith("/") ? d.preview : `/persmap/${d.preview}`;
+  return (
+    <a className="card dl rv" href={href} download>
+      <span className={`dl-img on-${d.bg}`}>
+        <img src={preview} alt="" loading="lazy" decoding="async" />
+      </span>
+      <h3 className="d">{d.label}</h3>
+      <p>{d.format} ↓</p>
+    </a>
+  );
+};
 
 const PersMapPage = () => {
   const rootRef = useRef<HTMLDivElement>(null);
-  useReveal(rootRef);
 
   useEffect(() => {
     applySEO({
-      title: 'Persmap · Toms Ambitie',
-      description: 'Pers- en mediakit van Toms Ambitie. Logo\'s, foto\'s, factsheet en contact voor journalisten.',
-      canonical: 'https://www.toms-ambitie.nl/persmap',
+      title: "Persmap · Toms Ambitie",
+      description: "Pers- en mediakit van Toms Ambitie. Logo's, foto's, factsheet en contact voor journalisten.",
+      canonical: "https://www.toms-ambitie.nl/persmap",
     });
   }, []);
 
   return (
-    <div ref={rootRef} style={{ background: 'var(--wit-warm)' }}>
-      <Navbar />
-      <main id="main-content">
+    <SiteLayout>
+      <div ref={rootRef}>
+        <PageHead
+          eyebrow="Persmap"
+          title={
+            <>
+              Voor de <span className="hl">pers.</span>
+            </>
+          }
+          lead="Schrijf je over Toms Ambitie of een van onze ventures? Hieronder vind je logo's, foto's en alle feiten. Vragen? Stuur een mail."
+        />
 
-        {/* ═══ HERO ════════════════════════════════════════════════ */}
-        <section className="surface-wit" style={{ padding: '140px 0 80px' }}>
-          <div className="container-wide">
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-              <span className="volt-dot" />
-              <span className="eyebrow"><span style={{ marginRight: 8 }}>P</span>Persmap</span>
-            </div>
-            <h1 className="clip-reveal display" style={{ fontSize: 'clamp(80px, 11vw, 168px)', lineHeight: 0.84, marginTop: 32, letterSpacing: '-0.02em' }}>
-              <span>Voor de pers.</span>
-            </h1>
-            <p className="lead reveal" style={{ marginTop: 48, fontSize: 22, maxWidth: 640 }}>
-              Schrijf je over Toms Ambitie of een van onze ventures? Hieronder vind je logo's, foto's en alle feiten. Vragen? Stuur een mail.
-            </p>
-          </div>
-        </section>
-
-        {/* ═══ FACTSHEET ═══════════════════════════════════════════ */}
-        <section className="surface-papier" style={{ padding: '120px 0' }}>
-          <div className="container-wide">
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 80, alignItems: 'flex-start' }}>
+        <section className="sec" style={{ paddingTop: 0 }}>
+          <div className="wrap">
+            <div className="sec-head rv">
               <div>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-                  <span className="volt-dot" />
-                  <span className="eyebrow"><span style={{ marginRight: 8 }}>01</span>Factsheet</span>
-                </div>
-                <h2 className="display" style={{ fontSize: 'clamp(40px, 5vw, 72px)', lineHeight: 0.95, marginTop: 24 }}>
-                  De feiten.<br /><span style={{ color: 'var(--inkt-40)' }}>In één blik.</span>
+                <p className="eyebrow">01 · Factsheet</p>
+                <h2 className="d" style={{ marginTop: 16 }}>
+                  De feiten. In één blik.
                 </h2>
               </div>
-              <div>
-                {FACTSHEET.map(([k, v]) => (
-                  <div key={k} className="reveal" style={{ display: 'grid', gridTemplateColumns: '220px 1fr', gap: 24, padding: '20px 0', borderTop: '1px solid var(--inkt-20)' }}>
-                    <span className="meta">{k}</span>
-                    <span style={{ fontSize: 16, fontFamily: 'var(--body)', color: 'var(--inkt)' }}>{v}</span>
-                  </div>
-                ))}
-              </div>
             </div>
-          </div>
-        </section>
-
-        {/* ═══ LOGO'S & BEELDMERKEN ════════════════════════════════ */}
-        <section className="surface-wit" style={{ padding: '120px 0' }}>
-          <div className="container-wide">
-            <div style={{ marginBottom: 64 }}>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-                <span className="volt-dot" />
-                <span className="eyebrow"><span style={{ marginRight: 8 }}>02</span>Logo's & beeldmerken</span>
-              </div>
-              <h2 className="display" style={{ fontSize: 'clamp(40px, 5vw, 72px)', lineHeight: 0.95, marginTop: 24 }}>Brand assets.</h2>
-              <p className="lead" style={{ marginTop: 24, maxWidth: 640 }}>
-                Download het Toms Ambitie logo in verschillende varianten. Gebruik altijd de juiste versie voor de achtergrond.
-              </p>
-            </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
-              {LOGOS.map((a) => (
-                <div key={a.label} className="reveal" style={{ border: '1px solid var(--inkt-10)' }}>
-                  <div style={{ background: a.bg, aspectRatio: '4/3', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 32 }}>
-                    <img src={a.file} alt={a.label} style={{ maxWidth: '70%', maxHeight: '70%' }} />
-                  </div>
-                  <div style={{ padding: 16, borderTop: '1px solid var(--inkt-10)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span className="meta" style={{ fontSize: 10 }}>{a.label}</span>
-                    <a href={a.file} download className="meta" style={{ color: 'var(--inkt)', borderBottom: '1px solid var(--inkt)', paddingBottom: 2 }}>SVG ↓</a>
-                  </div>
+            <dl className="facts-list">
+              {FACTSHEET.map(([k, v]) => (
+                <div key={k} className="rv">
+                  <dt>{k}</dt>
+                  <dd>{v}</dd>
                 </div>
               ))}
-            </div>
+            </dl>
+          </div>
+        </section>
 
-            <div style={{ marginTop: 32, padding: 24, background: 'var(--papier)', borderLeft: '3px solid var(--volt)' }}>
-              <div className="meta" style={{ marginBottom: 8 }}>GEBRUIKSREGELS</div>
-              <ul style={{ display: 'grid', gap: 6, fontSize: 14, color: 'var(--inkt-80)', listStyle: 'none', padding: 0 }}>
-                <li>✓ Gebruik op effen achtergronden, minimale vrije ruimte = hoogte volt-balk rondom</li>
-                <li>✓ Wit op donker, zwart op licht, zwart op volt. Volt-balk altijd volt.</li>
-                <li>✗ Niet vervormen, roteren, schaduwen, andere kleuren geven of volt-balk weglaten</li>
-              </ul>
+        <section className="sec how">
+          <div className="wrap">
+            <div className="sec-head rv">
+              <div>
+                <p className="eyebrow">02 · Logo's & beeldmerken</p>
+                <h2 className="d" style={{ marginTop: 16 }}>
+                  Brand assets.
+                </h2>
+              </div>
+              <p>Download het Toms Ambitie logo in verschillende varianten. Gebruik altijd de juiste versie voor de achtergrond.</p>
+            </div>
+            <div className="cards c5">
+              {LOGOS.map((d) => (
+                <DownloadCard key={d.file} d={d} />
+              ))}
+            </div>
+            <div className="cards" style={{ marginTop: 20 }}>
+              <a className="card z dl rv" href="/persmap/Toms-Ambitie-Brand-Book-2.1.pdf" download>
+                <p className="eyebrow">Brand Book</p>
+                <h3 className="d">Toms Ambitie Brand Book 2.1</h3>
+                <p>PDF · 6,6 MB ↓</p>
+              </a>
             </div>
           </div>
         </section>
 
-        {/* ═══ PERSFOTO'S ══════════════════════════════════════════ */}
-        <section className="surface-papier" style={{ padding: '120px 0' }}>
-          <div className="container-wide">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 48 }}>
+        <section className="sec">
+          <div className="wrap">
+            <div className="sec-head rv">
               <div>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-                  <span className="volt-dot" />
-                  <span className="eyebrow"><span style={{ marginRight: 8 }}>03</span>Persfoto's</span>
-                </div>
-                <h2 className="display" style={{ fontSize: 'clamp(40px, 5vw, 72px)', lineHeight: 0.95, marginTop: 24 }}>Beeldmateriaal.</h2>
+                <p className="eyebrow">03 · Stickers</p>
+                <h2 className="d" style={{ marginTop: 16 }}>
+                  Stickers van Tom.
+                </h2>
               </div>
             </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}
-              className="werkwijze-phases">
-              {PHOTOS.map((p, i) => (
-                <div key={i} className="reveal" style={{ background: 'var(--wit-warm)', border: '1px solid var(--inkt-10)' }}>
-                  <div style={{ aspectRatio: '4/3', overflow: 'hidden' }}>
-                    <img src={p.src} alt={p.label} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-                  </div>
-                  <div style={{ padding: 16, borderTop: '1px solid var(--inkt-10)' }}>
-                    <div style={{ fontSize: 14, fontWeight: 500, fontFamily: 'var(--body)', color: 'var(--inkt)' }}>{p.label}</div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 8 }}>
-                      <span className="meta">© {p.credit}</span>
-                      <a href={p.src} download className="meta" style={{ color: 'var(--inkt)', borderBottom: '1px solid var(--inkt)', paddingBottom: 2 }}>JPG ↓</a>
-                    </div>
-                  </div>
-                </div>
+            <div className="cards c5">
+              {STICKERS.map((d) => (
+                <DownloadCard key={d.file} d={d} />
               ))}
             </div>
           </div>
         </section>
 
-        {/* ═══ PERSCONTACT ═════════════════════════════════════════ */}
-        <section className="surface-inkt" style={{ padding: '120px 0' }}>
-          <div className="container-wide" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }}>
-            <div>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-                <span className="volt-dot" />
-                <span className="eyebrow" style={{ color: 'rgba(244,241,232,0.6)' }}><span style={{ marginRight: 8 }}>04</span>Perscontact</span>
+        <section className="sec how">
+          <div className="wrap">
+            <div className="sec-head rv">
+              <div>
+                <p className="eyebrow">04 · Persfoto's</p>
+                <h2 className="d" style={{ marginTop: 16 }}>
+                  Beeldmateriaal.
+                </h2>
               </div>
-              <h2 className="display" style={{ fontSize: 'clamp(40px, 5vw, 72px)', lineHeight: 0.95, marginTop: 24, color: 'var(--wit-warm)' }}>
-                Vragen?<br />Stuur een mail.
-              </h2>
-              <p className="lead" style={{ marginTop: 32, color: 'rgba(244,241,232,0.7)' }}>
-                Tom is direct te bereiken voor pers- en interviewverzoeken. Reactie meestal binnen 24 uur.
-              </p>
             </div>
-            <div style={{ display: 'grid', gap: 16 }}>
-              <a
-                href="mailto:hallo@toms-ambitie.nl"
-                style={{ display: 'block', padding: 28, border: '1px solid rgba(244,241,232,0.15)', transition: 'border-color .2s', textDecoration: 'none' }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'var(--volt)'; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(244,241,232,0.15)'; }}
-              >
-                <div className="meta" style={{ color: 'var(--volt)', marginBottom: 12 }}>E-MAIL</div>
-                <div className="display" style={{ fontSize: 22, color: 'var(--wit-warm)' }}>hallo@toms-ambitie.nl</div>
-              </a>
-              <a
-                href="https://linkedin.com/in/tommulder"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ display: 'block', padding: 28, border: '1px solid rgba(244,241,232,0.15)', transition: 'border-color .2s', textDecoration: 'none' }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'var(--volt)'; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(244,241,232,0.15)'; }}
-              >
-                <div className="meta" style={{ color: 'var(--volt)', marginBottom: 12 }}>LINKEDIN</div>
-                <div className="display" style={{ fontSize: 22, color: 'var(--wit-warm)' }}>Tom Mulder →</div>
-              </a>
-              <div style={{ padding: 28, border: '1px solid rgba(244,241,232,0.15)' }}>
-                <div className="meta" style={{ color: 'rgba(244,241,232,0.5)', marginBottom: 12 }}>STUDIO</div>
-                <div style={{ color: 'rgba(244,241,232,0.8)', fontSize: 18, fontFamily: 'var(--body)' }}>Zwolle, Nederland</div>
-                <div className="meta" style={{ marginTop: 8, color: 'rgba(244,241,232,0.4)' }}>BEZOEK OP AFSPRAAK</div>
-              </div>
+            <div className="cards">
+              {PHOTOS.map((p) => (
+                <a key={p.src} className="card pap dl rv" href={p.src} download>
+                  <span className="dl-img photo">
+                    <img src={p.src} alt={p.label} loading="lazy" decoding="async" />
+                  </span>
+                  <h3 className="d">{p.label}</h3>
+                  <p>© {p.credit} · WEBP ↓</p>
+                </a>
+              ))}
             </div>
           </div>
         </section>
 
-      </main>
-      <Footer />
-    </div>
+        <Cta
+          eyebrow="Perscontact"
+          title={
+            <>
+              Vragen? Stuur een <HlInk>mail.</HlInk>
+            </>
+          }
+          text="Tom is direct te bereiken voor pers- en interviewverzoeken. Reactie meestal binnen 24 uur."
+        >
+          <div className="acts">
+            <a className="btn inv" href="mailto:hallo@toms-ambitie.nl">
+              hallo@toms-ambitie.nl <i>→</i>
+            </a>
+            <a className="txt-l" href="https://linkedin.com/in/tommulder" target="_blank" rel="noopener noreferrer">
+              LinkedIn: Tom Mulder →
+            </a>
+          </div>
+          <p className="cta-p">Studio: Zwolle, Nederland · bezoek op afspraak</p>
+        </Cta>
+      </div>
+    </SiteLayout>
   );
 };
 

@@ -9,7 +9,7 @@ const SITE_URL = "https://www.toms-ambitie.nl";
 /**
  * Genereert dist/sitemap.xml op build-tijd:
  * - homepage + /nieuws overzichtspagina
- * - elke /nieuws/<slug> uit src/data/news.ts (met <lastmod>)
+ * - elke /nieuws/<slug> uit src/data/posts.ts (met <lastmod>), zonder noindex-artikelen
  *
  * Zo blijft de sitemap altijd in sync met de berichten — geen handwerk.
  */
@@ -20,7 +20,14 @@ function sitemapPlugin(): Plugin {
     apply: (_config, env) => env.command === "build" && !env.isSsrBuild,
     enforce: "post",
     async closeBundle() {
-      const { news } = await import("./src/data/news");
+      const { POSTS } = await import("./src/data/posts");
+      const { isoDate } = await import("./src/components/site/newsHelpers");
+      // the articles the site actually serves, with the date as YYYY-MM-DD
+      const news = POSTS.filter((p) => !p.noindex).map((p) => {
+        const date = isoDate(p.date);
+        if (!date) throw new Error(`sitemap: cannot read the date "${p.date}" of /nieuws/${p.slug}`);
+        return { slug: p.slug, date };
+      });
       const { ventureSlugs } = await import("./src/data/ventureSlugs");
       const outDir = "dist";
 

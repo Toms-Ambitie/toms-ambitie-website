@@ -49,7 +49,8 @@ const AppRoutes = () => {
             <Route path="/ventures" element={<VenturesPage />} />
             <Route path="/ventures/:slug" element={<VentureDetailPage />} />
             <Route path="/werkwijze" element={<HoeWeBouwenPage />} />
-            <Route path="/hoe-we-bouwen" element={<HoeWeBouwenPage />} />
+            <Route path="/hoe-we-bouwen" element={<Navigate to="/werkwijze" replace />} />
+            <Route path="/ventures/post-pilot" element={<Navigate to="/ventures/postpilot" replace />} />
             <Route path="/over-ons" element={<OverOnsPage />} />
             <Route path="/meebouwen" element={<MeebouwenPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />

@@ -2,6 +2,6 @@
 // resolve image imports. Keep in sync with ventureDetails in ventures.ts.
 export const ventureSlugs = [
   "emmastudio",
-  "post-pilot",
+  "postpilot",
   "plug-and-power",
 ] as const;

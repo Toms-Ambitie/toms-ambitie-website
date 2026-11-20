@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>document.documentElement.classList.add('js')</script>
 
     <!-- Google Consent Mode v2 — defaults DENIED; CookieYes updates these after user choice -->
     <script>
@@ -49,7 +50,7 @@
     <meta name="description" content="Toms Ambitie is de venture club van Tom Mulder in Zwolle. Wij bedenken geen bedrijven, we bouwen ze. EmmaStudio en PostPilot draaien al. Lees hoe we werken.">
     <meta name="author" content="Tom Mulder · Toms Ambitie" />
     <meta name="keywords" content="Toms Ambitie, venture club Zwolle, venture builder Nederland, investeren in startups, Tom Mulder ondernemer, eigen bedrijven bouwen, meebouwen startup, angel investment Zwolle, PostPilot, EmmaStudio, venture club" />
-    <meta name="theme-color" content="#0E0E0C" />
+    <meta name="theme-color" content="#121212" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://www.toms-ambitie.nl/" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -58,24 +59,23 @@
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
-    <!-- Hero founder image — preload for LCP, responsive per viewport -->
-    <link rel="preload" as="image" href="/photos/tom-founder-01.webp"
-      imagesrcset="/photos/tom-founder-01-768.webp 768w, /photos/tom-founder-01-1024.webp 1024w, /photos/tom-founder-01.webp 1536w"
+    <!-- Home film still: the LCP image -->
+    <link rel="preload" as="image" href="/ta/hero-1280.webp"
+      imagesrcset="/ta/hero-1080.webp 1080w, /ta/hero-1280.webp 1280w"
       imagesizes="100vw"
       fetchpriority="high" />
 
-    <!-- Self-hosted fonts: preload critical (LCP) faces, no Google Fonts roundtrip -->
-    <link rel="preload" as="font" type="font/woff2" href="/fonts/bebas-neue-400.woff2" crossorigin fetchpriority="high" />
-    <link rel="preload" as="font" type="font/woff2" href="/fonts/space-grotesk-var.woff2" crossorigin fetchpriority="high" />
-    <link rel="preload" as="font" type="font/woff2" href="/fonts/inconsolata-var.woff2" crossorigin />
+    <!-- Self-hosted fonts -->
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-var.woff2" crossorigin fetchpriority="high" />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/reenie-beanie.woff2" crossorigin />
 
     <!--
       Critical CSS — auto-inlined at build time by criticalCssPlugin.
       In dev mode, the fallback below ensures correct rendering.
     -->
     <style id="critical-css">
-      *,*::before,*::after{box-sizing:border-box;border-radius:0!important}
-      body{margin:0;background:#F4F1E8;color:#0E0E0C;font-family:'Space Grotesk',system-ui,sans-serif}
+      *,*::before,*::after{box-sizing:border-box}
+      body{margin:0;background:#F7F5EF;color:#121212;font-family:Archivo,system-ui,sans-serif}
       #root{min-height:100vh}
     </style>
 

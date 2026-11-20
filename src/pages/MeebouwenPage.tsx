@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { PROBLEM_KEY } from '@/components/site/AskForm';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { useReveal } from '@/hooks/useReveal';
@@ -22,7 +24,17 @@ const MeebouwenPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [interest, setInterest] = useState('idee');
-  const [form, setForm] = useState({ name: '', email: '', linkedin: '', message: '' });
+  const location = useLocation();
+  const [form, setForm] = useState(() => {
+    let probleem = (location.state as { probleem?: string } | null)?.probleem ?? '';
+    try {
+      probleem ||= sessionStorage.getItem(PROBLEM_KEY) ?? '';
+      sessionStorage.removeItem(PROBLEM_KEY);
+    } catch {
+      /* storage blocked */
+    }
+    return { name: '', email: '', linkedin: '', message: probleem ? `Mijn probleem is: ${probleem}` : '' };
+  });
 
   const set = (field: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [field]: e.target.value }));

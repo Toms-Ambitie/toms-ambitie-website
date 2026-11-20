@@ -77,7 +77,7 @@ const CtaButton = ({
 
 /* Per-venture SEO titles */
 const VENTURE_TITLES: Record<string, string> = {
-  "post-pilot":
+  "postpilot":
     "PostPilot · LinkedIn-tool · een venture van Toms Ambitie",
   "plug-and-power":
     "Plug and Power · venture van Toms Ambitie",
@@ -87,7 +87,7 @@ const VENTURE_TITLES: Record<string, string> = {
 
 /* Per-venture meta descriptions */
 const VENTURE_DESCRIPTIONS: Record<string, string> = {
-  "post-pilot":
+  "postpilot":
     "PostPilot maakt van een ingesproken gedachte een LinkedIn-post in jouw toon. Nederlandstalig, gebouwd door Toms Ambitie in Zwolle. Lees het verhaal.",
   "plug-and-power":
     "Plug and Power is een venture van Toms Ambitie uit Zwolle. Lees waar het idee vandaan komt, wat de stand van zaken is en wat we ervan hebben geleerd.",

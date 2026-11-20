@@ -158,7 +158,7 @@ export const ventureDetails: VentureDetail[] = [
     },
   },
   {
-    slug: "post-pilot",
+    slug: "postpilot",
     name: "POSTPILOT",
     tagline:
       "De meeste ondernemers weten dat ze zichtbaar moeten zijn. Maar zodra het druk wordt, verdwijnen ze van LinkedIn.",

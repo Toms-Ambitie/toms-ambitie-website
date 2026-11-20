@@ -18,7 +18,7 @@ const ROUTES = {
     title: 'Over Toms Ambitie en Tom Mulder · Zwolle',
     description: 'Wie is Tom Mulder en waarom bestaat Toms Ambitie? Van reclamebureau naar venture club: het verhaal, de mensen en de manier van werken achter de ventures.',
   },
-  '/hoe-we-bouwen': {
+  '/werkwijze': {
     title: 'Hoe wij bedrijven bouwen · de werkwijze van Toms Ambitie',
     description: 'Van echt probleem naar werkend product. Zo gaat Toms Ambitie van idee naar live venture: welke stappen, welke keuzes en wanneer we stoppen met iets.',
   },
@@ -30,7 +30,7 @@ const ROUTES = {
     title: 'Onze ventures · de bedrijven van Toms Ambitie',
     description: 'Een overzicht van alle ventures van Toms Ambitie: wat er live staat, wat er is verkocht en wat er is gestopt. Inclusief wat elk traject ons heeft geleerd.',
   },
-  '/ventures/post-pilot': {
+  '/ventures/postpilot': {
     title: 'PostPilot · LinkedIn-tool · een venture van Toms Ambitie',
     description: 'PostPilot maakt van een ingesproken gedachte een LinkedIn-post in jouw toon. Nederlandstalig, gebouwd door Toms Ambitie in Zwolle. Lees het verhaal.',
   },
@@ -109,7 +109,9 @@ for (const [path, { title, description }] of Object.entries(ROUTES)) {
     .replace(
       /<link rel="canonical" href="[^"]*"/,
       `<link rel="canonical" href="${canonical}"`
-    );
+    )
+    // the film still is only the first image on the homepage
+    .replace(/ *<link rel="preload" as="image" href="\/ta\/hero-[\s\S]*?\/>\n/, '');
 
   // Write to dist/[path]/index.html
   const dir = join(DIST, path.slice(1)); // strip leading /

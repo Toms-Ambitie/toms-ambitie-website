@@ -46,7 +46,7 @@ const HoeWeBouwenPage = () => {
     applySEO({
       title: 'Hoe wij bedrijven bouwen · de werkwijze van Toms Ambitie',
       description: 'Van echt probleem naar werkend product. Zo gaat Toms Ambitie van idee naar live venture: welke stappen, welke keuzes en wanneer we stoppen met iets.',
-      canonical: 'https://www.toms-ambitie.nl/hoe-we-bouwen',
+      canonical: 'https://www.toms-ambitie.nl/werkwijze',
       jsonLd: {
         '@context': 'https://schema.org',
         '@type': 'WebPage',

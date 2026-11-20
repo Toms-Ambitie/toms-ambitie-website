@@ -1,26 +1,37 @@
 # Toms Ambitie
 
-> Venture club uit Zwolle die eigen bedrijven bouwt. Vaste kern met top specialisten eromheen. We bedenken, bouwen, valideren en — als het werkt — verkopen.
+> Toms Ambitie is de venture club van Tom Mulder in Zwolle. Wij bedenken geen bedrijven, we bouwen ze. EmmaStudio en PostPilot draaien al.
 
-Toms Ambitie is geen bureau, geen consultancy en geen fonds. Onder de holding zitten meerdere ventures (live én in opbouw): Pactly, Plug and Power, Post Pilot en OAK Marketing. Elke venture lost een probleem op dat we zelf hebben ervaren.
+Toms Ambitie is geen agency, geen consultancy, geen fonds. Een actief systeem dat eigen bedrijven bouwt. Vanuit een vaste kern, aangevuld met specialisten waar nodig. Twee ventures in eigen eigendom, allebei live.
 
-## Pages
+## Pagina's
 
-- [Home](/): Wat Toms Ambitie is, hoe we werken en welke ventures live staan.
-- [Ventures](/ventures): Overzicht van alle actieve ventures.
-- [Hoe we bouwen](/hoe-we-bouwen): Onze methode — van idee naar venture in maximaal 6 weken.
-- [Over Tom Mulder](/over-ons): Achtergrond van de founder en het pad sinds 2008.
-- [Meebouwen](/meebouwen): Voor mensen die kennis, kunde, netwerk of kapitaal willen inzetten.
-- [Nieuws](/nieuws): Korte updates over lopende ventures en projecten.
+- [Home](https://www.toms-ambitie.nl/): Van frustratie naar platform. Twee ventures in eigen eigendom, allebei live.
+- [Ventures](https://www.toms-ambitie.nl/ventures): Een overzicht van alle ventures van Toms Ambitie: wat er live staat, wat er is verkocht en wat er is gestopt.
+- [Werkwijze](https://www.toms-ambitie.nl/werkwijze): Van echt probleem naar werkend product, in zeven stappen en maximaal zes weken.
+- [Over ons](https://www.toms-ambitie.nl/over-ons): Wie is Tom Mulder en waarom bestaat Toms Ambitie? Van reclamebureau naar venture club.
+- [Nieuws](https://www.toms-ambitie.nl/nieuws): Eerlijke verhalen over bouwen, verkopen en stoppen.
+- [Meebouwen](https://www.toms-ambitie.nl/meebouwen): Voor co-founders, investeerders en specialisten die niet alleen adviseren maar meedoen.
+- [Persmap](https://www.toms-ambitie.nl/persmap): Logo's, foto's, factsheet en contact voor journalisten.
 
 ## Ventures
 
-- [Pactly](/ventures/pactly): Slim huishoudplatform voor contracten, abonnementen en vaste lasten.
-- [Post Pilot](/ventures/post-pilot): SaaS voor klantcommunicatie-automatisering.
-- [Plug and Power](/ventures/plug-and-power): Energie-oplossingen voor de moderne ondernemer.
-- [OAK Marketing](/ventures/oak-marketing): Marketingstrategie en uitvoering voor groei.
+- [PostPilot](https://www.toms-ambitie.nl/ventures/postpilot): Live. PostPilot maakt van een ingesproken gedachte een LinkedIn-post in jouw toon. Nederlandstalig. Website: https://postpilotapp.nl
+- [EmmaStudio](https://www.toms-ambitie.nl/ventures/emmastudio): Live, vijf van acht modules. Boekhouden, loon, personeel en marketing in één platform voor ondernemers. Ontwikkeld bij kapsalon Blondes Incognito in Heeten. Website: https://emmastudio.nl
 
-## Optional
+## Eerder
 
-- [Privacy](/privacy): Privacyverklaring.
-- [Algemene voorwaarden](/voorwaarden): Algemene voorwaarden.
+- Notabilis (2008), later Aardbei Communicatie (2012), verkocht in 2015.
+- LED-IBC (2017-2023): verkocht aan Woodpeckers.
+- Entranz (2019-2022): uitgestapt.
+- DesignerShirts (2010-2014), PartyBlender (2012-2015) en Plug and Power (2025-2026): gestopt.
+
+## Contact
+
+- E-mail: hallo@toms-ambitie.nl
+- Plaats: Zwolle
+
+## Optioneel
+
+- [Privacy](https://www.toms-ambitie.nl/privacy): Privacyverklaring.
+- [Algemene voorwaarden](https://www.toms-ambitie.nl/voorwaarden): Algemene voorwaarden.

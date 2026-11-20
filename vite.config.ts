@@ -249,8 +249,6 @@ export default defineConfig(({ mode }) => ({
           "vendor-react": ["react", "react-dom", "react/jsx-runtime"],
           // Router — changes with React Router releases, separate from React core
           "vendor-router": ["react-router-dom"],
-          // Icons — large static asset, benefits from its own cache
-          "vendor-icons": ["lucide-react"],
         },
       },
     },

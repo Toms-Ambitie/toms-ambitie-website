@@ -213,7 +213,7 @@ html:not(.js) #intro{display:none}
 .motto{background:var(--balpen);color:var(--papier);padding:clamp(80px,11vw,170px) 0;margin-top:clamp(56px,8vw,120px)}
 .motto p.d{font-size:clamp(38px,7vw,116px)}
 .motto p.d span{transition:opacity .25s}
-.js .motto p.d span.dim{opacity:.28}
+.js .motto p.d span.dim{opacity:.6}
 .motto .hand{color:var(--papier);font-size:clamp(36px,4.4vw,60px);margin:26px 0 0;transform:rotate(-2deg);transform-origin:left}
 
 /* cta */
@@ -532,3 +532,6 @@ button.btn:disabled{opacity:.6;cursor:wait;transform:none}
 .cky-modal .cky-always-active{color:var(--inkt)!important}
 .cky-modal .cky-show-desc-btn{color:var(--inkt)!important;text-decoration:underline!important}
 .cky-modal .cky-switch input:checked{background-color:var(--inkt)!important}
+/* the scribble-to-product slider: its range input is invisible, so show keyboard focus on the frame */
+.cmp:has(input:focus-visible){outline:3px solid var(--balpen);outline-offset:4px}
+.cmp:has(input:focus-visible) .bar::after{box-shadow:0 0 0 4px var(--papier),0 0 0 7px var(--balpen)}

@@ -42,8 +42,8 @@ const STICKERS: Download[] = [
 ];
 
 const PHOTOS = [
-  { src: "/photos/tom-portrait-dark.webp", label: "Tom Mulder · portret donker", credit: "Wonderwood Fotografie" },
-  { src: "/photos/tom-portrait-light.webp", label: "Tom Mulder · portret licht", credit: "Wonderwood Fotografie" },
+  { src: "/photos/tom-portrait-dark.webp", preview: "/photos/tom-portrait-dark-640.webp", label: "Tom Mulder · portret donker", credit: "Wonderwood Fotografie" },
+  { src: "/photos/tom-portrait-light.webp", preview: "/photos/tom-portrait-light-640.webp", label: "Tom Mulder · portret licht", credit: "Wonderwood Fotografie" },
 ];
 
 const DownloadCard = ({ d }: { d: Download }) => {
@@ -163,7 +163,7 @@ const PersMapPage = () => {
               {PHOTOS.map((p) => (
                 <a key={p.src} className="card pap dl rv" href={p.src} download>
                   <span className="dl-img photo">
-                    <img src={p.src} alt={p.label} loading="lazy" decoding="async" />
+                    <img src={p.preview} alt={p.label} loading="lazy" decoding="async" />
                   </span>
                   <h3 className="d">{p.label}</h3>
                   <p>© {p.credit} · WEBP ↓</p>

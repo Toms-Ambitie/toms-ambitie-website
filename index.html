@@ -22,6 +22,8 @@
 
     <!-- CookieYes — banner + consent updates; no defer/async so defaults are honored before GTM loads -->
     <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/f4024a558855dfe12c2f704c450fcf9c/script.js"></script>
+    <!-- CookieYes labels its close button "Dichtbij" (bad translation, not editable in the dashboard): read it as "Sluiten" -->
+    <script>new MutationObserver(function(){document.querySelectorAll('.cky-btn-close[aria-label="Dichtbij"]').forEach(function(b){b.setAttribute('aria-label','Sluiten')})}).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['aria-label']})</script>
 
     <!-- Google Tag Manager — deferred to keep it off the critical path (loads after window load + idle) -->
     <script>

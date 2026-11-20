@@ -25,7 +25,9 @@ export function Intro() {
       window.clearTimeout(a);
       window.clearTimeout(b);
     };
-  }, [phase]);
+    // runs once on mount: re-running on "out" would cancel the removal timer
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (phase === "gone") return null;
   return (

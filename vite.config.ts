@@ -108,7 +108,7 @@ function sitemapPlugin(): Plugin {
       await fs.writeFile(path.resolve(outDir, "sitemap.xml"), sitemapIndex, "utf8");
       await fs.writeFile(path.resolve(outDir, "sitemap-pages.xml"), renderUrlset(pagesUrls), "utf8");
       await fs.writeFile(path.resolve(outDir, "sitemap-news.xml"), renderUrlset(newsUrls), "utf8");
-      // eslint-disable-next-line no-console
+       
       console.log(
         `✓ sitemap-index + sitemap-pages.xml (${pagesUrls.length}) + sitemap-news.xml (${newsUrls.length}) geschreven`,
       );

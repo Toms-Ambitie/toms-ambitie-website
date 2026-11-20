@@ -41,7 +41,7 @@ const report = (metric: Metric) => {
   window.dataLayer.push(payload);
 
   if (import.meta.env.DEV) {
-    // eslint-disable-next-line no-console
+     
     console.log(
       `%c[Web Vitals] ${metric.name}`,
       `color: ${metric.rating === "good" ? "#0a0" : metric.rating === "poor" ? "#c00" : "#c80"}; font-weight: bold`,

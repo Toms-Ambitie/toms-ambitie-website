@@ -7,7 +7,7 @@ Lees dit voordat je iets aan de site verandert. Het ontwerp is af en goedgekeurd
 - **Ontwerp en afspraken:** `website-handoff`, op Google Drive onder `Merken/Toms Ambitie/06 Opleveringen/website-handoff`. Een kopie van de tekstbestanden staat in `docs/website-handoff/`:
   - `HANDOFF.md`: wat er gebouwd is, de onderdelen, de beweging en de feiten;
   - `tokens.json`: kleuren, letters, afstanden, radius en schaduw (in `src/styles/site.css` als CSS-variabelen met dezelfde namen);
-  - `artikelen.json`: de 19 artikelen.
+  - `artikelen.json`: de 19 artikelen uit het ontwerp. Op de site staan er 20: "Het pand aan de Marconistraat" stond op de oude site en is op verzoek van Tom teruggezet (`src/data/posts.ts`).
 - **Brand Book:** `public/persmap/Toms-Ambitie-Brand-Book-2.1.pdf`.
 - **Klikbaar ontwerp:** `ontwerp/index.html` in de Drive-map. Dat is de waarheid voor hoe het eruitziet en beweegt.
 

@@ -77,6 +77,7 @@ const ARTICLES = [
   { slug: 'led-ibc-product-anders-bouwen', title: "Waarom wij onze LED-IBC's compleet anders bouwden", lead: 'De meeste verhuurders hingen een lamp achter een IBC met een tie-wrap. Wij wilden egaal licht. Daar begon het echte verschil.' },
   { slug: 'entranz-ticketing-slimmer', title: 'Waarom wij dachten dat ticketing slimmer moest kunnen', lead: 'De meeste mensen zien ticketing als een ticket verkopen en iemand binnenlaten. Hoe langer ik naar de evenementenbranche keek, hoe vreemder ik het eigenlijk vond.' },
   { slug: 'led-ibc-mislukt-evenement', title: 'Hoe een mislukt evenement leidde tot LED-IBC', lead: 'Sommige bedrijven beginnen met een goed businessplan. LED-IBC begon met een evenement dat nooit doorging.' },
+  { slug: 'voordat-toms-ambitie-bestond-was-er-aardbei', title: 'Het pand aan de Marconistraat', lead: 'Voordat er ook maar iets was, zaten we met zijn drieën in een leeg pand in Nijverdal. Geen plan. Wel het gevoel dat dit groter moest kunnen.' },
 ];
 
 for (const article of ARTICLES) {

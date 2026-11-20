@@ -4,118 +4,6 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 
-/**
- * Above-the-fold selectors: any CSS rule matching these patterns is
- * considered critical and will be inlined in the HTML at build time.
- * Keep this list in sync with the initial viewport (nav + hero).
- */
-const CRITICAL_SELECTORS = [
-  /^(\*|html|body|#root|:root|:focus-visible)/,
-  /^\.js\b/,
-  /^#(intro|ink)\b/,
-  /^\.(wrap|d|eyebrow|hand|hl|btn|ring|skip|nav|nav-in|mbtn|mmenu|hero|film|film-in|phead|phead-g)\b/,
-  /^(img|a)\b/,
-];
-
-/** Splits CSS into top-level blocks, keeping @media blocks whole. */
-function topLevelBlocks(css: string): string[] {
-  const out: string[] = [];
-  let depth = 0;
-  let start = 0;
-  for (let i = 0; i < css.length; i++) {
-    const c = css[i];
-    if (c === "{") depth++;
-    else if (c === "}") {
-      depth--;
-      if (depth === 0) {
-        out.push(css.slice(start, i + 1).trim());
-        start = i + 1;
-      }
-    }
-  }
-  return out;
-}
-
-function isCriticalRule(rule: string): boolean {
-  const selector = rule.slice(0, rule.indexOf("{")).trim();
-  return selector.split(",").some((part) => CRITICAL_SELECTORS.some((re) => re.test(part.trim())));
-}
-
-function criticalCssPlugin(): Plugin {
-  let extractedCriticalCss = "";
-
-  return {
-    name: "toms-ambitie-critical-css",
-    apply: "build",
-    enforce: "post",
-    async generateBundle(_, bundle) {
-      // Collect all CSS from the bundle
-      let allCss = "";
-      for (const chunk of Object.values(bundle)) {
-        if (chunk.type === "asset" && typeof chunk.source === "string" && chunk.fileName.endsWith(".css")) {
-          allCss += chunk.source + "\n";
-        }
-      }
-      if (!allCss) return;
-
-      const criticalRules: string[] = [];
-      for (const block of topLevelBlocks(allCss)) {
-        if (block.startsWith("@font-face")) {
-          criticalRules.push(block);
-        } else if (block.startsWith("@media")) {
-          const head = block.slice(0, block.indexOf("{"));
-          const inner = topLevelBlocks(block.slice(block.indexOf("{") + 1, -1)).filter(isCriticalRule);
-          if (inner.length) criticalRules.push(`${head}{${inner.join("")}}`);
-        } else if (!block.startsWith("@") && isCriticalRule(block)) {
-          criticalRules.push(block);
-        }
-      }
-
-      extractedCriticalCss = [...new Set(criticalRules)].join("\n");
-      // eslint-disable-next-line no-console
-      console.log(`✓ critical CSS: ${extractedCriticalCss.length} bytes extracted`);
-    },
-    // Patch dist/index.html AFTER generateBundle has run so extractedCriticalCss is populated.
-    // (transformIndexHtml fires before generateBundle, so it can't inline critical CSS.)
-    async closeBundle() {
-      if (!extractedCriticalCss) return;
-      const fs = await import("fs/promises");
-      const htmlPath = path.resolve("dist", "index.html");
-      let html: string;
-      try {
-        html = await fs.readFile(htmlPath, "utf8");
-      } catch {
-        return; // dist/index.html not yet written — skip
-      }
-      const styleTag = `<style id="critical-css">\n${extractedCriticalCss}\n</style>`;
-      html = html.replace(/<style id="critical-css">[\s\S]*?<\/style>/, styleTag);
-      await fs.writeFile(htmlPath, html, "utf8");
-      // eslint-disable-next-line no-console
-      console.log("✓ critical CSS inlined into dist/index.html");
-    },
-    transformIndexHtml: {
-      order: "post" as const,
-      handler(html: string) {
-        // Defer all app CSS: match <link rel="stylesheet"> regardless of attribute order
-        // Captures any attributes before/after href so crossorigin is preserved correctly
-        html = html.replace(
-          /<link rel="stylesheet"([^>]*?) href="(\/assets\/[^"]+\.css)"([^>]*)>/g,
-          (_full, before, href, after) => {
-            const hasCrossorigin = (before + after).includes('crossorigin');
-            const co = hasCrossorigin ? ' crossorigin' : '';
-            return (
-              `<link rel="preload" as="style" href="${href}"${co} onload="this.onload=null;this.rel='stylesheet'" />\n    ` +
-              `<noscript><link rel="stylesheet" href="${href}"${co} /></noscript>`
-            );
-          }
-        );
-
-        return html;
-      },
-    },
-  };
-}
-
 const SITE_URL = "https://www.toms-ambitie.nl";
 
 /**
@@ -128,7 +16,8 @@ const SITE_URL = "https://www.toms-ambitie.nl";
 function sitemapPlugin(): Plugin {
   return {
     name: "toms-ambitie-sitemap",
-    apply: "build",
+    // only for the browser build, not the prerender (SSR) build
+    apply: (_config, env) => env.command === "build" && !env.isSsrBuild,
     enforce: "post",
     async closeBundle() {
       const { news } = await import("./src/data/news");
@@ -221,7 +110,7 @@ function sitemapPlugin(): Plugin {
 }
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig(({ mode, isSsrBuild }) => ({
   server: {
     host: "::",
     port: 8080,
@@ -232,25 +121,27 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     mode === "development" && componentTagger(),
-    criticalCssPlugin(),
     sitemapPlugin(),
   ].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
-    dedupe: ["react", "react-dom", "react/jsx-runtime", "react/jsx-dev-runtime", "@tanstack/react-query", "@tanstack/query-core"],
+    dedupe: ["react", "react-dom", "react/jsx-runtime", "react/jsx-dev-runtime"],
   },
   build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          // Core React libs — rarely change, cached long-term
-          "vendor-react": ["react", "react-dom", "react/jsx-runtime"],
-          // Router — changes with React Router releases, separate from React core
-          "vendor-router": ["react-router-dom"],
+    // the prerender (SSR) build is a single Node module; chunking only matters for browsers
+    rollupOptions: isSsrBuild
+      ? {}
+      : {
+          output: {
+            manualChunks: {
+              // Core React libs — rarely change, cached long-term
+              "vendor-react": ["react", "react-dom", "react/jsx-runtime"],
+              // Router — changes with React Router releases, separate from React core
+              "vendor-router": ["react-router-dom"],
+            },
+          },
         },
-      },
-    },
   },
 }));

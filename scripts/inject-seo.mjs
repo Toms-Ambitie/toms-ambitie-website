@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
-const DIST = join(ROOT, 'dist');
+const DIST = join(ROOT, process.env.PRERENDER_DIST || 'dist');
 
 const BASE = 'https://www.toms-ambitie.nl';
 

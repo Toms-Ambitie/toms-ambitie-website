@@ -26,11 +26,10 @@ type RingProps = {
 export function Ring({ className = "", style, delay = 250, play }: RingProps) {
   const id = "rm" + useId().replace(/:/g, "");
   const svgRef = useRef<SVGSVGElement>(null);
-  const [rm] = useState(reducedMotion);
   const [drawn, setDrawn] = useState(false);
 
   useEffect(() => {
-    if (rm || play !== undefined) return;
+    if (reducedMotion() || play !== undefined) return;
     const svg = svgRef.current;
     if (!svg) return;
     let t: number | undefined;
@@ -47,18 +46,19 @@ export function Ring({ className = "", style, delay = 250, play }: RingProps) {
       io.disconnect();
       window.clearTimeout(t);
     };
-  }, [rm, play, delay]);
+  }, [play, delay]);
 
   useEffect(() => {
-    if (rm || play === undefined) return;
+    if (reducedMotion() || play === undefined) return;
     if (!play) {
       setDrawn(false);
       return;
     }
     const t = window.setTimeout(() => setDrawn(true), delay);
     return () => window.clearTimeout(t);
-  }, [rm, play, delay]);
+  }, [play, delay]);
 
+  // With reduced motion or without script the mask is switched off in site.css, so the circle simply stands there.
   return (
     <svg
       ref={svgRef}
@@ -68,25 +68,23 @@ export function Ring({ className = "", style, delay = 250, play }: RingProps) {
       preserveAspectRatio="none"
       aria-hidden="true"
     >
-      {!rm && (
-        <mask id={id} maskUnits="userSpaceOnUse" x={-10} y={-10} width={140} height={120}>
-          <ellipse
-            cx={60}
-            cy={50}
-            rx={50}
-            ry={40}
-            fill="none"
-            stroke="#fff"
-            strokeWidth={34}
-            pathLength={1}
-            strokeDasharray="1 1"
-            strokeDashoffset={drawn ? 0 : 1}
-            transform="rotate(-62 60 50)"
-            style={{ transition: drawn ? "stroke-dashoffset .9s cubic-bezier(.4,.1,.2,1)" : "none" }}
-          />
-        </mask>
-      )}
-      <use href="#ring" width={120} height={100} mask={rm ? undefined : `url(#${id})`} />
+      <mask id={id} maskUnits="userSpaceOnUse" x={-10} y={-10} width={140} height={120}>
+        <ellipse
+          cx={60}
+          cy={50}
+          rx={50}
+          ry={40}
+          fill="none"
+          stroke="#fff"
+          strokeWidth={34}
+          pathLength={1}
+          strokeDasharray="1 1"
+          strokeDashoffset={drawn ? 0 : 1}
+          transform="rotate(-62 60 50)"
+          style={{ transition: drawn ? "stroke-dashoffset .9s cubic-bezier(.4,.1,.2,1)" : "none" }}
+        />
+      </mask>
+      <use href="#ring" width={120} height={100} mask={`url(#${id})`} />
     </svg>
   );
 }

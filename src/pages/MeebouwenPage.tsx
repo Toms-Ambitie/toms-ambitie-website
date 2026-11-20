@@ -19,7 +19,10 @@ const MeebouwenPage = () => {
   const rootRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
-  const [form, setForm] = useState(() => {
+  const [form, setForm] = useState({ name: "", email: "", linkedin: "", website: "", interest: "idee", message: "" });
+
+  // the line typed on the homepage becomes the start of the message (after hydration: the prerendered form starts empty)
+  useEffect(() => {
     let probleem = (location.state as { probleem?: string } | null)?.probleem ?? "";
     try {
       probleem ||= sessionStorage.getItem(PROBLEM_KEY) ?? "";
@@ -27,8 +30,9 @@ const MeebouwenPage = () => {
     } catch {
       /* storage blocked */
     }
-    return { name: "", email: "", linkedin: "", website: "", interest: "idee", message: probleem ? `Mijn probleem is: ${probleem}` : "" };
-  });
+    if (probleem) setForm((f) => (f.message ? f : { ...f, message: `Mijn probleem is: ${probleem}` }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const [status, setStatus] = useState<Status>({ kind: "idle", text: "" });
 
   const set = (field: keyof typeof form) => (e: { target: { value: string } }) => setForm((f) => ({ ...f, [field]: e.target.value }));

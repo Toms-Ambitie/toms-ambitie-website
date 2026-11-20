@@ -32,7 +32,7 @@ export function SiteFooter() {
           </nav>
         </div>
         <div className="foot">
-          <span>© {new Date().getFullYear()} Toms Ambitie · Zwolle</span>
+          <span suppressHydrationWarning>© {new Date().getFullYear()} Toms Ambitie · Zwolle</span>
           <span>
             <Link to="/privacy">Privacy</Link> · <Link to="/voorwaarden">Voorwaarden</Link>
           </span>

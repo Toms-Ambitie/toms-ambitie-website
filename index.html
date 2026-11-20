@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>document.documentElement.classList.add('js')</script>
+    <!-- Intro ("praten / doen") once per visit and never with reduced motion: decided before first paint -->
+    <script>try{if(sessionStorage.getItem('ta-intro')==='1'||matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('intro-done')}else{sessionStorage.setItem('ta-intro','1')}}catch(e){}</script>
 
     <!-- Google Consent Mode v2 — defaults DENIED; CookieYes updates these after user choice -->
     <script>
@@ -71,14 +73,11 @@
     <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-var.woff2" crossorigin fetchpriority="high" />
     <link rel="preload" as="font" type="font/woff2" href="/fonts/reenie-beanie.woff2" crossorigin />
 
-    <!--
-      Critical CSS — auto-inlined at build time by criticalCssPlugin.
-      In dev mode, the fallback below ensures correct rendering.
-    -->
-    <style id="critical-css">
+    <!-- Base until the stylesheet arrives (it loads render-blocking; the pages are prerendered) -->
+    <style>
       *,*::before,*::after{box-sizing:border-box}
       body{margin:0;background:#F7F5EF;color:#121212;font-family:Archivo,system-ui,sans-serif}
-      #root{min-height:100vh}
+      .intro-done #intro{display:none}
     </style>
 
     <!-- Open Graph -->

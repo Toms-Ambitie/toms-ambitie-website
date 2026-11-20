@@ -535,3 +535,8 @@ button.btn:disabled{opacity:.6;cursor:wait;transform:none}
 /* the scribble-to-product slider: its range input is invisible, so show keyboard focus on the frame */
 .cmp:has(input:focus-visible){outline:3px solid var(--balpen);outline-offset:4px}
 .cmp:has(input:focus-visible) .bar::after{box-shadow:0 0 0 4px var(--papier),0 0 0 7px var(--balpen)}
+/* intro: decided before first paint by the inline script in index.html */
+.intro-done #intro{display:none}
+/* circles: drawn by a mask that JS animates; without script or with reduced motion they simply stand there */
+html:not(.js) svg.ring use{mask:none}
+@media (prefers-reduced-motion:reduce){svg.ring use{mask:none}}

@@ -23,7 +23,7 @@ const PersMapPage = lazy(() => import("./pages/PersMapPage.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 
 /** Wrapper that uses router-dependent hooks */
-const AppRoutes = () => {
+export const AppRoutes = () => {
   useGtmPageView();
 
   return (

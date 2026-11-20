@@ -46,6 +46,7 @@ De volledige lijst staat in `docs/website-handoff/HANDOFF.md` onder "Inhoud en f
 - **Persmap:** geen studiofoto's (daar staan oud-collega's op) en geen "casual"-foto.
 - **Cookiemelding:** opgemaakt in `site.css`; werking en teksten blijven van CookieYes. "Alles afwijzen" en "Accepteer alles" zijn even groot (AVG).
 - **Formulier:** `api/contact.ts` met de sjablonen uit `api/_mailTemplates.ts`. Alles wat een bezoeker invult, wordt onschadelijk gemaakt.
+- **Vooraf gebouwde HTML:** bij `npm run build` rendert `scripts/prerender.mjs` elke pagina tot complete HTML; de browser neemt die over (`hydrateRoot` in `src/main.tsx`). Een onderdeel moet daarom bij het bouwen en in de browser hetzelfde beginnen: geen `window`, `sessionStorage` of `matchMedia` in de eerste weergave, alleen in een `useEffect`. Wat vóór de eerste weergave beslist moet worden (de entree), gebeurt in het kleine script bovenin `index.html`.
 
 ## Werkafspraken
 

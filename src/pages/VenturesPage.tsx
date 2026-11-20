@@ -46,7 +46,8 @@ const VenturesPage = () => {
       <div ref={rootRef}>
         <PageHead
           wide
-          eyebrow="De ventures"
+          labelInH1
+          eyebrow="De ventures van Toms Ambitie"
           title={
             <>
               Waar we nu aan <span className="hl">bouwen.</span>

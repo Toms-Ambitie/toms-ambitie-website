@@ -191,7 +191,7 @@ const Index = () => {
                 </div>
               </div>
               <div className="row vk">
-                <span className="nm d">LED-IBC</span>
+                <span className="nm d nobr">LED-IBC</span>
                 <div>
                   <span className="st">Verkocht</span>
                   <p className="ls q">Verkocht aan onze Belgische partner Woodpeckers.</p>

@@ -107,7 +107,8 @@ const MeebouwenPage = () => {
       <div ref={rootRef}>
         <PageHead
           wide
-          eyebrow="Contact"
+          labelInH1
+          eyebrow="Meebouwen aan een venture"
           title={
             <>
               Doe <span className="hl">mee.</span>

@@ -6,7 +6,7 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHead } from "@/components/site/PageHead";
 import { PFilm } from "@/components/site/PFilm";
 import { Cta, HlInk } from "@/components/site/Cta";
-import { NEWS_FILTERS, VentureMark, catLabel, hlLast } from "@/components/site/newsHelpers";
+import { NEWS_FILTERS, VentureMark, catLabel, headline, keepTogether } from "@/components/site/newsHelpers";
 
 const News = () => {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -60,7 +60,7 @@ const News = () => {
                   Uitgelicht · {catLabel(featured.statusLabel)}
                   {featured.venture ? ` · ${featured.venture}` : ""}
                 </p>
-                <h2 className="d">{hlLast(featured.title, true)}</h2>
+                <h2 className="d">{headline(featured.title, featured.hl, true)}</h2>
                 <p className="sub">{featured.lead}</p>
                 <p className="meta">
                   {featured.date} · {featured.read} lezen
@@ -85,7 +85,7 @@ const News = () => {
                   </div>
                   <div>
                     <h3 className="d">
-                      <Link to={`/nieuws/${p.slug}`}>{p.title}</Link>
+                      <Link to={`/nieuws/${p.slug}`}>{keepTogether(p.title)}</Link>
                     </h3>
                     <p>{p.lead}</p>
                   </div>

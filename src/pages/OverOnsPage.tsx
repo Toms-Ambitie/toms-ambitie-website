@@ -22,7 +22,7 @@ const TIMELINE: { y: string; t: ReactNode; d: string; now?: boolean }[] = [
   { y: "2012", t: "Aardbei Communicatie", d: "Tom en Marcel kopen Bart uit en gaan samen verder onder een nieuwe naam." },
   { y: "2012–15", t: <span className="xs">PartyBlender</span>, d: "Gestopt. Een goed idee zonder de middelen om het echt groot te maken." },
   { y: "2015", t: "Aardbei verkocht", d: "Tom en Marcel verkopen het bureau aan Brandon Ziel. Het is daarna nog een paar keer verkocht en gaat al jaren verder als Cherry Marketing. Voor Tom het startschot voor Toms Ambitie." },
-  { y: "2017–23", t: <span className="sold">LED-IBC</span>, d: "Verkocht aan onze Belgische partner Woodpeckers." },
+  { y: "2017–23", t: <span className="sold nobr">LED-IBC</span>, d: "Verkocht aan onze Belgische partner Woodpeckers." },
   { y: "2019–22", t: "Entranz", d: "Uitgestapt." },
   { y: "2025", t: "AI-first", d: "Definitieve omslag. AI niet als experiment, maar als werkwijze." },
   { y: "2025–26", t: <span className="xs">Plug and Power</span>, d: "Gestopt. Met Ernst Meerholz en Nick Neppelenbroek." },

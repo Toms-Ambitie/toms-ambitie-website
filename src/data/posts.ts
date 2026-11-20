@@ -2,7 +2,7 @@ export type Block =
   | { t: 'lead'; c: string }
   | { t: 'p'; c: string }
   | { t: 'h2'; c: string }
-  | { t: 'quote'; c: string }
+  | { t: 'quote'; c: string; hl?: string }
   | { t: 'ul'; items: string[] };
 
 export interface Post {
@@ -17,6 +17,8 @@ export interface Post {
   cover?: string;        // only set when a truly unique image is available
   noindex?: boolean;     // true = noindex + verborgen in nieuwsoverzicht
   lead: string;
+  /** word in the title that gets the marker; no value, no marker */
+  hl?: string;
   body: Block[];
 }
 
@@ -24,6 +26,7 @@ export const POSTS: Post[] = [
   {
     slug: 'postpilot-v2-spraak',
     title: 'Waarom we PostPilot opnieuw hebben opgebouwd rond spraak',
+    hl: 'spraak',
     date: '20 september 2026',
     cat: 'Venture',
     statusLabel: 'Venture update',
@@ -39,7 +42,7 @@ export const POSTS: Post[] = [
       { t: 'p', c: 'In versie 2.0 spreek je in wat je denkt. Ongeveer dertig seconden. Halve zinnen mogen, dialect mag, hardop nadenken mag. PostPilot maakt er een LinkedIn-post van in jouw toon, in een van vier schrijftonen: reflectief, direct, verhalend of analytisch. Wil je liever typen, dan zijn vier steekwoorden genoeg.' },
       { t: 'p', c: 'Dat klinkt als een functie. Het is een andere manier van werken.' },
       { t: 'p', c: 'Technisch vroeg het om Nederlandse spraakherkenning die tegen onafgemaakte zinnen kan. Een vertaalde Engelse oplossing redt dat niet. Je merkt het verschil pas als je het echt in het Nederlands probeert, met een halve gedachte en een uh ertussen.' },
-      { t: 'quote', c: 'DE DREMPEL ZIT NIET IN HET SCHRIJVEN. DE DREMPEL ZIT IN HET BEGINNEN.' },
+      { t: 'quote', c: 'DE DREMPEL ZIT NIET IN HET SCHRIJVEN. DE DREMPEL ZIT IN HET BEGINNEN.', hl: 'BEGINNEN.' },
       { t: 'p', c: 'Publiceren gaat via de officiële LinkedIn-koppeling. Geen wachtwoord delen, geen browserextensie, geen scraping. LinkedIn heeft in 2025 hard opgetreden tegen tools die dat wel doen. Wie zo\'n tool gebruikt, riskeert zijn eigen account. Dat is geen theoretisch risico en het is precies de reden dat we vanaf dag één de officiële route hebben genomen, ook al kostte die meer tijd.' },
       { t: 'p', c: 'Waar we nu staan: het platform is live, de koppeling is goedgekeurd, de Founder Deal staat open voor de eerste honderd. Wat er nog niet staat, is de eerste betalende klant. Dat is de volgende mijlpaal en we vinden het eerlijker om dat zo op te schrijven dan om er een getal bij te verzinnen.' },
       { t: 'p', c: 'Volgende stap op de roadmap: een carrousel-generator. Carrousels halen op LinkedIn structureel meer bereik dan tekstposts, en het is precies het formaat dat de meeste mensen niet maken omdat het te veel werk is.' },

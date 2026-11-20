@@ -44,10 +44,6 @@ const STICKERS: Download[] = [
 const PHOTOS = [
   { src: "/photos/tom-portrait-dark.webp", label: "Tom Mulder · portret donker", credit: "Wonderwood Fotografie" },
   { src: "/photos/tom-portrait-light.webp", label: "Tom Mulder · portret licht", credit: "Wonderwood Fotografie" },
-  { src: "/photos/tom-casual.webp", label: "Tom Mulder · casual", credit: "Wonderwood Fotografie" },
-  { src: "/photos/studio-team-bw.webp", label: "Studio · team", credit: "Wonderwood Fotografie" },
-  { src: "/photos/studio-collab.webp", label: "Studio · collab", credit: "Wonderwood Fotografie" },
-  { src: "/photos/studio-pair.webp", label: "Studio · pair", credit: "Wonderwood Fotografie" },
 ];
 
 const DownloadCard = ({ d }: { d: Download }) => {

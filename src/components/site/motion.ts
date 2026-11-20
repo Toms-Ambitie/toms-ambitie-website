@@ -5,7 +5,7 @@ export const reducedMotion = () =>
 
 /** Headings that are wider than their column shrink until they fit. */
 export function fitHeadings(root: ParentNode) {
-  root.querySelectorAll<HTMLElement>("h1.d,h2.d,h3.d,p.d").forEach((el) => {
+  root.querySelectorAll<HTMLElement>("h1.d,h2.d,h3.d,p.d,.ph-h1>.d").forEach((el) => {
     el.style.fontSize = "";
     if (!el.clientWidth) return;
     let size = parseFloat(getComputedStyle(el).fontSize);

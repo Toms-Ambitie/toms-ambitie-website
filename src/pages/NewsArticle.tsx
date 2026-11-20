@@ -4,7 +4,7 @@ import { applySEO } from "@/lib/seo";
 import { POSTS, type Block } from "@/data/posts";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Cta, HlInk } from "@/components/site/Cta";
-import { catLabel, hlLast, isoDate } from "@/components/site/newsHelpers";
+import { catLabel, headline, isoDate, keepTogether } from "@/components/site/newsHelpers";
 
 const VENTURE_PAGES: Record<string, string> = { PostPilot: "/ventures/postpilot", EmmaStudio: "/ventures/emmastudio" };
 
@@ -13,13 +13,13 @@ const renderBlock = (b: Block, i: number) => {
     case "h2":
       return (
         <h2 key={i} className="d art-h2">
-          {b.c}
+          {keepTogether(b.c)}
         </h2>
       );
     case "quote":
       return (
         <blockquote key={i} className="art-q rv">
-          <p className="d">{hlLast(b.c, true)}</p>
+          <p className="d">{headline(b.c, b.hl, true)}</p>
         </blockquote>
       );
     case "ul":
@@ -99,7 +99,7 @@ const NewsArticle = () => {
                 {catLabel(post.statusLabel)}
                 {post.venture ? ` · ${post.venture}` : ""}
               </p>
-              <h1 className="d">{hlLast(post.title)}</h1>
+              <h1 className="d">{headline(post.title, post.hl)}</h1>
               <p className="lead">{post.lead}</p>
               <p className="art-meta">
                 <img className="stk" src="/ta/tom-portret-560.webp" alt="" width={64} height={57} loading="lazy" decoding="async" />
@@ -141,7 +141,7 @@ const NewsArticle = () => {
                     {catLabel(p.statusLabel)}
                     {p.venture ? ` · ${p.venture}` : ""}
                   </p>
-                  <h3 className="d">{p.title}</h3>
+                  <h3 className="d">{keepTogether(p.title)}</h3>
                   <p>{p.date}</p>
                 </Link>
               ))}

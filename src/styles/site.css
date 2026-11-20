@@ -382,7 +382,7 @@ button.btn{cursor:pointer}
 
 .back{display:inline-block;font-family:var(--hand);font-size:32px;line-height:1;color:var(--balpen);text-decoration:none;margin-bottom:22px}
 .phead h1 .rw{position:relative;display:inline-block;isolation:isolate}
-.phead h1 .ring{inset:-30% -7%;width:114%;height:160%}
+.phead h1 .ring{inset:-45% -3% -35%;width:106%;height:180%}
 .cmp.big{aspect-ratio:16/9;border-radius:var(--radius-paneel-l)}
 .story{margin-top:clamp(48px,7vw,110px);border-top:2px solid var(--inkt)}
 .st-r{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:14px 44px;padding:clamp(28px,4vw,56px) 0;border-bottom:1px solid var(--lijn);align-items:start}
@@ -424,7 +424,7 @@ a.feat .txt-l{display:inline-block;margin-top:14px;color:var(--balpen-licht)}
 .tompanel{min-height:0}
 .tompanel .stk{width:auto;max-width:92%;max-height:97%}
 /* on phones the 18px gutter is narrower than the circle's overhang: keep the ink inside the margin */
-@media (max-width:760px){.row .ring{inset:-50% -4%;width:108%}.phead h1 .ring{inset:-30% -3%;width:106%}}
+@media (max-width:760px){.row .ring{inset:-50% -4%;width:108%}}
 .skip{position:absolute;left:var(--gut);top:-80px;z-index:120;background:var(--markeerstift);color:var(--inkt);padding:12px 18px;border-radius:var(--radius-pil);font-weight:700;text-decoration:none}
 .skip:focus{top:14px}
 main:focus{outline:0}
@@ -473,3 +473,9 @@ a.card:hover{transform:translateY(-4px)}
 .fnote.err{color:var(--inkt);font-weight:600}
 .fnote.ok{color:var(--balpen);font-weight:600}
 button.btn:disabled{opacity:.6;cursor:wait;transform:none}
+.nobr{white-space:nowrap}
+/* a circled page title needs room above it, so the circle clears the label */
+.phead h1:has(.rw>.ring){margin-top:calc(.34em + 12px);margin-bottom:calc(.24em + 6px)}
+/* H1 that holds the label and the big design line */
+.phead h1.ph-h1{font-size:inherit;line-height:inherit;margin:0;font-weight:inherit}
+.ph-h1>.d{display:block;font-size:clamp(46px,8.4vw,136px);line-height:.9;margin-top:22px}

@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 
 /** Category names as shown on the site (the data keeps the English "Origin story"). */
 export const catLabel = (cat?: string) => (cat === "Origin story" ? "Hoe het begon" : cat ?? "");
@@ -9,20 +9,33 @@ export const NEWS_FILTERS = ["Venture update", "Origin story", "Les geleerd", "B
 export function VentureMark({ name }: { name?: string }) {
   if (!name) return null;
   if (["DesignerShirts", "PartyBlender", "Plug and Power"].includes(name)) return <span className="xs">{name}</span>;
-  if (name === "LED-IBC") return <span className="sold">{name}</span>;
+  if (name === "LED-IBC") return <span className="sold nobr">{name}</span>;
   return <>{name}</>;
 }
 
-/** Marks the last word of a heading (one highlighted word per heading). */
-export function hlLast(text: string, onInk = false): ReactNode {
-  const i = text.lastIndexOf(" ");
-  if (i < 0) return text;
+/** "LED-IBC" never breaks over two lines in a heading. */
+export function keepTogether(text: string): ReactNode {
+  const parts = text.split("LED-IBC");
+  if (parts.length === 1) return text;
+  return parts.map((p, i) => (
+    <Fragment key={i}>
+      {p}
+      {i < parts.length - 1 && <span className="nobr">LED-IBC</span>}
+    </Fragment>
+  ));
+}
+
+/** Heading text with the marker on the given word only; without a word, no marker. */
+export function headline(text: string, word?: string, onInk = false): ReactNode {
+  const i = word ? text.lastIndexOf(word) : -1;
+  if (!word || i < 0) return keepTogether(text);
   return (
     <>
-      {text.slice(0, i + 1)}
+      {keepTogether(text.slice(0, i))}
       <span className="hl" style={onInk ? { color: "var(--inkt)" } : undefined}>
-        {text.slice(i + 1)}
+        {keepTogether(word)}
       </span>
+      {keepTogether(text.slice(i + word.length))}
     </>
   );
 }
